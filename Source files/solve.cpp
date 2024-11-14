@@ -28,21 +28,17 @@ struct Index_36 {
     }
 };
 
-void push(std::vector<Point> &listOfVertices, int i, int j, int mapWidth, float xGap, float zGap, float yGap, float texInd) {
+void push(std::vector<Point> &listOfVertices, int i, int j, int mapWidth, float xGap, float zGap, float yGap, float width, float texInd) {
     float x = (j % mapWidth) + xGap;
     float z = i + zGap;
-    listOfVertices.push_back({             x, yGap,             z, 0.0f, 0.0f, texInd });
-    listOfVertices.push_back({             x, yGap, CUBE_SIZE + z, 1.0f, 0.0f, texInd });
-    listOfVertices.push_back({ CUBE_SIZE + x, yGap, CUBE_SIZE + z, 0.0f, 0.0f, texInd });
-    listOfVertices.push_back({ CUBE_SIZE + x, yGap,             z, 1.0f, 0.0f, texInd });
-    
-    listOfVertices.push_back({             x, 1.0f + yGap,             z, 0.0f, 1.0f, texInd });
-    listOfVertices.push_back({             x, 1.0f + yGap, CUBE_SIZE + z, 1.0f, 1.0f, texInd });
-    listOfVertices.push_back({ CUBE_SIZE + x, 1.0f + yGap, CUBE_SIZE + z, 0.0f, 1.0f, texInd });
-    listOfVertices.push_back({ CUBE_SIZE + x, 1.0f + yGap,             z, 1.0f, 1.0f, texInd });
+
+    listOfVertices.push_back({         x, yGap,             z, (texInd - 1) / COUNT_OF_MATERIALS, yGap });
+    listOfVertices.push_back({         x, yGap, CUBE_SIZE + z, texInd       / COUNT_OF_MATERIALS, yGap });
+    listOfVertices.push_back({ width + x, yGap, CUBE_SIZE + z, (texInd - 1) / COUNT_OF_MATERIALS, yGap });
+    listOfVertices.push_back({ width + x, yGap,             z, texInd       / COUNT_OF_MATERIALS, yGap });
 }
 
-void solve(int* map, float* vert, uint* ind, uint countOfUnits, const int mapWidth, const int mapHeight, float xGap, float zGap, float yGap) {
+void solve(int* map, float* vert, uint* ind, uint countOfUnits, const int mapWidth, const int mapHeight, float width, float xGap, float zGap) {
     std::vector<Point>    listOfVertices;
     std::vector<Index_36> listOfIndices;
 
@@ -51,7 +47,8 @@ void solve(int* map, float* vert, uint* ind, uint countOfUnits, const int mapWid
     for (int i = 0; i < mapHeight; i++) {
         for (int j = i * mapWidth; j < (i + 1) * mapWidth; j++) {
             if (map[j] > 0) {
-                push(listOfVertices, i, j, mapWidth, xGap, zGap, yGap, map[j] + 0.0f);
+                push(listOfVertices, i, j, mapWidth, xGap, zGap, 0.0f, width, map[j] + 0.0f);
+                push(listOfVertices, i, j, mapWidth, xGap, zGap, 1.0f, width, map[j] + 0.0f);
                 listOfIndices.push_back(count++);
             }
         }
@@ -59,13 +56,12 @@ void solve(int* map, float* vert, uint* ind, uint countOfUnits, const int mapWid
 
     int j = 0;
 
-    for (int i = 0; i < countOfUnits * 48; i+=6) {
+    for (int i = 0; i < countOfUnits * 40; i+=5) {
         vert[i]     = listOfVertices[j].x;
         vert[i + 1] = listOfVertices[j].y;
         vert[i + 2] = listOfVertices[j].z;
         vert[i + 3] = listOfVertices[j].texX;
         vert[i + 4] = listOfVertices[j].texY;
-        vert[i + 5] = listOfVertices[j].texIndex;
         j++;
     }
     j = 0;

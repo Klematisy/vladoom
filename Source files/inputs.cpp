@@ -59,7 +59,7 @@ void checkDoor(const glm::vec3 pos, const Map &pathOfMap, const float &rotation)
     x = toUp(x);
     z = toUp(z);
 
-    if (pathOfMap.obj[x + z * pathOfMap.width] == 9 && glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+    if (pathOfMap.obj[x + z * pathOfMap.width] == 6 && glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
         pathOfMap.obj[x + z * pathOfMap.width] = 0;
         std::cout << pathOfMap.obj[x + z * pathOfMap.width] << std::endl;
     }
@@ -101,21 +101,20 @@ void input(const Collisions& colls, glm::vec3 &position, float &rotation, GLFWwi
             z1 = std::ceil(pointPos.z + pathOfMap.gapZ);
 
             if (inMap(pathOfMap, pointPos) && pathOfMap.obj[toUp(x1) + toUp(z1) * pathOfMap.width] > 0) {
-                std::cout << x1 << " " << z1 << std::endl;
                 arr[12 + (x - x1) + (z - z1) * 5] = 1;
             }
         }
     }
     map = arr;
     ///*
-    std::cout << "\n";
-    for (int i = 0; i < 5; i++) {
-        for (int j = i * 5; j < (i + 1) * 5; j++) {
-            std::cout << map[j] << " ";
-        }
-        std::cout << "\n";
-    }
-    std::cout << "\n";
+    // std::cout << "\n";
+    // for (int i = 0; i < 5; i++) {
+    //     for (int j = i * 5; j < (i + 1) * 5; j++) {
+    //         std::cout << map[j] << " ";
+    //     }
+    //     std::cout << "\n";
+    // }
+    // std::cout << "\n";
     //*/
 
     x = position.x;

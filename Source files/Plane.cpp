@@ -1,5 +1,6 @@
 #include <Plane.h>
 #include <vector>
+#include <constants.h>
 
 class Index_6 {
 public:
@@ -29,22 +30,21 @@ void Plane::createShapes(float *plane, uint *indices, uint countOfUnits, float i
         for (uint j = i * width; j < (i + 1) * width; j++) {
             if (map[j] == 0) {
                 k = j % width - xGap;
-                listOfVert.push_back({ (k + 0.0f), yGap, (i + 0.0f), 0.0f, 0.0f, ind });
-                listOfVert.push_back({ (k + 1.0f), yGap, (i + 0.0f), 1.0f, 0.0f, ind });
-                listOfVert.push_back({ (k + 1.0f), yGap, (i + 1.0f), 1.0f, 1.0f, ind });
-                listOfVert.push_back({ (k + 0.0f), yGap, (i + 1.0f), 0.0f, 1.0f, ind });
+                listOfVert.push_back({ (k + 0.0f), yGap, (i + 0.0f), (ind - 1) / COUNT_OF_MATERIALS, 0.0f });
+                listOfVert.push_back({ (k + 1.0f), yGap, (i + 0.0f), ind / COUNT_OF_MATERIALS      , 0.0f });
+                listOfVert.push_back({ (k + 1.0f), yGap, (i + 1.0f), ind / COUNT_OF_MATERIALS      , 1.0f });
+                listOfVert.push_back({ (k + 0.0f), yGap, (i + 1.0f), (ind - 1) / COUNT_OF_MATERIALS, 1.0f });
                 listOfInd.push_back(count++);
             }
         }
     }
     int j = 0;
-    for (uint i = 0; i < countOfUnits * 24; i+=6) {
+    for (uint i = 0; i < countOfUnits * 20; i+=5) {
         plane[i]     = listOfVert[j].x;
         plane[i + 1] = listOfVert[j].y;
         plane[i + 2] = listOfVert[j].z;
         plane[i + 3] = listOfVert[j].texX;
         plane[i + 4] = listOfVert[j].texY;
-        plane[i + 5] = listOfVert[j].texIndex;
         j++;
     }
 
@@ -66,7 +66,7 @@ Plane::Plane(int *map, int width, int height, float xGap, float yGap, float zGpa
 
     size = countOfUnits * 6;
 
-    float plane[countOfUnits * 24];
+    float plane[countOfUnits * 20];
     uint  indices[size];
 
     createShapes(plane, indices, countOfUnits, ind);
@@ -75,9 +75,8 @@ Plane::Plane(int *map, int width, int height, float xGap, float yGap, float zGpa
     vbo = new VBO(plane, sizeof(plane));
     ebo = new EBO(indices, sizeof(indices));
 
-    vao->linkAttrib(*vbo, 0, 3, GL_FLOAT, 6 * sizeof(float), (void*) 0);
-    vao->linkAttrib(*vbo, 1, 2, GL_FLOAT, 6 * sizeof(float), (void*) (3 * sizeof(float)));
-    vao->linkAttrib(*vbo, 2, 1, GL_FLOAT, 6 * sizeof(float), (void*) (5 * sizeof(float)));
+    vao->linkAttrib(*vbo, 0, 3, GL_FLOAT, 5 * sizeof(float), (void*) 0);
+    vao->linkAttrib(*vbo, 1, 2, GL_FLOAT, 5 * sizeof(float), (void*) (3 * sizeof(float)));
 
     vbo->unbind();
     vao->unbind();

@@ -13,8 +13,6 @@ struct Point {
 
     float texX;
     float texY;
-    
-    float texIndex;
 };
 
 struct Map {
