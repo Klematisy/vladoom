@@ -81,7 +81,7 @@ void input(const Collisions& colls, glm::vec3 &position, float &rotation, GLFWwi
         0, 0, 0, 0, 0
     };
 
-    std::cout << position.x << " " << position.z  << std::endl;
+    // std::cout << position.x << " " << position.z  << std::endl;
 
     for (const Map &pathOfMap : colls._piecesOfMap) {
         {
@@ -107,14 +107,14 @@ void input(const Collisions& colls, glm::vec3 &position, float &rotation, GLFWwi
     }
     map = arr;
     ///*
-    // std::cout << "\n";
-    // for (int i = 0; i < 5; i++) {
-    //     for (int j = i * 5; j < (i + 1) * 5; j++) {
-    //         std::cout << map[j] << " ";
-    //     }
-    //     std::cout << "\n";
-    // }
-    // std::cout << "\n";
+    std::cout << "\n";
+    for (int i = 0; i < 5; i++) {
+        for (int j = i * 5; j < (i + 1) * 5; j++) {
+            std::cout << map[j] << " ";
+        }
+        std::cout << "\n";
+    }
+    std::cout << "\n";
     //*/
 
     x = position.x;

@@ -15,7 +15,7 @@ class Cube {
     VBO* vbo;
     EBO* ebo;
 public:
-    Cube(int *map, int location, int mapWidth, int mapHeight, float width, float xGap, float zGap, Collisions& col);
+    Cube(int *map, int location, int mapWidth, int mapHeight, float width, float xGap, float zGap, float rotation, Collisions& col);
     void bind();
     void draw();
     void add();

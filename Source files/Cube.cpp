@@ -1,23 +1,22 @@
 #include <libs.h>
+#include <math.h>
 #include <settingsAndVars.h>
 
-void solve(int* map, float* vert, uint* ind, uint countOfUnits, const int mapWidth, const int mapHeight, float width, float xGap, float zGap);
+void solve(int* map, float* vert, uint* ind, uint countOfUnits, const int mapWidth, const int mapHeight, float width, float xGap, float zGap, float rotation);
 
-Cube::Cube(int *map, int location, int mapWidth, int mapHeight, float width, float xGap, float zGap, Collisions& col) {
+Cube::Cube(int *map, int location, int mapWidth, int mapHeight, float width, float xGap, float zGap, float rotation, Collisions& col) {
     uint countOfUnits = 0;
 
-    col._piecesOfMap.push_back({ map, mapWidth, mapHeight, 
-                                -xGap + 0.0f,
-                                -zGap + 0.0f,
-                                -(xGap + mapWidth + 0.0f),
-                                -(zGap + mapHeight + 0.0f),
-                                xGap,
-                                zGap});
+    float xGapfl = std::floor(xGap);
+    float zGapfl = std::floor(zGap);
 
-    // std::cout << col._piecesOfMap[col._piecesOfMap.size() - 1].maxX << std::endl;
-    // std::cout << col._piecesOfMap[col._piecesOfMap.size() - 1].maxZ << std::endl;
-    // std::cout << col._piecesOfMap[col._piecesOfMap.size() - 1].minX << std::endl;
-    // std::cout << col._piecesOfMap[col._piecesOfMap.size() - 1].minZ << std::endl;
+    col._piecesOfMap.push_back({ map, mapWidth, mapHeight, 
+                                -xGapfl + 0.0f,
+                                -zGapfl + 0.0f,
+                                -(xGapfl + mapWidth + 0.0f),
+                                -(zGapfl + mapHeight + 0.0f),
+                                xGapfl,
+                                zGapfl});
 
     for (int i = 0; i < mapWidth * mapHeight; i++) {
         if (map[i] > 0) countOfUnits++;
@@ -30,7 +29,7 @@ Cube::Cube(int *map, int location, int mapWidth, int mapHeight, float width, flo
 
     ind = indices;
 
-    solve(map, vertices, indices, countOfUnits, mapWidth, mapHeight, width, xGap, zGap);
+    solve(map, vertices, indices, countOfUnits, mapWidth, mapHeight, width, xGap, zGap, rotation);
 
     vao = new VAO();
     vbo = new VBO(vertices, sizeof(vertices));

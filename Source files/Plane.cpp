@@ -55,8 +55,8 @@ void Plane::createShapes(float *plane, uint *indices, uint countOfUnits, float i
     }
 }
 
-Plane::Plane(int *map, int width, int height, float xGap, float yGap, float zGpa, float xRotation, float yRotation, float zRotation, float ind)
-    : map(map), width(width), height(height), xGap(xGap), yGap(yGap), zGap(zGap), xRotation(xRotation), yRotation(yRotation), zRotation(zRotation)
+Plane::Plane(int *map, int width, int height, float xGap, float yGap, float zGpa, float ind)
+    : map(map), width(width), height(height), xGap(xGap), yGap(yGap), zGap(zGap)
 {
     uint countOfUnits = 0;
 

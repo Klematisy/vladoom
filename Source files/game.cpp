@@ -16,10 +16,6 @@ void game(GLFWwindow* window)
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
 
     ProgramShader programShader = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
-    ProgramShader lol = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
-
-    ProgramShader doorPS = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
-    // ProgramShader door = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
 
     Collisions collisions;
 
@@ -60,7 +56,7 @@ void game(GLFWwindow* window)
         4, 4, 4, 4, 4, 4, 4, 4,
         4, 0, 0, 4, 4, 4, 4, 4,
         4, 0, 0, 0, 0, 0, 0, 4,
-        4, 0, 0, 4, 4, 6, 4, 4,
+        4, 0, 0, 4, 4, 0, 4, 4,
         4, 0, 0, 4, 0, 0, 0, 4,
         1, 0, 0, 4, 4, 0, 4, 4,
         1, 0, 0, 4, 0, 0, 0, 4,
@@ -70,23 +66,23 @@ void game(GLFWwindow* window)
         1, 1, 1, 1, 4, 4, 4, 4,
     };
 
-    int dver[4] {
-        6
-    };
+    int** doors = new int*;
+    doors[0] = new int {6};
+    doors[1] = new int {6};
 
     glm::vec3 position = glm::vec3(-1.5f, -0.5f, -2.5f);
-    float rotation     = 90.0f;
-    float rot          = 0.0f;
+    float rotation = 90.0f;
     
-    Cube part (map,     0, mapWidth, mapHeight, 1.0f, 0.0f,  0.0f, collisions);
-    Cube part1(map2,    0, mapWidth, mapHeight, 1.0f, 8.0f,  0.0f, collisions);
-    Cube part2(dver,    0, 1,        1,         0.3f, 5.35f, 9.0f, collisions);
+    Cube part (map,       0, mapWidth, mapHeight, 1.0f,  0.0f,  0.0f,  0.0f, collisions);
+    Cube part1(map2,      0, mapWidth, mapHeight, 1.0f,  8.0f,  0.0f,  0.0f, collisions);
+    Cube door1(doors[0],  0, 1,        1,         0.1f,  5.45f, 9.0f,  0.0f, collisions);
+    Cube door2(doors[1],  0, 1,        1,         0.1f, 13.45f, 3.0f, 90.0f, collisions);
 
-    Plane room1( map,  mapWidth, mapHeight, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 7.0f);
-    Plane room15(map,  mapWidth, mapHeight, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 8.0f);
+    Plane room1( map,  mapWidth, mapHeight, 0.0f, 0.0f, 0.0f, 7.0f);
+    Plane room15(map,  mapWidth, mapHeight, 0.0f, 1.0f, 0.0f, 8.0f);
 
-    Plane room2( map2, mapWidth, mapHeight, -8.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 7.0f);
-    Plane room25(map2, mapWidth, mapHeight, -8.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 9.0f);
+    Plane room2( map2, mapWidth, mapHeight, -8.0f, 0.0f, 0.0f, 7.0f);
+    Plane room25(map2, mapWidth, mapHeight, -8.0f, 1.0f, 0.0f, 9.0f);
 
     programShader.useProgram();
     Texture Walls("Resource files/images/atlas.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
@@ -122,9 +118,15 @@ void game(GLFWwindow* window)
         room15.draw();
         room2.draw();
         room25.draw();
-        part2.draw();
+        door1.draw();
+        door2.draw();
         
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
+    delete[] doors[0];
+    delete[] doors[1];
+
+    delete doors;
 }

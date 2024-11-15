@@ -11,10 +11,6 @@ class Plane {
     float yGap;
     float zGap;
 
-    float xRotation;
-    float yRotation;
-    float zRotation;
-
     uint size;
 
     VBO* vbo;
@@ -22,7 +18,7 @@ class Plane {
     EBO* ebo;
 
 public:
-    Plane(int *map, int width, int height, float xGap, float yGap, float zGap, float xRotation, float yRotation, float zRotation, float ind);
+    Plane(int *map, int width, int height, float xGap, float yGap, float zGap, float ind);
     void draw();
     ~Plane();
 private:
