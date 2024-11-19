@@ -10,6 +10,7 @@ class ProgramShader {
 public:
     uint shaderProgram;
     ProgramShader(const char* vs, const char* fs);
+    ProgramShader();
     void useProgram();
     uint getShaderProgram();
     ~ProgramShader();

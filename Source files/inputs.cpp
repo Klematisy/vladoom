@@ -1,4 +1,4 @@
-#include <libs.h>
+#include "libs.h"
 #include <cmath>
 
 static float speed;
@@ -43,29 +43,33 @@ bool CollidesRect(int startX, int startZ, float x, float z, float x_half_extent,
         || Collides(startX, startZ, x - x_half_extent, z + z_half_extent);
 }
 
-bool inMap(const Map &pathOfMap, const glm::vec3 &p) {
+bool inObj(const Map &pathOfMap, const glm::vec3 &p) {
     return (pathOfMap.maxX > p.x && p.x > pathOfMap.minX && pathOfMap.maxZ > p.z && p.z > pathOfMap.minZ);
 }
 
-void checkDoor(const glm::vec3 pos, const Map &pathOfMap, const float &rotation) {
+void checkDoor(const glm::vec3 pos, Map &pathOfMap, Door& door, const float &rotation) {
     float xf = pos.x + cosf((90 + rotation) * 3.14 / 180.0f) + pathOfMap.gapX;
     float zf = pos.z + sinf((90 + rotation) * 3.14 / 180.0f) + pathOfMap.gapZ;
-    int x;
-    int z;
 
-    x = xf;
-    z = zf;
+    int x = xf;
+    int z = zf;
 
     x = toUp(x);
     z = toUp(z);
 
-    if (pathOfMap.obj[x + z * pathOfMap.width] == 6 && glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+    if (-1.01f < *door.coordinate && *door.coordinate < 0.0f && pathOfMap.obj[x + z * pathOfMap.width] != 0) {
+        *door.coordinate -= 0.01f;
+    } else if (*door.coordinate < -1.0f) {
         pathOfMap.obj[x + z * pathOfMap.width] = 0;
-        std::cout << pathOfMap.obj[x + z * pathOfMap.width] << std::endl;
+    } else {
+        if (pathOfMap.obj[x + z * pathOfMap.width] == 6 && glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+            *door.coordinate -= 0.001f;
+        }
     }
+
 }
 
-void input(const Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *w, bool &run) {
+void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *w, bool &run) {
 
     std::vector<Map> collisions;
     window = w;
@@ -82,31 +86,36 @@ void input(const Collisions& colls, glm::vec3 &position, float &rotation, GLFWwi
     };
 
     // std::cout << position.x << " " << position.z  << std::endl;
-
-    for (const Map &pathOfMap : colls._piecesOfMap) {
-        {
-            checkDoor(position, pathOfMap, rotation);
+    int k = 0;
+    for (const Map *pathOfMap : colls._piecesOfMap) {
+        for (int i = 0; i < pathOfMap->height; i++) {
+            for (int j = i * pathOfMap->width; j < pathOfMap->width * (i + 1); j++) {
+                std::cout << pathOfMap->obj[j] << " ";
+            }
+            std::cout << std::endl;
         }
+        std::cout << std::endl;
 
         for (float rot = 0.0f; rot < 360.0f; rot+=45.0f) {
             pointPos = position;
 
-            x = std::ceil(pointPos.x + pathOfMap.gapX);
-            z = std::ceil(pointPos.z + pathOfMap.gapZ);
+            x = std::ceil(pointPos.x + pathOfMap->gapX);
+            z = std::ceil(pointPos.z + pathOfMap->gapZ);
 
             pointPos.x += cos(rot);
             pointPos.z += sin(rot);
 
-            x1 = std::ceil(pointPos.x + pathOfMap.gapX);
-            z1 = std::ceil(pointPos.z + pathOfMap.gapZ);
+            x1 = std::ceil(pointPos.x + pathOfMap->gapX);
+            z1 = std::ceil(pointPos.z + pathOfMap->gapZ);
 
-            if (inMap(pathOfMap, pointPos) && pathOfMap.obj[toUp(x1) + toUp(z1) * pathOfMap.width] > 0) {
+            if (inObj(*pathOfMap, pointPos) && pathOfMap->obj[toUp(x1) + toUp(z1) * pathOfMap->width] > 0) {
                 arr[12 + (x - x1) + (z - z1) * 5] = 1;
             }
         }
     }
+
     map = arr;
-    ///*
+    /*
     std::cout << "\n";
     for (int i = 0; i < 5; i++) {
         for (int j = i * 5; j < (i + 1) * 5; j++) {
@@ -162,10 +171,12 @@ void input(const Collisions& colls, glm::vec3 &position, float &rotation, GLFWwi
     }
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         run = false;
-    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) 
         rotation -= (1.5f);
+        // *colls._doorsOfMap[0].coordinate -= 0.1f;
         // rotation -= 0.1f;
     if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
         rotation += (1.5f);
+        // *colls._doorsOfMap[0].coordinate += 0.1f;
         // rotation += 0.1f;
 }

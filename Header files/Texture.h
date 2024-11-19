@@ -13,6 +13,7 @@ class Texture {
     uint texture;
 public:
     Texture(const char* fileName, GLenum colorType, GLenum pixelData, GLenum tex);
+    Texture() {}
     void uniform(const char* name, ProgramShader& p, uint uInt);
     void bind(GLenum type);
     void unbind();

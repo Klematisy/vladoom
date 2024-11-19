@@ -5,6 +5,8 @@ ProgramShader::ProgramShader(const char* vs, const char* fs) {
     shaderProgram = createProgram(vs, fs);
 }
 
+ProgramShader::ProgramShader() {}
+
 uint ProgramShader::createShader(const char* src, const uint type) {
     uint shader = glCreateShader(type);
     glShaderSource(shader, 1, &src, nullptr);

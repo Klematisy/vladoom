@@ -1,22 +1,24 @@
 #include <libs.h>
 #include <math.h>
-#include <settingsAndVars.h>
 
 void solve(int* map, float* vert, uint* ind, uint countOfUnits, const int mapWidth, const int mapHeight, float width, float xGap, float zGap, float rotation);
 
-Cube::Cube(int *map, int location, int mapWidth, int mapHeight, float width, float xGap, float zGap, float rotation, Collisions& col) {
+Cube::Cube(int *map, int mapWidth, int mapHeight, float width, float xGap, float zGap, float rotation, Collisions& col) {
     uint countOfUnits = 0;
 
     float xGapfl = std::floor(xGap);
     float zGapfl = std::floor(zGap);
 
-    col._piecesOfMap.push_back({ map, mapWidth, mapHeight, 
-                                -xGapfl + 0.0f,
-                                -zGapfl + 0.0f,
-                                -(xGapfl + mapWidth + 0.0f),
-                                -(zGapfl + mapHeight + 0.0f),
-                                xGapfl,
-                                zGapfl});
+    Map *m = new Map({ map, mapWidth, mapHeight, 
+                        -xGapfl + 0.0f,
+                        -zGapfl + 0.0f,
+                        -(xGapfl + mapWidth + 0.0f),
+                        -(zGapfl + mapHeight + 0.0f),
+                        xGapfl,
+                        zGapfl,
+                        width });
+
+    col._piecesOfMap.push_back({m});
 
     for (int i = 0; i < mapWidth * mapHeight; i++) {
         if (map[i] > 0) countOfUnits++;

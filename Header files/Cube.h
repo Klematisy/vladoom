@@ -4,6 +4,7 @@
 #include <VBO.h>
 #include <EBO.h>
 #include <collisions.h>
+#include <settingsAndVars.h>
 
 class Cube {
     uint* ind;
@@ -14,8 +15,9 @@ class Cube {
     VAO* vao;
     VBO* vbo;
     EBO* ebo;
+    Map* m;
 public:
-    Cube(int *map, int location, int mapWidth, int mapHeight, float width, float xGap, float zGap, float rotation, Collisions& col);
+    Cube(int *map, int mapWidth, int mapHeight, float width, float xGap, float zGap, float rotation, Collisions& col);
     void bind();
     void draw();
     void add();

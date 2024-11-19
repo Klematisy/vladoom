@@ -13,11 +13,12 @@
 
 #include <constants.h>
 
-#include <programShader.h>
-#include <VBO.h>
-#include <VAO.h>
-#include <EBO.h>
-#include <Cube.h>
-#include <Plane.h>
-#include <collisions.h>
-#include <Texture.h>
+#include "programShader.h"
+#include "VBO.h"
+#include "VAO.h"
+#include "EBO.h"
+#include "Cube.h"
+#include "Plane.h"
+#include "collisions.h"
+#include "Texture.h"
+#include "door.h"

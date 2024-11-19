@@ -26,4 +26,6 @@ struct Map {
     float minZ;
 
     float gapX, gapZ;
+
+    float size;
 };

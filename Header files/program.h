@@ -1,4 +1,0 @@
-class Program {
-public:
-    Program();
-};

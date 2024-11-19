@@ -1,7 +1,0 @@
-
-class Camera {
-
-public:
-    Camera();
-    
-};

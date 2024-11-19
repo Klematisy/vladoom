@@ -21,9 +21,8 @@ Texture::Texture(const char* fileName, GLenum colorType, GLenum pixelData, GLenu
 }
 
 void Texture::uniform(const char* fragShadName, ProgramShader& p, uint uInt) {
-    GLuint texUni = glGetUniformLocation(p.getShaderProgram(), fragShadName); 
     p.useProgram();
-    glUniform1i(texUni, uInt);
+    glUniform1i(glGetUniformLocation(p.getShaderProgram(), fragShadName), uInt);
 }
 
 void Texture::bind(GLenum type) {
