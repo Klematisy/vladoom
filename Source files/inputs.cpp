@@ -88,6 +88,7 @@ void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *
     // std::cout << position.x << " " << position.z  << std::endl;
     int k = 0;
     for (const Map *pathOfMap : colls._piecesOfMap) {
+        /*
         for (int i = 0; i < pathOfMap->height; i++) {
             for (int j = i * pathOfMap->width; j < pathOfMap->width * (i + 1); j++) {
                 std::cout << pathOfMap->obj[j] << " ";
@@ -95,7 +96,7 @@ void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *
             std::cout << std::endl;
         }
         std::cout << std::endl;
-
+        //*/
         for (float rot = 0.0f; rot < 360.0f; rot+=45.0f) {
             pointPos = position;
 
