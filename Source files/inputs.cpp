@@ -174,10 +174,6 @@ void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *
         run = false;
     if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) 
         rotation -= (1.5f);
-        // *colls._doorsOfMap[0].coordinate -= 0.1f;
-        // rotation -= 0.1f;
     if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
         rotation += (1.5f);
-        // *colls._doorsOfMap[0].coordinate += 0.1f;
-        // rotation += 0.1f;
 }
