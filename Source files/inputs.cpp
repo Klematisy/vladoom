@@ -1,5 +1,6 @@
-#include "libs.h"
 #include <cmath>
+#include "libs.h"
+#include "constants.h"
 
 static float speed;
 static int *map;
@@ -88,15 +89,6 @@ void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *
     // std::cout << position.x << " " << position.z  << std::endl;
     int k = 0;
     for (const Map *pathOfMap : colls._piecesOfMap) {
-        /*
-        for (int i = 0; i < pathOfMap->height; i++) {
-            for (int j = i * pathOfMap->width; j < pathOfMap->width * (i + 1); j++) {
-                std::cout << pathOfMap->obj[j] << " ";
-            }
-            std::cout << std::endl;
-        }
-        std::cout << std::endl;
-        //*/
         for (float rot = 0.0f; rot < 360.0f; rot+=45.0f) {
             pointPos = position;
 
@@ -132,6 +124,9 @@ void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *
 
     x = toUp(x);
     z = toUp(z);
+
+    double xpos, ypos;
+    glfwGetCursorPos(window, &xpos, &ypos);
 
     if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
         speed = spd / 2;
@@ -173,7 +168,13 @@ void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         run = false;
     if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) 
-        rotation -= (1.5f);
+        rotation -= 1.5f;
     if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
-        rotation += (1.5f);
+        rotation += 1.5f;
+
+    if (xpos - 1280.0f != 0) {
+        rotation += (xpos - 1280.0f) / 4;
+    }
+
+    glfwSetCursorPos(window, 2560 / 2, 1440 / 2);
 }

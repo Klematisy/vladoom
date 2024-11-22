@@ -1,5 +1,6 @@
-#include <libs.h>
 #include <cmath>
+#include "constants.h"
+#include "libs.h"
 
 void game(GLFWwindow* window);
 
@@ -32,6 +33,9 @@ int main(void)
     std::cout << (const char*) glGetString(GL_VERSION) << std::endl;
 
     glfwSwapInterval(1);
+
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetCursorPos(window, 2560 / 2, 1440 / 2);
 
     game(window);
 

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm
+# Install script for directory: /Users/agucs/Desktop/main/cpp/OpenGL/vladoom
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

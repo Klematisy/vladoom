@@ -8,7 +8,7 @@ void input(Collisions &collisions, glm::vec3 &position, float &rotation, GLFWwin
 bool gameIsRunning = true;
 
 void game(GLFWwindow* window)
-{   
+{
     /*--------------------------------------------------------main code!--------------------------------------------------------*/
 
     String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
@@ -23,23 +23,6 @@ void game(GLFWwindow* window)
     Walls->uniform("tex0", programShader, 0);
 
     Collisions cWalls;
-
-    /*
-    const int mapWidth  = 20;
-    const int mapHeight = 20;
-    int map[mapWidth * mapHeight] = {
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-        1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-        1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1,
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-        0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-        0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-        0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    };
-    //*/
     
     const int mapWidth  = 8;
     const int mapHeight = 11;
@@ -80,7 +63,7 @@ void game(GLFWwindow* window)
     Cube part (map,  mapWidth, mapHeight, 1.0f,  0.0f,  0.0f,  0.0f, cWalls);
     Cube part1(map2, mapWidth, mapHeight, 1.0f,  8.0f,  0.0f,  0.0f, cWalls);
 
-    Door door1(doorArr1,  5.0f, 9.0f,  0.0f, cWalls, *Walls);
+    Door door1(doorArr1,  4.0f, 2.0f, 0.0f,  cWalls, *Walls);
     Door door2(doorArr2, 13.0f, 3.0f, 90.0f, cWalls, *Walls);
 
     Plane room1( map,  mapWidth, mapHeight, 0.0f, 0.0f, 0.0f, 7.0f);

@@ -1,34 +1,31 @@
 cmake_minimum_required(VERSION 3.31)
+project(vladoom)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_COMPILER /usr/local/bin/g++-14)
 
-project(vladoom)
-
 find_package(OpenGL REQUIRED)
-include_directories(vladoom Header\ files/)
+include_directories(vladoom "Header files/")
 include_directories(vladoom Dependencies/include/)
 
 add_compile_options(-w -g -framework OpenGL)
 
-
-
 add_executable(vladoom
-    Source\ files/convert.cpp
-    Source\ files/Cube.cpp
-    Source\ files/Door.cpp
-    Source\ files/EBO.cpp
-    Source\ files/game.cpp
-    Source\ files/glew.c
-    Source\ files/inputs.cpp
-    Source\ files/main.cpp
-    Source\ files/Plane.cpp
-    Source\ files/programShader.cpp
-    Source\ files/solve.cpp
-    Source\ files/stb.cpp
-    Source\ files/Texture.cpp
-    Source\ files/VAO.cpp
-    Source\ files/VBO.cpp
+    "Source files/convert.cpp"
+    "Source files/Cube.cpp"
+    "Source files/Door.cpp"
+    "Source files/EBO.cpp"
+    "Source files/game.cpp"
+    "Source files/glew.c"
+    "Source files/inputs.cpp"
+    "Source files/main.cpp"
+    "Source files/Plane.cpp"
+    "Source files/programShader.cpp"
+    "Source files/solve.cpp"
+    "Source files/stb.cpp"
+    "Source files/Texture.cpp"
+    "Source files/VAO.cpp"
+    "Source files/VBO.cpp"
 )
 
 find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/Dependencies/library)
