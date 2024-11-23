@@ -1,18 +1,23 @@
+
 #include "libs.h"
 
 String bindShader(std::string dir);
 const static String shaderDir = "Resource files/Shaders/";
 
-Door::Door(int *map, const float &xGap, const float &zGap, float rotation, Collisions& col, Texture &tex) {
+Door::Door(int *map, const float &xGap, const float &zGap, float rotation, Collisions &col, Texture &tex) {
     String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
-    ps = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
+    psCube = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
+    psTex  = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
 
     pos = glm::vec3(0.0f);
 
-    tex.uniform("tex0", *ps, 0);
+    tex.uniform("tex0", *psCube, 0);
 
-    cube = new Cube(map, 1, 1, 0.1f, xGap + 0.45f, zGap, rotation, col);
+    cube  = new Cube(map, 1, 1, 0.04f, xGap + 0.48f, zGap, rotation, col);
+    plane =  new Vertical_plane(xGap, zGap + 0.001f, rotation);
+    // plane1 = new Vertical_plane(xGap, zGap + 1.0f - 0.001f, rotation);
+
     coordinate = (rotation != 90) ? &pos.z : &pos.x;
 
     cols = col._piecesOfMap[col._piecesOfMap.size() - 1];
@@ -52,7 +57,7 @@ void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindo
     if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS)
         pos.x -= 0.01f;
 
-    ps->useProgram();
+    psCube->useProgram();
 
     float xf = position.x + cosf(glm::radians(rotation + 90));
     float zf = position.z + sinf(glm::radians(rotation + 90));
@@ -71,21 +76,34 @@ void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindo
     if (-1.01f < *coordinate && *coordinate < 0.0f && cols->obj[x + z * cols->width] != 0) {
         *coordinate -= 0.01f;
     } else if (*coordinate < -1.0f && cols->obj[0] != 0) {
-        std::cout << x << " " << z << std::endl;
         cols->obj[x + z * cols->width] = 0;
     }
 
     glm::mat4 model = glm::mat4(1.0f);
     model *= glm::translate(model, pos);
 
-    glUniformMatrix4fv(glGetUniformLocation(ps->shaderProgram,  "view"), 1, GL_FALSE,  glm::value_ptr(view));
-    glUniformMatrix4fv(glGetUniformLocation(ps->shaderProgram,  "proj"), 1, GL_FALSE,  glm::value_ptr(proj));
-    glUniformMatrix4fv(glGetUniformLocation(ps->shaderProgram, "model"), 1, GL_FALSE, glm::value_ptr(model));
+    glUniformMatrix4fv(glGetUniformLocation(psCube->shaderProgram,  "view"),   1, GL_FALSE,  glm::value_ptr(view));
+    glUniformMatrix4fv(glGetUniformLocation(psCube->shaderProgram,  "proj"),   1, GL_FALSE,  glm::value_ptr(proj));
+    glUniformMatrix4fv(glGetUniformLocation(psCube->shaderProgram, "model"),   1, GL_FALSE, glm::value_ptr(model));
 
     cube->draw();
+
+    psTex->useProgram();
+    model = glm::mat4(1.0f);
+
+    glUniformMatrix4fv(glGetUniformLocation(psTex->shaderProgram,  "view"),   1, GL_FALSE,  glm::value_ptr(view));
+    glUniformMatrix4fv(glGetUniformLocation(psTex->shaderProgram,  "proj"),   1, GL_FALSE,  glm::value_ptr(proj));
+    glUniformMatrix4fv(glGetUniformLocation(psTex->shaderProgram, "model"),   1, GL_FALSE, glm::value_ptr(model));
+
+    plane->draw();
+    // plane1->draw();
 }
 
-void Door::clear() {
+Door::~Door() {
+    plane->deletePlane();
+    // plane1->deletePlane();
+
     delete cube;
-    delete ps;
+    delete psCube;
+    delete psTex;
 }

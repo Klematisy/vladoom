@@ -1,7 +1,7 @@
 #pragma once
 
 #include <GL/glew.h>
-#include <VBO.h>
+#include "VBO.h"
 
 typedef unsigned int uint;
 

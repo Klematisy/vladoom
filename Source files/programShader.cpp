@@ -32,8 +32,9 @@ uint ProgramShader::createShader(const char* src, const uint type) {
 
 uint ProgramShader::createProgram(const char* vertexShaderSrc, const char* fragmentShaderSrc) {
     uint vs = createShader(vertexShaderSrc, GL_VERTEX_SHADER);
-    std::cout << "fkljds\n";
+    std::cout << "Vertex shader has compiled!\n";
     uint fs = createShader(fragmentShaderSrc, GL_FRAGMENT_SHADER);
+    std::cout << "Fragment shader has compiled!\n";
 
     uint shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vs);

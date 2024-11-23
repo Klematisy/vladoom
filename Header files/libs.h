@@ -11,7 +11,7 @@
 #include <vector>
 #include <string>
 
-#include <constants.h>
+#include "constants.h"
 
 #include "programShader.h"
 #include "VBO.h"

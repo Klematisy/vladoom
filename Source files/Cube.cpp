@@ -1,5 +1,5 @@
-#include <libs.h>
 #include <math.h>
+#include "libs.h"
 
 void solve(int* map, float* vert, uint* ind, uint countOfUnits, const int mapWidth, const int mapHeight, float width, float xGap, float zGap, float rotation);
 

@@ -1,17 +1,65 @@
-CMakeFiles/vladoom.dir/Source_files/game.cpp.o: \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/game.cpp \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/iostream \
+CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o: \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/VPlane.cpp \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/vector \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/requires_hosted.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/c++config.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/os_defines.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/cpu_defines.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/pstl_config.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_algobase.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/functexcept.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception_defines.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cpp_type_traits.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/type_traits.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/numeric_traits.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_pair.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/type_traits \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/version.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/move.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/utility.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator_base_types.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator_base_funcs.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/concept_check.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/assertions.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ptr_traits.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/debug.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bit \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/concepts \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/allocator.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/c++allocator.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/new_allocator.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/new \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/memoryfwd.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_construct.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_uninitialized.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/alloc_traits.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/alloc_traits.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_vector.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/initializer_list \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_bvector.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/functional_hash.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/hash_bytes.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/refwrap.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/invoke.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_function.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/backward/binders.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/range_access.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/vector.tcc \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/memory_resource.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstddef \
+ /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stddef.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator_args.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tuple \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/iostream \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ostream \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ios \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/iosfwd \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stringfwd.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/memoryfwd.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/postypes.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/wchar.h \
@@ -66,17 +114,9 @@ CMakeFiles/vladoom.dir/Source_files/game.cpp.o: \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_ctype.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/runetype.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/exception \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/version.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception_ptr.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception_defines.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_init_exception.h \
- /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stddef.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/typeinfo \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/hash_bytes.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/new \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/move.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/type_traits \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/nested_exception.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/char_traits.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/localefwd.h \
@@ -109,40 +149,10 @@ CMakeFiles/vladoom.dir/Source_files/game.cpp.o: \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/atomic_word.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/locale_classes.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/allocator.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/c++allocator.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/new_allocator.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/functexcept.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cpp_type_traits.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream_insert.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_forced.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator_base_funcs.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/concept_check.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/assertions.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator_base_types.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/type_traits.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ptr_traits.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_function.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/backward/binders.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/numeric_traits.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_algobase.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_pair.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/utility.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/debug.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bit \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/concepts \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/refwrap.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/invoke.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/range_access.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/initializer_list \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_string.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/alloc_traits.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/alloc_traits.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_construct.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string_view \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/functional_hash.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/string_view.tcc \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/string_conversions.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdlib \
@@ -190,11 +200,6 @@ CMakeFiles/vladoom.dir/Source_files/game.cpp.o: \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_errno_t.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/charconv.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_string.tcc \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/memory_resource.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstddef \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator_args.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tuple \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/locale_classes.tcc \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/system_error \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/error_constants.h \
@@ -290,11 +295,6 @@ CMakeFiles/vladoom.dir/Source_files/game.cpp.o: \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/enable_special_members.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/node_handle.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/erase_if.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/vector \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_uninitialized.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_vector.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_bvector.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/vector.tcc \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/array \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/compare \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/./ext/../detail/_vectorize.hpp \
@@ -476,5 +476,4 @@ CMakeFiles/vladoom.dir/Source_files/game.cpp.o: \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Plane.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Texture.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VPlane.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/structs.h
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VPlane.h

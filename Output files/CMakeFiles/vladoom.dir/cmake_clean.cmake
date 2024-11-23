@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/vladoom.dir/Source_files/VAO.cpp.o.d"
   "CMakeFiles/vladoom.dir/Source_files/VBO.cpp.o"
   "CMakeFiles/vladoom.dir/Source_files/VBO.cpp.o.d"
+  "CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o"
+  "CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o.d"
   "CMakeFiles/vladoom.dir/Source_files/convert.cpp.o"
   "CMakeFiles/vladoom.dir/Source_files/convert.cpp.o.d"
   "CMakeFiles/vladoom.dir/Source_files/game.cpp.o"

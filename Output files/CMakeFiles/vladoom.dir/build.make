@@ -146,15 +146,15 @@ CMakeFiles/vladoom.dir/Source_files/glew.c.o: CMakeFiles/vladoom.dir/flags.make
 CMakeFiles/vladoom.dir/Source_files/glew.c.o: /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/glew.c
 CMakeFiles/vladoom.dir/Source_files/glew.c.o: CMakeFiles/vladoom.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Output files/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/vladoom.dir/Source_files/glew.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vladoom.dir/Source_files/glew.c.o -MF CMakeFiles/vladoom.dir/Source_files/glew.c.o.d -o CMakeFiles/vladoom.dir/Source_files/glew.c.o -c "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/glew.c"
+	/usr/local/bin/gcc-14 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vladoom.dir/Source_files/glew.c.o -MF CMakeFiles/vladoom.dir/Source_files/glew.c.o.d -o CMakeFiles/vladoom.dir/Source_files/glew.c.o -c "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/glew.c"
 
 CMakeFiles/vladoom.dir/Source_files/glew.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/vladoom.dir/Source_files/glew.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/glew.c" > CMakeFiles/vladoom.dir/Source_files/glew.c.i
+	/usr/local/bin/gcc-14 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/glew.c" > CMakeFiles/vladoom.dir/Source_files/glew.c.i
 
 CMakeFiles/vladoom.dir/Source_files/glew.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/vladoom.dir/Source_files/glew.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/glew.c" -o CMakeFiles/vladoom.dir/Source_files/glew.c.s
+	/usr/local/bin/gcc-14 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/glew.c" -o CMakeFiles/vladoom.dir/Source_files/glew.c.s
 
 CMakeFiles/vladoom.dir/Source_files/inputs.cpp.o: CMakeFiles/vladoom.dir/flags.make
 CMakeFiles/vladoom.dir/Source_files/inputs.cpp.o: /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/inputs.cpp
@@ -282,6 +282,20 @@ CMakeFiles/vladoom.dir/Source_files/VBO.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vladoom.dir/Source_files/VBO.cpp.s"
 	/usr/local/bin/g++-14 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/VBO.cpp" -o CMakeFiles/vladoom.dir/Source_files/VBO.cpp.s
 
+CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o: CMakeFiles/vladoom.dir/flags.make
+CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o: /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/VPlane.cpp
+CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o: CMakeFiles/vladoom.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Output files/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o"
+	/usr/local/bin/g++-14 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o -MF CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o.d -o CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o -c "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/VPlane.cpp"
+
+CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.i"
+	/usr/local/bin/g++-14 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/VPlane.cpp" > CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.i
+
+CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.s"
+	/usr/local/bin/g++-14 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/VPlane.cpp" -o CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.s
+
 # Object files for target vladoom
 vladoom_OBJECTS = \
 "CMakeFiles/vladoom.dir/Source_files/convert.cpp.o" \
@@ -298,7 +312,8 @@ vladoom_OBJECTS = \
 "CMakeFiles/vladoom.dir/Source_files/stb.cpp.o" \
 "CMakeFiles/vladoom.dir/Source_files/Texture.cpp.o" \
 "CMakeFiles/vladoom.dir/Source_files/VAO.cpp.o" \
-"CMakeFiles/vladoom.dir/Source_files/VBO.cpp.o"
+"CMakeFiles/vladoom.dir/Source_files/VBO.cpp.o" \
+"CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o"
 
 # External object files for target vladoom
 vladoom_EXTERNAL_OBJECTS =
@@ -318,11 +333,12 @@ vladoom: CMakeFiles/vladoom.dir/Source_files/stb.cpp.o
 vladoom: CMakeFiles/vladoom.dir/Source_files/Texture.cpp.o
 vladoom: CMakeFiles/vladoom.dir/Source_files/VAO.cpp.o
 vladoom: CMakeFiles/vladoom.dir/Source_files/VBO.cpp.o
+vladoom: CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o
 vladoom: CMakeFiles/vladoom.dir/build.make
 vladoom: /usr/local/lib/libglfw.dylib
 vladoom: /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework
 vladoom: CMakeFiles/vladoom.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Output files/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable vladoom"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Output files/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable vladoom"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vladoom.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

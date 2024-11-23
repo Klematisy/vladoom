@@ -1,5 +1,7 @@
-#include <libs.h>
-#include <settingsAndVars.h>
+#include "libs.h"
+#include "settingsAndVars.h"
+#include "structs.h"
+#include "VPlane.h"
 
 const static String shaderDir = "Resource files/Shaders/";
 String bindShader(std::string dir);
@@ -7,23 +9,25 @@ String bindShader(std::string dir);
 void input(Collisions &collisions, glm::vec3 &position, float &rotation, GLFWwindow *window, bool &run);
 bool gameIsRunning = true;
 
+float color(int i) {
+    return i / 255.0f;
+}
+
 void game(GLFWwindow* window)
 {
-    /*--------------------------------------------------------main code!--------------------------------------------------------*/
+    /*---------------------------------------main code!---------------------------------------*/
 
     String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
 
     ProgramShader programShader = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
-    ProgramShader ps            = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
-    ProgramShader ps1           = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
 
     Texture* Walls = new Texture("Resource files/images/atlas.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     Walls->unbind();
     Walls->uniform("tex0", programShader, 0);
 
     Collisions cWalls;
-    
+
     const int mapWidth  = 8;
     const int mapHeight = 11;
     int *map = new int[mapWidth * mapHeight] {
@@ -66,35 +70,37 @@ void game(GLFWwindow* window)
     Door door1(doorArr1,  4.0f, 2.0f, 0.0f,  cWalls, *Walls);
     Door door2(doorArr2, 13.0f, 3.0f, 90.0f, cWalls, *Walls);
 
-    Plane room1( map,  mapWidth, mapHeight, 0.0f, 0.0f, 0.0f, 7.0f);
-    Plane room15(map,  mapWidth, mapHeight, 0.0f, 1.0f, 0.0f, 8.0f);
+    Horizontal_plane room1( map,  mapWidth, mapHeight, 0.0f, 0.0f, 0.0f, 7.0f);
+    Horizontal_plane room15(map,  mapWidth, mapHeight, 0.0f, 1.0f, 0.0f, 8.0f);
 
-    Plane room2( map2, mapWidth, mapHeight, -8.0f, 0.0f, 0.0f, 7.0f);
-    Plane room25(map2, mapWidth, mapHeight, -8.0f, 1.0f, 0.0f, 9.0f);
-
-    glEnable(GL_DEPTH_TEST); 
+    Horizontal_plane room2( map2, mapWidth, mapHeight, -8.0f, 0.0f, 0.0f, 7.0f);
+    Horizontal_plane room25(map2, mapWidth, mapHeight, -8.0f, 1.0f, 0.0f, 9.0f);
 
     while (!glfwWindowShouldClose(window) && gameIsRunning) //Main window loop
     {
-        // break;
+        glfwSwapBuffers(window);
+        glfwPollEvents();
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glClearColor(0.2f, 0.1f, 0.3f, 0.3f);
+        glClearColor(color(0), color(119), color(108), 0.1f);
+        
         input(cWalls, position, rotation, window, gameIsRunning);
         
         Walls->bind(GL_TEXTURE0);
         programShader.useProgram();
 
-        glm::mat4 model = glm::mat4(1.0f);
-        glm::mat4 proj  = glm::mat4(1.0f);
-        glm::mat4 view  = glm::mat4(1.0f);
+        // glViewport(20, HEIGHT / 2, WIDTH * 2 - 40, HEIGHT + HEIGHT / 2 - 20);
+
+        glm::mat4 view   = glm::mat4(1.0f);
+        glm::mat4 proj   = glm::mat4(1.0f);
+        glm::mat4 model  = glm::mat4(1.0f);
 
         view = glm::rotate(view,  glm::radians(rotation), glm::vec3(0.0f, 1.0f, 0.0f));
         view = glm::translate(view, position);
-        proj = glm::perspective(glm::radians(70.0f), (float)(WIDTH / HEIGHT), 0.01f, 100.0f);
+        proj = glm::perspective(glm::radians(70.0f), (float)(1.8), 0.01f, 100.0f);
 
-        int viewLoc  = glGetUniformLocation(programShader.shaderProgram,  "view");
+        int viewLoc   = glGetUniformLocation(programShader.shaderProgram,  "view");
         glUniformMatrix4fv(viewLoc,  1, GL_FALSE, glm::value_ptr(view));
-        int projLoc  = glGetUniformLocation(programShader.shaderProgram,  "proj");
+        int projLoc   = glGetUniformLocation(programShader.shaderProgram,  "proj");
         glUniformMatrix4fv(projLoc,  1, GL_FALSE, glm::value_ptr(proj));
         int modelLoc  = glGetUniformLocation(programShader.shaderProgram, "model");
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
@@ -108,9 +114,6 @@ void game(GLFWwindow* window)
 
         door1.draw(position, view, proj, window, rotation);
         door2.draw(position, view, proj, window, rotation);
-
-        glfwSwapBuffers(window);
-        glfwPollEvents();
     }
 
     delete map;
@@ -118,7 +121,4 @@ void game(GLFWwindow* window)
 
     delete doorArr1;
     delete doorArr2;
-
-    door1.clear();
-    door2.clear();
 }

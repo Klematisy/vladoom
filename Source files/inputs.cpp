@@ -86,7 +86,6 @@ void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *
         0, 0, 0, 0, 0
     };
 
-    // std::cout << position.x << " " << position.z  << std::endl;
     int k = 0;
     for (const Map *pathOfMap : colls._piecesOfMap) {
         for (float rot = 0.0f; rot < 360.0f; rot+=45.0f) {
@@ -127,6 +126,7 @@ void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *
 
     double xpos, ypos;
     glfwGetCursorPos(window, &xpos, &ypos);
+    glfwSetCursorPos(window, 2560 / 2.0f, 1440 / 2.0f);
 
     if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
         speed = spd / 2;
@@ -175,6 +175,4 @@ void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *
     if (xpos - 1280.0f != 0) {
         rotation += (xpos - 1280.0f) / 4;
     }
-
-    glfwSetCursorPos(window, 2560 / 2, 1440 / 2);
 }

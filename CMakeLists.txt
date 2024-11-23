@@ -6,6 +6,7 @@ set(CMAKE_CXX_COMPILER /usr/local/bin/g++-14)
 
 find_package(OpenGL REQUIRED)
 include_directories(vladoom "Header files/")
+include_directories(vladoom "Source files/")
 include_directories(vladoom Dependencies/include/)
 
 add_compile_options(-w -g -framework OpenGL)
@@ -26,6 +27,7 @@ add_executable(vladoom
     "Source files/Texture.cpp"
     "Source files/VAO.cpp"
     "Source files/VBO.cpp"
+    "Source files/VPlane.cpp"
 )
 
 find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/Dependencies/library)

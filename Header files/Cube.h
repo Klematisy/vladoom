@@ -1,10 +1,10 @@
 #pragma once
 
-#include <VAO.h>
-#include <VBO.h>
-#include <EBO.h>
-#include <collisions.h>
-#include <settingsAndVars.h>
+#include "VAO.h"
+#include "VBO.h"
+#include "EBO.h"
+#include "collisions.h"
+#include "settingsAndVars.h"
 
 class Cube {
     uint* ind;

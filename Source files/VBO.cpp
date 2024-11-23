@@ -1,4 +1,4 @@
-#include <VBO.h>
+#include "VBO.h"
 
 VBO::VBO(float obj[], int size) {
     glGenBuffers(1, &buffer);

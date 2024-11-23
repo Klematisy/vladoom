@@ -1,35 +1,40 @@
 CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/Cube.cpp \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/iostream \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/math.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cmath \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/requires_hosted.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/c++config.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/os_defines.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/cpu_defines.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/pstl_config.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ostream \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ios \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/iosfwd \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stringfwd.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/memoryfwd.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/postypes.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/wchar.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cpp_type_traits.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/type_traits.h \
+ /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/math.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/cdefs.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_symbol_aliasing.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_posix_availability.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/_types.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/_types.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_types.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/Availability.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityVersions.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityInternal.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityInternalLegacy.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_null.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_size_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_mbstate_t.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_abs.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/stdlib.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/_types.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/_types.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_types.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/wait.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_pid_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_id_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/signal.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/appleapiopts.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/signal.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/signal.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/_mcontext.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/_mcontext.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/mach/machine/_structs.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/mach/i386/_structs.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/types.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/types.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int8_t.h \
@@ -42,9 +47,81 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int64_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_intptr_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uintptr_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_attr_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_sigaltstack.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ucontext.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_sigset_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_size_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uid_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/resource.h \
+ /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stdint.h \
+ /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/stdint.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint8_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint16_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint32_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint64_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_intmax_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uintmax_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_timeval.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/endian.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/endian.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_endian.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/libkern/_OSByteOrder.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/libkern/i386/_OSByteOrder.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/alloca.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ct_rune_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_rune_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_wchar_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_null.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_malloc.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_malloc_type.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_ptrcheck.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_dev_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_mode_t.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/version.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/specfun.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_algobase.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/functexcept.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception_defines.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/numeric_traits.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_pair.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/type_traits \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/move.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/utility.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator_base_types.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator_base_funcs.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/concept_check.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/assertions.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ptr_traits.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/debug.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bit \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/concepts \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/limits \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/gamma.tcc \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/special_function_util.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/bessel_function.tcc \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/beta_function.tcc \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/ell_integral.tcc \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/exp_integral.tcc \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/hypergeometric.tcc \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/legendre_function.tcc \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/modified_bessel_func.tcc \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/poly_hermite.tcc \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/poly_laguerre.tcc \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/riemann_zeta.tcc \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/iostream \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ostream \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ios \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/iosfwd \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stringfwd.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/memoryfwd.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/postypes.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/wchar.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_mbstate_t.h \
  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stdarg.h \
  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/stdio.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_stdio.h \
@@ -67,16 +144,12 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/runetype.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/exception \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/version.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception_ptr.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception_defines.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_init_exception.h \
  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stddef.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/typeinfo \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/hash_bytes.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/new \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/move.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/type_traits \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/nested_exception.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/char_traits.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/localefwd.h \
@@ -92,7 +165,6 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/pthread.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/pthread/sched.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/pthread/pthread_impl.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_attr_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_cond_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_condattr_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_key_t.h \
@@ -105,34 +177,16 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/pthread/qos.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/qos.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_mach_port_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_sigset_t.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/atomic_word.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/locale_classes.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/allocator.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/c++allocator.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/new_allocator.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/functexcept.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cpp_type_traits.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream_insert.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_forced.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator_base_funcs.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/concept_check.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/assertions.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator_base_types.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/type_traits.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ptr_traits.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_function.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/backward/binders.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/numeric_traits.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_algobase.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_pair.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/utility.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/debug.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bit \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/concepts \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/refwrap.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/invoke.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/range_access.h \
@@ -146,43 +200,6 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/string_view.tcc \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/string_conversions.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdlib \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/stdlib.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/wait.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_pid_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_id_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/signal.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/appleapiopts.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/signal.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/signal.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/_mcontext.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/_mcontext.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/mach/machine/_structs.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/mach/i386/_structs.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_sigaltstack.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ucontext.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uid_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/resource.h \
- /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stdint.h \
- /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/stdint.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint8_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint16_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint32_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint64_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_intmax_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uintmax_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_timeval.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/endian.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/endian.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_endian.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/libkern/_OSByteOrder.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/libkern/i386/_OSByteOrder.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/alloca.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_malloc.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_malloc_type.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_ptrcheck.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_dev_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_mode_t.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_abs.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdio \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cerrno \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/errno.h \
@@ -223,22 +240,6 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/GLFW/glfw3.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/glm.hpp \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/_fixes.hpp \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cmath \
- /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/math.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/specfun.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/limits \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/gamma.tcc \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/special_function_util.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/bessel_function.tcc \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/beta_function.tcc \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/ell_integral.tcc \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/exp_integral.tcc \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/hypergeometric.tcc \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/legendre_function.tcc \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/modified_bessel_func.tcc \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/poly_hermite.tcc \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/poly_laguerre.tcc \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/riemann_zeta.tcc \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/setup.hpp \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cassert \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/assert.h \
@@ -476,4 +477,4 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Plane.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Texture.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/math.h
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VPlane.h

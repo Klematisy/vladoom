@@ -1,4 +1,4 @@
-#include <EBO.h>
+#include "EBO.h"
 
 EBO::EBO(uint indices[], int size) {
     glGenBuffers(1, &buffer);

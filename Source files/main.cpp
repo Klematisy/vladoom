@@ -35,7 +35,10 @@ int main(void)
     glfwSwapInterval(1);
 
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwPollEvents();
     glfwSetCursorPos(window, 2560 / 2, 1440 / 2);
+
+    glEnable(GL_DEPTH_TEST);
 
     game(window);
 

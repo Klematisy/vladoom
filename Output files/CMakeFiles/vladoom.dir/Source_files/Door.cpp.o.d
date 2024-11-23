@@ -475,4 +475,5 @@ CMakeFiles/vladoom.dir/Source_files/Door.cpp.o: \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settingsAndVars.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Plane.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Texture.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VPlane.h

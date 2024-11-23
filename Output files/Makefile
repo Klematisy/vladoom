@@ -303,6 +303,30 @@ Source_files/VBO.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/VBO.cpp.s
 .PHONY : Source_files/VBO.cpp.s
 
+Source_files/VPlane.o: Source_files/VPlane.cpp.o
+.PHONY : Source_files/VPlane.o
+
+# target to build an object file
+Source_files/VPlane.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o
+.PHONY : Source_files/VPlane.cpp.o
+
+Source_files/VPlane.i: Source_files/VPlane.cpp.i
+.PHONY : Source_files/VPlane.i
+
+# target to preprocess a source file
+Source_files/VPlane.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.i
+.PHONY : Source_files/VPlane.cpp.i
+
+Source_files/VPlane.s: Source_files/VPlane.cpp.s
+.PHONY : Source_files/VPlane.s
+
+# target to generate assembly for a file
+Source_files/VPlane.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.s
+.PHONY : Source_files/VPlane.cpp.s
+
 Source_files/convert.o: Source_files/convert.cpp.o
 .PHONY : Source_files/convert.o
 
@@ -525,6 +549,9 @@ help:
 	@echo "... Source_files/VBO.o"
 	@echo "... Source_files/VBO.i"
 	@echo "... Source_files/VBO.s"
+	@echo "... Source_files/VPlane.o"
+	@echo "... Source_files/VPlane.i"
+	@echo "... Source_files/VPlane.s"
 	@echo "... Source_files/convert.o"
 	@echo "... Source_files/convert.i"
 	@echo "... Source_files/convert.s"

@@ -1,6 +1,6 @@
-#include <Plane.h>
 #include <vector>
-#include <constants.h>
+#include "Plane.h"
+#include "constants.h"
 
 class Index_6 {
 public:
@@ -20,7 +20,7 @@ public:
     }
 };
 
-void Plane::createShapes(float *plane, uint *indices, uint countOfUnits, float ind) {
+void Horizontal_plane::createShapes(float *plane, uint *indices, uint countOfUnits, float ind) {
     std::vector<Point>   listOfVert;
     std::vector<Index_6> listOfInd;
     uint count = 0;
@@ -31,8 +31,8 @@ void Plane::createShapes(float *plane, uint *indices, uint countOfUnits, float i
             if (map[j] == 0) {
                 k = j % width - xGap;
                 listOfVert.push_back({ (k + 0.0f), yGap, (i + 0.0f), (ind - 1) / COUNT_OF_MATERIALS, 0.0f });
-                listOfVert.push_back({ (k + 1.0f), yGap, (i + 0.0f), ind / COUNT_OF_MATERIALS      , 0.0f });
-                listOfVert.push_back({ (k + 1.0f), yGap, (i + 1.0f), ind / COUNT_OF_MATERIALS      , 1.0f });
+                listOfVert.push_back({ (k + 1.0f), yGap, (i + 0.0f),  ind      / COUNT_OF_MATERIALS, 0.0f });
+                listOfVert.push_back({ (k + 1.0f), yGap, (i + 1.0f),  ind      / COUNT_OF_MATERIALS, 1.0f });
                 listOfVert.push_back({ (k + 0.0f), yGap, (i + 1.0f), (ind - 1) / COUNT_OF_MATERIALS, 1.0f });
                 listOfInd.push_back(count++);
             }
@@ -55,7 +55,7 @@ void Plane::createShapes(float *plane, uint *indices, uint countOfUnits, float i
     }
 }
 
-Plane::Plane(int *map, int width, int height, float xGap, float yGap, float zGpa, float ind)
+Horizontal_plane::Horizontal_plane(int *map, int width, int height, float xGap, float yGap, float zGpa, float ind)
     : map(map), width(width), height(height), xGap(xGap), yGap(yGap), zGap(zGap)
 {
     uint countOfUnits = 0;
@@ -83,12 +83,12 @@ Plane::Plane(int *map, int width, int height, float xGap, float yGap, float zGpa
     ebo->unbind();
 }
 
-void Plane::draw() {
+void Horizontal_plane::draw() {
     vao->bind();
     glDrawElements(GL_TRIANGLES, size, GL_UNSIGNED_INT, 0);
 }
 
-Plane::~Plane() {
+Horizontal_plane::~Horizontal_plane() {
     vao->deleteVao();
     vbo->deleteVbo();
     ebo->deleteEbo();
