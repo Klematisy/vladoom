@@ -1,9 +1,17 @@
 #include "VBO.h"
 
-VBO::VBO(float obj[], int size) {
+VBO::VBO(float obj[], int size, GLenum type) {
     glGenBuffers(1, &buffer);
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
-    glBufferData(GL_ARRAY_BUFFER, size, obj, GL_STATIC_DRAW);
+    if (type == GL_STATIC_DRAW) 
+        glBufferData(GL_ARRAY_BUFFER, size, obj, type);
+    else
+        glBufferData(GL_ARRAY_BUFFER, 0, nullptr, type);
+}
+
+void VBO::update(int size, float *obj) {
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBufferData(GL_ARRAY_BUFFER, size, obj, GL_DYNAMIC_DRAW);
 }
 
 void VBO::bind() {

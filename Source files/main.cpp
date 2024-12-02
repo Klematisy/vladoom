@@ -36,9 +36,11 @@ int main(void)
 
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glfwPollEvents();
-    glfwSetCursorPos(window, 2560 / 2, 1440 / 2);
+    glfwSetCursorPos(window, 2560 / 2, 1600 / 2);
 
-    glEnable(GL_DEPTH_TEST);
+    // glEnable(GL_DEPTH_TEST);
+    // glDepthFunc(GL_LESS);
+    // glfwWindowHint(GLFW_DEPTH_BITS, 24);
 
     game(window);
 

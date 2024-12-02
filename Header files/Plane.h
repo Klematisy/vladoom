@@ -1,15 +1,17 @@
-#include "settingsAndVars.h"
+#pragma once
+
+#include "settings.h"
 #include "VAO.h"
 #include "VBO.h"
 #include "EBO.h"
 
 class Horizontal_plane {
     int *map;
-    int width;
-    int height;
-    float xGap;
-    float yGap;
-    float zGap;
+    int width = 0;
+    int height = 0;
+    float xGap = 0.0f;
+    float yGap = 0.0f;
+    float zGap = 0.0f;
 
     uint size;
 

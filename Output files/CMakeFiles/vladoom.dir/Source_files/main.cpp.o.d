@@ -473,8 +473,10 @@ CMakeFiles/vladoom.dir/Source_files/main.cpp.o: \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/EBO.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Cube.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/collisions.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settingsAndVars.h \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Plane.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Texture.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VPlane.h
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VPlane.h \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/hud.h \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/symbol.h

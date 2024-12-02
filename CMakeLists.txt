@@ -28,6 +28,8 @@ add_executable(vladoom
     "Source files/VAO.cpp"
     "Source files/VBO.cpp"
     "Source files/VPlane.cpp"
+    "Source files/Hud.cpp"
+    "Source files/Symbol.cpp"
 )
 
 find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/Dependencies/library)

@@ -2,24 +2,6 @@
 #include "Plane.h"
 #include "constants.h"
 
-class Index_6 {
-public:
-    int indices[6] = {
-        0, 1, 2,
-        2, 3, 0,
-    };
-    Index_6(int koif) {
-        for (int i = 0; i < 6; i++) {
-            indices[i] += koif * 4;
-        }
-    }
-    void convert(uint* arr, int i) {
-        for (int j = 0; j < 6; j++) {
-            *(arr + i + j) = indices[j];
-        }
-    }
-};
-
 void Horizontal_plane::createShapes(float *plane, uint *indices, uint countOfUnits, float ind) {
     std::vector<Point>   listOfVert;
     std::vector<Index_6> listOfInd;
@@ -29,11 +11,11 @@ void Horizontal_plane::createShapes(float *plane, uint *indices, uint countOfUni
     for (uint i = 0; i < height; i++) {
         for (uint j = i * width; j < (i + 1) * width; j++) {
             if (map[j] == 0) {
-                k = j % width - xGap;
-                listOfVert.push_back({ (k + 0.0f), yGap, (i + 0.0f), (ind - 1) / COUNT_OF_MATERIALS, 0.0f });
-                listOfVert.push_back({ (k + 1.0f), yGap, (i + 0.0f),  ind      / COUNT_OF_MATERIALS, 0.0f });
-                listOfVert.push_back({ (k + 1.0f), yGap, (i + 1.0f),  ind      / COUNT_OF_MATERIALS, 1.0f });
-                listOfVert.push_back({ (k + 0.0f), yGap, (i + 1.0f), (ind - 1) / COUNT_OF_MATERIALS, 1.0f });
+                k = j % width + xGap;
+                listOfVert.push_back({ (k + 0.0f), yGap, (i + 0.0f + zGap), (ind - 1) / COUNT_OF_MATERIALS, 0.0f });
+                listOfVert.push_back({ (k + 1.0f), yGap, (i + 0.0f + zGap),  ind      / COUNT_OF_MATERIALS, 0.0f });
+                listOfVert.push_back({ (k + 1.0f), yGap, (i + 1.0f + zGap),  ind      / COUNT_OF_MATERIALS, 1.0f });
+                listOfVert.push_back({ (k + 0.0f), yGap, (i + 1.0f + zGap), (ind - 1) / COUNT_OF_MATERIALS, 1.0f });
                 listOfInd.push_back(count++);
             }
         }
@@ -55,7 +37,7 @@ void Horizontal_plane::createShapes(float *plane, uint *indices, uint countOfUni
     }
 }
 
-Horizontal_plane::Horizontal_plane(int *map, int width, int height, float xGap, float yGap, float zGpa, float ind)
+Horizontal_plane::Horizontal_plane(int *map, int width, int height, float xGap, float yGap, float zGap, float ind)
     : map(map), width(width), height(height), xGap(xGap), yGap(yGap), zGap(zGap)
 {
     uint countOfUnits = 0;
@@ -72,7 +54,7 @@ Horizontal_plane::Horizontal_plane(int *map, int width, int height, float xGap, 
     createShapes(plane, indices, countOfUnits, ind);
 
     vao = new VAO();
-    vbo = new VBO(plane, sizeof(plane));
+    vbo = new VBO(plane, sizeof(plane), GL_STATIC_DRAW);
     ebo = new EBO(indices, sizeof(indices));
 
     vao->linkAttrib(*vbo, 0, 3, GL_FLOAT, 5 * sizeof(float), (void*) 0);

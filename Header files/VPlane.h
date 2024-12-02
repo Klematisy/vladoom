@@ -1,6 +1,6 @@
 #pragma once
 
-#include "settingsAndVars.h"
+#include "settings.h"
 #include "VAO.h"
 #include "VBO.h"
 #include "EBO.h"
@@ -14,7 +14,7 @@ class Vertical_plane {
     EBO* ebo;
 
 public:
-    Vertical_plane(float xGap, float zGap, float rotation);
+    Vertical_plane(float xGap, float zGap, float rotation, float action_pointX, float action_pointZ);
     Vertical_plane() {}
     void draw();
     void deletePlane();

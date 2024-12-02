@@ -1,5 +1,6 @@
 
 #include "libs.h"
+#include "settings.h"
 
 String bindShader(std::string dir);
 const static String shaderDir = "Resource files/Shaders/";
@@ -15,39 +16,13 @@ Door::Door(int *map, const float &xGap, const float &zGap, float rotation, Colli
     tex.uniform("tex0", *psCube, 0);
 
     cube  = new Cube(map, 1, 1, 0.04f, xGap + 0.48f, zGap, rotation, col);
-    plane =  new Vertical_plane(xGap, zGap + 0.001f, rotation);
-    // plane1 = new Vertical_plane(xGap, zGap + 1.0f - 0.001f, rotation);
+
+    plane =  new Vertical_plane(xGap, zGap + 0.001f,        rotation, xGap + 0.5f, zGap + 0.5f);
+    plane1 = new Vertical_plane(xGap, zGap + 1.0f - 0.001f, rotation, xGap + 0.5f, zGap + 0.5f);
 
     coordinate = (rotation != 90) ? &pos.z : &pos.x;
 
     cols = col._piecesOfMap[col._piecesOfMap.size() - 1];
-}
-
-static float sin(float rotation) {
-    if      (rotation == 0  ) { return  0.0f; }
-    else if (rotation == 90 ) { return  1.0f; }
-    else if (rotation == 180) { return  0.0f; }
-    else if (rotation == 270) { return -1.0f; }
-    else if (rotation == 360) { return  0.0f; }
-    else { return glm::sin(glm::radians(rotation)); }
-}
-
-static float cos(float rotation) {
-    if      (rotation == 0  ) { return  1.0f; }
-    else if (rotation == 90 ) { return  0.0f; }
-    else if (rotation == 180) { return -1.0f; }
-    else if (rotation == 270) { return  0.0f; }
-    else if (rotation == 360) { return  1.0f; }
-    else { return glm::cos(glm::radians(rotation)); }
-}
-
-static int toUp(int a) {
-    if (a < 0) { a *= (-1); }
-    return a;
-}
-
-static bool inObj(const Map &pathOfMap, const glm::vec3 &p) {
-    return (pathOfMap.maxX > p.x && p.x > pathOfMap.minX && pathOfMap.maxZ > p.z && p.z > pathOfMap.minZ);
 }
 
 void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindow* window, float rotation) {
@@ -73,7 +48,7 @@ void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindo
             *coordinate -= 0.001f;
         }
     }
-    if (-1.01f < *coordinate && *coordinate < 0.0f && cols->obj[x + z * cols->width] != 0) {
+    if (-1.01f < *coordinate && *coordinate < 0.0f) {
         *coordinate -= 0.01f;
     } else if (*coordinate < -1.0f && cols->obj[0] != 0) {
         cols->obj[x + z * cols->width] = 0;
@@ -96,12 +71,12 @@ void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindo
     glUniformMatrix4fv(glGetUniformLocation(psTex->shaderProgram, "model"),   1, GL_FALSE, glm::value_ptr(model));
 
     plane->draw();
-    // plane1->draw();
+    plane1->draw();
 }
 
 Door::~Door() {
     plane->deletePlane();
-    // plane1->deletePlane();
+    plane1->deletePlane();
 
     delete cube;
     delete psCube;

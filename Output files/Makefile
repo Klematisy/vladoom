@@ -207,6 +207,30 @@ Source_files/EBO.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/EBO.cpp.s
 .PHONY : Source_files/EBO.cpp.s
 
+Source_files/Hud.o: Source_files/Hud.cpp.o
+.PHONY : Source_files/Hud.o
+
+# target to build an object file
+Source_files/Hud.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o
+.PHONY : Source_files/Hud.cpp.o
+
+Source_files/Hud.i: Source_files/Hud.cpp.i
+.PHONY : Source_files/Hud.i
+
+# target to preprocess a source file
+Source_files/Hud.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/Hud.cpp.i
+.PHONY : Source_files/Hud.cpp.i
+
+Source_files/Hud.s: Source_files/Hud.cpp.s
+.PHONY : Source_files/Hud.s
+
+# target to generate assembly for a file
+Source_files/Hud.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/Hud.cpp.s
+.PHONY : Source_files/Hud.cpp.s
+
 Source_files/Plane.o: Source_files/Plane.cpp.o
 .PHONY : Source_files/Plane.o
 
@@ -230,6 +254,30 @@ Source_files/Plane.s: Source_files/Plane.cpp.s
 Source_files/Plane.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/Plane.cpp.s
 .PHONY : Source_files/Plane.cpp.s
+
+Source_files/Symbol.o: Source_files/Symbol.cpp.o
+.PHONY : Source_files/Symbol.o
+
+# target to build an object file
+Source_files/Symbol.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/Symbol.cpp.o
+.PHONY : Source_files/Symbol.cpp.o
+
+Source_files/Symbol.i: Source_files/Symbol.cpp.i
+.PHONY : Source_files/Symbol.i
+
+# target to preprocess a source file
+Source_files/Symbol.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/Symbol.cpp.i
+.PHONY : Source_files/Symbol.cpp.i
+
+Source_files/Symbol.s: Source_files/Symbol.cpp.s
+.PHONY : Source_files/Symbol.s
+
+# target to generate assembly for a file
+Source_files/Symbol.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/Symbol.cpp.s
+.PHONY : Source_files/Symbol.cpp.s
 
 Source_files/Texture.o: Source_files/Texture.cpp.o
 .PHONY : Source_files/Texture.o
@@ -537,9 +585,15 @@ help:
 	@echo "... Source_files/EBO.o"
 	@echo "... Source_files/EBO.i"
 	@echo "... Source_files/EBO.s"
+	@echo "... Source_files/Hud.o"
+	@echo "... Source_files/Hud.i"
+	@echo "... Source_files/Hud.s"
 	@echo "... Source_files/Plane.o"
 	@echo "... Source_files/Plane.i"
 	@echo "... Source_files/Plane.s"
+	@echo "... Source_files/Symbol.o"
+	@echo "... Source_files/Symbol.i"
+	@echo "... Source_files/Symbol.s"
 	@echo "... Source_files/Texture.o"
 	@echo "... Source_files/Texture.i"
 	@echo "... Source_files/Texture.s"

@@ -7,7 +7,6 @@ Texture::Texture(const char* fileName, GLenum colorType, GLenum pixelData, GLenu
     bytes = stbi_load(fileName, &widthImg, &heightImg, &numColCh, 4);
 
     glGenTextures(1, &texture);
-    glActiveTexture(tex);
     glBindTexture(GL_TEXTURE_2D, texture);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -26,7 +25,6 @@ void Texture::uniform(const char* fragShadName, ProgramShader& p, uint uInt) {
 }
 
 void Texture::bind(GLenum type) {
-    glActiveTexture(type);
     glBindTexture(GL_TEXTURE_2D, texture);
 }
 

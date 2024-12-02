@@ -1,33 +1,11 @@
 #include <cmath>
 #include "libs.h"
 #include "constants.h"
+#include "settings.h"
 
 static float speed;
 static int *map;
 static GLFWwindow *window;
-
-float sin(float rotation) {
-    if      (rotation == 0  ) { return  0.0f; }
-    else if (rotation == 90 ) { return  1.0f; }
-    else if (rotation == 180) { return  0.0f; }
-    else if (rotation == 270) { return -1.0f; }
-    else if (rotation == 360) { return  0.0f; }
-    else { return glm::sin(glm::radians(rotation)); }
-}
-
-float cos(float rotation) {
-    if      (rotation == 0  ) { return  1.0f; }
-    else if (rotation == 90 ) { return  0.0f; }
-    else if (rotation == 180) { return -1.0f; }
-    else if (rotation == 270) { return  0.0f; }
-    else if (rotation == 360) { return  1.0f; }
-    else { return glm::cos(glm::radians(rotation)); }
-}
-
-int toUp(int a) {
-    if (a < 0) { a *= (-1); }
-    return a;
-}
 
 bool Collides(int stX, int stZ, float x, float z) {
     int x1 = x;
@@ -42,10 +20,6 @@ bool CollidesRect(int startX, int startZ, float x, float z, float x_half_extent,
         || Collides(startX, startZ, x + x_half_extent, z - z_half_extent)
         || Collides(startX, startZ, x + x_half_extent, z + z_half_extent)
         || Collides(startX, startZ, x - x_half_extent, z + z_half_extent);
-}
-
-bool inObj(const Map &pathOfMap, const glm::vec3 &p) {
-    return (pathOfMap.maxX > p.x && p.x > pathOfMap.minX && pathOfMap.maxZ > p.z && p.z > pathOfMap.minZ);
 }
 
 void checkDoor(const glm::vec3 pos, Map &pathOfMap, Door& door, const float &rotation) {
@@ -107,16 +81,6 @@ void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *
     }
 
     map = arr;
-    /*
-    std::cout << "\n";
-    for (int i = 0; i < 5; i++) {
-        for (int j = i * 5; j < (i + 1) * 5; j++) {
-            std::cout << map[j] << " ";
-        }
-        std::cout << "\n";
-    }
-    std::cout << "\n";
-    //*/
 
     x = position.x;
     z = position.z;
@@ -126,7 +90,7 @@ void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *
 
     double xpos, ypos;
     glfwGetCursorPos(window, &xpos, &ypos);
-    glfwSetCursorPos(window, 2560 / 2.0f, 1440 / 2.0f);
+    glfwSetCursorPos(window, 2560 / 2.0f, 1600 / 2.0f);
 
     if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
         speed = spd / 2;

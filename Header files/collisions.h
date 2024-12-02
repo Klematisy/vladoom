@@ -1,6 +1,6 @@
 #pragma once
 
-#include "settingsAndVars.h"
+#include "settings.h"
 
 class Door;
 

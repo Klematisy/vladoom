@@ -22,3 +22,5 @@
 #include "collisions.h"
 #include "Texture.h"
 #include "door.h"
+#include "hud.h"
+#include "symbol.h"
