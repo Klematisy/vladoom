@@ -1,3 +1,0 @@
-/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Output files/CMakeFiles/vladoom.dir
-/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Output files/CMakeFiles/edit_cache.dir
-/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Output files/CMakeFiles/rebuild_cache.dir
