@@ -55,6 +55,6 @@ void ProgramShader::useProgram() {
     glUseProgram(shaderProgram);
 }
 
-ProgramShader::~ProgramShader() {
+void ProgramShader::deleteShader() {
     glDeleteProgram(shaderProgram);
 }

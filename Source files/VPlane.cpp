@@ -3,17 +3,17 @@
 #include "VPlane.h"
 #include "settings.h"
 
-Vertical_plane::Vertical_plane(float xGap, float zGap, float rotation, float action_pointX, float action_pointZ) {
+Vertical_plane::Vertical_plane(float xGap, float zGap, float rotation, float action_pointX, float action_pointZ, int num_of_text, float count_of_objs) {
     std::vector<Point>   listOfVert;
     std::vector<Index_6> listOfInd;
 
     float stX = action_pointX;
     float stZ = action_pointZ;
  
-    listOfVert.push_back({ xR(xGap + 0.0f - stX, zGap - stZ, rotation) + stX, 0.0f, zR(xGap + 0.0f - stX, zGap - stZ, rotation) + stZ,  9 / 10.0f,  0.0f});
-    listOfVert.push_back({ xR(xGap + 0.0f - stX, zGap - stZ, rotation) + stX, 1.0f, zR(xGap + 0.0f - stX, zGap - stZ, rotation) + stZ,  9 / 10.0f,  1.0f});
-    listOfVert.push_back({ xR(xGap + 1.0f - stX, zGap - stZ, rotation) + stX, 1.0f, zR(xGap + 1.0f - stX, zGap - stZ, rotation) + stZ, 10 / 10.0f,  1.0f});
-    listOfVert.push_back({ xR(xGap + 1.0f - stX, zGap - stZ, rotation) + stX, 0.0f, zR(xGap + 1.0f - stX, zGap - stZ, rotation) + stZ, 10 / 10.0f,  0.0f});
+    listOfVert.push_back({ xR(xGap + 0.0f - stX, zGap - stZ, rotation) + stX, 0.0f, zR(xGap + 0.0f - stX, zGap - stZ, rotation) + stZ,   num_of_text      / count_of_objs,  0.0f});
+    listOfVert.push_back({ xR(xGap + 0.0f - stX, zGap - stZ, rotation) + stX, 1.0f, zR(xGap + 0.0f - stX, zGap - stZ, rotation) + stZ,   num_of_text      / count_of_objs,  1.0f});
+    listOfVert.push_back({ xR(xGap + 1.0f - stX, zGap - stZ, rotation) + stX, 1.0f, zR(xGap + 1.0f - stX, zGap - stZ, rotation) + stZ,  (num_of_text + 1) / count_of_objs,  1.0f});
+    listOfVert.push_back({ xR(xGap + 1.0f - stX, zGap - stZ, rotation) + stX, 0.0f, zR(xGap + 1.0f - stX, zGap - stZ, rotation) + stZ,  (num_of_text + 1) / count_of_objs,  0.0f});
 
     listOfInd.push_back(0);
 

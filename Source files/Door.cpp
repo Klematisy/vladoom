@@ -17,8 +17,8 @@ Door::Door(int *map, const float &xGap, const float &zGap, float rotation, Colli
 
     cube  = new Cube(map, 1, 1, 0.04f, xGap + 0.48f, zGap, rotation, col);
 
-    plane =  new Vertical_plane(xGap, zGap + 0.001f,        rotation, xGap + 0.5f, zGap + 0.5f);
-    plane1 = new Vertical_plane(xGap, zGap + 1.0f - 0.001f, rotation, xGap + 0.5f, zGap + 0.5f);
+    plane =  new Vertical_plane(xGap, zGap + 0.001f,        rotation, xGap + 0.5f, zGap + 0.5f, 9, 10.0f);
+    plane1 = new Vertical_plane(xGap, zGap + 1.0f - 0.001f, rotation, xGap + 0.5f, zGap + 0.5f, 9, 10.0f);
 
     coordinate = (rotation != 90) ? &pos.z : &pos.x;
 
@@ -77,7 +77,9 @@ void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindo
 Door::~Door() {
     plane->deletePlane();
     plane1->deletePlane();
-
+    psCube->deleteShader();
+    psTex->deleteShader();
+    
     delete cube;
     delete psCube;
     delete psTex;

@@ -21,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o.d"
   "CMakeFiles/vladoom.dir/Source_files/convert.cpp.o"
   "CMakeFiles/vladoom.dir/Source_files/convert.cpp.o.d"
+  "CMakeFiles/vladoom.dir/Source_files/enemy.cpp.o"
+  "CMakeFiles/vladoom.dir/Source_files/enemy.cpp.o.d"
   "CMakeFiles/vladoom.dir/Source_files/game.cpp.o"
   "CMakeFiles/vladoom.dir/Source_files/game.cpp.o.d"
   "CMakeFiles/vladoom.dir/Source_files/glew.c.o"

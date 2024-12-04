@@ -8,9 +8,9 @@ String bindShader(std::string dir);
 void input(Collisions &collisions, glm::vec3 &position, float &rotation, GLFWwindow *window, bool &run);
 bool gameIsRunning = true;
 
-float color(int i) {
-return i / 255.0f;
-}
+float color(int i) { return i / 255.0f; }
+
+
 
 void game(GLFWwindow* window) {
     /*---------------------------------------main code!---------------------------------------*/
@@ -53,7 +53,7 @@ void game(GLFWwindow* window) {
         1, 0, 0, 0, 1, 1, 1, 1,
         3, 0, 0, 0, 0, 0, 0, 1,
         1, 0, 0, 0, 0, 0, 0, 0,
-        0, 1, 3, 1, 2, 1, 1, 1,
+        0, 1, 3, 1, 2, 1, 1, 1
     };
 
     int *map2 = new int[mapWidth * mapHeight] {
@@ -112,7 +112,9 @@ void game(GLFWwindow* window) {
 
     Hud hud;
 
-    Symbol s(0.095f, 0.07f, 2);
+    Enemy e = glm::vec3(2.5f, 0.0f, 8.0f);
+
+    Symbol level(0.095f, 0.07f, 2);
 
     Symbol score1(0.28f, 0.07f, 0);
     Symbol score2(0.34f, 0.07f, 0);
@@ -134,6 +136,10 @@ void game(GLFWwindow* window) {
     int score_copy  = player.score;
     int health_copy = player.hitPoints;
     int ammo_copy   = player.ammo;
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
 
@@ -144,19 +150,18 @@ void game(GLFWwindow* window) {
         glClearColor(color(0), color(64), color(64), 1.0f);
         
         input(cWalls, player.position, player.rotation, window, gameIsRunning);
-        ///*
         glViewport(60, HEIGHT / 2 - 20, WIDTH * 2 - 120, HEIGHT + HEIGHT / 2 - 40);
 
         Walls->bind(GL_TEXTURE0);
         map_shader.useProgram();
 
-        glm::mat4 view   = glm::mat4(1.0f);
-        glm::mat4 model  = glm::mat4(1.0f);
-        glm::mat4 proj   = glm::mat4(1.0f);
+        glm::mat4 view  = glm::mat4(1.0f);
+        glm::mat4 model = glm::mat4(1.0f);
+        glm::mat4 proj  = glm::mat4(1.0f);
 
         view = glm::rotate(view,  glm::radians(player.rotation), glm::vec3(0.0f, 1.0f, 0.0f));
         view = glm::translate(view, player.position);
-        proj = glm::perspective(glm::radians(70.0f), (float)(1.8), 0.01f, 100.0f);
+        proj = glm::perspective(glm::radians(60.0f), (float)(1.8), 0.01f, 100.0f);
 
         int viewLoc   = glGetUniformLocation(map_shader.shaderProgram,  "view");
         glUniformMatrix4fv(viewLoc,  1, GL_FALSE, glm::value_ptr(view));
@@ -181,6 +186,8 @@ void game(GLFWwindow* window) {
         door3.draw(player.position, view, proj, window, player.rotation);
         door4.draw(player.position, view, proj, window, player.rotation);
 
+        e.draw(player, view, proj);
+
         glViewport(50, 50, WIDTH * 2 - 100, 1300);
 
         hud_texture->bind(GL_TEXTURE0);
@@ -189,7 +196,8 @@ void game(GLFWwindow* window) {
 
         nums_texture->bind(GL_TEXTURE0);
         nums_shader.useProgram();
-        s.draw(1);
+        
+        level.draw(1);
 
         score_copy = player.score;
         score1.draw(score_copy / 10000);
@@ -221,6 +229,10 @@ void game(GLFWwindow* window) {
         glfwPollEvents();
         glfwSwapBuffers(window);
     }
+
+    map_shader.deleteShader();
+    hud_shader.deleteShader();
+    nums_shader.deleteShader();
 
     delete map;
     delete map2;

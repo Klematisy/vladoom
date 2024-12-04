@@ -399,6 +399,30 @@ Source_files/convert.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/convert.cpp.s
 .PHONY : Source_files/convert.cpp.s
 
+Source_files/enemy.o: Source_files/enemy.cpp.o
+.PHONY : Source_files/enemy.o
+
+# target to build an object file
+Source_files/enemy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/enemy.cpp.o
+.PHONY : Source_files/enemy.cpp.o
+
+Source_files/enemy.i: Source_files/enemy.cpp.i
+.PHONY : Source_files/enemy.i
+
+# target to preprocess a source file
+Source_files/enemy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/enemy.cpp.i
+.PHONY : Source_files/enemy.cpp.i
+
+Source_files/enemy.s: Source_files/enemy.cpp.s
+.PHONY : Source_files/enemy.s
+
+# target to generate assembly for a file
+Source_files/enemy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/enemy.cpp.s
+.PHONY : Source_files/enemy.cpp.s
+
 Source_files/game.o: Source_files/game.cpp.o
 .PHONY : Source_files/game.o
 
@@ -609,6 +633,9 @@ help:
 	@echo "... Source_files/convert.o"
 	@echo "... Source_files/convert.i"
 	@echo "... Source_files/convert.s"
+	@echo "... Source_files/enemy.o"
+	@echo "... Source_files/enemy.i"
+	@echo "... Source_files/enemy.s"
 	@echo "... Source_files/game.o"
 	@echo "... Source_files/game.i"
 	@echo "... Source_files/game.s"

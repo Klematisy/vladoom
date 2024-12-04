@@ -12,6 +12,6 @@ public:
     ProgramShader(const char* vs, const char* fs);
     ProgramShader();
     void useProgram();
+    void deleteShader();
     uint getShaderProgram();
-    ~ProgramShader();
 };
