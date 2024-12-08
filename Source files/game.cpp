@@ -1,3 +1,4 @@
+#include <random>
 #include "libs.h"
 #include "game.h"
 #include "VPlane.h"
@@ -10,7 +11,7 @@ bool gameIsRunning = true;
 
 float color(int i) { return i / 255.0f; }
 
-
+auto start = std::chrono::high_resolution_clock::now();
 
 void game(GLFWwindow* window) {
     /*---------------------------------------main code!---------------------------------------*/
@@ -20,23 +21,9 @@ void game(GLFWwindow* window) {
 
     ProgramShader map_shader = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
 
-    vertexShaderSrc   = bindShader(shaderDir + "map1/map.vert");
-    fragmentShaderSrc = bindShader(shaderDir + "map1/map.frag");
-
-    ProgramShader hud_shader  = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
-    ProgramShader nums_shader = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
-
     Texture* Walls = new Texture("Resource files/images/atlas.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     Walls->unbind();
     Walls->uniform("tex0", map_shader, 0);
-
-    Texture* hud_texture = new Texture("Resource files/images/hud.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
-    hud_texture->unbind();
-    hud_texture->uniform("tex0", hud_shader, 0);
-
-    Texture* nums_texture = new Texture("Resource files/images/nums.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
-    nums_texture->unbind();
-    nums_texture->uniform("tex0", nums_shader, 0);
 
     Collisions cWalls;
 
@@ -114,42 +101,41 @@ void game(GLFWwindow* window) {
 
     Enemy e = glm::vec3(2.5f, 0.0f, 8.0f);
 
-    Symbol level(0.095f, 0.07f, 2);
-
-    Symbol score1(0.28f, 0.07f, 0);
-    Symbol score2(0.34f, 0.07f, 0);
-    Symbol score3(0.40f, 0.07f, 0);
-    Symbol score4(0.46f, 0.07f, 0);
-    Symbol score5(0.52f, 0.07f, 0);
-
-    Symbol lives(0.69f, 0.07f, 0);
-
-    Symbol  health(1.045f, 0.07f, 0);
-    Symbol health1(1.095f, 0.07f, 0);
-    Symbol health2(1.145f, 0.07f, 0);
-
-    Symbol  ammo(1.37f, 0.07f, 0);
-    Symbol ammo1(1.42f, 0.07f, 0);
-
     player.hitPoints = 100;
     player.ammo = 42;
     int score_copy  = player.score;
     int health_copy = player.hitPoints;
     int ammo_copy   = player.ammo;
-
+    
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
 
+
+    int k = 0;
+    std::random_device rd;   // non-deterministic generator
+    std::mt19937 gen(rd());  // to seed mersenne twister.
+    std::uniform_int_distribution<int> dist(0,2); // distribute results between 1 and 6 inclusive.
+
+    std::chrono::duration<float> old_duration = std::chrono::high_resolution_clock::now() - start;
     while (!glfwWindowShouldClose(window) && gameIsRunning) //Main window loop
     {
         // break;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(color(0), color(64), color(64), 1.0f);
-        
+
+        auto end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<float> duration = end - start;
+
+        // if (duration.count() > 10.0f) {
+        //     std::cout << "HELLO" << std::endl;
+        //     start = std::chrono::high_resolution_clock::now();
+        // }
+
         input(cWalls, player.position, player.rotation, window, gameIsRunning);
+
         glViewport(60, HEIGHT / 2 - 20, WIDTH * 2 - 120, HEIGHT + HEIGHT / 2 - 40);
 
         Walls->bind(GL_TEXTURE0);
@@ -188,51 +174,25 @@ void game(GLFWwindow* window) {
 
         e.draw(player, view, proj);
 
-        glViewport(50, 50, WIDTH * 2 - 100, 1300);
-
-        hud_texture->bind(GL_TEXTURE0);
-        hud_shader.useProgram();
-        hud.draw();
-
-        nums_texture->bind(GL_TEXTURE0);
-        nums_shader.useProgram();
+        glViewport(50, 50, WIDTH * 2 - 100, 270);
         
-        level.draw(1);
-
-        score_copy = player.score;
-        score1.draw(score_copy / 10000);
-        score_copy %= 10000;
-        score2.draw(score_copy / 1000);
-        score_copy %= 1000;
-        score3.draw(score_copy / 100);
-        score_copy %= 100;
-        score4.draw(score_copy / 10);
-        score_copy %= 10;
-        score5.draw(score_copy / 1);
-
-        lives.draw(player.lives);
-
-        health_copy = player.hitPoints;
-        if (health_copy == 100) {
-            health.draw(health_copy / 100);
-            health_copy %= 100;
+        if (duration.count() - old_duration.count() > 1.0f) {
+            // k = (k == 2) ? 0 : k + 1;
+            k = dist(gen);
+            old_duration = duration;
+            // std::cout << player.position.x << " " << player.position.y << std::endl;
         }
-        health1.draw(health_copy / 10);
-        health_copy %= 10;
-        health2.draw(health_copy / 1);
-        
-        ammo_copy = player.ammo;
-        ammo.draw(ammo_copy / 10);
-        ammo_copy %= 10;
-        ammo1.draw(ammo_copy / 1);
+        hud.draw(player, k);
+
+        if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) {
+            player.hitPoints -= 1.0f;
+        }
 
         glfwPollEvents();
         glfwSwapBuffers(window);
     }
 
     map_shader.deleteShader();
-    hud_shader.deleteShader();
-    nums_shader.deleteShader();
 
     delete map;
     delete map2;

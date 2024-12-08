@@ -466,17 +466,28 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/strings.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/type_ptr.inl \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/stb/stb_image.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/chrono \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/chrono.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ratio \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ctime \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/parse_numbers.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/thread \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_thread.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unique_ptr.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/this_thread_sleep.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/constants.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/programShader.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VBO.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VAO.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/EBO.h \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Cube.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/collisions.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Plane.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Texture.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VPlane.h \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/symbol.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/hud.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/symbol.h
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/game.h

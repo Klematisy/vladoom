@@ -471,6 +471,30 @@ Source_files/glew.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/glew.c.s
 .PHONY : Source_files/glew.c.s
 
+Source_files/image.o: Source_files/image.cpp.o
+.PHONY : Source_files/image.o
+
+# target to build an object file
+Source_files/image.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/image.cpp.o
+.PHONY : Source_files/image.cpp.o
+
+Source_files/image.i: Source_files/image.cpp.i
+.PHONY : Source_files/image.i
+
+# target to preprocess a source file
+Source_files/image.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/image.cpp.i
+.PHONY : Source_files/image.cpp.i
+
+Source_files/image.s: Source_files/image.cpp.s
+.PHONY : Source_files/image.s
+
+# target to generate assembly for a file
+Source_files/image.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vladoom.dir/build.make CMakeFiles/vladoom.dir/Source_files/image.cpp.s
+.PHONY : Source_files/image.cpp.s
+
 Source_files/inputs.o: Source_files/inputs.cpp.o
 .PHONY : Source_files/inputs.o
 
@@ -642,6 +666,9 @@ help:
 	@echo "... Source_files/glew.o"
 	@echo "... Source_files/glew.i"
 	@echo "... Source_files/glew.s"
+	@echo "... Source_files/image.o"
+	@echo "... Source_files/image.i"
+	@echo "... Source_files/image.s"
 	@echo "... Source_files/inputs.o"
 	@echo "... Source_files/inputs.i"
 	@echo "... Source_files/inputs.s"

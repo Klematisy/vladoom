@@ -7,7 +7,6 @@
 #include "settings.h"
 
 class Cube {
-    uint  *ind;
     int   size;
     float xGap;
     float zGap;

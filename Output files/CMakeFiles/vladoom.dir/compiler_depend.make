@@ -327,7 +327,9 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/collisions.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/constants.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/game.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/hud.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/programShader.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
@@ -343,6 +345,7 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_string.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/char_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/charconv.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/chrono.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/concept_check.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cpp_type_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_forced.h \
@@ -373,6 +376,7 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/node_handle.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream_insert.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/parse_numbers.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/postypes.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ptr_traits.h \
@@ -382,6 +386,7 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/specfun.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_abs.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_function.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_thread.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_algobase.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_bvector.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_construct.h \
@@ -396,6 +401,8 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/streambuf_iterator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/string_view.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stringfwd.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/this_thread_sleep.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unique_ptr.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unordered_map.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator_args.h \
@@ -406,6 +413,7 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cerrno \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cfloat \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/chrono \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/climits \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/clocale \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cmath \
@@ -416,6 +424,7 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdlib \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstring \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ctime \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/assertions.h \
@@ -438,12 +447,14 @@ CMakeFiles/vladoom.dir/Source_files/Cube.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/new \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ostream \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/pstl_config.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ratio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdexcept \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdlib.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/streambuf \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string_view \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/system_error \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/thread \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/bessel_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/beta_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/ell_integral.tcc \
@@ -808,7 +819,9 @@ CMakeFiles/vladoom.dir/Source_files/Door.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/collisions.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/constants.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/game.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/hud.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/programShader.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
@@ -824,6 +837,7 @@ CMakeFiles/vladoom.dir/Source_files/Door.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_string.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/char_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/charconv.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/chrono.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/concept_check.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cpp_type_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_forced.h \
@@ -854,6 +868,7 @@ CMakeFiles/vladoom.dir/Source_files/Door.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/node_handle.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream_insert.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/parse_numbers.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/postypes.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ptr_traits.h \
@@ -863,6 +878,7 @@ CMakeFiles/vladoom.dir/Source_files/Door.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/specfun.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_abs.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_function.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_thread.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_algobase.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_bvector.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_construct.h \
@@ -877,6 +893,8 @@ CMakeFiles/vladoom.dir/Source_files/Door.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/streambuf_iterator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/string_view.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stringfwd.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/this_thread_sleep.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unique_ptr.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unordered_map.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator_args.h \
@@ -887,6 +905,7 @@ CMakeFiles/vladoom.dir/Source_files/Door.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cerrno \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cfloat \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/chrono \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/climits \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/clocale \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cmath \
@@ -897,6 +916,7 @@ CMakeFiles/vladoom.dir/Source_files/Door.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdlib \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstring \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ctime \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/assertions.h \
@@ -918,12 +938,14 @@ CMakeFiles/vladoom.dir/Source_files/Door.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/new \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ostream \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/pstl_config.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ratio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdexcept \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdlib.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/streambuf \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string_view \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/system_error \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/thread \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/bessel_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/beta_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/ell_integral.tcc \
@@ -1335,7 +1357,9 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/collisions.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/constants.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/game.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/hud.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/programShader.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
@@ -1351,6 +1375,7 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_string.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/char_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/charconv.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/chrono.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/concept_check.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cpp_type_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_forced.h \
@@ -1381,6 +1406,7 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/node_handle.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream_insert.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/parse_numbers.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/postypes.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ptr_traits.h \
@@ -1390,6 +1416,7 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/specfun.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_abs.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_function.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_thread.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_algobase.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_bvector.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_construct.h \
@@ -1404,6 +1431,8 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/streambuf_iterator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/string_view.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stringfwd.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/this_thread_sleep.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unique_ptr.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unordered_map.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator_args.h \
@@ -1414,6 +1443,7 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cerrno \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cfloat \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/chrono \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/climits \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/clocale \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cmath \
@@ -1424,6 +1454,7 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdlib \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstring \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ctime \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/assertions.h \
@@ -1445,12 +1476,14 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/new \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ostream \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/pstl_config.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ratio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdexcept \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdlib.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/streambuf \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string_view \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/system_error \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/thread \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/bessel_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/beta_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/ell_integral.tcc \
@@ -2284,7 +2317,9 @@ CMakeFiles/vladoom.dir/Source_files/Symbol.cpp.o: /Users/agucs/Desktop/main/cpp/
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/collisions.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/constants.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/game.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/hud.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/programShader.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
@@ -2300,6 +2335,7 @@ CMakeFiles/vladoom.dir/Source_files/Symbol.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_string.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/char_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/charconv.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/chrono.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/concept_check.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cpp_type_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_forced.h \
@@ -2330,6 +2366,7 @@ CMakeFiles/vladoom.dir/Source_files/Symbol.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/node_handle.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream_insert.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/parse_numbers.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/postypes.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ptr_traits.h \
@@ -2339,6 +2376,7 @@ CMakeFiles/vladoom.dir/Source_files/Symbol.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/specfun.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_abs.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_function.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_thread.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_algobase.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_bvector.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_construct.h \
@@ -2353,6 +2391,8 @@ CMakeFiles/vladoom.dir/Source_files/Symbol.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/streambuf_iterator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/string_view.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stringfwd.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/this_thread_sleep.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unique_ptr.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unordered_map.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator_args.h \
@@ -2363,6 +2403,7 @@ CMakeFiles/vladoom.dir/Source_files/Symbol.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cerrno \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cfloat \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/chrono \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/climits \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/clocale \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cmath \
@@ -2373,6 +2414,7 @@ CMakeFiles/vladoom.dir/Source_files/Symbol.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdlib \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstring \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ctime \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/assertions.h \
@@ -2394,12 +2436,14 @@ CMakeFiles/vladoom.dir/Source_files/Symbol.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/new \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ostream \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/pstl_config.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ratio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdexcept \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdlib.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/streambuf \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string_view \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/system_error \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/thread \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/bessel_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/beta_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/ell_integral.tcc \
@@ -3084,7 +3128,9 @@ CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o: /Users/agucs/Desktop/main/cpp/
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/collisions.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/constants.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/game.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/hud.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/programShader.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
@@ -3100,6 +3146,7 @@ CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_string.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/char_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/charconv.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/chrono.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/concept_check.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cpp_type_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_forced.h \
@@ -3130,6 +3177,7 @@ CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/node_handle.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream_insert.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/parse_numbers.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/postypes.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ptr_traits.h \
@@ -3139,6 +3187,7 @@ CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/specfun.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_abs.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_function.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_thread.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_algobase.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_bvector.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_construct.h \
@@ -3153,6 +3202,8 @@ CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/streambuf_iterator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/string_view.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stringfwd.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/this_thread_sleep.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unique_ptr.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unordered_map.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator_args.h \
@@ -3163,6 +3214,7 @@ CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cerrno \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cfloat \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/chrono \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/climits \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/clocale \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cmath \
@@ -3173,6 +3225,7 @@ CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdlib \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstring \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ctime \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/assertions.h \
@@ -3194,12 +3247,14 @@ CMakeFiles/vladoom.dir/Source_files/VPlane.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/new \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ostream \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/pstl_config.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ratio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdexcept \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdlib.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/streambuf \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string_view \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/system_error \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/thread \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/bessel_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/beta_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/ell_integral.tcc \
@@ -3786,6 +3841,7 @@ CMakeFiles/vladoom.dir/Source_files/enemy.cpp.o: /Users/agucs/Desktop/main/cpp/O
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/game.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/hud.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/programShader.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
@@ -3801,6 +3857,7 @@ CMakeFiles/vladoom.dir/Source_files/enemy.cpp.o: /Users/agucs/Desktop/main/cpp/O
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_string.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/char_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/charconv.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/chrono.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/concept_check.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cpp_type_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_forced.h \
@@ -3831,6 +3888,7 @@ CMakeFiles/vladoom.dir/Source_files/enemy.cpp.o: /Users/agucs/Desktop/main/cpp/O
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/node_handle.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream_insert.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/parse_numbers.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/postypes.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ptr_traits.h \
@@ -3840,6 +3898,7 @@ CMakeFiles/vladoom.dir/Source_files/enemy.cpp.o: /Users/agucs/Desktop/main/cpp/O
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/specfun.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_abs.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_function.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_thread.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_algobase.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_bvector.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_construct.h \
@@ -3854,6 +3913,8 @@ CMakeFiles/vladoom.dir/Source_files/enemy.cpp.o: /Users/agucs/Desktop/main/cpp/O
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/streambuf_iterator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/string_view.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stringfwd.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/this_thread_sleep.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unique_ptr.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unordered_map.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator_args.h \
@@ -3864,6 +3925,7 @@ CMakeFiles/vladoom.dir/Source_files/enemy.cpp.o: /Users/agucs/Desktop/main/cpp/O
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cerrno \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cfloat \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/chrono \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/climits \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/clocale \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cmath \
@@ -3874,6 +3936,7 @@ CMakeFiles/vladoom.dir/Source_files/enemy.cpp.o: /Users/agucs/Desktop/main/cpp/O
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdlib \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstring \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ctime \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/assertions.h \
@@ -3895,12 +3958,14 @@ CMakeFiles/vladoom.dir/Source_files/enemy.cpp.o: /Users/agucs/Desktop/main/cpp/O
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/new \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ostream \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/pstl_config.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ratio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdexcept \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdlib.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/streambuf \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string_view \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/system_error \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/thread \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/bessel_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/beta_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/ell_integral.tcc \
@@ -4267,10 +4332,589 @@ CMakeFiles/vladoom.dir/Source_files/game.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/game.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/hud.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/programShader.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/symbol.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/array \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/backward/binders.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bit \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/alloc_traits.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/allocator.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_ios.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_ios.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_string.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_string.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/char_traits.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/charconv.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/chrono.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/concept_check.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cpp_type_traits.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_forced.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_init_exception.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/enable_special_members.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/erase_if.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception_defines.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception_ptr.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/functexcept.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/functional_hash.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/hash_bytes.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/hashtable.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/hashtable_policy.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/invoke.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ios_base.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/istream.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/locale_classes.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/locale_classes.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/locale_facets.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/locale_facets.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/localefwd.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/memory_resource.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/memoryfwd.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/move.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/nested_exception.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/new_allocator.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/node_handle.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream_insert.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/parse_numbers.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/postypes.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ptr_traits.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/random.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/random.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/range_access.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/refwrap.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/requires_hosted.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/specfun.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_abs.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_function.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_thread.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_algobase.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_bvector.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_construct.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_function.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator_base_funcs.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator_base_types.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_numeric.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_pair.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_uninitialized.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_vector.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/streambuf.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/streambuf_iterator.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/string_view.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stringfwd.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/this_thread_sleep.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uniform_int_dist.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unique_ptr.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unordered_map.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator_args.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/utility.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/vector.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/version.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cassert \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cctype \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cerrno \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cfloat \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/chrono \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/climits \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/clocale \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cmath \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/compare \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/concepts \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstddef \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdint \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdio \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdlib \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstring \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ctime \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwctype \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/assertions.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/debug.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/exception \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/aligned_buffer.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/alloc_traits.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/atomicity.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/numeric_traits.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/string_conversions.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/type_traits.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/functional \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/initializer_list \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ios \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/iosfwd \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/iostream \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/istream \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/limits \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/new \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/numeric \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ostream \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/execution_defs.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/glue_numeric_defs.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/pstl_config.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/random \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ratio \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdexcept \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdlib.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/streambuf \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string_view \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/system_error \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/thread \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/bessel_function.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/beta_function.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/ell_integral.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/exp_integral.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/gamma.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/hypergeometric.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/legendre_function.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/modified_bessel_func.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/poly_hermite.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/poly_laguerre.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/riemann_zeta.tcc \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/special_function_util.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tuple \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/type_traits \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/typeinfo \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/unordered_map \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/vector \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/atomic_word.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/c++allocator.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/c++config.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/c++locale.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/cpu_defines.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/ctype_base.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/ctype_inline.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/error_constants.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/gthr-default.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/gthr.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/opt_random.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/os_defines.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/math.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/stdint.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/stdio.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/emmintrin.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/float.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/limits.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/mm_malloc.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/mmintrin.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/mwaitintrin.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/pmmintrin.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stdarg.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stddef.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stdint.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/syslimits.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/xmmintrin.h
+
+CMakeFiles/vladoom.dir/Source_files/glew.c.o: /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/glew.c \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/Availability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityInternal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityInternalLegacy.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityMacros.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityVersions.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_intmax_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint16_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint32_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint64_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint8_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uintmax_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/alloca.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/dlfcn.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/_mcontext.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/endian.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/signal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/libkern/_OSByteOrder.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/libkern/i386/_OSByteOrder.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/mach/i386/_structs.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/mach/machine/_structs.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/_mcontext.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/endian.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/signal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_malloc.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_malloc_type.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_ptrcheck.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/os/availability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/secure/_common.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/secure/_string.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/secure/_strings.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/stdlib.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/string.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/strings.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_endian.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_posix_availability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_attr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ct_rune_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_dev_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_errno_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_id_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int16_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int32_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int64_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int8_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_intptr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_mode_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_null.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_pid_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_rsize_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_rune_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_sigaltstack.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_sigset_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_size_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ssize_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_timeval.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int16_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int32_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int64_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int8_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ucontext.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uid_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uintptr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_wchar_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/appleapiopts.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/cdefs.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/resource.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/signal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/wait.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/GL/glew.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/stdint.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stdbool.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stddef.h \
+  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stdint.h
+
+CMakeFiles/vladoom.dir/Source_files/image.cpp.o: /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/image.cpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/Availability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityInternal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityInternalLegacy.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityVersions.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/__wctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_ctermid.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_ctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_locale.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_stdio.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_intmax_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint16_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint32_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint64_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint8_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uintmax_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_wctrans_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_wctype_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_wctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/alloca.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/assert.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/ctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/errno.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/_limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/_mcontext.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/endian.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/signal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/libkern/_OSByteOrder.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/libkern/i386/_OSByteOrder.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/locale.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/mach/i386/_structs.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/mach/machine/_structs.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/_mcontext.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/endian.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/signal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_malloc.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_malloc_type.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_ptrcheck.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/os/availability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/pthread.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/pthread/pthread_impl.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/pthread/qos.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/pthread/sched.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/runetype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/stdlib.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/string.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/strings.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_endian.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_posix_availability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_attr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_cond_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_condattr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_key_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_mutex_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_mutexattr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_once_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_rwlock_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_rwlockattr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_clock_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ct_rune_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_dev_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_errno_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_id_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int16_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int32_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int64_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int8_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_intptr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_mach_port_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_mbstate_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_mode_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_null.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_off_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_pid_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_rsize_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_rune_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_seek_set.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_sigaltstack.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_sigset_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_size_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ssize_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_time_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_timespec.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_timeval.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int16_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int32_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int64_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int8_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ucontext.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uid_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uintptr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_va_list.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_wchar_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_wint_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/appleapiopts.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/cdefs.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/errno.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/qos.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/resource.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/signal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/stdio.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/syslimits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/wait.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/time.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/wchar.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/wctype.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/GL/glew.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/common.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/func_exponential.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/func_vector_relational.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/setup.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/exponential.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/vector_relational.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/_fixes.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/compute_common.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/func_common.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/func_geometric.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/setup.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_vec1.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_vec1.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/geometric.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat2x3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat2x3.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat2x4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat2x4.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat3x2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat3x2.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat3x3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat3x3.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat3x4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat3x4.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat4x2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat4x2.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat4x3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat4x3.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat4x4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat4x4.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double2x3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double2x3_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double2x4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double2x4_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double3x2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double3x2_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double3x3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double3x3_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double3x4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double3x4_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double4x2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double4x2_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double4x3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double4x3_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double4x4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double4x4_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float2x3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float2x3_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float2x4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float2x4_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float3x2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float3x2_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float3x3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float3x3_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float3x4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float3x4_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float4x2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float4x2_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float4x3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float4x3_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float4x4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float4x4_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/func_matrix.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/setup.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/mat2x3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/mat2x4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/mat3x2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/mat3x3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/mat3x4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/mat4x2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/mat4x3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/mat4x4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/matrix.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/compute_vector_relational.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/setup.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/_vectorize.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/compute_vector_decl.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/setup.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat2x2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat2x2.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_vec2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_vec2.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_vec3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_vec3.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_vec4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_vec4.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/setup.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/scalar_int_sized.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/scalar_uint_sized.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double2x2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double2x2_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float2x2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float2x2_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_bool2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_bool2_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_bool3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_bool3_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_bool4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_bool4_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_double2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_double2_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_double3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_double3_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_double4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_double4_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_float2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_float2_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_float3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_float3_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_float4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_float4_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_int2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_int2_sized.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_int3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_int3_sized.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_int4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_int4_sized.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_uint2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_uint2_sized.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_uint3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_uint3_sized.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_uint4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_uint4_sized.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/simd/platform.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/_fixes.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/func_integer.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/func_packing.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/func_trigonometric.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/qualifier.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/setup.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_half.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_half.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/fwd.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/glm.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/setup.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/scalar_constants.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/scalar_constants.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/constants.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/constants.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_clip_space.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_clip_space.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_projection.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_projection.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_transform.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_transform.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/setup.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_relational.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_relational.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/setup.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_float.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_quat.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_quat.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_geometric.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_geometric.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_common.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_common.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_double.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_double_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_float.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_float_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_transform.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_transform.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_trigonometric.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_trigonometric.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_bool1.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_bool1_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_double1.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_double1_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_float1.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_float1_precision.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_int1.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_int1_sized.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_relational.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_relational.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_uint1.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_uint1_sized.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/epsilon.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/epsilon.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/quaternion.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/quaternion.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/vec1.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/matrix_transform.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/matrix_transform.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/type_ptr.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/type_ptr.inl \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/integer.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/mat2x2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/packing.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/trigonometric.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/vec2.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/vec3.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/vec4.hpp \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/EBO.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VAO.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VBO.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/array \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/backward/binders.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bit \
@@ -4419,92 +5063,6 @@ CMakeFiles/vladoom.dir/Source_files/game.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stddef.h \
   /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stdint.h \
   /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/syslimits.h
-
-CMakeFiles/vladoom.dir/Source_files/glew.c.o: /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/glew.c \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/Availability.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityInternal.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityInternalLegacy.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityMacros.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityVersions.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_intmax_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint16_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint32_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint64_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint8_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uintmax_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/alloca.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/dlfcn.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/_mcontext.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/_types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/endian.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/signal.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/libkern/_OSByteOrder.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/libkern/i386/_OSByteOrder.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/mach/i386/_structs.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/mach/machine/_structs.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/_mcontext.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/_types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/endian.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/signal.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_malloc.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_malloc_type.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/malloc/_ptrcheck.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/os/availability.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/secure/_common.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/secure/_string.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/secure/_strings.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/stdlib.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/string.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/strings.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_endian.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_posix_availability.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_attr_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_symbol_aliasing.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ct_rune_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_dev_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_errno_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_id_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int16_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int32_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int64_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int8_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_intptr_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_mode_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_null.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_pid_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_rsize_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_rune_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_sigaltstack.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_sigset_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_size_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ssize_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_timeval.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int16_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int32_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int64_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int8_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ucontext.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uid_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uintptr_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_wchar_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/appleapiopts.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/cdefs.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/resource.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/signal.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/wait.h \
-  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/GL/glew.h \
-  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/stdint.h \
-  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stdbool.h \
-  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stddef.h \
-  /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stdint.h
 
 CMakeFiles/vladoom.dir/Source_files/inputs.cpp.o: /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/inputs.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
@@ -4832,7 +5390,9 @@ CMakeFiles/vladoom.dir/Source_files/inputs.cpp.o: /Users/agucs/Desktop/main/cpp/
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/collisions.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/constants.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/game.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/hud.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/programShader.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
@@ -4848,6 +5408,7 @@ CMakeFiles/vladoom.dir/Source_files/inputs.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_string.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/char_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/charconv.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/chrono.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/concept_check.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cpp_type_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_forced.h \
@@ -4878,6 +5439,7 @@ CMakeFiles/vladoom.dir/Source_files/inputs.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/node_handle.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream_insert.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/parse_numbers.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/postypes.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ptr_traits.h \
@@ -4887,6 +5449,7 @@ CMakeFiles/vladoom.dir/Source_files/inputs.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/specfun.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_abs.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_function.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_thread.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_algobase.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_bvector.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_construct.h \
@@ -4901,6 +5464,8 @@ CMakeFiles/vladoom.dir/Source_files/inputs.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/streambuf_iterator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/string_view.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stringfwd.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/this_thread_sleep.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unique_ptr.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unordered_map.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator_args.h \
@@ -4911,6 +5476,7 @@ CMakeFiles/vladoom.dir/Source_files/inputs.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cerrno \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cfloat \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/chrono \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/climits \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/clocale \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cmath \
@@ -4921,6 +5487,7 @@ CMakeFiles/vladoom.dir/Source_files/inputs.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdlib \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstring \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ctime \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/assertions.h \
@@ -4942,12 +5509,14 @@ CMakeFiles/vladoom.dir/Source_files/inputs.cpp.o: /Users/agucs/Desktop/main/cpp/
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/new \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ostream \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/pstl_config.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ratio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdexcept \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdlib.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/streambuf \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string_view \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/system_error \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/thread \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/bessel_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/beta_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/ell_integral.tcc \
@@ -5312,7 +5881,9 @@ CMakeFiles/vladoom.dir/Source_files/main.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/collisions.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/constants.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/game.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/hud.h \
+  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/programShader.h \
   /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
@@ -5328,6 +5899,7 @@ CMakeFiles/vladoom.dir/Source_files/main.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_string.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/char_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/charconv.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/chrono.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/concept_check.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cpp_type_traits.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_forced.h \
@@ -5358,6 +5930,7 @@ CMakeFiles/vladoom.dir/Source_files/main.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/node_handle.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream_insert.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/parse_numbers.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/postypes.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ptr_traits.h \
@@ -5367,6 +5940,7 @@ CMakeFiles/vladoom.dir/Source_files/main.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/specfun.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_abs.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_function.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_thread.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_algobase.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_bvector.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_construct.h \
@@ -5381,6 +5955,8 @@ CMakeFiles/vladoom.dir/Source_files/main.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/streambuf_iterator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/string_view.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stringfwd.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/this_thread_sleep.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unique_ptr.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unordered_map.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator_args.h \
@@ -5391,6 +5967,7 @@ CMakeFiles/vladoom.dir/Source_files/main.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cerrno \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cfloat \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/chrono \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/climits \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/clocale \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cmath \
@@ -5401,6 +5978,7 @@ CMakeFiles/vladoom.dir/Source_files/main.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdlib \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstring \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ctime \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwctype \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/debug/assertions.h \
@@ -5422,12 +6000,14 @@ CMakeFiles/vladoom.dir/Source_files/main.cpp.o: /Users/agucs/Desktop/main/cpp/Op
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/new \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ostream \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/pstl_config.h \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ratio \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdexcept \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdlib.h \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/streambuf \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string_view \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/system_error \
+  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/thread \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/bessel_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/beta_function.tcc \
   /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/ell_integral.tcc \
@@ -5835,8 +6415,6 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
   /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/xmmintrin.h
 
 
-/usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/xmmintrin.h:
-
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/stb.cpp:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/main.cpp:
@@ -5852,6 +6430,18 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/secure/_common.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/dlfcn.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/xmmintrin.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/pmmintrin.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/random:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/glue_numeric_defs.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uniform_int_dist.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/mwaitintrin.h:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/game.cpp:
 
@@ -5879,8 +6469,6 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 
 /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/float.h:
 
-/usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/stdint.h:
-
 /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/math.h:
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/os_defines.h:
@@ -5905,6 +6493,8 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/typeinfo:
 
+/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/image.cpp:
+
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/type_traits:
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/special_function_util.h:
@@ -5919,6 +6509,8 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tr1/beta_function.tcc:
 
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/thread:
+
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/system_error:
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/string_view:
@@ -5926,6 +6518,8 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/streambuf:
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/stdlib.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ratio:
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/ctype_inline.h:
 
@@ -5957,6 +6551,8 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar:
 
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ctime:
+
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstring:
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdlib:
@@ -5969,13 +6565,13 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/compare:
 
-/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/aligned_buffer.h:
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/clocale:
 
-/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cassert:
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cctype:
 
-/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_int1.hpp:
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/chrono:
 
-/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/climits:
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/version.h:
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/vector.tcc:
 
@@ -5984,6 +6580,10 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/mat2x3.hpp:
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/utility.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/stdint.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unique_ptr.h:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/simd/platform.h:
 
@@ -5995,11 +6595,15 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_pair.h:
 
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_numeric.h:
+
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception_defines.h:
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_iterator.h:
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/stl_function.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_thread.h:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_mat4x4.inl:
 
@@ -6012,6 +6616,8 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_uint3.hpp:
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/postypes.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/parse_numbers.h:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/matrix.hpp:
 
@@ -6054,6 +6660,8 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_vec3.hpp:
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception_ptr.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/numeric:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double2x3_precision.hpp:
 
@@ -6105,11 +6713,15 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h:
 
+/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h:
+
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/constants.h:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VPlane.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/random.tcc:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VBO.h:
 
@@ -6181,6 +6793,14 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_quat.inl:
 
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ext/aligned_buffer.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/climits:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cassert:
+
+/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_int1.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_stdio.h:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_transform.inl:
@@ -6188,6 +6808,8 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/predefined_ops.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityMacros.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/opt_random.h:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/Cube.cpp:
 
@@ -6287,8 +6909,6 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_bool3.hpp:
 
-/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/version.h:
-
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/compute_vector_relational.hpp:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float2x2_precision.hpp:
@@ -6304,6 +6924,10 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_vec4.inl:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_vec4.hpp:
+
+/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/EBO.h:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/chrono.h:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_vec2.inl:
 
@@ -6355,8 +6979,6 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float3x4.hpp:
 
-/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cctype:
-
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception.h:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float3x3_precision.hpp:
@@ -6373,6 +6995,12 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float3x2_precision.hpp:
 
+/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uintptr_t.h:
+
+/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double4x2_precision.hpp:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/this_thread_sleep.h:
+
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/vector_uint1_sized.hpp:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_float2x4.hpp:
@@ -6380,10 +7008,6 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double4x4_precision.hpp:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/mat4x2.hpp:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uintptr_t.h:
-
-/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double4x2_precision.hpp:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/matrix_double3x3.hpp:
 
@@ -6544,8 +7168,6 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/type_vec1.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_locale.h:
-
-/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/clocale:
 
 /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/istream:
 
@@ -6729,8 +7351,6 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/mat3x2.hpp:
 
-/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/EBO.h:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_attr_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_timespec.h:
@@ -6783,6 +7403,8 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/locale.h:
 
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/execution_defs.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/os/availability.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/ctype.h:
@@ -6822,6 +7444,8 @@ CMakeFiles/vladoom.dir/Source_files/stb.cpp.o: /Users/agucs/Desktop/main/cpp/Ope
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uintmax_t.h:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/ext/quaternion_geometric.inl:
+
+/usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/random.h:
 
 /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/func_common.inl:
 

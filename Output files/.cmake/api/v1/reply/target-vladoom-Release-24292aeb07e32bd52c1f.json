@@ -33,7 +33,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 40,
+				"line" : 41,
 				"parent" : 0
 			},
 			{
@@ -63,7 +63,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 45,
+				"line" : 46,
 				"parent" : 0
 			}
 		]
@@ -148,7 +148,8 @@
 				15,
 				16,
 				17,
-				18
+				18,
+				19
 			]
 		},
 		{
@@ -264,7 +265,8 @@
 				15,
 				16,
 				17,
-				18
+				18,
+				19
 			]
 		}
 	],
@@ -382,6 +384,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "Source files/enemy.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Source files/image.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

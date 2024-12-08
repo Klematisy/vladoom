@@ -1,13 +1,24 @@
 #pragma once
 
-#include "libs.h"
+#include "image.h"
+#include "programShader.h"
+#include "texture.h"
+#include "game.h"
+
+class Player;
 
 class Hud {
-    VAO* vao;
-    VBO* vbo;
-    EBO* ebo;
+    Image *img;
+
+    ProgramShader *hud_shader;
+    ProgramShader *face_shader;
+    ProgramShader *nums_shader;
+
+    Texture *hud_texture;
+    Texture *nums_texture;
+    Texture *face_texture;
 public:
     Hud(); 
-    void draw();
+    void draw(Player &player, int k);
     ~Hud();
 };

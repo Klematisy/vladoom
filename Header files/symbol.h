@@ -5,15 +5,9 @@
 class Symbol {
     float xGap;
     float yGap;
-
-    uint   *indices;
-    float *vertices;
-    
-    VBO* vbo;
-    VAO* vao;
-    EBO* ebo;
+    Image *img;
 public:
     Symbol(float xGap, float yGap, float symbol);
-    void draw(int symbol);
+    static void draw(float xGap, float yGap, float symbol);
     ~Symbol();
 };

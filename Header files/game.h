@@ -1,6 +1,9 @@
 #pragma once
 #include "libs.h"
 #include "settings.h"
+// #include "programShader.h"
+// #include "texture.h"
+// #include "VPLane.h"
 
 struct Player {
     glm::vec3 position;

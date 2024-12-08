@@ -31,6 +31,7 @@ add_executable(vladoom
     "Source files/Hud.cpp"
     "Source files/Symbol.cpp"
     "Source files/enemy.cpp"
+    "Source files/image.cpp"
 )
 
 find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/Dependencies/library)

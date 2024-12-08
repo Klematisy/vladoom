@@ -10,6 +10,8 @@
 
 #include <vector>
 #include <string>
+#include <chrono>
+#include <thread>
 
 #include "constants.h"
 
@@ -17,10 +19,13 @@
 #include "VBO.h"
 #include "VAO.h"
 #include "EBO.h"
+#include "image.h"
 #include "Cube.h"
 #include "Plane.h"
 #include "collisions.h"
 #include "Texture.h"
 #include "door.h"
-#include "hud.h"
 #include "symbol.h"
+#include "hud.h"
+
+using namespace std::literals::chrono_literals;

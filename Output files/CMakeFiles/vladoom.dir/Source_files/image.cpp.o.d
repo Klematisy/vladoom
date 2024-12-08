@@ -1,13 +1,56 @@
-CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/Hud.cpp \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/game.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/libs.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/iostream \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/requires_hosted.h \
+CMakeFiles/vladoom.dir/Source_files/image.cpp.o: \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source\ files/image.cpp \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VBO.h \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/GL/glew.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstddef \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/c++config.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/os_defines.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/x86_64-apple-darwin23/bits/cpu_defines.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/pstl/pstl_config.h \
+ /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stddef.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/version.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdint \
+ /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stdint.h \
+ /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/stdint.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int8_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int16_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int32_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int64_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint8_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint16_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint32_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint64_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/cdefs.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_symbol_aliasing.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_posix_availability.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/_types.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/_types.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_types.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_intptr_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/types.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/types.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int8_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int16_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int32_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int64_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uintptr_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_intmax_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uintmax_t.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/Availability.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityVersions.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityInternal.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityInternalLegacy.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/os/availability.h \
+ /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VAO.h \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/EBO.h \
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/iostream \
+ /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/requires_hosted.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ostream \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ios \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/iosfwd \
@@ -17,32 +60,9 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cwchar \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/wchar.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/cdefs.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_symbol_aliasing.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_posix_availability.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/_types.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/_types.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_pthread/_pthread_types.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/Availability.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityVersions.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityInternal.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/AvailabilityInternalLegacy.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_null.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_size_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_mbstate_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/types.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/types.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int8_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int16_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int32_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_int64_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int8_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int16_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int32_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_u_int64_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_intptr_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uintptr_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ct_rune_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_rune_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_wchar_t.h \
@@ -68,11 +88,9 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/runetype.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/exception \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/version.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception_ptr.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/exception_defines.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/cxxabi_init_exception.h \
- /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stddef.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/typeinfo \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/hash_bytes.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/new \
@@ -163,14 +181,6 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ucontext.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_uid_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/resource.h \
- /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include/stdint.h \
- /usr/local/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/x86_64-apple-darwin23/14/include-fixed/stdint.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint8_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint16_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint32_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uint64_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_intmax_t.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_types/_uintmax_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_timeval.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/machine/endian.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/i386/endian.h \
@@ -192,7 +202,6 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/charconv.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/basic_string.tcc \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/memory_resource.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstddef \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/uses_allocator_args.h \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/tuple \
@@ -215,13 +224,6 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/ostream.tcc \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/istream \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/istream.tcc \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/GL/glew.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cstdint \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/os/availability.h \
- /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/GLFW/glfw3.h \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/glm.hpp \
  /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/detail/_fixes.hpp \
  /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/cmath \
@@ -464,29 +466,4 @@ CMakeFiles/vladoom.dir/Source_files/Hud.cpp.o: \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/string.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_rsize_t.h \
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/strings.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/type_ptr.inl \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/stb/stb_image.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/chrono \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/chrono.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ratio \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/ctime \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/parse_numbers.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/thread \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/std_thread.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/unique_ptr.h \
- /usr/local/Cellar/gcc/14.2.0_1/include/c++/14/bits/this_thread_sleep.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/constants.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/programShader.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VBO.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VAO.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/EBO.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/image.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/settings.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Cube.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/collisions.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Plane.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/Texture.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/door.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/VPlane.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/symbol.h \
- /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header\ files/hud.h
+ /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include/glm/gtc/type_ptr.inl

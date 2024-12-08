@@ -9,6 +9,10 @@ typedef unsigned int uint;
 typedef unsigned char uchar;
 typedef std::string String;
 
+struct Rect {
+    float x, y, x1, y1;
+};
+
 struct Point {
     float x;
     float y;

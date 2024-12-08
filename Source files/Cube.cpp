@@ -90,16 +90,14 @@ Cube::Cube(int *map, int mapWidth, int mapHeight, float width, float xGap, float
     
     size = countOfUnits * 36;
 
-    float vertices[countOfUnits * 40];
-    uint  indices[size];
-
-    ind = indices;
+    float *vertices = new float[countOfUnits * 40] {};
+    uint  *indices  = new uint[size] {};
 
     createShapes(map, vertices, indices, countOfUnits, mapWidth, mapHeight, width, xGap, zGap, rotation);
 
     vao = new VAO();
-    vbo = new VBO(vertices, sizeof(vertices), GL_STATIC_DRAW);
-    ebo = new EBO(indices,  sizeof(indices));
+    vbo = new VBO(vertices, 40 * countOfUnits * sizeof(float), GL_STATIC_DRAW);
+    ebo = new EBO(indices,  size * sizeof(uint));
 
     vao->linkAttrib(*vbo, 0, 3, GL_FLOAT, 5 * sizeof(float), (void*) 0);
     vao->linkAttrib(*vbo, 1, 2, GL_FLOAT, 5 * sizeof(float), (void*) (3 * sizeof(float)));
@@ -110,6 +108,9 @@ Cube::Cube(int *map, int mapWidth, int mapHeight, float width, float xGap, float
 
     this->xGap = xGap;
     this->zGap = zGap;
+
+    delete[] vertices;
+    delete[] indices;
 }
 
 void Cube::draw() {
