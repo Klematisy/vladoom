@@ -1,9 +1,24 @@
 #pragma once
 #include "libs.h"
 #include "settings.h"
-// #include "programShader.h"
-// #include "texture.h"
-// #include "VPLane.h"
+
+struct Gun {
+    uint typeOfgun;
+
+    Texture *gun_tex;
+    ProgramShader *gun_ps;
+
+    /*
+        1 - knife
+        2 - pistol
+        3 - rifle
+        4 - minigun
+    */
+
+    Gun();
+    void draw(int num_of_animation, int typeOfgun);
+    ~Gun();
+};
 
 struct Player {
     glm::vec3 position;

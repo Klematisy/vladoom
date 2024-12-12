@@ -27,6 +27,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/vladoom.dir/Source_files/game.cpp.o.d"
   "CMakeFiles/vladoom.dir/Source_files/glew.c.o"
   "CMakeFiles/vladoom.dir/Source_files/glew.c.o.d"
+  "CMakeFiles/vladoom.dir/Source_files/gun.cpp.o"
+  "CMakeFiles/vladoom.dir/Source_files/gun.cpp.o.d"
   "CMakeFiles/vladoom.dir/Source_files/image.cpp.o"
   "CMakeFiles/vladoom.dir/Source_files/image.cpp.o.d"
   "CMakeFiles/vladoom.dir/Source_files/inputs.cpp.o"

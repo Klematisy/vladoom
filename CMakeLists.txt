@@ -32,15 +32,18 @@ add_executable(vladoom
     "Source files/Symbol.cpp"
     "Source files/enemy.cpp"
     "Source files/image.cpp"
+    "Source files/gun.cpp"
 )
 
-find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/Dependencies/library)
+# find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/Dependencies/library/libglfw.3.4.dylib)
+target_link_libraries(vladoom ${CMAKE_SOURCE_DIR}/Dependencies/library/libglfw.3.4.dylib)
 
-if(GLFW_LIB)
-    message(STATUS "Found library: ${EXAMPLE_LIB}")
-    target_link_libraries(vladoom PRIVATE ${GLFW_LIB})
-else()
-    message(FATAL_ERROR "Library 'libglfw.3.4' not found.")
-endif()
 
-target_link_libraries(vladoom PRIVATE OpenGL::GL)
+# if(GLFW_LIB)
+#     message(STATUS "Found library: ${EXAMPLE_LIB}")
+#     target_link_libraries(vladoom PRIVATE ${GLFW_LIB})
+# else()
+#     message(FATAL_ERROR "Library 'libglfw.3.4' not found.")
+# endif()
+
+target_link_libraries(vladoom OpenGL::GL)

@@ -77,7 +77,7 @@ void game(GLFWwindow* window) {
     int *doorArr4 = new int[1] {6};
 
     Player player = {glm::vec3(-1.5f, -0.5f, -2.5f), 90.0f, 0};
-    player.score = 11110;
+    player.score = 0;
 
     Cube part (map,  mapWidth, mapHeight, 1.0f,  0.0f,  0.0f,  0.0f, cWalls);
     Cube part1(map2, mapWidth, mapHeight, 1.0f,  8.0f,  0.0f,  0.0f, cWalls);
@@ -98,14 +98,12 @@ void game(GLFWwindow* window) {
     Horizontal_plane room35(map3, mapWidth, mapHeight, 8.0f, 1.0f, 11.0f, 9.0f);
 
     Hud hud;
+    Gun gun;
 
     Enemy e = glm::vec3(2.5f, 0.0f, 8.0f);
 
     player.hitPoints = 100;
-    player.ammo = 42;
-    int score_copy  = player.score;
-    int health_copy = player.hitPoints;
-    int ammo_copy   = player.ammo;
+    player.ammo = 99;
     
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -113,13 +111,16 @@ void game(GLFWwindow* window) {
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
 
-
     int k = 0;
-    std::random_device rd;   // non-deterministic generator
-    std::mt19937 gen(rd());  // to seed mersenne twister.
-    std::uniform_int_distribution<int> dist(0,2); // distribute results between 1 and 6 inclusive.
+    int l = 0;
 
-    std::chrono::duration<float> old_duration = std::chrono::high_resolution_clock::now() - start;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<>   disti(0, 2);
+
+    std::chrono::duration<float> old_duration_face = std::chrono::high_resolution_clock::now() - start;
+    std::chrono::duration<float> old_duration_gun  = std::chrono::high_resolution_clock::now() - start;
+
     while (!glfwWindowShouldClose(window) && gameIsRunning) //Main window loop
     {
         // break;
@@ -128,11 +129,6 @@ void game(GLFWwindow* window) {
 
         auto end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<float> duration = end - start;
-
-        // if (duration.count() > 10.0f) {
-        //     std::cout << "HELLO" << std::endl;
-        //     start = std::chrono::high_resolution_clock::now();
-        // }
 
         input(cWalls, player.position, player.rotation, window, gameIsRunning);
 
@@ -174,13 +170,49 @@ void game(GLFWwindow* window) {
 
         e.draw(player, view, proj);
 
+        if (l == 5) {
+            l = 0;
+        }
+
+        if (duration.count() - old_duration_gun.count() > 0.15f && l > 0) {
+            l++;
+            old_duration_gun = duration;
+        }
+
+        int state = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
+        if ((state == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) && l == 0) {
+            if (player.typeOfGun == 1)
+                l = 1;
+            else if (player.ammo > 0) {
+                l = 1;
+                player.ammo--;
+            }
+        }
+
+        if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS && l == 0) { 
+            player.typeOfGun = 1;
+            l = 0;
+        }
+        if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS && l == 0) {
+            player.typeOfGun = 2;
+            l = 0;
+        }
+        if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS && l == 0) { 
+            player.typeOfGun = 3;
+            l = 0;
+        }
+        if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS && l == 0) {
+            player.typeOfGun = 4;
+            l = 0;
+        }
+
+        gun.draw(l, player.typeOfGun);
+
         glViewport(50, 50, WIDTH * 2 - 100, 270);
         
-        if (duration.count() - old_duration.count() > 1.0f) {
-            // k = (k == 2) ? 0 : k + 1;
-            k = dist(gen);
-            old_duration = duration;
-            // std::cout << player.position.x << " " << player.position.y << std::endl;
+        if (duration.count() - old_duration_face.count() > 1.0f) {
+            k = disti(gen);
+            old_duration_face = duration;
         }
         hud.draw(player, k);
 

@@ -118,5 +118,11 @@
   "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I\"/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header files\" -I\"/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files\" -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/Source_files/image.cpp.o -c \"/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/image.cpp\"",
   "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/image.cpp",
   "output": "CMakeFiles/vladoom.dir/Source_files/image.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Output files",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I\"/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Header files\" -I\"/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files\" -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/Source_files/gun.cpp.o -c \"/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/gun.cpp\"",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Source files/gun.cpp",
+  "output": "CMakeFiles/vladoom.dir/Source_files/gun.cpp.o"
 }
 ]
