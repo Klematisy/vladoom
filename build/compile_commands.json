@@ -1,0 +1,122 @@
+[
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/ENG/convert.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/convert.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/convert.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/ENG/convert.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/ENG/Cube.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/Cube.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/Cube.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/ENG/Cube.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/ENG/EBO.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/EBO.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/EBO.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/ENG/EBO.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/gcc-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/ENG/glew.c.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/glew.c",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/glew.c",
+  "output": "CMakeFiles/vladoom.dir/src/ENG/glew.c.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/ENG/Plane.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/Plane.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/Plane.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/ENG/Plane.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/ENG/programShader.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/programShader.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/programShader.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/ENG/programShader.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/ENG/stb.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/stb.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/stb.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/ENG/stb.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/ENG/Texture.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/Texture.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/Texture.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/ENG/Texture.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/ENG/VAO.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/VAO.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/VAO.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/ENG/VAO.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/ENG/VBO.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/VBO.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/VBO.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/ENG/VBO.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/ENG/VPlane.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/VPlane.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/VPlane.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/ENG/VPlane.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/ENG/Symbol.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/Symbol.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/Symbol.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/ENG/Symbol.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/ENG/image.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/image.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG/image.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/ENG/image.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/Hud.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/Hud.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/Hud.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/Hud.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/enemy.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/enemy.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/enemy.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/enemy.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/inputs.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/inputs.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/inputs.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/inputs.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/gun.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/gun.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/gun.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/gun.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/Door.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/Door.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/Door.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/Door.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/game.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/game.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/game.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/game.cpp.o"
+},
+{
+  "directory": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/build",
+  "command": "/usr/local/bin/g++-14  -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/vladoom -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/headers -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/ENG -I/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/deps/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks -O3 -DNDEBUG -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -w -g -framework OpenGL -o CMakeFiles/vladoom.dir/src/main.cpp.o -c /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/main.cpp",
+  "file": "/Users/agucs/Desktop/main/cpp/OpenGL/vladoom/src/main.cpp",
+  "output": "CMakeFiles/vladoom.dir/src/main.cpp.o"
+}
+]

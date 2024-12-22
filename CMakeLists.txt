@@ -5,45 +5,42 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_COMPILER /usr/local/bin/g++-14)
 
 find_package(OpenGL REQUIRED)
-include_directories(vladoom "Header files/")
-include_directories(vladoom "Source files/")
-include_directories(vladoom Dependencies/include/)
+include_directories(vladoom "headers/")
+include_directories(vladoom "src/ENG/")
+include_directories(vladoom deps/include/)
 
 add_compile_options(-w -g -framework OpenGL)
 
 add_executable(vladoom
-    "Source files/convert.cpp"
-    "Source files/Cube.cpp"
-    "Source files/Door.cpp"
-    "Source files/EBO.cpp"
-    "Source files/game.cpp"
-    "Source files/glew.c"
-    "Source files/inputs.cpp"
-    "Source files/main.cpp"
-    "Source files/Plane.cpp"
-    "Source files/programShader.cpp"
-    "Source files/solve.cpp"
-    "Source files/stb.cpp"
-    "Source files/Texture.cpp"
-    "Source files/VAO.cpp"
-    "Source files/VBO.cpp"
-    "Source files/VPlane.cpp"
-    "Source files/Hud.cpp"
-    "Source files/Symbol.cpp"
-    "Source files/enemy.cpp"
-    "Source files/image.cpp"
-    "Source files/gun.cpp"
+    "src/ENG/convert.cpp"
+    "src/ENG/Cube.cpp"
+    "src/ENG/EBO.cpp"
+    "src/ENG/glew.c"
+    "src/ENG/Plane.cpp"
+    "src/ENG/programShader.cpp"
+    "src/ENG/stb.cpp"
+    "src/ENG/Texture.cpp"
+    "src/ENG/VAO.cpp"
+    "src/ENG/VBO.cpp"
+    "src/ENG/VPlane.cpp"
+    "src/ENG/Symbol.cpp"
+    "src/ENG/image.cpp"
+    "src/Hud.cpp"
+    "src/enemy.cpp"
+    "src/inputs.cpp"
+    "src/gun.cpp"
+    "src/Door.cpp"
+    "src/game.cpp"
+    "src/main.cpp"
 )
 
-# find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/Dependencies/library/libglfw.3.4.dylib)
-target_link_libraries(vladoom ${CMAKE_SOURCE_DIR}/Dependencies/library/libglfw.3.4.dylib)
+find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/deps/library/)
+# target_link_libraries(vladoom ${CMAKE_SOURCE_DIR}/Dependencies/library/libglfw.3.4.dylib)
+# /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/library/libglfw.3.4.dylib
 
-
-# if(GLFW_LIB)
-#     message(STATUS "Found library: ${EXAMPLE_LIB}")
-#     target_link_libraries(vladoom PRIVATE ${GLFW_LIB})
-# else()
-#     message(FATAL_ERROR "Library 'libglfw.3.4' not found.")
-# endif()
-
-target_link_libraries(vladoom OpenGL::GL)
+if(GLFW_LIB)
+    message(STATUS "Found library: ${EXAMPLE_LIB}")
+    target_link_libraries(vladoom PRIVATE ${GLFW_LIB} OpenGL::GL)
+else()
+    message(FATAL_ERROR "Library 'libglfw.3.4' not found.")
+endif()
