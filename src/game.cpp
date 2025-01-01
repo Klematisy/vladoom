@@ -13,7 +13,7 @@ float color(int i) { return i / 255.0f; }
 
 auto start = std::chrono::high_resolution_clock::now();
 
-void game(GLFWwindow* window) {
+void game(GLFWwindow *window) {
     /*---------------------------------------main code!---------------------------------------*/
     String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
@@ -77,6 +77,8 @@ void game(GLFWwindow* window) {
 
     Player player = {glm::vec3(-1.5f, -0.5f, -2.5f), 90.0f, 0};
     player.score = 0;
+    player.hitPoints = 100;
+    player.ammo = 10;
 
     Cube part (map,  mapWidth, mapHeight, 1.0f,  0.0f,  0.0f,  0.0f, cWalls);
     Cube part1(map2, mapWidth, mapHeight, 1.0f,  8.0f,  0.0f,  0.0f, cWalls);
@@ -101,9 +103,6 @@ void game(GLFWwindow* window) {
 
     std::vector<Enemy> enemies;
     enemies.push_back(Enemy(glm::vec3(2.5f, 0.0f, 8.0f)));
-
-    player.hitPoints = 100;
-    player.ammo = 99;
     
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -112,7 +111,6 @@ void game(GLFWwindow* window) {
     glDepthFunc(GL_LEQUAL);
 
     int k = 0;
-    int l = 0;
 
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -170,43 +168,7 @@ void game(GLFWwindow* window) {
         
         enemies[0].draw(player, view, proj);
 
-        if (l == 5) {
-            l = 0;
-        }
-
-        if (duration.count() - old_duration_gun.count() > 0.15f && l > 0) {
-            l++;
-            old_duration_gun = duration;
-        }
-
-        int state = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
-        if ((state == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) && l == 0) {
-            if (player.typeOfGun == 1)
-                l = 1;
-            else if (player.ammo > 0) {
-                l = 1;
-                player.ammo--;
-            }
-        }
-
-        if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS && l == 0) { 
-            player.typeOfGun = 1;
-            l = 0;
-        }
-        if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS && l == 0) {
-            player.typeOfGun = 2;
-            l = 0;
-        }
-        if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS && l == 0) { 
-            player.typeOfGun = 3;
-            l = 0;
-        }
-        if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS && l == 0) {
-            player.typeOfGun = 4;
-            l = 0;
-        }
-
-        gun.draw(l, player.typeOfGun);
+        gun.processing(old_duration_gun, duration, player, window);
 
         glViewport(50, 50, WIDTH * 2 - 100, 270);
         

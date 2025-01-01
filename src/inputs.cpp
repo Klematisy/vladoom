@@ -5,7 +5,6 @@
 
 static float speed;
 static int *map;
-static GLFWwindow *window;
 
 bool Collides(int stX, int stZ, float x, float z) {
     int x1 = x;
@@ -22,32 +21,9 @@ bool CollidesRect(int startX, int startZ, float x, float z, float x_half_extent,
         || Collides(startX, startZ, x - x_half_extent, z + z_half_extent);
 }
 
-void checkDoor(const glm::vec3 pos, Map &pathOfMap, Door& door, const float &rotation) {
-    float xf = pos.x + cosf((90 + rotation) * 3.14 / 180.0f) + pathOfMap.gapX;
-    float zf = pos.z + sinf((90 + rotation) * 3.14 / 180.0f) + pathOfMap.gapZ;
-
-    int x = xf;
-    int z = zf;
-
-    x = toUp(x);
-    z = toUp(z);
-
-    if (-1.01f < *door.coordinate && *door.coordinate < 0.0f && pathOfMap.obj[x + z * pathOfMap.width] != 0) {
-        *door.coordinate -= 0.01f;
-    } else if (*door.coordinate < -1.0f) {
-        pathOfMap.obj[x + z * pathOfMap.width] = 0;
-    } else {
-        if (pathOfMap.obj[x + z * pathOfMap.width] == 6 && glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-            *door.coordinate -= 0.001f;
-        }
-    }
-
-}
-
-void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *w, bool &run) {
+void input(Collisions& colls, glm::vec3 &position, float &rotation, GLFWwindow *window, bool &run) {
 
     std::vector<Map> collisions;
-    window = w;
     int x, z, x1, z1;
     float spd = 0.04f;
     glm::vec3 pointPos = position;

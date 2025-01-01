@@ -17,7 +17,7 @@ Door::Door(int *map, const float &xGap, const float &zGap, float rotation, Colli
 
     cube  = new Cube(map, 1, 1, 0.04f, xGap + 0.48f, zGap, rotation, col);
 
-    plane =  new Vertical_plane(xGap, zGap + 0.001f,        rotation, xGap + 0.5f, zGap + 0.5f, 9, 10.0f);
+    plane  = new Vertical_plane(xGap, zGap + 0.001f,        rotation, xGap + 0.5f, zGap + 0.5f, 9, 10.0f);
     plane1 = new Vertical_plane(xGap, zGap + 1.0f - 0.001f, rotation, xGap + 0.5f, zGap + 0.5f, 9, 10.0f);
 
     coordinate = (rotation != 90) ? &pos.z : &pos.x;
@@ -57,18 +57,18 @@ void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindo
     glm::mat4 model = glm::mat4(1.0f);
     model *= glm::translate(model, pos);
 
-    glUniformMatrix4fv(glGetUniformLocation(psCube->shaderProgram,  "view"),   1, GL_FALSE,  glm::value_ptr(view));
-    glUniformMatrix4fv(glGetUniformLocation(psCube->shaderProgram,  "proj"),   1, GL_FALSE,  glm::value_ptr(proj));
-    glUniformMatrix4fv(glGetUniformLocation(psCube->shaderProgram, "model"),   1, GL_FALSE, glm::value_ptr(model));
+    glUniformMatrix4fv(glGetUniformLocation(psCube->shaderProgram,  "view"),  1, GL_FALSE,  glm::value_ptr(view) );
+    glUniformMatrix4fv(glGetUniformLocation(psCube->shaderProgram,  "proj"),  1, GL_FALSE,  glm::value_ptr(proj) );
+    glUniformMatrix4fv(glGetUniformLocation(psCube->shaderProgram, "model"),  1, GL_FALSE,  glm::value_ptr(model));
 
     cube->draw();
 
     psTex->useProgram();
     model = glm::mat4(1.0f);
 
-    glUniformMatrix4fv(glGetUniformLocation(psTex->shaderProgram,  "view"),   1, GL_FALSE,  glm::value_ptr(view));
-    glUniformMatrix4fv(glGetUniformLocation(psTex->shaderProgram,  "proj"),   1, GL_FALSE,  glm::value_ptr(proj));
-    glUniformMatrix4fv(glGetUniformLocation(psTex->shaderProgram, "model"),   1, GL_FALSE, glm::value_ptr(model));
+    glUniformMatrix4fv(glGetUniformLocation(psTex->shaderProgram,  "view"),  1, GL_FALSE,  glm::value_ptr(view) );
+    glUniformMatrix4fv(glGetUniformLocation(psTex->shaderProgram,  "proj"),  1, GL_FALSE,  glm::value_ptr(proj) );
+    glUniformMatrix4fv(glGetUniformLocation(psTex->shaderProgram, "model"),  1, GL_FALSE,  glm::value_ptr(model));
 
     plane->draw();
     plane1->draw();

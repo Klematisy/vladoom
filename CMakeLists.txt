@@ -34,13 +34,14 @@ add_executable(vladoom
     "src/main.cpp"
 )
 
-find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/deps/library/)
-# target_link_libraries(vladoom ${CMAKE_SOURCE_DIR}/Dependencies/library/libglfw.3.4.dylib)
+# find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/deps/library/)
+target_link_libraries(vladoom ${CMAKE_SOURCE_DIR}/deps/library/libglfw.3.4.dylib)
+target_link_libraries(vladoom OpenGL::GL)
 # /Users/agucs/Desktop/main/cpp/OpenGL/vladoom/Dependencies/library/libglfw.3.4.dylib
 
-if(GLFW_LIB)
-    message(STATUS "Found library: ${EXAMPLE_LIB}")
-    target_link_libraries(vladoom PRIVATE ${GLFW_LIB} OpenGL::GL)
-else()
-    message(FATAL_ERROR "Library 'libglfw.3.4' not found.")
-endif()
+# if(GLFW_LIB)
+#     message(STATUS "Found library: ${EXAMPLE_LIB}")
+#     target_link_libraries(vladoom PRIVATE ${GLFW_LIB} OpenGL::GL)
+# else()
+#     message(FATAL_ERROR "Library 'libglfw.3.4' not found.")
+# endif()

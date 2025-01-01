@@ -2,6 +2,8 @@
 #include "libs.h"
 #include "settings.h"
 
+struct Player;
+
 struct Gun {
     uint typeOfgun;
 
@@ -14,9 +16,18 @@ struct Gun {
         3 - rifle
         4 - minigun
     */
-
+private:
+    void update(std::chrono::duration<float> &old_duration_gun, 
+                std::chrono::duration<float> duration, 
+                Player &p, 
+                GLFWwindow *window);
+    void draw(Player &p);
+public:
     Gun();
-    void draw(int num_of_animation, int typeOfgun);
+    void processing(std::chrono::duration<float> &old_duration_gun, 
+                    std::chrono::duration<float> duration, 
+                    Player &p,
+                    GLFWwindow* window);
     ~Gun();
 };
 

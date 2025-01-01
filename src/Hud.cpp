@@ -43,6 +43,7 @@ void Hud::draw(Player &player, int k) {
 
     float a = (num_of_tex * 3 >= 12) ? 0.5f : 0.0f;
     num_of_tex *= 3;
+
     if (num_of_tex <= 21)
         num_of_tex += k;
 
