@@ -1,12 +1,11 @@
 #include "game.h"
 
 const static String shaderDir = "resource/Shaders/";
-static int k = 0;
-static int num_of_animation = 0;
 
 String bindShader(std::string dir);
 
-Gun::Gun() {
+Gun::Gun()
+{
     String vertexShaderSrc   = bindShader(shaderDir + "map1/map.vert");
     String fragmentShaderSrc = bindShader(shaderDir + "map1/map.frag");
 
@@ -20,7 +19,14 @@ void Gun::update
              Player &p, 
              GLFWwindow *window) 
 {
-    if (num_of_animation == 5) num_of_animation = 0;
+    
+}
+
+void Gun::draw(std::chrono::duration<float> &old_duration_gun, 
+               std::chrono::duration<float> duration, 
+               Player &p, 
+               GLFWwindow *window) 
+{
 
     if (duration.count() - old_duration_gun.count() > 0.15f && num_of_animation > 0) {
         num_of_animation++;
@@ -36,6 +42,8 @@ void Gun::update
             p.ammo--;
         }
     }
+
+    if (num_of_animation == 5) num_of_animation = 0;
 
     if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS && num_of_animation == 0) { 
         p.typeOfGun = 1;
@@ -53,9 +61,7 @@ void Gun::update
         p.typeOfGun = 4;
         num_of_animation = 0;
     }
-}
 
-void Gun::draw(Player &p) {
     gun_tex->bind(GL_TEXTURE0);
     gun_ps->useProgram();
     Rect r = { num_of_animation / 5.0f,
@@ -72,12 +78,13 @@ void Gun::processing
              Player &p, 
              GLFWwindow *window) 
 {
-    
     update(old_duration_gun, duration, p, window);
-    draw(p);
+    
+    draw(old_duration_gun, duration, p, window);
 }
 
-Gun::~Gun() {
+Gun::~Gun()
+{
     delete gun_tex;
     delete gun_ps;
 }

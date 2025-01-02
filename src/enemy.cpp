@@ -17,6 +17,18 @@ Enemy::Enemy(glm::vec3 position) : position(position) {
     enemy_tex->uniform("tex0", *ps, 0);
 }
 
+void Enemy::update() {
+
+}
+
+void Enemy::processing(const Player &player, glm::mat4 &view, glm::mat4 &proj) {
+    // std::cout << hitPoints << std::endl;
+    if (hitPoints > 0) {
+        draw(player, view, proj);
+        update();
+    }
+}
+
 void Enemy::draw(const Player &player, glm::mat4 &view, glm::mat4 &proj) {
     enemy_tex->bind(GL_TEXTURE0);
     ps->useProgram();
@@ -51,11 +63,11 @@ void Enemy::draw(const Player &player, glm::mat4 &view, glm::mat4 &proj) {
     enemy_shape->draw();
 }
 
-Enemy::~Enemy() {
-    // enemy_shape->deletePlane();
-    // ps->deleteShader();
+void Enemy::clear() {
+    enemy_shape->deletePlane();
+    ps->deleteShader();
 
-    // delete ps;
-    // delete enemy_shape;
-    // delete enemy_tex;
+    delete ps;
+    delete enemy_shape;
+    delete enemy_tex;
 }

@@ -5,11 +5,8 @@
 struct Player;
 
 struct Gun {
-    uint typeOfgun;
-
-    Texture *gun_tex;
-    ProgramShader *gun_ps;
-
+    uint typeOfGun;
+    int num_of_animation = 0;
     /*
         1 - knife
         2 - pistol
@@ -17,11 +14,17 @@ struct Gun {
         4 - minigun
     */
 private:
+    Texture *gun_tex;
+    ProgramShader *gun_ps;
+
     void update(std::chrono::duration<float> &old_duration_gun, 
                 std::chrono::duration<float> duration, 
                 Player &p, 
                 GLFWwindow *window);
-    void draw(Player &p);
+    void draw(std::chrono::duration<float> &old_duration_gun, 
+              std::chrono::duration<float> duration, 
+              Player &p, 
+              GLFWwindow *window);
 public:
     Gun();
     void processing(std::chrono::duration<float> &old_duration_gun, 
@@ -35,6 +38,7 @@ struct Player {
     glm::vec3 position;
     float rotation;
     uint typeOfGun;
+    Gun gun;
     int hitPoints = 100;
     int ammo = 100;
     int score = 0;
@@ -50,8 +54,10 @@ private:
     Vertical_plane *enemy_shape;
     ProgramShader *ps;
     Texture *enemy_tex;
+    void draw(const Player &player, glm::mat4 &view, glm::mat4 &proj);
+    void update();
 public:
     Enemy(glm::vec3 position);
-    void draw(const Player &player, glm::mat4 &view, glm::mat4 &proj);
-    ~Enemy();
+    void processing(const Player &player, glm::mat4 &view, glm::mat4 &proj);
+    void clear();
 };
