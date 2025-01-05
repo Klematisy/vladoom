@@ -9,7 +9,7 @@ VBO::VBO(float obj[], int size, GLenum type) {
         glBufferData(GL_ARRAY_BUFFER, 0, nullptr, type);
 }
 
-void VBO::update(int size, float *obj) {
+void VBO::update(float *obj, int size) {
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, size, obj, GL_DYNAMIC_DRAW);
 }

@@ -5,7 +5,6 @@
 struct Player;
 
 struct Gun {
-    uint typeOfGun;
     int num_of_animation = 0;
     /*
         1 - knife
@@ -47,17 +46,18 @@ struct Player {
 
 struct Enemy {
     glm::vec3 position;
-    float rotation = 0.0f;
     uint typeOfGun;
-    int hitPoints = 100;
+    int hit_points = 100;
 private:
+    int num_of_sprite = 0;
+    float rotation = 0.0f;
     Vertical_plane *enemy_shape;
     ProgramShader *ps;
     Texture *enemy_tex;
-    void draw(const Player &player, glm::mat4 &view, glm::mat4 &proj);
+    void draw(std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
     void update();
 public:
     Enemy(glm::vec3 position);
-    void processing(const Player &player, glm::mat4 &view, glm::mat4 &proj);
+    void processing(std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
     void clear();
 };

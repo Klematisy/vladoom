@@ -1,10 +1,16 @@
 #include <cmath>
+#include <vector>
 #include "libs.h"
 #include "constants.h"
 #include "settings.h"
 
 static float speed;
 static int *map;
+
+template <typename T>
+void remove(std::vector<T>& v, size_t index) {
+    v.erase(v.begin() + index);
+}
 
 bool Collides(int stX, int stZ, float x, float z) {
     int x1 = x;
@@ -116,13 +122,42 @@ void input(Collisions& colls, Player &player, std::vector<Enemy> &enemies, GLFWw
         player.rotation += (xpos - 1280.0f) / 4;
     }
 
-    if (player.gun.num_of_animation == 0 && glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS && player.ammo > 0) 
+    if (player.gun.num_of_animation == 0 && 
+        (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS ||
+        glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS))
     {
         pointPos = player.position;
         bool loop = true;
-        while (loop) {
-            pointPos.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.5f;
-            pointPos.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.5f;
+        int damage = 0;
+        switch (player.typeOfGun) {
+            case 1: damage = 10;
+            break;
+            case 2: damage = 20;
+            break;
+            case 3: damage = 50;
+            break;
+            case 4: damage = 100;
+        }
+
+        if (player.typeOfGun == 1) {
+            pointPos.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
+            pointPos.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
+            for (size_t i = 0; i < enemies.size(); i++) {
+                if (enemies[i].hit_points <= 0)
+                    remove<Enemy>(enemies, i);
+                    
+                if (fabsf(pointPos.x + enemies[i].position.x) < 0.2f && fabsf(pointPos.z + enemies[i].position.z) < 0.2f) {
+                    enemies[i].hit_points -= damage;
+                    std::cout << enemies[i].hit_points << std::endl;
+                    loop = false;
+                    break;
+                }
+            }
+        }
+
+        while (loop && player.typeOfGun != 1 && player.ammo > 0) {
+            pointPos.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
+            pointPos.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
             for (const Map *pathOfMap : colls._piecesOfMap) {
                 if (!inObj(*pathOfMap, pointPos)) continue;
 
@@ -132,10 +167,13 @@ void input(Collisions& colls, Player &player, std::vector<Enemy> &enemies, GLFWw
                 x1 = toUp(std::ceil(pointPos.x));
                 z1 = toUp(std::ceil(pointPos.z));
                 
-                for (Enemy &enemy : enemies) {
-                    if (fabsf(pointPos.x + enemy.position.x) < 1.2f && fabsf(pointPos.z + enemy.position.z) < 1.2f) {
-                        enemy.hitPoints -= 25;
-                        std::cout << enemy.hitPoints << std::endl;
+                for (size_t i = 0; i < enemies.size(); i++) {
+                    if (enemies[i].hit_points <= 0) {
+                        remove<Enemy>(enemies, i);
+                    }
+                    if (fabsf(pointPos.x + enemies[i].position.x) < 0.2f && fabsf(pointPos.z + enemies[i].position.z) < 0.2f) {
+                        enemies[i].hit_points -= damage;
+                        std::cout << enemies[i].hit_points << std::endl;
                         loop = false;
                         break;
                     }

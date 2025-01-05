@@ -40,7 +40,7 @@ void Image::draw(Rect *r) {
             stX + width + x_gap,  stY          + y_gap, r->x1, r->y
         };
 
-        vbo->update(sizeof(float) * 16, vertices);
+        vbo->update(vertices, sizeof(float) * 16);
         vao->linkAttrib(*vbo, 0, 2, GL_FLOAT, 4 * sizeof(float), (void*) 0);
         vao->linkAttrib(*vbo, 1, 2, GL_FLOAT, 4 * sizeof(float), (void*) (2 * sizeof(float)));
     }
@@ -66,7 +66,7 @@ void Image::draw_once(float x_gap, float y_gap, float width, float height, Rect 
     VBO vbo(vertices, 16 * sizeof(float), GL_DYNAMIC_DRAW);
     EBO ebo(indices,  6 * sizeof(uint));
 
-    vbo.update(sizeof(float) * 16, vertices);
+    vbo.update(vertices, sizeof(float) * 16);
     vao.linkAttrib(vbo, 0, 2, GL_FLOAT, 4 * sizeof(float), (void*) 0);
     vao.linkAttrib(vbo, 1, 2, GL_FLOAT, 4 * sizeof(float), (void*) (2 * sizeof(float)));
 

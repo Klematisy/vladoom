@@ -29,17 +29,17 @@ void game(GLFWwindow *window) {
     const int mapWidth  = 8;
     const int mapHeight = 11;
     int *map  = new int[mapWidth * mapHeight] {
-        0, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1,
         1, 0, 0, 0, 1, 0, 0, 1,
         1, 0, 0, 0, 0, 0, 0, 3,
         1, 0, 0, 0, 1, 0, 0, 1,
-        0, 1, 1, 1, 1, 1, 0, 3,
+        1, 1, 1, 1, 1, 1, 0, 3,
         1, 0, 0, 0, 1, 0, 0, 1,
         2, 0, 0, 0, 0, 0, 0, 1,
         1, 0, 0, 0, 1, 1, 1, 1,
         3, 0, 0, 0, 0, 0, 0, 1,
         1, 0, 0, 0, 0, 0, 0, 0,
-        0, 1, 3, 1, 2, 1, 1, 1
+        1, 1, 3, 1, 2, 1, 1, 1
     };
 
     int *map2 = new int[mapWidth * mapHeight] {
@@ -75,10 +75,10 @@ void game(GLFWwindow *window) {
     int *doorArr3 = new int[1] {6};
     int *doorArr4 = new int[1] {6};
 
-    Player player = {glm::vec3(-1.5f, -0.5f, -2.5f), 90.0f, 0, Gun()};
+    Player player = {glm::vec3(-1.5f, -0.5f, -2.5f), 90.0f, 1, Gun()};
     player.score = 0;
     player.hitPoints = 100;
-    player.ammo = 10;
+    player.ammo = 99;
 
     Cube part (map,  mapWidth, mapHeight, 1.0f,  0.0f,  0.0f,  0.0f, cWalls);
     Cube part1(map2, mapWidth, mapHeight, 1.0f,  8.0f,  0.0f,  0.0f, cWalls);
@@ -113,10 +113,11 @@ void game(GLFWwindow *window) {
 
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<>   disti(0, 2);
+    std::uniform_int_distribution<> disti(0, 2);
 
-    std::chrono::duration<float> old_duration_face = std::chrono::high_resolution_clock::now() - start;
-    std::chrono::duration<float> old_duration_gun  = std::chrono::high_resolution_clock::now() - start;
+    std::chrono::duration<float> old_duration_face  = std::chrono::high_resolution_clock::now() - start;
+    std::chrono::duration<float> old_duration_gun   = std::chrono::high_resolution_clock::now() - start;
+    std::chrono::duration<float> old_duration_enemy = std::chrono::high_resolution_clock::now() - start;
 
     while (!glfwWindowShouldClose(window) && gameIsRunning) //Main window loop
     {
@@ -165,7 +166,7 @@ void game(GLFWwindow *window) {
         door3.draw(player.position, view, proj, window, player.rotation);
         door4.draw(player.position, view, proj, window, player.rotation);
         
-        enemies[0].processing(player, view, proj);
+        enemies[0].processing(old_duration_enemy, duration, player, view, proj);
 
         player.gun.processing(old_duration_gun, duration, player, window);
 

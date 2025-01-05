@@ -9,7 +9,7 @@ class VBO {
     float *obj;
 public:
     VBO(float obj[], int size, GLenum type);
-    void update(int size, float *obj);
+    void update(float *obj, int size);
     void bind();
     void unbind();
     void deleteVbo();

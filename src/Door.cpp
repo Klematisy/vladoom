@@ -17,8 +17,8 @@ Door::Door(int *map, const float &xGap, const float &zGap, float rotation, Colli
 
     cube  = new Cube(map, 1, 1, 0.04f, xGap + 0.48f, zGap, rotation, col);
 
-    plane  = new Vertical_plane(xGap, zGap + 0.001f,        rotation, xGap + 0.5f, zGap + 0.5f, 9, 10.0f);
-    plane1 = new Vertical_plane(xGap, zGap + 1.0f - 0.001f, rotation, xGap + 0.5f, zGap + 0.5f, 9, 10.0f);
+    plane  = new Vertical_plane(xGap, zGap + 0.001f,        rotation, xGap + 0.5f, zGap + 0.5f, 9, 0.0f, 10.0f, 1.0f);
+    plane1 = new Vertical_plane(xGap, zGap + 1.0f - 0.001f, rotation, xGap + 0.5f, zGap + 0.5f, 9, 0.0f, 10.0f, 1.0f);
 
     coordinate = (rotation != 90) ? &pos.z : &pos.x;
 
