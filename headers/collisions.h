@@ -1,6 +1,20 @@
 #pragma once
+#include <vector>
 
-#include "settings.h"
+struct Map {
+    int* obj;
+    int width;
+    int height;
+
+    float maxX;
+    float maxZ;
+    float minX;
+    float minZ;
+
+    float gapX, gapZ;
+
+    float size;
+};
 
 class Door;
 

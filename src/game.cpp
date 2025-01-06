@@ -75,19 +75,21 @@ void game(GLFWwindow *window) {
     int *doorArr3 = new int[1] {6};
     int *doorArr4 = new int[1] {6};
 
-    Player player = {glm::vec3(-1.5f, -0.5f, -2.5f), 90.0f, 1, Gun()};
+    Player player = {glm::vec3(-1.5f, -0.5f, -2.5f), 90.0f, 100, Gun()};
     player.score = 0;
-    player.hitPoints = 100;
     player.ammo = 99;
+    
+    std::vector<Enemy> enemies;
+    enemies.push_back(Enemy(glm::vec3(-2.5f, 0.0f, -7.5f), 90.0f, 100));
 
     Cube part (map,  mapWidth, mapHeight, 1.0f,  0.0f,  0.0f,  0.0f, cWalls);
     Cube part1(map2, mapWidth, mapHeight, 1.0f,  8.0f,  0.0f,  0.0f, cWalls);
     Cube part2(map3, mapWidth, mapHeight, 1.0f,  8.0f, 11.0f,  0.0f, cWalls);
 
-    Door door1(doorArr1,  4.0f,  2.0f,  0.0f, cWalls, *Walls);
-    Door door2(doorArr2, 13.0f,  3.0f, 90.0f, cWalls, *Walls);
-    Door door3(doorArr3,  7.0f,  9.0f,  0.0f, cWalls, *Walls);
-    Door door4(doorArr4, 13.0f, 10.0f, 90.0f, cWalls, *Walls);
+    Door door1(doorArr1,  -4.0f,  -2.0f,  0.0f, cWalls, *Walls);
+    Door door2(doorArr2, -13.0f,  -3.0f, 90.0f, cWalls, *Walls);
+    Door door3(doorArr3,  -7.0f,  -9.0f,  0.0f, cWalls, *Walls);
+    Door door4(doorArr4, -13.0f, -10.0f, 90.0f, cWalls, *Walls);
 
     Horizontal_plane room1( map,  mapWidth, mapHeight, 0.0f, 0.0f, 0.0f, 7.0f);
     Horizontal_plane room15(map,  mapWidth, mapHeight, 0.0f, 1.0f, 0.0f, 8.0f);
@@ -100,9 +102,6 @@ void game(GLFWwindow *window) {
 
     Hud hud;
 
-    std::vector<Enemy> enemies;
-    enemies.push_back(glm::vec3(2.5f, 0.0f, 8.0f));
-    
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -121,7 +120,6 @@ void game(GLFWwindow *window) {
 
     while (!glfwWindowShouldClose(window) && gameIsRunning) //Main window loop
     {
-        // break;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(color(0), color(64), color(64), 1.0f);
 
@@ -129,7 +127,7 @@ void game(GLFWwindow *window) {
         std::chrono::duration<float> duration = end - start;
 
         input(cWalls, player, enemies, window, gameIsRunning);
-
+ 
         glViewport(60, HEIGHT / 2 - 20, WIDTH * 2 - 120, HEIGHT + HEIGHT / 2 - 40);
 
         Walls->bind(GL_TEXTURE0);
@@ -149,9 +147,9 @@ void game(GLFWwindow *window) {
         glUniformMatrix4fv(projLoc,  1, GL_FALSE, glm::value_ptr(proj));
         int modelLoc = glGetUniformLocation(map_shader.shaderProgram, "model");
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-        
+
         part.draw();
-        part1.draw(); 
+        part1.draw();
         part2.draw();
 
         room1.draw();
@@ -165,13 +163,13 @@ void game(GLFWwindow *window) {
         door2.draw(player.position, view, proj, window, player.rotation);
         door3.draw(player.position, view, proj, window, player.rotation);
         door4.draw(player.position, view, proj, window, player.rotation);
-        
-        enemies[0].processing(old_duration_enemy, duration, player, view, proj);
+
+        enemies[0].processing(cWalls, old_duration_enemy, duration, player, view, proj);
 
         player.gun.processing(old_duration_gun, duration, player, window);
 
         glViewport(50, 50, WIDTH * 2 - 100, 270);
-        
+
         if (duration.count() - old_duration_face.count() > 1.0f) {
             k = disti(gen);
             old_duration_face = duration;
@@ -179,7 +177,7 @@ void game(GLFWwindow *window) {
         hud.draw(player, k);
 
         if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) {
-            player.hitPoints -= 1.0f;
+            player.hit_points -= 1.0f;
         }
 
         glfwPollEvents();

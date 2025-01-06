@@ -24,10 +24,10 @@ Vertical_plane::Vertical_plane(float xGap,
     int j = 0;
 
     float vertices[20] = {
-        xR(xGap + 0.0f - stX, zGap - stZ, rotation) + stX, 0.0f, zR(xGap + 0.0f - stX, zGap - stZ, rotation) + stZ,   x_tex      / x_count_of_objs,  (y_tex)      / y_count_of_objs,
-        xR(xGap + 0.0f - stX, zGap - stZ, rotation) + stX, 1.0f, zR(xGap + 0.0f - stX, zGap - stZ, rotation) + stZ,   x_tex      / x_count_of_objs,  (y_tex + 1)  / y_count_of_objs,
-        xR(xGap + 1.0f - stX, zGap - stZ, rotation) + stX, 1.0f, zR(xGap + 1.0f - stX, zGap - stZ, rotation) + stZ,  (x_tex + 1) / x_count_of_objs,  (y_tex + 1)  / y_count_of_objs,
-        xR(xGap + 1.0f - stX, zGap - stZ, rotation) + stX, 0.0f, zR(xGap + 1.0f - stX, zGap - stZ, rotation) + stZ,  (x_tex + 1) / x_count_of_objs,  (y_tex)      / y_count_of_objs
+        -xR(xGap - 0.0f - stX, zGap - stZ, rotation) - stX, 0.0f, -zR(xGap - 0.0f - stX, zGap - stZ, rotation) - stZ,   x_tex      / x_count_of_objs,  (y_tex)      / y_count_of_objs,
+        -xR(xGap - 0.0f - stX, zGap - stZ, rotation) - stX, 1.0f, -zR(xGap - 0.0f - stX, zGap - stZ, rotation) - stZ,   x_tex      / x_count_of_objs,  (y_tex + 1)  / y_count_of_objs,
+        -xR(xGap - 1.0f - stX, zGap - stZ, rotation) - stX, 1.0f, -zR(xGap - 1.0f - stX, zGap - stZ, rotation) - stZ,  (x_tex + 1) / x_count_of_objs,  (y_tex + 1)  / y_count_of_objs,
+        -xR(xGap - 1.0f - stX, zGap - stZ, rotation) - stX, 0.0f, -zR(xGap - 1.0f - stX, zGap - stZ, rotation) - stZ,  (x_tex + 1) / x_count_of_objs,  (y_tex)      / y_count_of_objs
     };
 
     listOfInd[0].convert(indices, 0);

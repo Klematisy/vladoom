@@ -16,48 +16,45 @@ private:
     Texture *gun_tex;
     ProgramShader *gun_ps;
 
-    void update(std::chrono::duration<float> &old_duration_gun, 
-                std::chrono::duration<float> duration, 
-                Player &p, 
+    void update(std::chrono::duration<float> &old_duration_gun,
+                std::chrono::duration<float> duration,
+                Player &p,
                 GLFWwindow *window);
-    void draw(std::chrono::duration<float> &old_duration_gun, 
-              std::chrono::duration<float> duration, 
-              Player &p, 
+    void draw(std::chrono::duration<float> &old_duration_gun,
+              std::chrono::duration<float> duration,
+              Player &p,
               GLFWwindow *window);
 public:
     Gun();
-    void processing(std::chrono::duration<float> &old_duration_gun, 
-                    std::chrono::duration<float> duration, 
+    void processing(std::chrono::duration<float> &old_duration_gun,
+                    std::chrono::duration<float> duration,
                     Player &p,
                     GLFWwindow* window);
     ~Gun();
 };
 
-struct Player {
-    glm::vec3 position;
-    float rotation;
-    uint typeOfGun;
+struct Player : public Empty {
     Gun gun;
-    int hitPoints = 100;
+    uint typeOfGun = 1;
     int ammo = 100;
     int score = 0;
     uint lives = 4;
 };
 
-struct Enemy {
-    glm::vec3 position;
-    uint typeOfGun;
-    int hit_points = 100;
+struct Enemy : public Empty {
+    glm::vec3 position_check = glm::vec3(1.0f);
+    float danage = 0;
 private:
-    int num_of_sprite = 0;
-    float rotation = 0.0f;
+    int tex_x  = 0;
+    int tex_x2 = 0;
+    int tex_y  = 0;
     Vertical_plane *enemy_shape;
     ProgramShader *ps;
     Texture *enemy_tex;
     void draw(std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
-    void update();
+    void update(const Collisions &colls);
 public:
-    Enemy(glm::vec3 position);
-    void processing(std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
+    Enemy(glm::vec3 position, float rotation, int hit_points);
+    void processing(const Collisions &colls, std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
     void clear();
 };
