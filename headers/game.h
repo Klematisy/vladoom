@@ -16,9 +16,7 @@ private:
     Texture *gun_tex;
     ProgramShader *gun_ps;
 
-    void update(std::chrono::duration<float> &old_duration_gun,
-                std::chrono::duration<float> duration,
-                Player &p,
+    void update(Player &p,
                 GLFWwindow *window);
     void draw(std::chrono::duration<float> &old_duration_gun,
               std::chrono::duration<float> duration,

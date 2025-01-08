@@ -11,6 +11,7 @@ Hud::Hud() {
     hud_shader  = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
     nums_shader = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
     face_shader = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
+    guns_shader = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
 
     hud_texture = new Texture("resource/images/hud.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     hud_texture->unbind();
@@ -23,6 +24,10 @@ Hud::Hud() {
     nums_texture = new Texture("resource/images/nums.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     nums_texture->unbind();
     nums_texture->uniform("tex0", *nums_shader, 0);
+    
+    guns_texture = new Texture("resource/images/hud_guns2.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
+    guns_texture->unbind();
+    guns_texture->uniform("tex0", *guns_shader, 0);
 
     img = new Image(GL_STATIC_DRAW, 0.0f, 0.0f, 2.0f, 2.0f);
 }
@@ -88,6 +93,18 @@ void Hud::draw(Player &player, int k) {
     Symbol::draw(1.37f, 0.45f, ammo_copy / 10);
     ammo_copy %= 10;
     Symbol::draw(1.42f, 0.45f, ammo_copy);
+    
+    guns_texture->bind(GL_TEXTURE0);
+    guns_shader->useProgram();
+    int l = player.typeOfGun - 1;
+    
+    Rect r2 = { (l + 0.0f) / 4,
+                0.0f,
+                ((l + 1) + 0.0f) / 4,
+                1.0f 
+    };
+
+    Image::draw_once(1.61f, 0.4f, 0.5f * 0.7f, 1.7f * 0.7f, &r2);
 }
 
 Hud::~Hud() {

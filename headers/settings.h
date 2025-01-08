@@ -12,7 +12,10 @@ typedef unsigned char uchar;
 typedef std::string String;
 
 struct Rect {
-    float x, y, x1, y1;
+    float x;
+    float y;
+    float x1;
+    float y1;
 };
 
 struct Point {

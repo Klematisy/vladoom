@@ -72,9 +72,8 @@ void input(Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWw
         player.rotation += (xpos - 1280.0f) / 4;
     }
     
-    if (player.gun.num_of_animation == 0 &&
-        (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS ||
-        glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS))
+    if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS ||
+        glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     {
         glm::vec3 pos_of_bullet = player.position;
         pos_of_bullet = player.position;
@@ -87,27 +86,11 @@ void input(Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWw
             break;
             case 3: damage = 50;
             break;
-            case 4: damage = 100;
+            case 4: damage = 8;
             break;
         }
-
-        if (player.typeOfGun == 1) {
-            pos_of_bullet.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
-            pos_of_bullet.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
-            for (size_t i = 0; i < enemies.size(); i++) {
-                if (enemies[i].hit_points <= 0)
-                    remove<Enemy>(enemies, i);
-
-                if (fabsf(pos_of_bullet.x - enemies[i].position.x) < 0.2f && fabsf(pos_of_bullet.z - enemies[i].position.z) < 0.2f) {
-                    enemies[i].hit_points -= damage;
-                    std::cout << enemies[i].hit_points << std::endl;
-                    loop = false;
-                    break;
-                }
-            }
-        }
         
-        while (loop && player.typeOfGun != 1 && player.ammo > 0) {
+        while (loop && player.typeOfGun != 1 && player.ammo > 0 && (player.gun.num_of_animation == 0 || (player.gun.num_of_animation == 3 && player.typeOfGun == 4))) {
             pos_of_bullet.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
             pos_of_bullet.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
             for (const Map *pathOfMap : colls._piecesOfMap) {
@@ -124,6 +107,7 @@ void input(Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWw
                         remove<Enemy>(enemies, i);
                     }
                     if (fabsf(pos_of_bullet.x - enemies[i].position.x) < 0.2f && fabsf(pos_of_bullet.z - enemies[i].position.z) < 0.2f) {
+                        player.ammo--;
                         enemies[i].hit_points -= damage;
                         std::cout << enemies[i].hit_points << std::endl;
                         loop = false;
@@ -132,14 +116,32 @@ void input(Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWw
                 }
 
                 if (pathOfMap->obj[x + z * pathOfMap->width] > 0) {
+                    player.ammo--;
                     loop = false;
-                    std::cout << x1 << " " << z1 << std::endl;
+                    std::cout << x1 << " " << z1 << " " << player.ammo << std::endl;
                     break;
                 }
             }
             if (sqrt((pos_of_bullet.x - player.position.x) * (pos_of_bullet.x - player.position.x)
                    + (pos_of_bullet.z - player.position.z) * (pos_of_bullet.z - player.position.z)) >= 30) {
+                player.ammo--;
                 break;
+            }
+        }
+        
+        if (player.typeOfGun == 1 && player.gun.num_of_animation == 0) {
+            pos_of_bullet.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
+            pos_of_bullet.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
+            for (size_t i = 0; i < enemies.size(); i++) {
+                if (enemies[i].hit_points <= 0)
+                    remove<Enemy>(enemies, i);
+
+                if (fabsf(pos_of_bullet.x - enemies[i].position.x) < 0.2f && fabsf(pos_of_bullet.z - enemies[i].position.z) < 0.2f) {
+                    enemies[i].hit_points -= damage;
+                    std::cout << enemies[i].hit_points << std::endl;
+                    loop = false;
+                    break;
+                }
             }
         }
     }

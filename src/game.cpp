@@ -80,7 +80,7 @@ void game(GLFWwindow *window) {
     player.ammo = 99;
     
     std::vector<Enemy> enemies;
-    enemies.push_back(Enemy(glm::vec3(-2.5f, 0.0f, -7.5f), 90.0f, 100));
+    enemies.push_back(Enemy(glm::vec3(-1.5f, 0.0f, -7.5f), 90.0f, 100));
 
     Cube part (map,  mapWidth, mapHeight, 1.0f,  0.0f,  0.0f,  0.0f, cWalls);
     Cube part1(map2, mapWidth, mapHeight, 1.0f,  8.0f,  0.0f,  0.0f, cWalls);

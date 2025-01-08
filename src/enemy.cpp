@@ -12,7 +12,7 @@ Enemy::Enemy(glm::vec3 position, float rotation, int hit_points)
 
     ps = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
 
-    enemy_tex = new Texture("resource/images/enemies/Enemy-0001.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
+    enemy_tex = new Texture("resource/images/enemies/Enemy-01.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     enemy_tex->unbind();
     enemy_tex->uniform("tex0", *ps, 0);
     this->rotation = rotation;
@@ -36,7 +36,8 @@ void Enemy::update(const Collisions &colls) {
 }
 
 void Enemy::processing(const Collisions &colls, std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj) {
-    update(colls);
+    if (hit_points > 0)
+        update(colls);
     draw(old_duration_enemy, duration, player, view, proj);
 }
 
