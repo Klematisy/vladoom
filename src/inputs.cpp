@@ -82,13 +82,14 @@ void input(Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWw
         switch (player.typeOfGun) {
             case 1: damage = 10;
             break;
-            case 2: damage = 20;
+            case 2: damage = 34;
             break;
             case 3: damage = 50;
             break;
-            case 4: damage = 8;
+            case 4: damage = 14;
             break;
         }
+        
         
         while (loop && player.typeOfGun != 1 && player.ammo > 0 && (player.gun.num_of_animation == 0 || (player.gun.num_of_animation == 3 && player.typeOfGun == 4))) {
             pos_of_bullet.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
