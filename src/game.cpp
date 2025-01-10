@@ -81,7 +81,13 @@ void game(GLFWwindow *window) {
     
     std::vector<Enemy> enemies;
     enemies.push_back(Enemy(glm::vec3(-1.5f, 0.0f, -7.5f), 90.0f, 100));
-
+    
+    int *map12 = new int[4] {
+        1, 1,
+        1, 1
+    };
+    int *map22 = new int[1] {1};
+    
     Cube part (map,  mapWidth, mapHeight, 1.0f,  0.0f,  0.0f,  0.0f, cWalls);
     Cube part1(map2, mapWidth, mapHeight, 1.0f,  8.0f,  0.0f,  0.0f, cWalls);
     Cube part2(map3, mapWidth, mapHeight, 1.0f,  8.0f, 11.0f,  0.0f, cWalls);
@@ -148,7 +154,7 @@ void game(GLFWwindow *window) {
         int modelLoc = glGetUniformLocation(map_shader.shaderProgram, "model");
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
-        part.draw();
+        // part.draw();
         part1.draw();
         part2.draw();
 

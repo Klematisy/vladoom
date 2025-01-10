@@ -24,8 +24,9 @@ void Enemy::update(const Collisions &colls) {
     map = check_collisions(*this, colls);
     
     float speed = 0.002f;
-    int x = abs(position.x);
-    int z = abs(position.z);
+    
+    int x = std::ceil(position.x);
+    int z = std::ceil(position.z);
     
     if (!CollidesRect(x, z, position.x + cosf((90 + rotation) * 3.14 / 180.0f) * speed, position.z, 0.1f, 0.1f)) {
         position.x += cosf((90 + rotation) * 3.14 / 180.0f) * speed;

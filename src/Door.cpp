@@ -4,6 +4,8 @@
 
 String bindShader(std::string dir);
 const static String shaderDir = "resource/Shaders/";
+// static auto start = std::chrono::high_resolution_clock::now();
+// static std::chrono::time_point<std::chrono::high_resolution_clock>
 
 Door::Door(int *map, const float &xGap, const float &zGap, float rotation, Collisions &col, Texture &tex) {
     String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
@@ -11,8 +13,8 @@ Door::Door(int *map, const float &xGap, const float &zGap, float rotation, Colli
     ps_door  = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
     ps_plane = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
     
-    // start = std::chrono::high_resolution_clock::now();
-    // states = DOOR_IS_STANDING;
+    states = DOOR_IS_STANDING;
+    start = std::chrono::high_resolution_clock::now();
     
     pos = glm::vec3(0.0f);
 
@@ -38,16 +40,43 @@ void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindo
     x = abs(x);
     z = abs(z);
     
+    std::chrono::duration<float> duration  = std::chrono::high_resolution_clock::now() - start;
+    
+    if (duration.count() >= 5.0f && states == DOOR_IS_STANDING && *coordinate <= -1.0f) {
+        states = DOOR_CLOSES;
+        start = std::chrono::high_resolution_clock::now();
+    }
+    
     if (inObj(*cols, glm::vec3(xf, 0.0f, zf))) {
         if (cols->obj[x + z * cols->width] == 6 && glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-            *coordinate -= 0.001f;
+            states = DOOR_OPENS;
         }
     }
-    if (-1.01f < *coordinate && *coordinate < 0.0f) {
-        *coordinate -= 0.01f;
-    } else if (*coordinate < -1.0f && cols->obj[0] != 0) {
-        cols->obj[0] = 0;
+    
+    if (*coordinate < 0.0f && states == DOOR_CLOSES) {
+        *coordinate += 0.01f;
+    } else if (*coordinate > -0.001f && cols->obj[0] == 0 && states == DOOR_CLOSES) {
+        cols->obj[0] = 6;
+        states = DOOR_IS_STANDING;
     }
+    
+    if (-1.01f < *coordinate && states == DOOR_OPENS) {
+        *coordinate -= 0.01f;
+    } else if (*coordinate <= -1.0f && cols->obj[0] != 0 && states == DOOR_OPENS) {
+        cols->obj[0] = 0;
+        states = DOOR_IS_STANDING;
+    }
+    
+    // if (inObj(*cols, glm::vec3(xf, 0.0f, zf))) {
+    //     if (cols->obj[x + z * cols->width] == 6 && glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+    //         *coordinate -= 0.001f;
+    //     }
+    // }
+    // if (-1.01f < *coordinate && *coordinate < 0.0f) {
+    //     *coordinate -= 0.01f;
+    // } else if (*coordinate < -1.0f && cols->obj[0] != 0) {
+    //     cols->obj[0] = 0;
+    // }
 
     glm::mat4 model = glm::mat4(1.0f);
     model *= glm::translate(model, pos);

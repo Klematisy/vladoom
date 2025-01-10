@@ -14,12 +14,11 @@ class Door {
     ProgramShader *ps_door;
     ProgramShader *ps_plane;
     Map *cols;
+    std::chrono::time_point<std::chrono::high_resolution_clock> start;
     
-    // std::chrono::time_point<std::chrono::high_resolution_clock> start;
-    
-    // enum DOOR_STATES { DOOR_OPENS, DOOR_CLOSES, DOOR_IS_STANDING };
+    enum DOOR_STATES { DOOR_OPENS, DOOR_CLOSES, DOOR_IS_STANDING };
 public:
-    // DOOR_STATES states;
+    DOOR_STATES states;
     float *coordinate;
     Door(int *map, const  float &xGap, const float &zGap, float rotation, Collisions& col, Texture &tex);
     ~Door();

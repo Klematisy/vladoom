@@ -31,7 +31,7 @@ public:
     ~Gun();
 };
 
-struct Player : public Empty {
+struct Player : public Entity {
     Gun gun;
     uint typeOfGun = 1;
     int ammo = 100;
@@ -39,7 +39,7 @@ struct Player : public Empty {
     uint lives = 4;
 };
 
-struct Enemy : public Empty {
+struct Enemy : public Entity {
     glm::vec3 position_check = glm::vec3(1.0f);
     float danage = 0;
 private:

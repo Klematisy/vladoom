@@ -12,14 +12,12 @@ void input(Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWw
     std::vector<Map> collisions;
     float spd = 0.04f;
     int x, z, x1, z1;
+    float player_width = 0.1f;
     map = check_collisions(player, colls);
+    
+    x = std::ceil(player.position.x);
+    z = std::ceil(player.position.z);
 
-    x = player.position.x;
-    z = player.position.z;
-
-    x = abs(x);
-    z = abs(z);
-    // std::cout << enemies[0].position.x << " " << enemies[0].position.z << std::endl;
     double xpos, ypos;
     glfwGetCursorPos(window, &xpos, &ypos);
     glfwSetCursorPos(window, 2560 / 2.0f, 1600 / 2.0f);
@@ -30,34 +28,34 @@ void input(Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWw
         speed = spd;
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        if (!CollidesRect(x, z, player.position.x - sinf(-(90 + player.rotation) * 3.14 / 180.0f) * speed, player.position.z, 0.1f, 0.1f)) {
+        if (!CollidesRect(x, z, player.position.x - sinf(-(90 + player.rotation) * 3.14 / 180.0f) * speed, player.position.z, player_width, player_width)) {
             player.position.x -= sinf(-(90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
-        if (!CollidesRect(x, z, player.position.x, player.position.z - cosf(-(90 + player.rotation) * 3.14 / 180.0f) * speed, 0.1f, 0.1f)) {
+        if (!CollidesRect(x, z, player.position.x, player.position.z - cosf(-(90 + player.rotation) * 3.14 / 180.0f) * speed, player_width, player_width)) {
             player.position.z -= cosf(-(90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)  {
-        if (!CollidesRect(x, z, player.position.x + sinf(-(90 + player.rotation) * 3.14 / 180.0f) * speed, player.position.z, 0.1f, 0.1f)) {
+        if (!CollidesRect(x, z, player.position.x + sinf(-(90 + player.rotation) * 3.14 / 180.0f) * speed, player.position.z, player_width, player_width)) {
             player.position.x += sinf(-(90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
-        if (!CollidesRect(x, z, player.position.x, player.position.z + cosf(-(90 + player.rotation) * 3.14 / 180.0f) * speed, 0.1f, 0.1f)) {
+        if (!CollidesRect(x, z, player.position.x, player.position.z + cosf(-(90 + player.rotation) * 3.14 / 180.0f) * speed, player_width, player_width)) {
             player.position.z += cosf(-(90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
     }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        if (!CollidesRect(x, z, player.position.x + cosf((90 + player.rotation) * 3.14 / 180.0f) * speed, player.position.z, 0.1f, 0.1f)) {
+        if (!CollidesRect(x, z, player.position.x + cosf((90 + player.rotation) * 3.14 / 180.0f) * speed, player.position.z,  player_width, player_width)) {
             player.position.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
-        if (!CollidesRect(x, z, player.position.x, player.position.z + sinf((90 + player.rotation) * 3.14 / 180.0f) * speed, 0.1f, 0.1f)) {
+        if (!CollidesRect(x, z, player.position.x, player.position.z + sinf((90 + player.rotation) * 3.14 / 180.0f) * speed,  player_width, player_width)) {
             player.position.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        if (!CollidesRect(x, z, player.position.x - cosf((90 + player.rotation) * 3.14 / 180.0f) * speed, player.position.z, 0.1f, 0.1f)) {
+        if (!CollidesRect(x, z, player.position.x - cosf((90 + player.rotation) * 3.14 / 180.0f) * speed, player.position.z,  player_width, player_width)) {
             player.position.x -= cosf((90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
-        if (!CollidesRect(x, z, player.position.x, player.position.z - sinf((90 + player.rotation) * 3.14 / 180.0f) * speed, 0.1f, 0.1f)) {
+        if (!CollidesRect(x, z, player.position.x, player.position.z - sinf((90 + player.rotation) * 3.14 / 180.0f) * speed,  player_width, player_width)) {
             player.position.z -= sinf((90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
     }

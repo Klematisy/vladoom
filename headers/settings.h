@@ -119,31 +119,33 @@ static void remove(std::vector<T>& v, size_t index) {
 
 static std::unique_ptr<int> map;
 
-static bool Collides(int stX, int stZ, float x, float z) {
-    int x1 = x;
-    int z1 = z;
-    x1 = abs(x1);
-    z1 = abs(z1);
-    return map.get()[12 + (x1 - stX) + (z1 - stZ) * 5] == 1;
+static bool Collides(int stX, int stZ, int x, int z) {
+    // std::cout << x << " " << z << std::endl;
+    return map.get()[12 + (stX - x) + (stZ - z) * 5] == 1;
+    // if (x < 0 || z < 0)
+    //     return map.get()[12 + (stX - x) + (stZ - z) * 5] == 1;
+    // else {
+    //     return map.get()[12 + (stX - x) + (stZ - z) * 5] == 1;
+    // }
 }
 
 static bool CollidesRect(int startX, int startZ, float x, float z, float x_half_extent, float z_half_extent) {
-    return Collides(startX, startZ, x - x_half_extent, z - z_half_extent)
-        || Collides(startX, startZ, x + x_half_extent, z - z_half_extent)
-        || Collides(startX, startZ, x + x_half_extent, z + z_half_extent)
-        || Collides(startX, startZ, x - x_half_extent, z + z_half_extent);
+    return Collides(std::ceil(startX), std::ceil(startZ), std::ceil(x - x_half_extent), std::ceil(z - z_half_extent))
+        || Collides(std::ceil(startX), std::ceil(startZ), std::ceil(x + x_half_extent), std::ceil(z - z_half_extent))
+        || Collides(std::ceil(startX), std::ceil(startZ), std::ceil(x + x_half_extent), std::ceil(z + z_half_extent))
+        || Collides(std::ceil(startX), std::ceil(startZ), std::ceil(x - x_half_extent), std::ceil(z + z_half_extent));
 }
 
-struct Empty {
+struct Entity {
     glm::vec3 position = glm::vec3(1.0f);
     float rotation = 0.0f;
     int hit_points = 100;
 };
 
-static std::unique_ptr<int> check_collisions(Empty &creature, const Collisions &colls) {
+static std::unique_ptr<int> check_collisions(const Entity &creature, const Collisions &colls) {
     int x, z, x1, z1;
-    glm::vec3 pointPos = creature.position;
-
+    glm::vec3 point_pos = creature.position;
+    
     int *arr = new int[25] {
         0, 0, 0, 0, 0,
         0, 0, 0, 0, 0,
@@ -152,25 +154,35 @@ static std::unique_ptr<int> check_collisions(Empty &creature, const Collisions &
         0, 0, 0, 0, 0
     };
 
-    int k = 0;
     for (const Map *pathOfMap : colls._piecesOfMap) {
         for (float rot = 0.0f; rot < 360.0f; rot+=45.0f) {
-            pointPos = creature.position;
+            point_pos = creature.position;
 
-            x = std::ceil(pointPos.x + pathOfMap->gapX);
-            z = std::ceil(pointPos.z + pathOfMap->gapZ);
+            x = std::ceil(point_pos.x + pathOfMap->gapX);
+            z = std::ceil(point_pos.z + pathOfMap->gapZ);
 
-            pointPos.x += cos(rot);
-            pointPos.z += sin(rot);
+            point_pos.x += cos(rot);
+            point_pos.z += sin(rot);
 
-            x1 = std::ceil(pointPos.x + pathOfMap->gapX);
-            z1 = std::ceil(pointPos.z + pathOfMap->gapZ);
+            x1 = std::ceil(point_pos.x + pathOfMap->gapX);
+            z1 = std::ceil(point_pos.z + pathOfMap->gapZ);
 
-            if (inObj(*pathOfMap, pointPos) && pathOfMap->obj[abs(x1) + abs(z1) * pathOfMap->width] > 0) {
+            if (inObj(*pathOfMap, point_pos) && pathOfMap->obj[abs(x1) + abs(z1) * pathOfMap->width] > 0) {
                 arr[12 + (x - x1) + (z - z1) * 5] = 1;
             }
         }
     }
     
+    /*
+    std::cout << std::endl;
+    for (size_t i = 0; i < 25; i++) {
+        if (i % 5 == 0) {
+            std::cout << std::endl;
+        }
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+    //*/
+     
     return (std::unique_ptr<int>) arr;
 }
