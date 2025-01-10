@@ -39,6 +39,10 @@ struct Player : public Entity {
     uint lives = 4;
 };
 
+struct Item : Entity {
+    
+};
+
 struct Enemy : public Entity {
     glm::vec3 position_check = glm::vec3(1.0f);
     float danage = 0;
@@ -52,7 +56,7 @@ private:
     void draw(std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
     void update(const Collisions &colls);
 public:
-    Enemy(glm::vec3 position, float rotation, int hit_points);
+    Enemy(glm::vec3 position, float rotation, int hit_points, String name_of_file);
     void processing(const Collisions &colls, std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
     void clear();
 };

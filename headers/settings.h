@@ -120,13 +120,7 @@ static void remove(std::vector<T>& v, size_t index) {
 static std::unique_ptr<int> map;
 
 static bool Collides(int stX, int stZ, int x, int z) {
-    // std::cout << x << " " << z << std::endl;
     return map.get()[12 + (stX - x) + (stZ - z) * 5] == 1;
-    // if (x < 0 || z < 0)
-    //     return map.get()[12 + (stX - x) + (stZ - z) * 5] == 1;
-    // else {
-    //     return map.get()[12 + (stX - x) + (stZ - z) * 5] == 1;
-    // }
 }
 
 static bool CollidesRect(int startX, int startZ, float x, float z, float x_half_extent, float z_half_extent) {
@@ -172,17 +166,6 @@ static std::unique_ptr<int> check_collisions(const Entity &creature, const Colli
             }
         }
     }
-    
-    /*
-    std::cout << std::endl;
-    for (size_t i = 0; i < 25; i++) {
-        if (i % 5 == 0) {
-            std::cout << std::endl;
-        }
-        std::cout << arr[i] << " ";
-    }
-    std::cout << std::endl;
-    //*/
      
     return (std::unique_ptr<int>) arr;
 }

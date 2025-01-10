@@ -5,14 +5,14 @@
 const static String shaderDir = "resource/Shaders/";
 String bindShader(std::string dir);
 
-Enemy::Enemy(glm::vec3 position, float rotation, int hit_points) 
+Enemy::Enemy(glm::vec3 position, float rotation, int hit_points, String name_of_file)
 {
     String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
 
     ps = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
 
-    enemy_tex = new Texture("resource/images/enemies/Enemy-01.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
+    enemy_tex = new Texture((((String)"resource/images/enemies/").append(name_of_file)).c_str(), GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     enemy_tex->unbind();
     enemy_tex->uniform("tex0", *ps, 0);
     this->rotation = rotation;
@@ -28,10 +28,10 @@ void Enemy::update(const Collisions &colls) {
     int x = std::ceil(position.x);
     int z = std::ceil(position.z);
     
-    if (!CollidesRect(x, z, position.x + cosf((90 + rotation) * 3.14 / 180.0f) * speed, position.z, 0.1f, 0.1f)) {
+    if (!CollidesRect(x, z, position.x + cosf((90 + rotation) * 3.14 / 180.0f) * speed, position.z, 0.4f, 0.4f)) {
         position.x += cosf((90 + rotation) * 3.14 / 180.0f) * speed;
     }
-    if (!CollidesRect(x, z, position.x, position.z + sinf((90 + rotation) * 3.14 / 180.0f) * speed, 0.1f, 0.1f)) {
+    if (!CollidesRect(x, z, position.x, position.z + sinf((90 + rotation) * 3.14 / 180.0f) * speed, 0.4f, 0.4f)) {
         position.z += sinf((90 + rotation) * 3.14 / 180.0f) * speed;
     }
 }
@@ -87,7 +87,7 @@ void Enemy::draw(std::chrono::duration<float> &old_duration_enemy, std::chrono::
         Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, tex_x, 6, 8.0f, 7.0f);
     } else {
         if (fabsf(position.x - position_check.x) < 0.0000001 || fabsf(position.z - position_check.z) < 0.0000001) {
-            Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, std::ceil(tex_rotation / 45), 5, 8.0f, 7.0f);
+            Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, std::ceil(tex_rotation / 45), 4, 8.0f, 7.0f);
         } else {
             if (duration.count() - old_duration_enemy.count() > 0.3f) {
                 tex_y = (tex_y < 3) ? ++tex_y : 0;

@@ -80,7 +80,7 @@ void game(GLFWwindow *window) {
     player.ammo = 99;
     
     std::vector<Enemy> enemies;
-    enemies.push_back(Enemy(glm::vec3(-1.5f, 0.0f, -7.5f), 90.0f, 100));
+    enemies.push_back(Enemy(glm::vec3(-1.5f, 0.0f, -7.5f), 90.0f, 100, "Enemy-02.png"));
     
     int *map12 = new int[4] {
         1, 1,
