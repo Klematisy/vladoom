@@ -42,7 +42,7 @@ void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindo
     
     std::chrono::duration<float> duration  = std::chrono::high_resolution_clock::now() - start;
     
-    if (duration.count() >= 5.0f && states == DOOR_IS_STANDING && *coordinate <= -1.0f) {
+    if (duration.count() >= 3.0f && states == DOOR_IS_STANDING && *coordinate <= -1.0f) {
         states = DOOR_CLOSES;
         start = std::chrono::high_resolution_clock::now();
     }
@@ -50,6 +50,7 @@ void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindo
     if (inObj(*cols, glm::vec3(xf, 0.0f, zf))) {
         if (cols->obj[x + z * cols->width] == 6 && glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
             states = DOOR_OPENS;
+            start = std::chrono::high_resolution_clock::now();
         }
     }
     

@@ -154,7 +154,7 @@ void game(GLFWwindow *window) {
         int modelLoc = glGetUniformLocation(map_shader.shaderProgram, "model");
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
-        // part.draw();
+        part.draw();
         part1.draw();
         part2.draw();
 
