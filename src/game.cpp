@@ -182,7 +182,7 @@ void game(GLFWwindow *window) {
         }
         hud.draw(player, k);
 
-        if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) {
+        if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS && player.hit_points > 0) {
             player.hit_points -= 1.0f;
         }
 

@@ -1,6 +1,6 @@
 build:
 	clear
-	g++-14 -g Source\ files/*.cpp Source\ files//*.c -w -o Output\ files/main -I./Dependencies/include -I./Header\ files -L./Dependencies/library ./Dependencies/library/libglfw.3.4.dylib -framework OpenGL -framework Cocoa
+	g++-14 -g src/*.cpp src/ENG/*.c -w -o build/main -I./deps/include -I./src/ENG -I./headers -L./deps/library ./deps/library/libglfw.3.4.dylib -framework OpenGL -framework Cocoa
 run:
 	clear
-	./Output\ files/main
+	./build/main

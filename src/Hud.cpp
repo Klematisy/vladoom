@@ -38,18 +38,17 @@ void Hud::draw(Player &player, int k) {
 
     img->draw(nullptr);
 
-    if (player.hit_points <= 0) {
-        player.hit_points = 100.0f;
-    }
-
     face_texture->bind(GL_TEXTURE0);
     face_shader->useProgram();
-    float num_of_tex = (int) ((100 - player.hit_points) / 14);
-
+    float num_of_tex = (int) 6 - ((player.hit_points) / (100 / 6));
     float a = (num_of_tex * 3 >= 12) ? 0.5f : 0.0f;
     num_of_tex *= 3;
-
-    if (num_of_tex <= 21)
+    
+    if (player.hit_points == 0.0f) {
+        num_of_tex = 22;
+    }
+    
+    if (num_of_tex < 19)
         num_of_tex += k;
 
     Rect r = {

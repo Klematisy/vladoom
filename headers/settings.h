@@ -52,14 +52,12 @@ struct Vmath {
 static float xR(float x, float y, float rotation) {
     glm::mat2 matrix(Vmath::cos(rotation), -Vmath::sin(rotation), Vmath::sin(rotation), Vmath::cos(rotation));
     x = matrix[0][0] *  x + matrix[0][1] * y;
-
     return x;
 }
 
 static float zR(float x, float z, float rotation) {
     glm::mat2 matrix(Vmath::cos(rotation), -Vmath::sin(rotation), Vmath::sin(rotation), Vmath::cos(rotation));
     z = matrix[1][0] * x + matrix[1][1] * z;
-
     return z;
 }
 
