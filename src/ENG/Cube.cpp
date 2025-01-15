@@ -1,7 +1,7 @@
 #include <math.h>
 #include "libs.h"
 
-static void push(std::vector<Point> &listOfVertices, int i, int j, int mapWidth, float xGap, float zGap, float yGap, float width, float rotation, float texInd) {
+static void push(std::vector<Point> &listOfVertices, int i, int j, int mapWidth, float xGap, float zGap, float yCords, float yGap, float width, float rotation, float texInd) {
     float x = (j % mapWidth) + xGap;
     float z = i + zGap;
 
@@ -9,42 +9,43 @@ static void push(std::vector<Point> &listOfVertices, int i, int j, int mapWidth,
     float stZ = z + CUBE_SIZE / 2;
 
     listOfVertices.push_back({ xR(x - stX, z - stZ, rotation) + stX, 
-                            yGap, 
+                            yCords,
                             zR(x - stX, z - stZ, rotation) + stZ,
                             (texInd - 1) / COUNT_OF_MATERIALS, 
                             yGap });
 
 
     listOfVertices.push_back({ xR(x - stX, CUBE_SIZE + z - stZ, rotation) + stX, 
-                            yGap,
+                            yCords,
                             zR(x - stX, CUBE_SIZE + z - stZ, rotation) + stZ, 
                             texInd / COUNT_OF_MATERIALS, 
                             yGap });
 
     listOfVertices.push_back({ xR(x + width - stX, CUBE_SIZE + z - stZ, rotation) + stX, 
-                            yGap,
+                            yCords,
                             zR(x + width - stX, CUBE_SIZE + z - stZ, rotation) + stZ,
                             (texInd - 1) / COUNT_OF_MATERIALS,
                             yGap });
 
     listOfVertices.push_back({ xR(x + width - stX, z - stZ, rotation) + stX, 
-                            yGap,
+                            yCords,
                             zR(x + width - stX, z - stZ, rotation) + stZ, 
                             texInd / COUNT_OF_MATERIALS,
                             yGap });
 }
 
-void Cube::createShapes(int* map, float* vert, uint* ind, uint countOfUnits, const int mapWidth, const int mapHeight, float width, float xGap, float zGap, float rotation) {
+void Cube::createShapes(int *map, float *vert, uint *ind, uint countOfUnits, const int mapWidth, const int mapHeight, float width, float xGap, float zGap, float rotation) {
     std::vector<Point>    listOfVertices;
     std::vector<Index_36> listOfIndices;
 
     uint count = 0;
+    int xcoo = x_count_of_objs;
 
     for (int i = 0; i < mapHeight; i++) {
         for (int j = i * mapWidth; j < (i + 1) * mapWidth; j++) {
             if (map[j] > 0) {
-                push(listOfVertices, i, j, mapWidth, xGap, zGap, 0.0f, width, rotation, map[j] + 0.0f);
-                push(listOfVertices, i, j, mapWidth, xGap, zGap, 1.0f, width, rotation, map[j] + 0.0f);
+                push(listOfVertices, i, j, mapWidth, xGap, zGap, 0.0f, 1.0f - ((((map[j] - 1) / xcoo) + 1.0f) / y_count_of_objs), width, rotation, (float) (map[j] % xcoo == 0) ? xcoo : map[j] % xcoo);
+                push(listOfVertices, i, j, mapWidth, xGap, zGap, 1.0f, 1.0f - ((((map[j] - 1) / xcoo) + 0.0f) / y_count_of_objs), width, rotation, (float) (map[j] % xcoo == 0) ? xcoo : map[j] % xcoo);
                 listOfIndices.push_back(count++);
             }
         }
@@ -67,7 +68,10 @@ void Cube::createShapes(int* map, float* vert, uint* ind, uint countOfUnits, con
     }
 }
 
-Cube::Cube(int *map, int mapWidth, int mapHeight, float width, float xGap, float zGap, float rotation, Collisions& col) {
+Cube::Cube(int *map, int mapWidth, int mapHeight, float width, float xGap, float zGap, float rotation, Collisions &col, float x_count_of_objs, float y_count_of_objs) {
+    this->x_count_of_objs = x_count_of_objs;
+    this->y_count_of_objs = y_count_of_objs;
+    
     uint countOfUnits = 0;
 
     float xGapfl = std::floor(xGap);

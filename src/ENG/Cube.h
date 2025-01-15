@@ -15,8 +15,11 @@ class Cube {
     VBO *vbo;
     EBO *ebo;
     Map *m;
+    
+    float x_count_of_objs;
+    float y_count_of_objs;
 public:
-    Cube(int *map, int mapWidth, int mapHeight, float width, float xGap, float zGap, float rotation, Collisions& col);
+    Cube(int *map, int mapWidth, int mapHeight, float width, float xGap, float zGap, float rotation, Collisions &col, float x_count_of_objs, float y_count_of_objs);
     void createShapes(int *map, float *vert, uint *ind, uint countOfUnits, const int mapWidth, const int mapHeight, float width, float xGap, float zGap, float rotation);
     void bind();
     void draw();

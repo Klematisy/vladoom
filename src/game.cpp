@@ -20,7 +20,7 @@ void game(GLFWwindow *window) {
 
     ProgramShader map_shader = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
 
-    Texture* Walls = new Texture("resource/images/atlas.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
+    Texture* Walls = new Texture("resource/images/atlas2.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     Walls->unbind();
     Walls->uniform("tex0", map_shader, 0);
 
@@ -88,23 +88,23 @@ void game(GLFWwindow *window) {
     };
     int *map22 = new int[1] {1};
     
-    Cube part (map,  mapWidth, mapHeight, 1.0f,  0.0f,  0.0f,  0.0f, cWalls);
-    Cube part1(map2, mapWidth, mapHeight, 1.0f,  8.0f,  0.0f,  0.0f, cWalls);
-    Cube part2(map3, mapWidth, mapHeight, 1.0f,  8.0f, 11.0f,  0.0f, cWalls);
+    Cube part (map,  mapWidth, mapHeight, 1.0f,  0.0f,  0.0f,  0.0f, cWalls, 5.0f, 2.0f);
+    Cube part1(map2, mapWidth, mapHeight, 1.0f,  8.0f,  0.0f,  0.0f, cWalls, 5.0f, 2.0f);
+    Cube part2(map3, mapWidth, mapHeight, 1.0f,  8.0f, 11.0f,  0.0f, cWalls, 5.0f, 2.0f);
 
     Door door1(doorArr1,  -4.0f,  -2.0f,  0.0f, cWalls, *Walls);
     Door door2(doorArr2, -13.0f,  -3.0f, 90.0f, cWalls, *Walls);
     Door door3(doorArr3,  -7.0f,  -9.0f,  0.0f, cWalls, *Walls);
     Door door4(doorArr4, -13.0f, -10.0f, 90.0f, cWalls, *Walls);
 
-    Horizontal_plane room1( map,  mapWidth, mapHeight, 0.0f, 0.0f, 0.0f, 7.0f);
-    Horizontal_plane room15(map,  mapWidth, mapHeight, 0.0f, 1.0f, 0.0f, 8.0f);
+    Horizontal_plane room1( map,  mapWidth, mapHeight, 0.0f, 0.0f,  0.0f,  8, 5.0f, 2.0f);
+    Horizontal_plane room15(map,  mapWidth, mapHeight, 0.0f, 1.0f,  0.0f,  9, 5.0f, 2.0f);
 
-    Horizontal_plane room2( map2, mapWidth, mapHeight, 8.0f, 0.0f, 0.0f, 7.0f);
-    Horizontal_plane room25(map2, mapWidth, mapHeight, 8.0f, 1.0f, 0.0f, 9.0f);
+    Horizontal_plane room2( map2, mapWidth, mapHeight, 8.0f, 0.0f,  0.0f,  8, 5.0f, 2.0f);
+    Horizontal_plane room25(map2, mapWidth, mapHeight, 8.0f, 1.0f,  0.0f, 10, 5.0f, 2.0f);
 
-    Horizontal_plane room3( map3, mapWidth, mapHeight, 8.0f, 0.0f, 11.0f, 7.0f);
-    Horizontal_plane room35(map3, mapWidth, mapHeight, 8.0f, 1.0f, 11.0f, 9.0f);
+    Horizontal_plane room3( map3, mapWidth, mapHeight, 8.0f, 0.0f, 11.0f,  8, 5.0f, 2.0f);
+    Horizontal_plane room35(map3, mapWidth, mapHeight, 8.0f, 1.0f, 11.0f, 10, 5.0f, 2.0f);
 
     Hud hud;
 
@@ -182,6 +182,10 @@ void game(GLFWwindow *window) {
         }
         hud.draw(player, k);
 
+        if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS && player.hit_points < 100) {
+            player.hit_points += 1.0f;
+        }
+        
         if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS && player.hit_points > 0) {
             player.hit_points -= 1.0f;
         }

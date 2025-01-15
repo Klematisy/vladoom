@@ -9,7 +9,6 @@ Vertical_plane::Vertical_plane(float xGap,
                                float action_pointX, 
                                float action_pointZ, 
                                int x_tex,
-                               int y_tex,
                                float x_count_of_objs,
                                float y_count_of_objs) 
 {
@@ -22,12 +21,19 @@ Vertical_plane::Vertical_plane(float xGap,
 
     uint   indices[6];
     int j = 0;
-
+    
+    // std::cout << ((int) x_tex / 5 / 2.0f)  << std::endl;
+    
+    int xcoo = x_count_of_objs;
+    
+    int res1 = ( x_tex      % xcoo == 0) ? xcoo     :  x_tex      % xcoo;
+    int res2 = ((x_tex - 1) % xcoo == 0) ? xcoo - 1 : (x_tex - 1) % xcoo;
+    
     float vertices[20] = {
-        -xR(xGap - 0.0f - stX, zGap - stZ, rotation) - stX, 0.0f, -zR(xGap - 0.0f - stX, zGap - stZ, rotation) - stZ,   x_tex      / x_count_of_objs,  (y_tex)      / y_count_of_objs,
-        -xR(xGap - 0.0f - stX, zGap - stZ, rotation) - stX, 1.0f, -zR(xGap - 0.0f - stX, zGap - stZ, rotation) - stZ,   x_tex      / x_count_of_objs,  (y_tex + 1)  / y_count_of_objs,
-        -xR(xGap - 1.0f - stX, zGap - stZ, rotation) - stX, 1.0f, -zR(xGap - 1.0f - stX, zGap - stZ, rotation) - stZ,  (x_tex + 1) / x_count_of_objs,  (y_tex + 1)  / y_count_of_objs,
-        -xR(xGap - 1.0f - stX, zGap - stZ, rotation) - stX, 0.0f, -zR(xGap - 1.0f - stX, zGap - stZ, rotation) - stZ,  (x_tex + 1) / x_count_of_objs,  (y_tex)      / y_count_of_objs
+        -xR(xGap - 0.0f - stX, zGap - stZ, rotation) - stX, 0.0f, -zR(xGap - 0.0f - stX, zGap - stZ, rotation) - stZ,  (res1) / x_count_of_objs, 1.0f - (((x_tex - 1) / xcoo + 1) / y_count_of_objs),
+        -xR(xGap - 0.0f - stX, zGap - stZ, rotation) - stX, 1.0f, -zR(xGap - 0.0f - stX, zGap - stZ, rotation) - stZ,  (res1) / x_count_of_objs, 1.0f - (((x_tex - 1) / xcoo)     / y_count_of_objs),
+        -xR(xGap - 1.0f - stX, zGap - stZ, rotation) - stX, 1.0f, -zR(xGap - 1.0f - stX, zGap - stZ, rotation) - stZ,  (res2) / x_count_of_objs, 1.0f - (((x_tex - 1) / xcoo)     / y_count_of_objs),
+        -xR(xGap - 1.0f - stX, zGap - stZ, rotation) - stX, 0.0f, -zR(xGap - 1.0f - stX, zGap - stZ, rotation) - stZ,  (res2) / x_count_of_objs, 1.0f - (((x_tex - 1) / xcoo + 1) / y_count_of_objs)
     };
 
     listOfInd[0].convert(indices, 0);

@@ -17,7 +17,6 @@ public:
                    float action_pointX,
                    float action_pointZ,
                    int x_tex,
-                   int y_tex,
                    float x_count_of_objs,
                    float y_count_of_objs);
     Vertical_plane() {}

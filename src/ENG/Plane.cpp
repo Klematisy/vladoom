@@ -2,20 +2,25 @@
 #include "Plane.h"
 #include "constants.h"
 
-void Horizontal_plane::createShapes(float *plane, uint *indices, uint countOfUnits, float ind) {
+void Horizontal_plane::createShapes(float *plane, uint *indices, uint countOfUnits, int ind, float x_count_of_objs, float y_count_of_objs) {
     std::vector<Point>   listOfVert;
     std::vector<Index_6> listOfInd;
     uint count = 0;
     float k;
+    
+    int xcoo = x_count_of_objs;
 
     for (uint i = 0; i < height; i++) {
         for (uint j = i * width; j < (i + 1) * width; j++) {
             if (map[j] == 0) {
+                int res1 = ( ind      % xcoo == 0) ? xcoo     :  ind      % xcoo;
+                int res2 = ((ind - 1) % xcoo == 0) ? xcoo - 1 : (ind - 1) % xcoo;
+                
                 k = j % width + xGap;
-                listOfVert.push_back({ (k + 0.0f), yGap, (i + 0.0f + zGap), (ind - 1) / COUNT_OF_MATERIALS, 0.0f });
-                listOfVert.push_back({ (k + 1.0f), yGap, (i + 0.0f + zGap),  ind      / COUNT_OF_MATERIALS, 0.0f });
-                listOfVert.push_back({ (k + 1.0f), yGap, (i + 1.0f + zGap),  ind      / COUNT_OF_MATERIALS, 1.0f });
-                listOfVert.push_back({ (k + 0.0f), yGap, (i + 1.0f + zGap), (ind - 1) / COUNT_OF_MATERIALS, 1.0f });
+                listOfVert.push_back({ (k + 0.0f), yGap, (i + 0.0f + zGap), ( res2) / x_count_of_objs, 1.0f - ((((ind - 1) / xcoo) + 1.0f) / y_count_of_objs) });
+                listOfVert.push_back({ (k + 1.0f), yGap, (i + 0.0f + zGap), ( res1) / x_count_of_objs, 1.0f - ((((ind - 1) / xcoo) + 1.0f) / y_count_of_objs) });
+                listOfVert.push_back({ (k + 1.0f), yGap, (i + 1.0f + zGap), ( res1) / x_count_of_objs, 1.0f - ((((ind - 1) / xcoo) + 0.0f) / y_count_of_objs) });
+                listOfVert.push_back({ (k + 0.0f), yGap, (i + 1.0f + zGap), ( res2) / x_count_of_objs, 1.0f - ((((ind - 1) / xcoo) + 0.0f) / y_count_of_objs) });
                 listOfInd.push_back(count++);
             }
         }
@@ -37,7 +42,7 @@ void Horizontal_plane::createShapes(float *plane, uint *indices, uint countOfUni
     }
 }
 
-Horizontal_plane::Horizontal_plane(int *map, int width, int height, float xGap, float yGap, float zGap, float ind)
+Horizontal_plane::Horizontal_plane(int *map, int width, int height, float xGap, float yGap, float zGap, int ind, float x_count_of_objs, float y_count_of_objs)
     : map(map), width(width), height(height), xGap(xGap), yGap(yGap), zGap(zGap)
 {
     uint countOfUnits = 0;
@@ -51,7 +56,7 @@ Horizontal_plane::Horizontal_plane(int *map, int width, int height, float xGap, 
     float plane[countOfUnits * 20];
     uint  indices[size];
 
-    createShapes(plane, indices, countOfUnits, ind);
+    createShapes(plane, indices, countOfUnits, ind, x_count_of_objs, y_count_of_objs);
 
     vao = new VAO();
     vbo = new VBO(plane, sizeof(plane), GL_STATIC_DRAW);

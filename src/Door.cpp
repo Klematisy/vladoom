@@ -20,10 +20,10 @@ Door::Door(int *map, const float &xGap, const float &zGap, float rotation, Colli
 
     tex.uniform("tex0", *ps_door, 0);
 
-    door_shape = new Cube(map, 1, 1, 0.04f, -xGap + 0.48f, -zGap, rotation, col);
+    door_shape = new Cube(map, 1, 1, 0.04f, -xGap + 0.48f, -zGap, rotation, col, 5.0f, 2.0f);
 
-    plane1 = new Vertical_plane(xGap, zGap -        0.001f, rotation, xGap - 0.5f, zGap - 0.5f, 9, 0.0f, 10.0f, 1.0f);
-    plane2 = new Vertical_plane(xGap, zGap - 1.0f + 0.001f, rotation, xGap - 0.5f, zGap - 0.5f, 9, 0.0f, 10.0f, 1.0f);
+    plane1 = new Vertical_plane(xGap, zGap -        0.001f, rotation, xGap - 0.5f, zGap - 0.5f, 7, 5, 2);
+    plane2 = new Vertical_plane(xGap, zGap - 1.0f + 0.001f, rotation, xGap - 0.5f, zGap - 0.5f, 7, 5, 2);
 
     coordinate = (rotation != 90.0f) ? &pos.z : &pos.x;
     cols = col._piecesOfMap[col._piecesOfMap.size() - 1];

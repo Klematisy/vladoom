@@ -34,9 +34,7 @@ int main(void)  {
     glfwSetCursorPos(window, 2560 / 2, 1600 / 2);
 
     game(window);
-
-    // DOOR_STATES states = DOOR_DONT_MOVE;
-    // std::cout << states;
+    
     glfwDestroyWindow(window);
     glfwTerminate();
     return 0;

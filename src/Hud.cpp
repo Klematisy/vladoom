@@ -40,7 +40,7 @@ void Hud::draw(Player &player, int k) {
 
     face_texture->bind(GL_TEXTURE0);
     face_shader->useProgram();
-    float num_of_tex = (int) 6 - ((player.hit_points) / (100 / 6));
+    float num_of_tex = (int) 6 - (player.hit_points / (100 / 6));
     float a = (num_of_tex * 3 >= 12) ? 0.5f : 0.0f;
     num_of_tex *= 3;
     
