@@ -15,12 +15,13 @@ class Door {
     ProgramShader *ps_plane;
     Map *cols;
     std::chrono::time_point<std::chrono::high_resolution_clock> start;
+    int *doorArr = new int[1] {6};
     
     enum DOOR_STATES { DOOR_OPENS, DOOR_CLOSES, DOOR_IS_STANDING };
 public:
     DOOR_STATES states;
     float *coordinate;
-    Door(int *map, const  float &xGap, const float &zGap, float rotation, Collisions& col, Texture &tex);
+    Door(const  float &xGap, const float &zGap, float rotation, Collisions& col, Texture &tex);
     ~Door();
     void clear();
     void draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindow* window, float rotation);

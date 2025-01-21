@@ -7,7 +7,7 @@ const static String shaderDir = "resource/Shaders/";
 // static auto start = std::chrono::high_resolution_clock::now();
 // static std::chrono::time_point<std::chrono::high_resolution_clock>
 
-Door::Door(int *map, const float &xGap, const float &zGap, float rotation, Collisions &col, Texture &tex) {
+Door::Door(const float &xGap, const float &zGap, float rotation, Collisions &col, Texture &tex) {
     String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
     ps_door  = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
@@ -20,7 +20,7 @@ Door::Door(int *map, const float &xGap, const float &zGap, float rotation, Colli
 
     tex.uniform("tex0", *ps_door, 0);
 
-    door_shape = new Cube(map, 1, 1, 0.04f, -xGap + 0.48f, -zGap, rotation, col, 5.0f, 2.0f);
+    door_shape = new Cube(doorArr, 1, 1, 0.04f, -xGap + 0.48f, -zGap, rotation, col, 5.0f, 2.0f);
 
     plane1 = new Vertical_plane(xGap, zGap -        0.001f, rotation, xGap - 0.5f, zGap - 0.5f, 7, 5, 2);
     plane2 = new Vertical_plane(xGap, zGap - 1.0f + 0.001f, rotation, xGap - 0.5f, zGap - 0.5f, 7, 5, 2);
@@ -30,7 +30,6 @@ Door::Door(int *map, const float &xGap, const float &zGap, float rotation, Colli
 }
 
 void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindow* window, float rotation) {
-
     float xf = position.x + cosf(glm::radians(rotation + 90));
     float zf = position.z + sinf(glm::radians(rotation + 90));
 
@@ -67,17 +66,6 @@ void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindo
         cols->obj[0] = 0;
         states = DOOR_IS_STANDING;
     }
-    
-    // if (inObj(*cols, glm::vec3(xf, 0.0f, zf))) {
-    //     if (cols->obj[x + z * cols->width] == 6 && glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-    //         *coordinate -= 0.001f;
-    //     }
-    // }
-    // if (-1.01f < *coordinate && *coordinate < 0.0f) {
-    //     *coordinate -= 0.01f;
-    // } else if (*coordinate < -1.0f && cols->obj[0] != 0) {
-    //     cols->obj[0] = 0;
-    // }
 
     glm::mat4 model = glm::mat4(1.0f);
     model *= glm::translate(model, pos);
@@ -106,6 +94,7 @@ Door::~Door() {
     ps_door->deleteShader();
     ps_plane->deleteShader();
 
+    delete doorArr;
     delete door_shape;
     delete plane1;
     delete plane2;
