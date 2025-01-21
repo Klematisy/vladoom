@@ -23,7 +23,7 @@ Enemy::Enemy(glm::vec3 position, float rotation, int hit_points, String name_of_
 void Enemy::update(const Collisions &colls) {
     map = check_collisions(*this, colls);
     
-    float speed = 0.002f;
+    float speed = 0.004f;
     
     int x = std::ceil(position.x);
     int z = std::ceil(position.z);
@@ -39,6 +39,7 @@ void Enemy::update(const Collisions &colls) {
 void Enemy::processing(const Collisions &colls, std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj) {
     if (hit_points > 0)
         update(colls);
+    rotation = fmodf(rotation, 360.0f);
     draw(old_duration_enemy, duration, player, view, proj);
 }
 
@@ -111,7 +112,7 @@ void Enemy::draw(std::chrono::duration<float> &old_duration_enemy, std::chrono::
     float k = (position.z - (position.z + sinf((90 + rotation) * 3.14 / 180.0f))) / (position.x - (position.x + cosf((90 + rotation) * 3.14 / 180.0f)));
     float b = position.z + sinf((90 + rotation) * 3.14 / 180.0f) - k * (position.x + cosf((90 + rotation) * 3.14 / 180.0f));
     
-    std::cout << k << " " << b << "\n";
+    // std::cout << k << " " << b << "\n";
     
     int znak_x;
     int znak_z;
@@ -124,10 +125,8 @@ void Enemy::draw(std::chrono::duration<float> &old_duration_enemy, std::chrono::
     
     if (znak_x * p.x < znak_x * (p.z - b) / k && znak_z * p.z > znak_z * (k * p.x + b)) {
         tex_rotation -= ((angle_btw_vecs * 180 / 3.14f) + 44);
-        std::cout << "lol" << std::endl;
     } else {
         tex_rotation += (angle_btw_vecs * 180 / 3.14f);
-        std::cout << "notlol" << std::endl;
     }
     // std::cout << tex_rotation << std::endl;
 
