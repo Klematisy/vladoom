@@ -28,12 +28,12 @@ void Enemy::update(const Collisions &colls) {
     int x = std::ceil(position.x);
     int z = std::ceil(position.z);
     
-    // if (!CollidesRect(x, z, position.x + cosf((90 + rotation) * 3.14 / 180.0f) * speed, position.z, 0.4f, 0.4f)) {
-    //     position.x += cosf((90 + rotation) * 3.14 / 180.0f) * speed;
-    // }
-    // if (!CollidesRect(x, z, position.x, position.z + sinf((90 + rotation) * 3.14 / 180.0f) * speed, 0.4f, 0.4f)) {
-    //     position.z += sinf((90 + rotation) * 3.14 / 180.0f) * speed;
-    // }
+    if (!CollidesRect(x, z, position.x + cosf((90 + rotation) * 3.14 / 180.0f) * speed, position.z, 0.4f, 0.4f)) {
+        position.x += cosf((90 + rotation) * 3.14 / 180.0f) * speed;
+    }
+    if (!CollidesRect(x, z, position.x, position.z + sinf((90 + rotation) * 3.14 / 180.0f) * speed, 0.4f, 0.4f)) {
+        position.z += sinf((90 + rotation) * 3.14 / 180.0f) * speed;
+    }
 }
 
 void Enemy::processing(const Collisions &colls, std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj) {
