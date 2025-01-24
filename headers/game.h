@@ -54,9 +54,9 @@ private:
     ProgramShader *ps;
     Texture *enemy_tex;
     void draw(std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
-    void update(const Collisions &colls);
+    void update(const Collisions &colls, const std::vector<Door*> &doors);
 public:
     Enemy(glm::vec3 position, float rotation, int hit_points, String name_of_file);
-    void processing(const Collisions &colls, std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
+    void processing(const Collisions &colls, std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors);
     void clear();
 };

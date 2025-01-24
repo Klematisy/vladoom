@@ -7,7 +7,7 @@
 
 static float speed;
 
-void input(Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWwindow *window, bool &run) {
+void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWwindow *window, bool &run, std::chrono::duration<float> duration, std::chrono::duration<float> &old_duration_shoot) {
 
     std::vector<Map> collisions;
     float spd = 0.04f;
@@ -59,6 +59,13 @@ void input(Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWw
             player.position.z -= sinf((90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
     }
+    
+    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+        for (Door *door : doors) {
+            door->door_cheking(player.position, player.rotation);
+        }
+    }
+    
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         run = false;
     if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
@@ -78,18 +85,18 @@ void input(Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWw
         bool loop = true;
         int damage = 0;
         switch (player.typeOfGun) {
-            case 1: damage = 10;
+            case 1: damage = 25;
             break;
             case 2: damage = 34;
             break;
             case 3: damage = 50;
             break;
-            case 4: damage = 14;
+            case 4: damage = 25;
             break;
         }
         
-        
-        while (loop && player.typeOfGun != 1 && player.ammo > 0 && (player.gun.num_of_animation == 0 || (player.gun.num_of_animation == 3 && player.typeOfGun == 4))) {
+        float time = 0.03f;
+        while (loop && player.typeOfGun != 1 && player.ammo > 0 && (player.gun.num_of_animation == 0 || (player.gun.num_of_animation == 3 && player.typeOfGun == 4 && duration.count() - old_duration_shoot.count() > time))) {
             pos_of_bullet.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
             pos_of_bullet.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
             for (const Map *pathOfMap : colls._piecesOfMap) {
@@ -101,19 +108,6 @@ void input(Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWw
                 x1 = abs(std::ceil(pos_of_bullet.x));
                 z1 = abs(std::ceil(pos_of_bullet.z));
 
-                for (size_t i = 0; i < enemies.size(); i++) {
-                    if (enemies[i].hit_points <= 0) {
-                        remove<Enemy>(enemies, i);
-                    }
-                    if (fabsf(pos_of_bullet.x - enemies[i].position.x) < 0.2f && fabsf(pos_of_bullet.z - enemies[i].position.z) < 0.2f) {
-                        player.ammo--;
-                        enemies[i].hit_points -= damage;
-                        std::cout << enemies[i].hit_points << std::endl;
-                        loop = false;
-                        break;
-                    }
-                }
-
                 if (pathOfMap->obj[x + z * pathOfMap->width] > 0) {
                     player.ammo--;
                     loop = false;
@@ -121,11 +115,29 @@ void input(Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWw
                     break;
                 }
             }
+            
+            for (size_t i = 0; i < enemies.size(); i++) {
+                if (enemies[i].hit_points <= 0) {
+                    remove<Enemy>(enemies, i);
+                }
+                if (fabsf(pos_of_bullet.x - enemies[i].position.x) < 0.2f && fabsf(pos_of_bullet.z - enemies[i].position.z) < 0.2f) {
+                    player.ammo--;
+                    enemies[i].hit_points -= damage;
+                    std::cout << enemies[i].hit_points << std::endl;
+                    loop = false;
+                    break;
+                }
+            }
+            
             if (sqrt((pos_of_bullet.x - player.position.x) * (pos_of_bullet.x - player.position.x)
                    + (pos_of_bullet.z - player.position.z) * (pos_of_bullet.z - player.position.z)) >= 30) {
                 player.ammo--;
                 break;
             }
+        }
+        
+        if (duration.count() - old_duration_shoot.count() > time) {
+            old_duration_shoot = duration;
         }
         
         if (player.typeOfGun == 1 && player.gun.num_of_animation == 0) {

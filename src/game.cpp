@@ -6,7 +6,7 @@
 const static String shaderDir = "resource/Shaders/";
 String bindShader(std::string dir);
 
-void input(Collisions &collisions, Player &player, std::vector<Enemy> &enemies, GLFWwindow *window, bool &run);
+void input(const std::vector<Door*> &doors, Collisions &collisions, Player &player, std::vector<Enemy> &enemies, GLFWwindow *window, bool &run, std::chrono::duration<float> duration, std::chrono::duration<float> &old_duration_shoot);
 bool gameIsRunning = true;
 
 float color(int i) { return i / 255.0f; }
@@ -20,7 +20,7 @@ void game(GLFWwindow *window) {
 
     ProgramShader map_shader = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
 
-    Texture* Walls = new Texture("resource/images/atlas2.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
+    Texture *Walls = new Texture("resource/images/atlas2.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     Walls->unbind();
     Walls->uniform("tex0", map_shader, 0);
 
@@ -48,15 +48,17 @@ void game(GLFWwindow *window) {
     player.ammo = 99;
     
     std::vector<Enemy> enemies;
-    enemies.push_back(Enemy(glm::vec3(-7.5f, 0.0f, -12.0f), 360.0f, 100, "Enemy-02.png"));
+    enemies.push_back(Enemy(glm::vec3(-7.5f, 0.0f, -3.0f), 360.0f, 100, "Enemy-02.png"));
     
     Cube part (map, 15, 14, 1.0f, 0.0f, 0.0f, 0.0f, cWalls, 5.0f, 2.0f);
 
-    Door door1(-5.0f, -2.0f,  0.0f, cWalls, *Walls);
-    Door door2(-9.0f, -2.0f,  0.0f, cWalls, *Walls);
-    Door door3(-5.0f, -7.0f,  0.0f, cWalls, *Walls);
-    Door door4(-9.0f, -7.0f,  0.0f, cWalls, *Walls);
-    Door door5(-7.0f,  0.0f, 90.0f, cWalls, *Walls);
+    std::vector<Door*> doors;
+    
+    doors.push_back(new Door(-5.0f, -2.0f,  0.0f, cWalls, *Walls));
+    doors.push_back(new Door(-9.0f, -2.0f,  0.0f, cWalls, *Walls));
+    doors.push_back(new Door(-5.0f, -7.0f,  0.0f, cWalls, *Walls));
+    doors.push_back(new Door(-9.0f, -7.0f,  0.0f, cWalls, *Walls));
+    doors.push_back(new Door(-7.0f,  0.0f, 90.0f, cWalls, *Walls));
 
     Horizontal_plane room1( map, 15, 14, 0.0f, 0.0f,  0.0f,  8, 5.0f, 2.0f);
     Horizontal_plane room15(map, 15, 14, 0.0f, 1.0f,  0.0f,  9, 5.0f, 2.0f);
@@ -77,6 +79,7 @@ void game(GLFWwindow *window) {
 
     std::chrono::duration<float> old_duration_face  = std::chrono::high_resolution_clock::now() - start;
     std::chrono::duration<float> old_duration_gun   = std::chrono::high_resolution_clock::now() - start;
+    std::chrono::duration<float> old_duration_shoot = std::chrono::high_resolution_clock::now() - start;
     std::chrono::duration<float> old_duration_enemy = std::chrono::high_resolution_clock::now() - start;
 
     while (!glfwWindowShouldClose(window) && gameIsRunning) //Main window loop
@@ -87,7 +90,7 @@ void game(GLFWwindow *window) {
         auto end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<float> duration = end - start;
 
-        input(cWalls, player, enemies, window, gameIsRunning);
+        input(doors, cWalls, player, enemies, window, gameIsRunning, duration, old_duration_shoot);
 
         glViewport(60, HEIGHT / 2 - 20, WIDTH * 2 - 120, HEIGHT + HEIGHT / 2 - 40);
 
@@ -113,14 +116,11 @@ void game(GLFWwindow *window) {
         
         room1.draw();
         room15.draw();
-
-        door1.draw(player.position, view, proj, window, player.rotation);
-        door2.draw(player.position, view, proj, window, player.rotation);
-        door3.draw(player.position, view, proj, window, player.rotation);
-        door4.draw(player.position, view, proj, window, player.rotation);
-        door5.draw(player.position, view, proj, window, player.rotation);
         
-        enemies[0].processing(cWalls, old_duration_enemy, duration, player, view, proj);
+        for (Door *door : doors)
+            door->processing(player.position, view, proj, window, player.rotation);
+        
+        enemies[0].processing(cWalls, old_duration_enemy, duration, player, view, proj, doors);
         
         player.gun.processing(old_duration_gun, duration, player, window);
 
@@ -148,6 +148,14 @@ void game(GLFWwindow *window) {
 
     for (Enemy &enemy : enemies) {
         enemy.clear();
+    }
+    
+    for (Door *door : doors) {
+        door->clear();
+    }
+    
+    for (Door *door : doors) {
+        delete door;
     }
 
     map_shader.deleteShader();

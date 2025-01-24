@@ -20,7 +20,7 @@ Enemy::Enemy(glm::vec3 position, float rotation, int hit_points, String name_of_
     this->position = position;
 }
 
-void Enemy::update(const Collisions &colls) {
+void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors) {
     map = check_collisions(*this, colls);
     
     float speed = 0.004f;
@@ -34,11 +34,17 @@ void Enemy::update(const Collisions &colls) {
     if (!CollidesRect(x, z, position.x, position.z + sinf((90 + rotation) * 3.14 / 180.0f) * speed, 0.4f, 0.4f)) {
         position.z += sinf((90 + rotation) * 3.14 / 180.0f) * speed;
     }
+    
+    if (fabsf(position.x - position_check.x) < 0.0000001 || fabsf(position.z - position_check.z) < 0.0000001) {
+        for (Door *door : doors) {
+            door->door_cheking(position, rotation);
+        }
+    }
 }
 
-void Enemy::processing(const Collisions &colls, std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj) {
+void Enemy::processing(const Collisions &colls, std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors) {
     if (hit_points > 0)
-        update(colls);
+        update(colls, doors);
     rotation = fmodf(rotation, 360.0f);
     draw(old_duration_enemy, duration, player, view, proj);
 }
@@ -86,26 +92,6 @@ void Enemy::draw(std::chrono::duration<float> &old_duration_enemy, std::chrono::
     v1.z = (v1.z + sinf((90 + rotation) * 3.14 / 180.0f)) - v1.z;
     
     angle_btw_vecs = angle_between_vectors(v1, v2);
-    
-    // y = kx + b
-    // b = y - kx
-    // k = (y - b) / x
-    // 
-    // { y1 = kx1 + b
-    // { y2 = kx2 + b
-    // 
-    // { k = (y1 - b) / x1
-    // { b = y2 - kx2
-    // 
-    // { y1 = kx1 + y2 - kx2
-    // { b = y2 - kx2
-    // 
-    // y1 = kx1 + y2 - kx2
-    // y1 = k(x1 - x2) + y2
-    // k = (y1 - y2) / (x1 - x2)
-    // 
-    // b = y2 - ((y1 - y2) / (x1 - x2)) * x2
-    // b = y2 - k * x2
     
     //let's create a line equation
     

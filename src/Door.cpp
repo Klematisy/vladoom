@@ -29,7 +29,7 @@ Door::Door(const float &xGap, const float &zGap, float rotation, Collisions &col
     cols = col._piecesOfMap[col._piecesOfMap.size() - 1];
 }
 
-void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindow* window, float rotation) {
+void Door::door_cheking(const glm::vec3 &position, const float &rotation) {
     float xf = position.x + cosf(glm::radians(rotation + 90));
     float zf = position.z + sinf(glm::radians(rotation + 90));
 
@@ -39,24 +39,26 @@ void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindo
     x = abs(x);
     z = abs(z);
     
-    std::chrono::duration<float> duration  = std::chrono::high_resolution_clock::now() - start;
-    
-    if (duration.count() >= 3.0f && states == DOOR_IS_STANDING && *coordinate <= -1.0f) {
-        states = DOOR_CLOSES;
-        start = std::chrono::high_resolution_clock::now();
-    }
-    
     if (inObj(*cols, glm::vec3(xf, 0.0f, zf))) {
-        if (cols->obj[x + z * cols->width] == 6 && glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+        if (cols->obj[x + z * cols->width] == 6) {
             states = DOOR_OPENS;
             start = std::chrono::high_resolution_clock::now();
         }
     }
+}
+
+void Door::update(GLFWwindow *window, const glm::vec3 &position, const float &rotation) {
+    std::chrono::duration<float> duration  = std::chrono::high_resolution_clock::now() - start;
+    
+    if (duration.count() >= 4.0f && states == DOOR_IS_STANDING && *coordinate <= -1.0f) {
+        states = DOOR_CLOSES;
+        start = std::chrono::high_resolution_clock::now();
+    }
     
     if (*coordinate < 0.0f && states == DOOR_CLOSES) {
         *coordinate += 0.01f;
-    } else if (*coordinate > -0.001f && cols->obj[0] == 0 && states == DOOR_CLOSES) {
         cols->obj[0] = 6;
+    } else if (*coordinate > -0.001f && cols->obj[0] == 0 && states == DOOR_CLOSES) {
         states = DOOR_IS_STANDING;
     }
     
@@ -66,7 +68,14 @@ void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindo
         cols->obj[0] = 0;
         states = DOOR_IS_STANDING;
     }
+}
 
+void Door::processing(const glm::vec3 &position, const glm::mat4 &view, const glm::mat4 &proj, GLFWwindow* window, const float &rotation) {
+    update(window, position, rotation);
+    draw(view, proj);
+}
+
+void Door::draw(const glm::mat4 &view, const glm::mat4 &proj) {
     glm::mat4 model = glm::mat4(1.0f);
     model *= glm::translate(model, pos);
 
@@ -88,7 +97,7 @@ void Door::draw(glm::vec3 &position, glm::mat4 &view, glm::mat4 &proj, GLFWwindo
     plane2->draw();
 }
 
-Door::~Door() {
+void Door::clear() {
     plane1->deletePlane();
     plane2->deletePlane();
     ps_door->deleteShader();
