@@ -49,7 +49,7 @@ void game(GLFWwindow *window) {
     
     std::vector<Enemy> enemies;
     
-    enemies.push_back(Enemy(glm::vec3(-7.5f, 0.0f, -5.0f), 180.0f, 100, "Enemy-02.png"));
+    enemies.push_back(Enemy(glm::vec3(-7.5f, 0.0f, -10.0f), 180.0f, 100, "Enemy-02.png"));
     // enemies.push_back(Enemy(glm::vec3(-7.5f, 0.0f, -7.0f),   0.0f, 100, "Enemy-02.png"));
 
     Cube part (map, 15, 14, 1.0f, 0.0f, 0.0f, 0.0f, cWalls, 5.0f, 2.0f);
@@ -80,9 +80,7 @@ void game(GLFWwindow *window) {
     std::uniform_int_distribution<> disti(0, 2);
 
     std::chrono::duration<float> old_duration_face  = std::chrono::high_resolution_clock::now() - start;
-    std::chrono::duration<float> old_duration_gun   = std::chrono::high_resolution_clock::now() - start;
     std::chrono::duration<float> old_duration_shoot = std::chrono::high_resolution_clock::now() - start;
-    std::chrono::duration<float> old_duration_enemy = std::chrono::high_resolution_clock::now() - start;
 
     while (!glfwWindowShouldClose(window) && gameIsRunning) //Main window loop
     {
@@ -106,7 +104,7 @@ void game(GLFWwindow *window) {
 
         view = glm::rotate(view,  glm::radians(player.rotation), glm::vec3(0.0f, 1.0f, 0.0f));
         view = glm::translate(view, player.position);
-        proj = glm::perspective(glm::radians(60.0f), (float)(1.8), 0.01f, 100.0f);
+        proj = glm::perspective(glm::radians(60.0f), (float)(1.9f), 0.01f, 100.0f);
 
         int viewLoc  = glGetUniformLocation(map_shader.shaderProgram,  "view");
         glUniformMatrix4fv(viewLoc,  1, GL_FALSE, glm::value_ptr(view));
@@ -127,7 +125,7 @@ void game(GLFWwindow *window) {
             enemies[i].processing(cWalls, duration, player, view, proj, doors);
         }
         
-        player.gun.processing(old_duration_gun, duration, player, window);
+        player.gun.processing(duration, player, window);
 
         player.rotation = fmodf(player.rotation, 360);
         

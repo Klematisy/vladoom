@@ -26,8 +26,7 @@ void Gun::update(Player &p,
         p.typeOfGun = 4;
 }
 
-void Gun::draw(std::chrono::duration<float> &old_duration_gun, 
-               std::chrono::duration<float> duration, 
+void Gun::draw(std::chrono::duration<float> duration, 
                Player &p, 
                GLFWwindow *window) 
 {
@@ -58,14 +57,12 @@ void Gun::draw(std::chrono::duration<float> &old_duration_gun,
     Image::draw_once(0.475f, 0.0f, 1.0f, 1.5f, &r);
 }
 
-void Gun::processing
-            (std::chrono::duration<float> &old_duration_gun, 
-             std::chrono::duration<float> duration, 
-             Player &p, 
-             GLFWwindow *window) 
+void Gun::processing(std::chrono::duration<float> duration, 
+                     Player &p, 
+                     GLFWwindow *window) 
 {
     update(p, window);
-    draw(old_duration_gun, duration, p, window);
+    draw(duration, p, window);
 }
 
 Gun::~Gun()

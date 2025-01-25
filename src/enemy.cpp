@@ -11,7 +11,9 @@ Enemy::Enemy(glm::vec3 position, float rotation, int hit_points, String name_of_
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
 
     ps = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
-
+    
+    state = DUTY;
+    
     enemy_tex = new Texture((((String)"resource/images/enemies/").append(name_of_file)).c_str(), GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     enemy_tex->unbind();
     enemy_tex->uniform("tex0", *ps, 0);
@@ -28,11 +30,37 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors) {
     int x = std::ceil(position.x);
     int z = std::ceil(position.z);
     
-    if (!CollidesRect(x, z, position.x + cosf((90 + rotation) * 3.14 / 180.0f) * speed, position.z, 0.4f, 0.4f)) {
-        position.x += cosf((90 + rotation) * 3.14 / 180.0f) * speed;
-    }
-    if (!CollidesRect(x, z, position.x, position.z + sinf((90 + rotation) * 3.14 / 180.0f) * speed, 0.4f, 0.4f)) {
-        position.z += sinf((90 + rotation) * 3.14 / 180.0f) * speed;
+    float x1 = cosf((90 + rotation) * 3.14 / 180.0f);
+    float z1 = sinf((90 + rotation) * 3.14 / 180.0f);
+    
+    switch (state) {
+        case DUTY: {
+            if ((int) rotation % 90 == 0) {
+                if (!CollidesRect(x, z, position.x + x1 * speed, position.z, 0.4f, 0.4f)) {
+                    position.x += cosf((90 + rotation) * 3.14 / 180.0f) * speed;
+                }
+                if (!CollidesRect(x, z, position.x, position.z + z1 * speed, 0.4f, 0.4f)) {
+                    position.z += sinf((90 + rotation) * 3.14 / 180.0f) * speed;
+                }
+                rotation = (int) rotation;
+            } else {
+                rotation += 0.5f;
+                break;
+            }
+            
+            int element = 12 + (x - (int) std::ceil(position.x + x1 * 0.55f)) + (z - (int) std::ceil(position.z + z1 * 0.55f)) * 5;
+            std::cout << element << std::endl;
+            if (map.get()[element] != 6 && map.get()[element] != 0) {
+                rotation += 1.0f;
+            } 
+            break;
+        }
+        case SEARCH:
+            
+        break;
+        case ATTACK:
+            
+        break;
     }
     
     if (fabsf(position.x - position_check.x) < 0.0000001 || fabsf(position.z - position_check.z) < 0.0000001) {
@@ -123,7 +151,7 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
         }
         Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, tex_x, 6, 8.0f, 7.0f);
     } else {
-        if (fabsf(position.x - position_check.x) < 0.0000001 || fabsf(position.z - position_check.z) < 0.0000001) {
+        if (fabsf(position.x - position_check.x) < 0.0000001 && fabsf(position.z - position_check.z) < 0.0000001) {
             Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, std::ceil(tex_rotation / 45), 4, 8.0f, 7.0f);
         } else {
             if (duration.count() - old_duration_enemy.count() > 0.3f) {
@@ -131,7 +159,7 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
                 old_duration_enemy = duration;
             }
             Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, std::ceil(tex_rotation / 45), tex_y, 8.0f, 7.0f);
-
+        
             position_check = position;
         }
     }
@@ -139,7 +167,7 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
 
 void Enemy::clear() {
     ps->deleteShader();
-
+    
     delete ps;
     delete enemy_tex;
 }

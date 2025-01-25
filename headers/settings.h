@@ -121,11 +121,15 @@ static bool Collides(int stX, int stZ, int x, int z) {
     return map.get()[12 + (stX - x) + (stZ - z) * 5] > 0;
 }
 
+static int type_of_colls(int stX, int stZ, int x, int z) {
+    return map.get()[12 + (stX - x) + (stZ - z) * 5];
+}
+
 static bool CollidesRect(int startX, int startZ, float x, float z, float x_half_extent, float z_half_extent) {
-    return Collides(std::ceil(startX), std::ceil(startZ), std::ceil(x - x_half_extent), std::ceil(z - z_half_extent))
-        || Collides(std::ceil(startX), std::ceil(startZ), std::ceil(x + x_half_extent), std::ceil(z - z_half_extent))
-        || Collides(std::ceil(startX), std::ceil(startZ), std::ceil(x + x_half_extent), std::ceil(z + z_half_extent))
-        || Collides(std::ceil(startX), std::ceil(startZ), std::ceil(x - x_half_extent), std::ceil(z + z_half_extent));
+    return Collides(startX, startZ, std::ceil(x - x_half_extent), std::ceil(z - z_half_extent))
+        || Collides(startX, startZ, std::ceil(x + x_half_extent), std::ceil(z - z_half_extent))
+        || Collides(startX, startZ, std::ceil(x + x_half_extent), std::ceil(z + z_half_extent))
+        || Collides(startX, startZ, std::ceil(x - x_half_extent), std::ceil(z + z_half_extent));
 }
 
 struct Entity {
