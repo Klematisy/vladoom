@@ -117,10 +117,7 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
             }
             
             for (size_t i = 0; i < enemies.size(); i++) {
-                if (enemies[i].hit_points <= 0) {
-                    remove<Enemy>(enemies, i);
-                }
-                if (fabsf(pos_of_bullet.x - enemies[i].position.x) < 0.2f && fabsf(pos_of_bullet.z - enemies[i].position.z) < 0.2f) {
+                if (enemies[i].hit_points > 0 && fabsf(pos_of_bullet.x - enemies[i].position.x) < 0.2f && fabsf(pos_of_bullet.z - enemies[i].position.z) < 0.2f) {
                     player.ammo--;
                     enemies[i].hit_points -= damage;
                     std::cout << enemies[i].hit_points << std::endl;
@@ -144,9 +141,6 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
             pos_of_bullet.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
             pos_of_bullet.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
             for (size_t i = 0; i < enemies.size(); i++) {
-                if (enemies[i].hit_points <= 0)
-                    remove<Enemy>(enemies, i);
-
                 if (fabsf(pos_of_bullet.x - enemies[i].position.x) < 0.2f && fabsf(pos_of_bullet.z - enemies[i].position.z) < 0.2f) {
                     enemies[i].hit_points -= damage;
                     std::cout << enemies[i].hit_points << std::endl;

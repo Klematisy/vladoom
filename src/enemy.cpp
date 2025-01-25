@@ -42,11 +42,11 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors) {
     }
 }
 
-void Enemy::processing(const Collisions &colls, std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors) {
+void Enemy::processing(const Collisions &colls, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors) {
     if (hit_points > 0)
         update(colls, doors);
     rotation = fmodf(rotation, 360.0f);
-    draw(old_duration_enemy, duration, player, view, proj);
+    draw(duration, player, view, proj);
 }
 
 static float angle_between_vectors(glm::vec3 v1, glm::vec3 v2) {
@@ -57,7 +57,7 @@ static float angle_between_vectors(glm::vec3 v1, glm::vec3 v2) {
     return glm::acos(ab / (moda * modb));
 }
 
-void Enemy::draw(std::chrono::duration<float> &old_duration_enemy, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj) {
+void Enemy::draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj) {
     enemy_tex->bind(GL_TEXTURE0);
     ps->useProgram();
 
@@ -110,7 +110,7 @@ void Enemy::draw(std::chrono::duration<float> &old_duration_enemy, std::chrono::
     znak_z = (rotation > 180)  ? 1  :  znak_z;
     
     if (znak_x * p.x < znak_x * (p.z - b) / k && znak_z * p.z > znak_z * (k * p.x + b)) {
-        tex_rotation -= ((angle_btw_vecs * 180 / 3.14f) + 44);
+        tex_rotation -= (angle_btw_vecs * 180 / 3.14f) + 44;
     } else {
         tex_rotation += (angle_btw_vecs * 180 / 3.14f);
     }

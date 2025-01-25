@@ -27,19 +27,19 @@ void game(GLFWwindow *window) {
     Collisions cWalls;
 
     int *map  = new int[] {
-        0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 
-        1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
-        1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 
-        1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 
-        0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 
-        0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 
-        0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 
-        0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 
-        0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
+        0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0,
+        1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+        1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+        1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+        0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0,
+        0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0,
+        0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+        0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0,
+        0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
         0, 2, 1, 1, 3, 1, 1, 2, 1, 1, 2, 1, 1, 3, 0
     };
 
@@ -48,8 +48,10 @@ void game(GLFWwindow *window) {
     player.ammo = 99;
     
     std::vector<Enemy> enemies;
-    enemies.push_back(Enemy(glm::vec3(-7.5f, 0.0f, -3.0f), 360.0f, 100, "Enemy-02.png"));
     
+    enemies.push_back(Enemy(glm::vec3(-7.5f, 0.0f, -5.0f), 180.0f, 100, "Enemy-02.png"));
+    // enemies.push_back(Enemy(glm::vec3(-7.5f, 0.0f, -7.0f),   0.0f, 100, "Enemy-02.png"));
+
     Cube part (map, 15, 14, 1.0f, 0.0f, 0.0f, 0.0f, cWalls, 5.0f, 2.0f);
 
     std::vector<Door*> doors;
@@ -84,6 +86,7 @@ void game(GLFWwindow *window) {
 
     while (!glfwWindowShouldClose(window) && gameIsRunning) //Main window loop
     {
+        // break;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(color(0), color(64), color(64), 1.0f);
 
@@ -120,7 +123,9 @@ void game(GLFWwindow *window) {
         for (Door *door : doors)
             door->processing(player.position, view, proj, window, player.rotation);
         
-        enemies[0].processing(cWalls, old_duration_enemy, duration, player, view, proj, doors);
+        for (int i = enemies.size() - 1; i >= 0; i--) {
+            enemies[i].processing(cWalls, duration, player, view, proj, doors);
+        }
         
         player.gun.processing(old_duration_gun, duration, player, window);
 
