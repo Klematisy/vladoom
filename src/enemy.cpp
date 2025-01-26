@@ -28,7 +28,7 @@ Enemy::Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_poi
 void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos) {
     map = check_collisions(*this, colls);
     
-    float speed = 0.005f;
+    float speed = 0.001f;
     
     int x = std::ceil(position.x);
     int z = std::ceil(position.z);

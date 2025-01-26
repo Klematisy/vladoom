@@ -50,9 +50,9 @@ void game(GLFWwindow *window) {
     std::vector<Enemy> enemies;
     
     enemies.push_back(Enemy(window, glm::vec3(-7.5f, 0.0f, -10.0f), 180.0f, 100, "Enemy-02.png", RIGHT_TURN));
-    enemies.push_back(Enemy(window, glm::vec3(-7.5f, 0.0f, -7.0f),    0.0f, 100, "Enemy-02.png",  FULL_TURN));
+    enemies.push_back(Enemy(window, glm::vec3(-7.5f, 0.0f, -2.0f),    0.0f, 100, "Enemy-02.png",  FULL_TURN));
 
-    Cube part (map, 15, 14, 1.0f, 0.0f, 0.0f, 0.0f, cWalls, 5.0f, 2.0f);
+    Cube part(map, 15, 14, 1.0f, 0.0f, 0.0f, 0.0f, cWalls, 5.0f, 2.0f);
 
     std::vector<Door*> doors;
     
@@ -119,7 +119,7 @@ void game(GLFWwindow *window) {
         room15.draw();
         
         for (Door *door : doors)
-            door->processing(view, proj, window, player.position, enemies);
+            door->processing(view, proj, window, player.position, &enemies);
         
         for (int i = enemies.size() - 1; i >= 0; i--) {
             enemies[i].processing(cWalls, duration, player, view, proj, doors);
