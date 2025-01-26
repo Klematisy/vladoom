@@ -107,6 +107,7 @@ struct Index_36 {
 };
 
 static bool inObj(const Map &map, const glm::vec3 &p) {
+    // return (map.maxX > p.x && p.x > map.minX && map.maxZ > p.z && p.z > map.minZ);
     return (map.maxX > p.x && p.x > map.minX && map.maxZ > p.z && p.z > map.minZ);
 }
 

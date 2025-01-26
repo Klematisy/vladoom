@@ -119,7 +119,7 @@ void game(GLFWwindow *window) {
         room15.draw();
         
         for (Door *door : doors)
-            door->processing(player.position, view, proj, window, player.rotation);
+            door->processing(view, proj, window, player.position, enemies);
         
         for (int i = enemies.size() - 1; i >= 0; i--) {
             enemies[i].processing(cWalls, duration, player, view, proj, doors);

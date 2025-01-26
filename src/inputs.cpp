@@ -96,21 +96,25 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
             break;
         }
         
-        float time = 0.03f;
+        float time = 0.05f;
         
         if (player.typeOfGun != 1 && player.ammo > 0 && (player.gun.num_of_animation == 0 || (player.gun.num_of_animation == 3 && player.typeOfGun == 4 && duration.count() - old_duration_shoot.count() > time))) {
             for (const Map *path_of_map : colls._piecesOfMap) {
                 if (!inObj(*path_of_map, player.position)) continue;
                 for (Enemy &enemy : enemies) {
-                    if (inObj(*path_of_map, enemy.position) && enemy.state == Enemy::DUTY)
+                    if (inObj(*path_of_map, enemy.position) && enemy.state == Enemy::DUTY) {
                         enemy.state = Enemy::SEARCH;
-                        std::cout << enemy.state << std::endl;
+                    }
                 }
                 break;
             }
         }
         
-        while (loop && player.typeOfGun != 1 && player.ammo > 0 && (player.gun.num_of_animation == 0 || (player.gun.num_of_animation == 3 && player.typeOfGun == 4 && duration.count() - old_duration_shoot.count() > time))) {
+        while (loop && player.typeOfGun != 1 && player.ammo > 0 && 
+              (player.gun.num_of_animation == 0 || 
+             ((player.gun.num_of_animation == 2 || player.gun.num_of_animation == 3) && 
+               player.typeOfGun == 4 && duration.count() - old_duration_shoot.count() > time))) 
+        {
             pos_of_bullet.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
             pos_of_bullet.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
             for (const Map *path_of_map : colls._piecesOfMap) {

@@ -4,8 +4,6 @@
 
 String bindShader(std::string dir);
 const static String shaderDir = "resource/Shaders/";
-// static auto start = std::chrono::high_resolution_clock::now();
-// static std::chrono::time_point<std::chrono::high_resolution_clock>
 
 Door::Door(const float &xGap, const float &zGap, float rotation, Collisions &col, Texture &tex) {
     String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
@@ -47,10 +45,11 @@ void Door::door_cheking(const glm::vec3 &position, const float &rotation) {
     }
 }
 
-void Door::update(GLFWwindow *window, const glm::vec3 &position, const float &rotation) {
+void Door::update(GLFWwindow *window, const glm::vec3 &player_position, const std::vector<Enemy> &enemies) {
     std::chrono::duration<float> duration  = std::chrono::high_resolution_clock::now() - start;
     
     if (duration.count() >= 4.0f && states == DOOR_IS_STANDING && *coordinate <= -1.0f) {
+        
         states = DOOR_CLOSES;
         start = std::chrono::high_resolution_clock::now();
     }
@@ -70,8 +69,8 @@ void Door::update(GLFWwindow *window, const glm::vec3 &position, const float &ro
     }
 }
 
-void Door::processing(const glm::vec3 &position, const glm::mat4 &view, const glm::mat4 &proj, GLFWwindow* window, const float &rotation) {
-    update(window, position, rotation);
+void Door::processing(const glm::mat4 &view, const glm::mat4 &proj, GLFWwindow* window, const glm::vec3 &player_position, const std::vector<Enemy> &enemies) {
+    update(window, player_position, enemies);
     draw(view, proj);
 }
 

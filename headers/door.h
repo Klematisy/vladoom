@@ -5,6 +5,9 @@
 using namespace std::literals::chrono_literals;
 
 #include "VPlane.h"
+#include "game.h"
+
+class Enemy;
 
 class Door {
     glm::vec3 pos;
@@ -24,8 +27,8 @@ public:
     Door(const  float &xGap, const float &zGap, float rotation, Collisions& col, Texture &tex);
     
     void clear();
-    void processing(const glm::vec3 &position, const glm::mat4 &view, const glm::mat4 &proj, GLFWwindow* window, const float &rotation);
-    void update(GLFWwindow *window, const glm::vec3 &position, const float &rotation);
+    void processing(const glm::mat4 &view, const glm::mat4 &proj, GLFWwindow* window, const glm::vec3 &player_position, const std::vector<Enemy> &enemies);
+    void update(GLFWwindow *window, const glm::vec3 &player_position, const std::vector<Enemy> &enemies);
     void door_cheking(const glm::vec3 &position, const float &rotation);
     void draw(const glm::mat4 &view, const glm::mat4 &proj);
 };

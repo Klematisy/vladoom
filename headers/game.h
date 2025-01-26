@@ -55,7 +55,6 @@ private:
     uint turn;
     GLFWwindow *window;
     
-    
     std::chrono::duration<float> old_duration_enemy = std::chrono::high_resolution_clock::now() - std::chrono::high_resolution_clock::now();
     
     ProgramShader *ps;
