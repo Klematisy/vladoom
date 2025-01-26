@@ -5,11 +5,14 @@
 const static String shaderDir = "resource/Shaders/";
 String bindShader(std::string dir);
 
-Enemy::Enemy(glm::vec3 position, float rotation, int hit_points, String name_of_file)
+Enemy::Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_points, String name_of_file, uint turn)
 {
     String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
-
+    
+    this->turn   = turn;
+    this->window = window;
+    
     ps = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
     
     state = DUTY;
@@ -22,10 +25,10 @@ Enemy::Enemy(glm::vec3 position, float rotation, int hit_points, String name_of_
     this->position = position;
 }
 
-void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors) {
+void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos) {
     map = check_collisions(*this, colls);
     
-    float speed = 0.004f;
+    float speed = 0.005f;
     
     int x = std::ceil(position.x);
     int z = std::ceil(position.z);
@@ -35,7 +38,7 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors) {
     
     switch (state) {
         case DUTY: {
-            if ((int) rotation % 90 == 0) {
+            if ((int) rotation % turn == 0) {
                 if (!CollidesRect(x, z, position.x + x1 * speed, position.z, 0.4f, 0.4f)) {
                     position.x += cosf((90 + rotation) * 3.14 / 180.0f) * speed;
                 }
@@ -49,15 +52,15 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors) {
             }
             
             int element = 12 + (x - (int) std::ceil(position.x + x1 * 0.55f)) + (z - (int) std::ceil(position.z + z1 * 0.55f)) * 5;
-            std::cout << element << std::endl;
             if (map.get()[element] != 6 && map.get()[element] != 0) {
                 rotation += 1.0f;
             } 
             break;
         }
-        case SEARCH:
+        case SEARCH: {
             
-        break;
+            break;
+        }
         case ATTACK:
             
         break;
@@ -72,13 +75,13 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors) {
 
 void Enemy::processing(const Collisions &colls, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors) {
     if (hit_points > 0)
-        update(colls, doors);
+        update(colls, doors, player.position);
     rotation = fmodf(rotation, 360.0f);
     draw(duration, player, view, proj);
 }
 
 static float angle_between_vectors(glm::vec3 v1, glm::vec3 v2) {
-    float ab = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+    float ab   = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
     float moda = glm::sqrt(v1.x * v1.x + v1.y * v1.y + v1.z * v1.z);
     float modb = glm::sqrt(v2.x * v2.x + v2.y * v2.y + v2.z * v2.z);
     
@@ -151,7 +154,7 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
         }
         Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, tex_x, 6, 8.0f, 7.0f);
     } else {
-        if (fabsf(position.x - position_check.x) < 0.0000001 && fabsf(position.z - position_check.z) < 0.0000001) {
+        if (fabsf(position.x - position_check.x) < 0.0001 && fabsf(position.z - position_check.z) < 0.0001) {
             Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, std::ceil(tex_rotation / 45), 4, 8.0f, 7.0f);
         } else {
             if (duration.count() - old_duration_enemy.count() > 0.3f) {

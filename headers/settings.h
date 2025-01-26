@@ -106,8 +106,8 @@ struct Index_36 {
     }
 };
 
-static bool inObj(const Map &pathOfMap, const glm::vec3 &p) {
-    return (pathOfMap.maxX > p.x && p.x > pathOfMap.minX && pathOfMap.maxZ > p.z && p.z > pathOfMap.minZ);
+static bool inObj(const Map &map, const glm::vec3 &p) {
+    return (map.maxX > p.x && p.x > map.minX && map.maxZ > p.z && p.z > map.minZ);
 }
 
 template <typename T>
@@ -150,21 +150,21 @@ static std::unique_ptr<int> check_collisions(const Entity &creature, const Colli
         0, 0, 0, 0, 0
     };
 
-    for (const Map *pathOfMap : colls._piecesOfMap) {
+    for (const Map *path_of_map : colls._piecesOfMap) {
         for (float rot = 0.0f; rot < 360.0f; rot+=45.0f) {
             point_pos = creature.position;
 
-            x = std::ceil(point_pos.x + pathOfMap->gapX);
-            z = std::ceil(point_pos.z + pathOfMap->gapZ);
+            x = std::ceil(point_pos.x + path_of_map->gapX);
+            z = std::ceil(point_pos.z + path_of_map->gapZ);
 
             point_pos.x += cos(rot);
             point_pos.z += sin(rot);
 
-            x1 = std::ceil(point_pos.x + pathOfMap->gapX);
-            z1 = std::ceil(point_pos.z + pathOfMap->gapZ);
+            x1 = std::ceil(point_pos.x + path_of_map->gapX);
+            z1 = std::ceil(point_pos.z + path_of_map->gapZ);
 
-            if (inObj(*pathOfMap, point_pos) && pathOfMap->obj[abs(x1) + abs(z1) * pathOfMap->width] > 0) {
-                arr[12 + (x - x1) + (z - z1) * 5] = pathOfMap->obj[abs(x1) + abs(z1) * pathOfMap->width];
+            if (inObj(*path_of_map, point_pos) && path_of_map->obj[abs(x1) + abs(z1) * path_of_map->width] > 0) {
+                arr[12 + (x - x1) + (z - z1) * 5] = path_of_map->obj[abs(x1) + abs(z1) * path_of_map->width];
             }
         }
     }

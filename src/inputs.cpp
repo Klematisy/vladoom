@@ -3,6 +3,7 @@
 #include <memory>
 #include "libs.h"
 #include "constants.h"
+#include "game.h"
 #include "settings.h"
 
 static float speed;
@@ -79,7 +80,7 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
     
     if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS ||
         glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
-    {
+    {   
         glm::vec3 pos_of_bullet = player.position;
         pos_of_bullet = player.position;
         bool loop = true;
@@ -96,22 +97,35 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
         }
         
         float time = 0.03f;
+        
+        if (player.typeOfGun != 1 && player.ammo > 0 && (player.gun.num_of_animation == 0 || (player.gun.num_of_animation == 3 && player.typeOfGun == 4 && duration.count() - old_duration_shoot.count() > time))) {
+            for (const Map *path_of_map : colls._piecesOfMap) {
+                if (!inObj(*path_of_map, player.position)) continue;
+                for (Enemy &enemy : enemies) {
+                    if (inObj(*path_of_map, enemy.position) && enemy.state == Enemy::DUTY)
+                        enemy.state = Enemy::SEARCH;
+                        std::cout << enemy.state << std::endl;
+                }
+                break;
+            }
+        }
+        
         while (loop && player.typeOfGun != 1 && player.ammo > 0 && (player.gun.num_of_animation == 0 || (player.gun.num_of_animation == 3 && player.typeOfGun == 4 && duration.count() - old_duration_shoot.count() > time))) {
             pos_of_bullet.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
             pos_of_bullet.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
-            for (const Map *pathOfMap : colls._piecesOfMap) {
-                if (!inObj(*pathOfMap, pos_of_bullet)) continue;
+            for (const Map *path_of_map : colls._piecesOfMap) {
+                if (!inObj(*path_of_map, pos_of_bullet)) continue;
 
-                x = abs(std::ceil(pos_of_bullet.x + pathOfMap->gapX));
-                z = abs(std::ceil(pos_of_bullet.z + pathOfMap->gapZ));
+                x = abs(std::ceil(pos_of_bullet.x + path_of_map->gapX));
+                z = abs(std::ceil(pos_of_bullet.z + path_of_map->gapZ));
 
                 x1 = abs(std::ceil(pos_of_bullet.x));
                 z1 = abs(std::ceil(pos_of_bullet.z));
 
-                if (pathOfMap->obj[x + z * pathOfMap->width] > 0) {
+                if (path_of_map->obj[x + z * path_of_map->width] > 0) {
                     player.ammo--;
                     loop = false;
-                    std::cout << x1 << " " << z1 << " " << player.ammo << std::endl;
+                    // std::cout << x1 << " " << z1 << " " << player.ammo << std::endl;
                     break;
                 }
             }
