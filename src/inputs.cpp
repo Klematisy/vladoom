@@ -18,6 +18,8 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
     
     x = std::ceil(player.position.x);
     z = std::ceil(player.position.z);
+    
+    // std::cout << abs(x) << " " << abs(z) << std::endl;
 
     double xpos, ypos;
     glfwGetCursorPos(window, &xpos, &ypos);
@@ -104,6 +106,7 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
                 for (Enemy &enemy : enemies) {
                     if (inObj(*path_of_map, enemy.position) && enemy.state == Enemy::DUTY) {
                         enemy.state = Enemy::SEARCH;
+                        enemy.search_player(*path_of_map, player.position);
                     }
                 }
                 break;
@@ -120,8 +123,8 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
             for (const Map *path_of_map : colls._piecesOfMap) {
                 if (!inObj(*path_of_map, pos_of_bullet)) continue;
 
-                x = abs(std::ceil(pos_of_bullet.x + path_of_map->gapX));
-                z = abs(std::ceil(pos_of_bullet.z + path_of_map->gapZ));
+                x = abs(std::ceil(pos_of_bullet.x + path_of_map->gap_x));
+                z = abs(std::ceil(pos_of_bullet.z + path_of_map->gap_z));
 
                 x1 = abs(std::ceil(pos_of_bullet.x));
                 z1 = abs(std::ceil(pos_of_bullet.z));
@@ -168,4 +171,5 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
             }
         }
     }
+    
 }

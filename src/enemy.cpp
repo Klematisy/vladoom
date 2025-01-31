@@ -25,10 +25,146 @@ Enemy::Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_poi
     this->position = position;
 }
 
+int search_player_rec(int width, int height, int *main_map, Point **point_map, Point **solution, Point p_p, Point e_p, int depth, int &min_depth) {
+    size_t size = width * height;
+    int element;
+    
+    if (e_p.x == p_p.x && e_p.z == p_p.z) {
+        if (depth - 1 < min_depth) {
+            min_depth = depth - 1;
+            for (size_t i = 0; i < size; i++) {
+                *solution[i] = *point_map[i];
+            }
+        }
+        return 1;
+    }
+    
+    depth++;
+    
+    if (depth - 1 > min_depth) {
+        return 0;
+    }
+    
+    int copy_map[size];
+    Point **copy_point_map = new Point*[size];
+    
+    for (size_t i = 0; i < size; i++) {
+        copy_map[i]        = main_map[i];
+        copy_point_map[i]  = new Point;
+        *copy_point_map[i] = *point_map[i];
+    }
+    
+    if (fmodf((e_p.x + 1), width) != 1) {     //left
+        element = e_p.z * width + e_p.x - 1;
+        if (copy_map[element] == 0) {
+            copy_map[element] = 1;
+            Point *p = new Point;
+            *p = {.x = e_p.x, .z = e_p.z};
+            copy_point_map[element] = p;
+            search_player_rec(width, height, copy_map, copy_point_map, solution, p_p, {.x = e_p.x - 1, .z = e_p.z}, depth, min_depth);
+        }
+    }
+    
+    if (fmodf((e_p.x + 1), width) != 0) {
+        element = e_p.z * width + e_p.x + 1;
+        if (copy_map[element] == 0) {
+            copy_map[element] = 1;
+            Point *p = new Point;
+            *p = {.x = e_p.x, .z = e_p.z};
+            copy_point_map[element] = p;
+            search_player_rec(width, height, copy_map, copy_point_map, solution, p_p, {.x = e_p.x + 1, .z = e_p.z}, depth, min_depth);
+        }
+    }
+
+    if (fmodf(e_p.z, height) != 0) {
+        element = (e_p.z + 1) * width + e_p.x;
+        if (copy_map[element] == 0) {
+            copy_map[element] = 1;
+            Point *p = new Point;
+            *p = {.x = e_p.x, .z = e_p.z};
+            copy_point_map[element] = p;
+            search_player_rec(width, height, copy_map, copy_point_map, solution, p_p, {.x = e_p.x, .z = e_p.z + 1}, depth, min_depth);
+        }
+    }
+    
+    if (fmodf(e_p.z, height) != 1) {
+        element = (e_p.z - 1) * width + e_p.x;
+        if (copy_map[element] == 0) {
+            copy_map[element] = 1;
+            Point *p = new Point;
+            *p = {.x = e_p.x, .z = e_p.z};
+            copy_point_map[element] = p;
+            search_player_rec(width, height, copy_map, copy_point_map, solution, p_p, {.x = e_p.x, .z = e_p.z - 1}, depth, min_depth);
+        }
+    }
+    
+    for (size_t i = 0; i < size; i++) {
+        delete copy_point_map[i];
+    }
+    
+    delete copy_point_map;
+    
+    return 0;
+}
+
+void Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
+    size_t size = map.width * map.height;
+    
+    auto a = std::chrono::high_resolution_clock::now();
+    
+    int copy_map[size];
+    Point **point_map = new Point*[size];
+    Point **solution  = new Point*[size];
+    
+    for (size_t i = 0; i < size; i++) {
+        copy_map[i]  = map.obj[i];
+        point_map[i] = new Point;
+        solution[i]  = new Point;
+    }
+    
+    int x = std::ceil(player_position.x + map.gap_x);
+    int z = std::ceil(player_position.z + map.gap_z);
+    
+    Point p_p = {
+        .x = abs(x),
+        .z = abs(z)
+    };
+    
+    x = std::ceil(position.x + map.gap_x);
+    z = std::ceil(position.z + map.gap_z);
+    
+    Point e_p = {
+        .x = abs(x),
+        .z = abs(z)
+    };
+    
+    copy_map[(int) (e_p.x + e_p.z * map.width)] = 1;
+    
+    // std::cout << e_p.x << " " << e_p.z << std::endl;
+    
+    int depth      = 0;
+    int min_depth  = 100;
+    search_player_rec(map.width, map.height, copy_map, point_map, solution, p_p, e_p, depth, min_depth);
+    
+    auto b = std::chrono::high_resolution_clock::now();
+    
+    std::chrono::duration<float> d = b - a;
+    
+    std::cout << d.count() << std::endl;
+    
+    std::cout << min_depth << std::endl;
+    
+    Point p = p_p;
+    for (int i = 0; i < min_depth; i++) {
+        std::cout << solution[(int) (p.x + p.z * map.width)]->x << " " << solution[(int) (p.x + p.z * map.width)]->z << std::endl;
+        p = *solution[(int) (p.x + p.z * map.width)];
+    }
+}
+
 void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos) {
     map = check_collisions(*this, colls);
     
-    float speed = 0.001f;
+    float speed = 0.005f;
     
     int x = std::ceil(position.x);
     int z = std::ceil(position.z);
@@ -39,12 +175,12 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
     switch (state) {
         case DUTY: {
             if ((int) rotation % turn == 0) {
-                if (!CollidesRect(x, z, position.x + x1 * speed, position.z, 0.4f, 0.4f)) {
-                    position.x += cosf((90 + rotation) * 3.14 / 180.0f) * speed;
-                }
-                if (!CollidesRect(x, z, position.x, position.z + z1 * speed, 0.4f, 0.4f)) {
-                    position.z += sinf((90 + rotation) * 3.14 / 180.0f) * speed;
-                }
+                // if (!CollidesRect(x, z, position.x + x1 * speed, position.z, 0.4f, 0.4f)) {
+                //     position.x += cosf((90 + rotation) * 3.14 / 180.0f) * speed;
+                // }
+                // if (!CollidesRect(x, z, position.x, position.z + z1 * speed, 0.4f, 0.4f)) {
+                //     position.z += sinf((90 + rotation) * 3.14 / 180.0f) * speed;
+                // }
                 rotation = (int) rotation;
             } else {
                 rotation += 0.5f;

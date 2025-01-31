@@ -19,10 +19,10 @@ struct Rect {
 };
 
 struct Point {
-    float x;
-    float y;
-    float z;
-
+    float x = 0.0f;
+    float y = 0.0f;
+    float z = 0.0f;
+    
     float texX;
     float texY;
 };
@@ -154,14 +154,14 @@ static std::unique_ptr<int> check_collisions(const Entity &creature, const Colli
         for (float rot = 0.0f; rot < 360.0f; rot+=45.0f) {
             point_pos = creature.position;
 
-            x = std::ceil(point_pos.x + path_of_map->gapX);
-            z = std::ceil(point_pos.z + path_of_map->gapZ);
+            x = std::ceil(point_pos.x + path_of_map->gap_x);
+            z = std::ceil(point_pos.z + path_of_map->gap_z);
 
             point_pos.x += cos(rot);
             point_pos.z += sin(rot);
 
-            x1 = std::ceil(point_pos.x + path_of_map->gapX);
-            z1 = std::ceil(point_pos.z + path_of_map->gapZ);
+            x1 = std::ceil(point_pos.x + path_of_map->gap_x);
+            z1 = std::ceil(point_pos.z + path_of_map->gap_z);
 
             if (inObj(*path_of_map, point_pos) && path_of_map->obj[abs(x1) + abs(z1) * path_of_map->width] > 0) {
                 arr[12 + (x - x1) + (z - z1) * 5] = path_of_map->obj[abs(x1) + abs(z1) * path_of_map->width];

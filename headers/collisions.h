@@ -2,7 +2,7 @@
 #include <vector>
 
 struct Map {
-    int* obj;
+    int *obj;
     int width;
     int height;
 
@@ -11,7 +11,7 @@ struct Map {
     float minX;
     float minZ;
 
-    float gapX, gapZ;
+    float gap_x, gap_z;
 
     float size;
 };

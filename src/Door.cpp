@@ -31,8 +31,8 @@ void Door::door_cheking(const glm::vec3 &position, const float &rotation) {
     float xf = position.x + cosf(glm::radians(rotation + 90));
     float zf = position.z + sinf(glm::radians(rotation + 90));
 
-    int x = (xf) + cols->gapX;
-    int z = (zf) + cols->gapZ;
+    int x = (xf) + cols->gap_x;
+    int z = (zf) + cols->gap_z;
 
     x = abs(x);
     z = abs(z);

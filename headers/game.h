@@ -59,14 +59,17 @@ private:
     
     ProgramShader *ps;
     Texture *enemy_tex;
+    // void recursion_of_way();
     
     void draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
     void update(const Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos);
 public:
     enum states {DUTY, SEARCH, ATTACK};
-    
     states state;
+    
     Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_points, String name_of_file, uint turn);
+    
     void processing(const Collisions &colls, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors);
+    void search_player(const Map &map, const glm::vec3 &player_position);
     void clear();
 };
