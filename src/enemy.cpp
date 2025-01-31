@@ -1,6 +1,7 @@
 #include <cmath>
 #include "game.h"
 #include "VPlane.h"
+#include <stack>
 
 const static String shaderDir = "resource/Shaders/";
 String bindShader(std::string dir);
@@ -25,15 +26,21 @@ Enemy::Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_poi
     this->position = position;
 }
 
-int search_player_rec(int width, int height, int *main_map, Point **point_map, Point **solution, Point p_p, Point e_p, int depth, int &min_depth) {
+int search_player_rec(int width, int height, int *main_map, std::stack<Point> &solution, std::stack<Point> main_stack, Point p_p, int depth, int &min_depth) {
     size_t size = width * height;
     int element;
     
-    if (e_p.x == p_p.x && e_p.z == p_p.z) {
+    Point point = main_stack.top();
+    
+    if (point.x == p_p.x && point.z == p_p.z) {
         if (depth - 1 < min_depth) {
+            while (!solution.empty()) {
+                solution.pop();
+            }
             min_depth = depth - 1;
-            for (size_t i = 0; i < size; i++) {
-                *solution[i] = *point_map[i];
+            while (!main_stack.empty()) {
+                solution.push(main_stack.top());
+                main_stack.pop();
             }
         }
         return 1;
@@ -46,63 +53,49 @@ int search_player_rec(int width, int height, int *main_map, Point **point_map, P
     }
     
     int copy_map[size];
-    Point **copy_point_map = new Point*[size];
-    
     for (size_t i = 0; i < size; i++) {
-        copy_map[i]        = main_map[i];
-        copy_point_map[i]  = new Point;
-        *copy_point_map[i] = *point_map[i];
+        copy_map[i] = main_map[i];
     }
     
-    if (fmodf((e_p.x + 1), width) != 1) {     //left
-        element = e_p.z * width + e_p.x - 1;
+    if (fmodf((point.x + 1), width) != 1) {     //left
+        element = point.z * width + point.x - 1;
         if (copy_map[element] == 0) {
             copy_map[element] = 1;
-            Point *p = new Point;
-            *p = {.x = e_p.x, .z = e_p.z};
-            copy_point_map[element] = p;
-            search_player_rec(width, height, copy_map, copy_point_map, solution, p_p, {.x = e_p.x - 1, .z = e_p.z}, depth, min_depth);
-        }
-    }
-    
-    if (fmodf((e_p.x + 1), width) != 0) {
-        element = e_p.z * width + e_p.x + 1;
-        if (copy_map[element] == 0) {
-            copy_map[element] = 1;
-            Point *p = new Point;
-            *p = {.x = e_p.x, .z = e_p.z};
-            copy_point_map[element] = p;
-            search_player_rec(width, height, copy_map, copy_point_map, solution, p_p, {.x = e_p.x + 1, .z = e_p.z}, depth, min_depth);
+            main_stack.push({.x = point.x - 1, .z = point.z});
+            search_player_rec(width, height, copy_map, solution, main_stack, p_p, depth, min_depth);
+            main_stack.pop();
         }
     }
 
-    if (fmodf(e_p.z, height) != 0) {
-        element = (e_p.z + 1) * width + e_p.x;
+    if (fmodf((point.x + 1), width) != 0) {
+        element = point.z * width + point.x + 1;
         if (copy_map[element] == 0) {
             copy_map[element] = 1;
-            Point *p = new Point;
-            *p = {.x = e_p.x, .z = e_p.z};
-            copy_point_map[element] = p;
-            search_player_rec(width, height, copy_map, copy_point_map, solution, p_p, {.x = e_p.x, .z = e_p.z + 1}, depth, min_depth);
+            main_stack.push({.x = point.x + 1, .z = point.z});
+            search_player_rec(width, height, copy_map, solution, main_stack, p_p, depth, min_depth);
+            main_stack.pop();
+        }
+    }
+
+    if (fmodf(point.z, height) != 0) {
+        element = (point.z + 1) * width + point.x;
+        if (copy_map[element] == 0) {
+            copy_map[element] = 1;
+            main_stack.push({.x = point.x, .z = point.z + 1});
+            search_player_rec(width, height, copy_map, solution, main_stack, p_p, depth, min_depth);
+            main_stack.pop();
         }
     }
     
-    if (fmodf(e_p.z, height) != 1) {
-        element = (e_p.z - 1) * width + e_p.x;
+    if (fmodf(point.z, height) != 1) {
+        element = (point.z - 1) * width + point.x;
         if (copy_map[element] == 0) {
             copy_map[element] = 1;
-            Point *p = new Point;
-            *p = {.x = e_p.x, .z = e_p.z};
-            copy_point_map[element] = p;
-            search_player_rec(width, height, copy_map, copy_point_map, solution, p_p, {.x = e_p.x, .z = e_p.z - 1}, depth, min_depth);
+            main_stack.push({.x = point.x, .z = point.z - 1});
+            search_player_rec(width, height, copy_map, solution, main_stack, p_p, depth, min_depth);
+            main_stack.pop();
         }
     }
-    
-    for (size_t i = 0; i < size; i++) {
-        delete copy_point_map[i];
-    }
-    
-    delete copy_point_map;
     
     return 0;
 }
@@ -113,13 +106,11 @@ void Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
     auto a = std::chrono::high_resolution_clock::now();
     
     int copy_map[size];
-    Point **point_map = new Point*[size];
-    Point **solution  = new Point*[size];
+    std::stack<Point> solution;
+    std::stack<Point> main_stack;
     
     for (size_t i = 0; i < size; i++) {
         copy_map[i]  = map.obj[i];
-        point_map[i] = new Point;
-        solution[i]  = new Point;
     }
     
     int x = std::ceil(player_position.x + map.gap_x);
@@ -138,26 +129,23 @@ void Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
         .z = abs(z)
     };
     
+    main_stack.push(e_p);
+    
     copy_map[(int) (e_p.x + e_p.z * map.width)] = 1;
     
-    // std::cout << e_p.x << " " << e_p.z << std::endl;
-    
     int depth      = 0;
-    int min_depth  = 100;
-    search_player_rec(map.width, map.height, copy_map, point_map, solution, p_p, e_p, depth, min_depth);
+    int min_depth  = 15;
+    search_player_rec(map.width, map.height, copy_map, solution, main_stack, p_p, depth, min_depth);
     
     auto b = std::chrono::high_resolution_clock::now();
-    
     std::chrono::duration<float> d = b - a;
-    
     std::cout << d.count() << std::endl;
     
-    std::cout << min_depth << std::endl;
+    // std::cout << min_depth << std::endl;
     
-    Point p = p_p;
-    for (int i = 0; i < min_depth; i++) {
-        std::cout << solution[(int) (p.x + p.z * map.width)]->x << " " << solution[(int) (p.x + p.z * map.width)]->z << std::endl;
-        p = *solution[(int) (p.x + p.z * map.width)];
+    while (!solution.empty()) {
+        std::cout << solution.top().x << " " << solution.top().z << std::endl;
+        solution.pop();
     }
 }
 
