@@ -17,6 +17,7 @@ Enemy::Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_poi
     ps = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
     
     state = DUTY;
+    pos_state = BEHIND;
     
     enemy_tex = new Texture((((String)"resource/images/enemies/").append(name_of_file)).c_str(), GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     enemy_tex->unbind();
@@ -26,7 +27,7 @@ Enemy::Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_poi
     this->position = position;
 }
 
-int search_player_rec(int width, int height, int *main_map, std::stack<Point> &solution, std::stack<Point> main_stack, Point p_p, int depth, int &min_depth) {
+int Enemy::search_player_rec(int width, int height, int *main_map, std::stack<Point> &solution, std::stack<Point> main_stack, const Point &p_p, int depth, int &min_depth) {
     size_t size = width * height;
     int element;
     
@@ -34,21 +35,15 @@ int search_player_rec(int width, int height, int *main_map, std::stack<Point> &s
     
     if (point.x == p_p.x && point.z == p_p.z) {
         if (depth - 1 < min_depth) {
-            while (!solution.empty()) {
-                solution.pop();
-            }
             min_depth = depth - 1;
-            while (!main_stack.empty()) {
-                solution.push(main_stack.top());
-                main_stack.pop();
-            }
+            solution = main_stack;
         }
         return 1;
     }
     
     depth++;
     
-    if (depth - 1 > min_depth) {
+    if (depth - 1 >= min_depth) {
         return 0;
     }
     
@@ -110,7 +105,7 @@ void Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
     std::stack<Point> main_stack;
     
     for (size_t i = 0; i < size; i++) {
-        copy_map[i]  = map.obj[i];
+        copy_map[i] = map.obj[i];
     }
     
     int x = std::ceil(player_position.x + map.gap_x);
@@ -133,27 +128,38 @@ void Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
     
     copy_map[(int) (e_p.x + e_p.z * map.width)] = 1;
     
-    int depth      = 0;
-    int min_depth  = 15;
-    search_player_rec(map.width, map.height, copy_map, solution, main_stack, p_p, depth, min_depth);
+    int min_depth  = 12;
+    search_player_rec(map.width, map.height, copy_map, solution, main_stack, p_p, 0, min_depth);
+    
+    if (!solution.empty()) {
+        while (!solution.empty()) {
+            way.push(solution.top());
+            solution.pop();
+        }
+        way.pop();
+    } else {
+        state = DUTY;
+    }
     
     auto b = std::chrono::high_resolution_clock::now();
     std::chrono::duration<float> d = b - a;
     std::cout << d.count() << std::endl;
+}
+
+static float angle_between_vectors(glm::vec3 v1, glm::vec3 v2) {
+    float ab   = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+    float moda = glm::sqrt(v1.x * v1.x + v1.y * v1.y + v1.z * v1.z);
+    float modb = glm::sqrt(v2.x * v2.x + v2.y * v2.y + v2.z * v2.z);
     
-    // std::cout << min_depth << std::endl;
+    float res = (abs(ab / (moda * modb)) > 1.0f) ? 1.0f * (abs(ab / (moda * modb))/(ab / (moda * modb))) : ab / (moda * modb);
     
-    while (!solution.empty()) {
-        std::cout << solution.top().x << " " << solution.top().z << std::endl;
-        solution.pop();
-    }
+    return std::acos(res);
 }
 
 void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos) {
     map = check_collisions(*this, colls);
     
     float speed = 0.005f;
-    
     int x = std::ceil(position.x);
     int z = std::ceil(position.z);
     
@@ -162,13 +168,13 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
     
     switch (state) {
         case DUTY: {
-            if ((int) rotation % turn == 0) {
-                // if (!CollidesRect(x, z, position.x + x1 * speed, position.z, 0.4f, 0.4f)) {
-                //     position.x += cosf((90 + rotation) * 3.14 / 180.0f) * speed;
-                // }
-                // if (!CollidesRect(x, z, position.x, position.z + z1 * speed, 0.4f, 0.4f)) {
-                //     position.z += sinf((90 + rotation) * 3.14 / 180.0f) * speed;
-                // }
+            if ((int) fabsf(rotation) % turn == 0) {
+                if (!CollidesRect(x, z, position.x + x1 * speed, position.z, 0.4f, 0.4f)) {
+                    position.x += x1 * speed;
+                }
+                if (!CollidesRect(x, z, position.x, position.z + z1 * speed, 0.4f, 0.4f)) {
+                    position.z += z1 * speed;
+                }
                 rotation = (int) rotation;
             } else {
                 rotation += 0.5f;
@@ -182,7 +188,87 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
             break;
         }
         case SEARCH: {
+            Point point = way.top();
             
+            int x = abs(std::ceil(position.x));
+            int z = abs(std::ceil(position.z));
+            
+            point.x += 0.5f;
+            point.z += 0.5f;
+            
+            if (fabsf(point.x - fabsf(position.x)) < 0.1f && fabsf(point.z - fabsf(position.z)) < 0.1f) {                
+                way.pop();
+                if (way.empty()) {
+                    state = DUTY;
+                    break;
+                } else {
+                    Point point = way.top();
+                    point.x += 0.5f;
+                    point.z += 0.5f;
+                }
+            }
+            
+            point.x *= position.x / abs(position.x);
+            point.z *= position.z / abs(position.z);
+            
+            glm::vec3 v1 = position;
+            
+            v1.x = (v1.x + cosf((90 + rotation) * 3.14 / 180.0f)) - v1.x;
+            v1.z = (v1.z + sinf((90 + rotation) * 3.14 / 180.0f)) - v1.z;
+            
+            glm::vec3 v2(point.x - position.x, 0.0f, point.z - position.z);
+            
+            // v1 += 2;
+            v2 *= 10;
+            
+            float angle = angle_between_vectors(v1, v2);
+            angle *= (180.0f/M_PI);
+            
+            angle = (int) angle;
+            
+            if (angle != 0.0f) {
+                
+                float k = (position.z - (position.z + sinf((90 + rotation) * 3.14 / 180.0f))) / (position.x - (position.x + cosf((90 + rotation) * 3.14 / 180.0f)));
+                float b = position.z + sinf((90 + rotation) * 3.14 / 180.0f) - k * (position.x + cosf((90 + rotation) * 3.14 / 180.0f));
+                
+                // std::cout << k << " " << b << "\n";
+                
+                glm::vec2 p1(position.x, position.z);
+                glm::vec2 p2(position.x + cosf((90 + rotation) * 3.14 / 180.0f), position.z + sinf((90 + rotation) * 3.14 / 180.0f));
+                
+                line.calculate(p1, p2);
+                
+                int znak_x;
+                int znak_z;
+                
+                znak_x = (rotation >  90)  ? -1 :  1;
+                znak_x = (rotation > 270)  ? 1  :  znak_x;
+                
+                znak_z = (rotation >   0)  ? -1 :  1;
+                znak_z = (rotation > 180)  ? 1  :  znak_z;
+                
+                if (znak_x * point.x < znak_x * line.get_x(point.z) && znak_z * point.z > znak_z * line.get_y(point.x)) {
+                    rotation += (angle >= 5.0f) ? 1.0f : angle;
+                    angle    -= (angle >= 5.0f) ? 1.0f : angle;
+                } else {
+                    rotation -= (angle >= 5.0f) ? 1.0f : angle;
+                    angle    += (angle >= 5.0f) ? 1.0f : angle;
+                }
+                
+            }
+            
+            if (angle == 0.0f) {
+                x = std::ceil(position.x);
+                z = std::ceil(position.z);
+                if (!CollidesRect(x, z, position.x + x1 * speed, position.z, 0.4f, 0.4f)) {
+                    position.x += cosf((90 + rotation) * 3.14 / 180.0f) * speed;
+                }
+                if (!CollidesRect(x, z, position.x, position.z + z1 * speed, 0.4f, 0.4f)) {
+                    position.z += sinf((90 + rotation) * 3.14 / 180.0f) * speed;
+                }
+            }
+            
+            //*/
             break;
         }
         case ATTACK:
@@ -202,14 +288,6 @@ void Enemy::processing(const Collisions &colls, std::chrono::duration<float> dur
         update(colls, doors, player.position);
     rotation = fmodf(rotation, 360.0f);
     draw(duration, player, view, proj);
-}
-
-static float angle_between_vectors(glm::vec3 v1, glm::vec3 v2) {
-    float ab   = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
-    float moda = glm::sqrt(v1.x * v1.x + v1.y * v1.y + v1.z * v1.z);
-    float modb = glm::sqrt(v2.x * v2.x + v2.y * v2.y + v2.z * v2.z);
-    
-    return glm::acos(ab / (moda * modb));
 }
 
 void Enemy::draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj) {
@@ -250,10 +328,11 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
     
     //let's create a line equation
     
-    float k = (position.z - (position.z + sinf((90 + rotation) * 3.14 / 180.0f))) / (position.x - (position.x + cosf((90 + rotation) * 3.14 / 180.0f)));
-    float b = position.z + sinf((90 + rotation) * 3.14 / 180.0f) - k * (position.x + cosf((90 + rotation) * 3.14 / 180.0f));
+    Line line1;
     
-    // std::cout << k << " " << b << "\n";
+    glm::vec2 p1(position.x, position.z);
+    glm::vec2 p2(position.x + cosf((90 + rotation) * 3.14 / 180.0f), position.z + sinf((90 + rotation) * 3.14 / 180.0f));
+    line1.calculate(p1, p2);
     
     int znak_x;
     int znak_z;
@@ -264,7 +343,7 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
     znak_z = (rotation >   0)  ? -1 :  1;
     znak_z = (rotation > 180)  ? 1  :  znak_z;
     
-    if (znak_x * p.x < znak_x * (p.z - b) / k && znak_z * p.z > znak_z * (k * p.x + b)) {
+    if (znak_x * p.x < znak_x * line1.get_x(p.z) && znak_z * p.z > znak_z * line1.get_y(p.x)) {
         tex_rotation -= (angle_btw_vecs * 180 / 3.14f) + 44;
     } else {
         tex_rotation += (angle_btw_vecs * 180 / 3.14f);

@@ -27,6 +27,26 @@ struct Point {
     float texY;
 };
 
+struct Line {
+    float k = 1.0f;
+    float b = 0.0f;
+    
+    // k = (y1 - y2) / (x1 - x2)
+    // b = y2 - k * x2
+
+    void calculate(glm::vec2 p1, glm::vec2 p2) {
+        k = (p1.y - p2.y) / (p1.x - p2.x);
+        b = (p2.y - k * p2.x);
+    }
+    
+    float get_x(float y) {
+        return (y - b) / k;
+    }
+    float get_y(float x) {
+        return k * x + b;
+    }
+};
+
 struct Vmath {
     static float radians(float angle) { return angle * 3.14f / 180.0f; }
 

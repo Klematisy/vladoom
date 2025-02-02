@@ -1,4 +1,5 @@
 #pragma once
+#include <stack>
 #include "libs.h"
 #include "settings.h"
 
@@ -54,13 +55,18 @@ private:
     int tex_y  = 0;
     uint turn;
     GLFWwindow *window;
+    std::stack<Point> way;
+    Line line;
+    
+    enum POS_STATE {BEHIND, LINE};
+    POS_STATE pos_state;
     
     std::chrono::duration<float> old_duration_enemy = std::chrono::high_resolution_clock::now() - std::chrono::high_resolution_clock::now();
     
     ProgramShader *ps;
     Texture *enemy_tex;
-    // void recursion_of_way();
     
+    int search_player_rec(int width, int height, int *main_map, std::stack<Point> &solution, std::stack<Point> main_stack, const Point &p_p, int depth, int &min_depth);
     void draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
     void update(const Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos);
 public:
