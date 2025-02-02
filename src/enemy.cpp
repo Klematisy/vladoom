@@ -134,6 +134,7 @@ void Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
     if (!solution.empty()) {
         while (!solution.empty()) {
             way.push(solution.top());
+            std::cout << solution.top().x << " " << solution.top().z << std::endl;
             solution.pop();
         }
         way.pop();
@@ -153,7 +154,7 @@ static float angle_between_vectors(glm::vec3 v1, glm::vec3 v2) {
     
     float res = (abs(ab / (moda * modb)) > 1.0f) ? 1.0f * (abs(ab / (moda * modb))/(ab / (moda * modb))) : ab / (moda * modb);
     
-    return std::acos(res);
+    return std::acosf(res);
 }
 
 void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos) {
@@ -168,7 +169,7 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
     
     switch (state) {
         case DUTY: {
-            // std::cout << rotation << std::endl;
+            ///*
             if ((int) fabsf(rotation) % turn == 0) {
                 if (!CollidesRect(x, z, position.x + x1 * speed, position.z, 0.4f, 0.4f)) {
                     position.x += x1 * speed;
@@ -186,6 +187,7 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
             if (map.get()[element] != 6 && map.get()[element] != 0) {
                 rotation += 1.0f;
             } 
+            //*/
             break;
         }
         case SEARCH: {
@@ -212,6 +214,9 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
             point.x *= position.x / abs(position.x);
             point.z *= position.z / abs(position.z);
             
+            int i = rotation / fabsf(rotation);
+            rotation = (rotation < 0) ? 360 + rotation : rotation;
+            
             glm::vec3 v1 = position;
             
             v1.x = (v1.x + cosf((90 + rotation) * 3.14 / 180.0f)) - v1.x;
@@ -219,8 +224,8 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
             
             glm::vec3 v2(point.x - position.x, 0.0f, point.z - position.z);
             
-            // v1 += 2;
-            v2 *= 10;
+            multiply_vec_by_scalar(v1, 10.0f);
+            multiply_vec_by_scalar(v2, 10.0f);
             
             float angle = angle_between_vectors(v1, v2);
             angle *= (180.0f/M_PI);
@@ -228,14 +233,11 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
             angle = (int) angle;
             
             if (angle != 0.0f) {
-                
-                float k = (position.z - (position.z + sinf((90 + rotation) * 3.14 / 180.0f))) / (position.x - (position.x + cosf((90 + rotation) * 3.14 / 180.0f)));
-                float b = position.z + sinf((90 + rotation) * 3.14 / 180.0f) - k * (position.x + cosf((90 + rotation) * 3.14 / 180.0f));
-                
-                // std::cout << k << " " << b << "\n";
-                
                 glm::vec2 p1(position.x, position.z);
-                glm::vec2 p2(position.x + cosf((90 + rotation) * 3.14 / 180.0f), position.z + sinf((90 + rotation) * 3.14 / 180.0f));
+                glm::vec2 p2(
+                    position.x + cosf((90 + rotation) * 3.14 / 180.0f), 
+                    position.z + sinf((90 + rotation) * 3.14 / 180.0f)
+                );
                 
                 line.calculate(p1, p2);
                 
@@ -248,14 +250,15 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
                 znak_z = (rotation >   0)  ? -1 :  1;
                 znak_z = (rotation > 180)  ? 1  :  znak_z;
                 
+                std::cout << rotation << " " << angle << " " << line.k << " " << line.b << std::endl;
+                
                 if (znak_x * point.x < znak_x * line.get_x(point.z) && znak_z * point.z > znak_z * line.get_y(point.x)) {
                     rotation += (angle >= 5.0f) ? 1.0f : angle;
                     angle    -= (angle >= 5.0f) ? 1.0f : angle;
-                } else {
+                } else {    
                     rotation -= (angle >= 5.0f) ? 1.0f : angle;
                     angle    += (angle >= 5.0f) ? 1.0f : angle;
                 }
-                
             }
             
             if (angle == 0.0f) {
@@ -270,6 +273,7 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
             }
             
             //*/
+            rotation = (i < 0) ? rotation - 360 : rotation;
             break;
         }
         case ATTACK:
@@ -287,16 +291,13 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
 void Enemy::processing(const Collisions &colls, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors) {
     if (hit_points > 0)
         update(colls, doors, player.position);
-    rotation = fmodf(rotation, 360.0f);
+    rotation = fmodf((rotation), 360.0f);
     draw(duration, player, view, proj);
 }
 
 void Enemy::draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj) {
     enemy_tex->bind(GL_TEXTURE0);
     ps->useProgram();
-    
-    int i = rotation / fabsf(rotation);
-    rotation = (rotation < 0) ? 360 + rotation : rotation;
     
     glm::vec3 p = player.position;
     float deltaX = fabsf(p.x - position.x + 0.5f);
@@ -325,6 +326,9 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
     
     v1 = position;
     
+    int i = rotation / fabsf(rotation);
+    rotation = (rotation < 0) ? 360 + rotation : rotation;
+    
     v1.x = (v1.x + cosf((90 + rotation) * 3.14 / 180.0f)) - v1.x;
     v1.z = (v1.z + sinf((90 + rotation) * 3.14 / 180.0f)) - v1.z;
     
@@ -346,6 +350,8 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
     
     znak_z = (rotation >   0)  ? -1 :  1;
     znak_z = (rotation > 180)  ? 1  :  znak_z;
+    
+    rotation = (i < 0) ? rotation - 360 : rotation;
     
     if (znak_x * p.x < znak_x * line1.get_x(p.z) && znak_z * p.z > znak_z * line1.get_y(p.x)) {
         tex_rotation -= (angle_btw_vecs * 180 / 3.14f) + 44;
@@ -373,8 +379,6 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
             position_check = position;
         }
     }
-    
-    rotation = (i < 0) ? rotation - 360 : rotation;
 }
 
 void Enemy::clear() {

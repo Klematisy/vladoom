@@ -11,6 +11,12 @@ typedef unsigned int uint;
 typedef unsigned char uchar;
 typedef std::string String;
 
+struct Entity {
+    glm::vec3 position = glm::vec3(1.0f);
+    float rotation = 0.0f;
+    int hit_points = 100;
+};
+
 struct Rect {
     float x;
     float y;
@@ -126,6 +132,10 @@ struct Index_36 {
     }
 };
 
+static void multiply_vec_by_scalar(glm::vec3 &vector, float scalar) {
+    vector = glm::vec3(vector.x * scalar, vector.y * scalar, vector.z * scalar);
+}
+
 static bool inObj(const Map &map, const glm::vec3 &p) {
     return (map.maxX > p.x && p.x > map.minX && map.maxZ > p.z && p.z > map.minZ);
 }
@@ -151,12 +161,6 @@ static bool CollidesRect(int startX, int startZ, float x, float z, float x_half_
         || Collides(startX, startZ, std::ceil(x + x_half_extent), std::ceil(z + z_half_extent))
         || Collides(startX, startZ, std::ceil(x - x_half_extent), std::ceil(z + z_half_extent));
 }
-
-struct Entity {
-    glm::vec3 position = glm::vec3(1.0f);
-    float rotation = 0.0f;
-    int hit_points = 100;
-};
 
 static std::unique_ptr<int> check_collisions(const Entity &creature, const Collisions &colls) {
     int x, z, x1, z1;
