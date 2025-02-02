@@ -168,6 +168,7 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
     
     switch (state) {
         case DUTY: {
+            // std::cout << rotation << std::endl;
             if ((int) fabsf(rotation) % turn == 0) {
                 if (!CollidesRect(x, z, position.x + x1 * speed, position.z, 0.4f, 0.4f)) {
                     position.x += x1 * speed;
@@ -293,7 +294,10 @@ void Enemy::processing(const Collisions &colls, std::chrono::duration<float> dur
 void Enemy::draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj) {
     enemy_tex->bind(GL_TEXTURE0);
     ps->useProgram();
-
+    
+    int i = rotation / fabsf(rotation);
+    rotation = (rotation < 0) ? 360 + rotation : rotation;
+    
     glm::vec3 p = player.position;
     float deltaX = fabsf(p.x - position.x + 0.5f);
 
@@ -349,7 +353,7 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
         tex_rotation += (angle_btw_vecs * 180 / 3.14f);
     }
     // std::cout << tex_rotation << std::endl;
-
+    
     if (hit_points <= 0) {
         if (tex_x < 5 && duration.count() - old_duration_enemy.count() > 0.16f) {
             tex_x++;
@@ -369,6 +373,8 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
             position_check = position;
         }
     }
+    
+    rotation = (i < 0) ? rotation - 360 : rotation;
 }
 
 void Enemy::clear() {
