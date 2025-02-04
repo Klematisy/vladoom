@@ -2,6 +2,7 @@
 #include <stack>
 #include "libs.h"
 #include "settings.h"
+#include <stack>
 
 struct Player;
 
@@ -66,7 +67,7 @@ private:
     ProgramShader *ps;
     Texture *enemy_tex;
     
-    int search_player_rec(int width, int height, int *main_map, std::stack<Point> &solution, std::stack<Point> main_stack, const Point &p_p, int depth, int &min_depth);
+    // int search_player_rec(int width, int height, int *main_map, std::stack<Point> &solution, std::stack<Point> main_stack, const Point &p_p, int depth, int &min_depth);
     void draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
     void update(const Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos);
 public:

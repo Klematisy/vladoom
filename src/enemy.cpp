@@ -1,7 +1,7 @@
 #include <cmath>
 #include "game.h"
 #include "VPlane.h"
-#include <stack>
+#include <vector>
 
 const static String shaderDir = "resource/Shaders/";
 String bindShader(std::string dir);
@@ -27,38 +27,47 @@ Enemy::Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_poi
     this->position = position;
 }
 
-int Enemy::search_player_rec(int width, int height, int *main_map, std::stack<Point> &solution, std::stack<Point> main_stack, const Point &p_p, int depth, int &min_depth) {
+template <typename T>
+static void copyt_arrays(T *arr1, T *arr2, int size) {
+    for (size_t i = 0; i < size; i++) {
+        arr2[i] = arr1[i];
+    }
+}
+
+int search_player_rec(int width, int height, int *main_map, Point *solution, Point *main_array, const Point &p_p, int depth, int &min_depth) {
     size_t size = width * height;
     int element;
     
-    Point point = main_stack.top();
+    Point point = main_array[depth++];
     
     if (point.x == p_p.x && point.z == p_p.z) {
-        if (depth - 1 < min_depth) {
+        if (depth < min_depth) {
             min_depth = depth - 1;
-            solution = main_stack;
+            copyt_arrays<Point>(main_array, solution, min_depth);
         }
         return 1;
     }
     
-    depth++;
-    
-    if (depth - 1 >= min_depth) {
+    if (depth >= min_depth) {
         return 0;
     }
     
     int copy_map[size];
+    Point copy_array[depth];
     for (size_t i = 0; i < size; i++) {
         copy_map[i] = main_map[i];
+    }
+    
+    for (size_t i = 0; i < depth; i++) {
+        copy_array[i] = main_array[i];
     }
     
     if (fmodf((point.x + 1), width) != 1) {     //left
         element = point.z * width + point.x - 1;
         if (copy_map[element] == 0) {
             copy_map[element] = 1;
-            main_stack.push({.x = point.x - 1, .z = point.z});
-            search_player_rec(width, height, copy_map, solution, main_stack, p_p, depth, min_depth);
-            main_stack.pop();
+            copy_array[depth] = {.x = point.x - 1, .z = point.z};
+            search_player_rec(width, height, copy_map, solution, copy_array, p_p, depth, min_depth);
         }
     }
 
@@ -66,9 +75,8 @@ int Enemy::search_player_rec(int width, int height, int *main_map, std::stack<Po
         element = point.z * width + point.x + 1;
         if (copy_map[element] == 0) {
             copy_map[element] = 1;
-            main_stack.push({.x = point.x + 1, .z = point.z});
-            search_player_rec(width, height, copy_map, solution, main_stack, p_p, depth, min_depth);
-            main_stack.pop();
+            copy_array[depth] = {.x = point.x + 1, .z = point.z};
+            search_player_rec(width, height, copy_map, solution, copy_array, p_p, depth, min_depth);
         }
     }
 
@@ -76,9 +84,8 @@ int Enemy::search_player_rec(int width, int height, int *main_map, std::stack<Po
         element = (point.z + 1) * width + point.x;
         if (copy_map[element] == 0) {
             copy_map[element] = 1;
-            main_stack.push({.x = point.x, .z = point.z + 1});
-            search_player_rec(width, height, copy_map, solution, main_stack, p_p, depth, min_depth);
-            main_stack.pop();
+            copy_array[depth] = {.x = point.x, .z = point.z + 1};
+            search_player_rec(width, height, copy_map, solution, copy_array, p_p, depth, min_depth);
         }
     }
     
@@ -86,9 +93,8 @@ int Enemy::search_player_rec(int width, int height, int *main_map, std::stack<Po
         element = (point.z - 1) * width + point.x;
         if (copy_map[element] == 0) {
             copy_map[element] = 1;
-            main_stack.push({.x = point.x, .z = point.z - 1});
-            search_player_rec(width, height, copy_map, solution, main_stack, p_p, depth, min_depth);
-            main_stack.pop();
+            copy_array[depth] = {.x = point.x, .z = point.z - 1};
+            search_player_rec(width, height, copy_map, solution, copy_array, p_p, depth, min_depth);
         }
     }
     
@@ -101,8 +107,10 @@ void Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
     auto a = std::chrono::high_resolution_clock::now();
     
     int copy_map[size];
-    std::stack<Point> solution;
-    std::stack<Point> main_stack;
+    
+    constexpr int max_depth = 12;
+    Point solution[max_depth];
+    Point main_array[max_depth];
     
     for (size_t i = 0; i < size; i++) {
         copy_map[i] = map.obj[i];
@@ -112,33 +120,32 @@ void Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
     int z = std::ceil(player_position.z + map.gap_z);
     
     Point p_p = {
-        .x = abs(x),
-        .z = abs(z)
+        .x = fabsf(x),
+        .z = fabsf(z)
     };
     
     x = std::ceil(position.x + map.gap_x);
     z = std::ceil(position.z + map.gap_z);
     
     Point e_p = {
-        .x = abs(x),
-        .z = abs(z)
+        .x = fabsf(x),
+        .z = fabsf(z)
     };
     
-    main_stack.push(e_p);
-    
+    main_array[0] = e_p;
     copy_map[(int) (e_p.x + e_p.z * map.width)] = 1;
     
-    int min_depth  = 12;
-    search_player_rec(map.width, map.height, copy_map, solution, main_stack, p_p, 0, min_depth);
+    int min_depth = 12;
+    search_player_rec(map.width, map.height, copy_map, solution, main_array, p_p, 0, min_depth);
     
-    if (!solution.empty()) {
-        while (!solution.empty()) {
-            way.push(solution.top());
-            std::cout << solution.top().x << " " << solution.top().z << std::endl;
-            solution.pop();
+    if (!(solution[max_depth - 1].x == 0 && solution[max_depth - 1].z == 0 && solution[0].x == 0 && solution[0].z == 0)) {
+        for (int i = min_depth - 1; i >= 0; i--) {
+            way.push(solution[i]);
         }
         way.pop();
-    } else {
+    }
+    
+    if (way.empty()) {
         state = DUTY;
     }
     
@@ -154,7 +161,7 @@ static float angle_between_vectors(glm::vec3 v1, glm::vec3 v2) {
     
     float res = (abs(ab / (moda * modb)) > 1.0f) ? 1.0f * (abs(ab / (moda * modb))/(ab / (moda * modb))) : ab / (moda * modb);
     
-    return std::acosf(res);
+    return std::acos(res);
 }
 
 void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos) {
@@ -249,8 +256,6 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
                 
                 znak_z = (rotation >   0)  ? -1 :  1;
                 znak_z = (rotation > 180)  ? 1  :  znak_z;
-                
-                std::cout << rotation << " " << angle << " " << line.k << " " << line.b << std::endl;
                 
                 if (znak_x * point.x < znak_x * line.get_x(point.z) && znak_z * point.z > znak_z * line.get_y(point.x)) {
                     rotation += (angle >= 5.0f) ? 1.0f : angle;

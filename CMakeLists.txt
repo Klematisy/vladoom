@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.31)
 project(vladoom)
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_COMPILER /usr/local/bin/g++-14)
+set(CMAKE_CXX_COMPILER /usr/bin/clang++)
 
 find_package(OpenGL REQUIRED)
 include_directories(vladoom "headers/")
 include_directories(vladoom "src/ENG/")
-include_directories(vladoom deps/include/)
+include_directories(vladoom "deps/include/")
 
 add_compile_options(-w -g -framework OpenGL)
 
@@ -32,6 +32,7 @@ add_executable(vladoom
     "src/Door.cpp"
     "src/game.cpp"
     "src/main.cpp"
+    "src/settings.cpp"
 )
 
 # find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/deps/library/)

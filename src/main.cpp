@@ -1,6 +1,7 @@
 #include <cmath>
 #include "constants.h"
 #include "libs.h"
+#include "settings.h"
 
 void game(GLFWwindow *window);
 
