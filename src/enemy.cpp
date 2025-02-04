@@ -1,3 +1,4 @@
+// слава России zvzvz
 #include <cmath>
 #include "game.h"
 #include "VPlane.h"
