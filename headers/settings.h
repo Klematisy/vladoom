@@ -23,6 +23,11 @@ struct Rect {
     float y1;
 };
 
+struct Point2 {
+    float x = 0.0f;
+    float z = 0.0f;
+};
+
 struct Point {
     float x = 0.0f;
     float y = 0.0f;

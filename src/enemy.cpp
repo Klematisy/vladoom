@@ -29,22 +29,34 @@ Enemy::Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_poi
 }
 
 template <typename T>
-static void copyt_arrays(T *arr1, T *arr2, int size) {
+static void copy_arrays(T *arr1, T *arr2, int size) {
     for (size_t i = 0; i < size; i++) {
         arr2[i] = arr1[i];
     }
 }
 
-int search_player_rec(int width, int height, int *main_map, Point *solution, Point *main_array, const Point &p_p, int depth, int &min_depth) {
-    size_t size = width * height;
+bool Enemy::vision(const Map &map, const glm::vec3 &player_position) {
+    return true;
+}
+
+int search_player_rec(const Map &map, 
+                                   int *main_map, 
+                                   std::vector<Point2> &solution, 
+                                   std::vector<Point2> &main_array, 
+                             const Point2 &p_p, 
+                                   int depth, 
+                                   int &min_depth) 
+{
+    size_t size = map.width * map.height;
     int element;
     
-    Point point = main_array[depth++];
+    Point2 point = main_array[depth++];
     
     if (point.x == p_p.x && point.z == p_p.z) {
         if (depth < min_depth) {
             min_depth = depth - 1;
-            copyt_arrays<Point>(main_array, solution, min_depth);
+            // copy_arrays<Point2>(main_array, solution, min_depth);
+            solution = main_array;
         }
         return 1;
     }
@@ -54,64 +66,70 @@ int search_player_rec(int width, int height, int *main_map, Point *solution, Poi
     }
     
     int copy_map[size];
-    Point copy_array[depth];
+    std::vector<Point2> copy_array;
     for (size_t i = 0; i < size; i++) {
         copy_map[i] = main_map[i];
     }
+    copy_array = main_array;
     
-    for (size_t i = 0; i < depth; i++) {
-        copy_array[i] = main_array[i];
-    }
-    
-    if (fmodf((point.x + 1), width) != 1) {     //left
-        element = point.z * width + point.x - 1;
+    if (fmodf((point.x + 1), map.width) != 1) {
+        element = point.z * map.width + point.x - 1;
         if (copy_map[element] == 0) {
             copy_map[element] = 1;
-            copy_array[depth] = {.x = point.x - 1, .z = point.z};
-            search_player_rec(width, height, copy_map, solution, copy_array, p_p, depth, min_depth);
+            copy_array.push_back({point.x - 1, point.z});
+            search_player_rec(map, copy_map, solution, copy_array, p_p, depth, min_depth);
+            copy_array.pop_back();
         }
     }
 
-    if (fmodf((point.x + 1), width) != 0) {
-        element = point.z * width + point.x + 1;
+    if (fmodf((point.x + 1), map.width) != 0) {
+        element = point.z * map.width + point.x + 1;
         if (copy_map[element] == 0) {
             copy_map[element] = 1;
-            copy_array[depth] = {.x = point.x + 1, .z = point.z};
-            search_player_rec(width, height, copy_map, solution, copy_array, p_p, depth, min_depth);
+            copy_array.push_back({point.x + 1, point.z});
+            search_player_rec(map, copy_map, solution, copy_array, p_p, depth, min_depth);
+            copy_array.pop_back();
         }
     }
 
-    if (fmodf(point.z, height) != 0) {
-        element = (point.z + 1) * width + point.x;
+    if (fmodf(point.z, map.height) != 0) {
+        element = (point.z + 1) * map.width + point.x;
         if (copy_map[element] == 0) {
             copy_map[element] = 1;
-            copy_array[depth] = {.x = point.x, .z = point.z + 1};
-            search_player_rec(width, height, copy_map, solution, copy_array, p_p, depth, min_depth);
+            copy_array.push_back({point.x, point.z + 1});
+            search_player_rec(map, copy_map, solution, copy_array, p_p, depth, min_depth);
+            copy_array.pop_back();
         }
     }
     
-    if (fmodf(point.z, height) != 1) {
-        element = (point.z - 1) * width + point.x;
+    if (fmodf(point.z, map.height) != 1) {
+        element = (point.z - 1) * map.width + point.x;
         if (copy_map[element] == 0) {
             copy_map[element] = 1;
-            copy_array[depth] = {.x = point.x, .z = point.z - 1};
-            search_player_rec(width, height, copy_map, solution, copy_array, p_p, depth, min_depth);
+            copy_array.push_back({point.x, point.z - 1});
+            search_player_rec(map, copy_map, solution, copy_array, p_p, depth, min_depth);
+            copy_array.pop_back();
         }
     }
     
     return 0;
 }
 
-void Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
-    size_t size = map.width * map.height;
-    
+int Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
+    // if (vision(map, player_position)) {
+    //     std::cout << "VLAAAAAD" << std::endl;
+    //     return 0;
+    // }
     auto a = std::chrono::high_resolution_clock::now();
     
-    int copy_map[size];
+    way.clear();
     
-    constexpr int max_depth = 12;
-    Point solution[max_depth];
-    Point main_array[max_depth];
+    const int max_depth = 13;
+    const size_t size = map.width * map.height;
+    
+    int copy_map[size];
+    std::vector<Point2> solution;
+    std::vector<Point2> main_array;
     
     for (size_t i = 0; i < size; i++) {
         copy_map[i] = map.obj[i];
@@ -120,39 +138,38 @@ void Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
     int x = std::ceil(player_position.x + map.gap_x);
     int z = std::ceil(player_position.z + map.gap_z);
     
-    Point p_p = {
-        .x = fabsf(x),
-        .z = fabsf(z)
+    Point2 p_p = {
+        fabsf(x),
+        fabsf(z)
     };
     
     x = std::ceil(position.x + map.gap_x);
     z = std::ceil(position.z + map.gap_z);
     
-    Point e_p = {
-        .x = fabsf(x),
-        .z = fabsf(z)
+    Point2 e_p = {
+        fabsf(x),
+        fabsf(z)
     };
     
-    main_array[0] = e_p;
+    main_array.push_back(e_p);
     copy_map[(int) (e_p.x + e_p.z * map.width)] = 1;
     
-    int min_depth = 12;
-    search_player_rec(map.width, map.height, copy_map, solution, main_array, p_p, 0, min_depth);
+    int min_depth = max_depth;
+    search_player_rec(map, copy_map, solution, main_array, p_p, 0, min_depth);
     
-    if (!(solution[max_depth - 1].x == 0 && solution[max_depth - 1].z == 0 && solution[0].x == 0 && solution[0].z == 0)) {
-        for (int i = min_depth - 1; i >= 0; i--) {
-            way.push(solution[i]);
-        }
-        way.pop();
+    while (!(solution.empty())) {
+        way.push_back(solution[solution.size() - 1]);
+        solution.pop_back();
     }
     
-    if (way.empty()) {
-        state = DUTY;
-    }
+    if (way.empty())    state = DUTY;
+    else                way.pop_back();
     
     auto b = std::chrono::high_resolution_clock::now();
     std::chrono::duration<float> d = b - a;
     std::cout << d.count() << std::endl;
+    
+    return 0;
 }
 
 static float angle_between_vectors(glm::vec3 v1, glm::vec3 v2) {
@@ -199,7 +216,8 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
             break;
         }
         case SEARCH: {
-            Point point = way.top();
+            speed = 0.007f;
+            Point2 point = way.back();
             
             int x = abs(std::ceil(position.x));
             int z = abs(std::ceil(position.z));
@@ -208,12 +226,12 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
             point.z += 0.5f;
             
             if (fabsf(point.x - fabsf(position.x)) < 0.1f && fabsf(point.z - fabsf(position.z)) < 0.1f) {                
-                way.pop();
+                way.pop_back();
                 if (way.empty()) {
                     state = DUTY;
                     break;
                 } else {
-                    Point point = way.top();
+                    Point2 point = way.back();
                     point.x += 0.5f;
                     point.z += 0.5f;
                 }
@@ -376,7 +394,7 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
         if (fabsf(position.x - position_check.x) < 0.0001 && fabsf(position.z - position_check.z) < 0.0001) {
             Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, std::ceil(tex_rotation / 45), 4, 8.0f, 7.0f);
         } else {
-            if (duration.count() - old_duration_enemy.count() > 0.3f) {
+            if (duration.count() - old_duration_enemy.count() > ((state == DUTY) ? 0.4f : 0.3f)) {
                 tex_y = (tex_y < 3) ? ++tex_y : 0;
                 old_duration_enemy = duration;
             }

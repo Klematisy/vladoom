@@ -104,10 +104,10 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
             for (const Map *path_of_map : colls._piecesOfMap) {
                 if (!inObj(*path_of_map, player.position)) continue;
                 for (Enemy &enemy : enemies) {
-                    if (inObj(*path_of_map, enemy.position) && enemy.state == Enemy::DUTY) {
+                    if (inObj(*path_of_map, enemy.position)) {
                         enemy.state = Enemy::SEARCH;
                         enemy.search_player(*path_of_map, player.position);
-                    }
+                    } 
                 }
                 break;
             }
