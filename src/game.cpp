@@ -26,7 +26,7 @@ void game(GLFWwindow *window) {
 
     Collisions cWalls;
 
-    int *map  = new int[] {
+    int *map = new int[] {
         0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0,
         1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1,
         1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
@@ -49,8 +49,8 @@ void game(GLFWwindow *window) {
     
     std::vector<Enemy> enemies;
     
-    enemies.push_back(Enemy(window, glm::vec3(-7.5f, 0.0f, -10.0f), 180.0f, 100, "Enemy-02.png", RIGHT_TURN));
-    // enemies.push_back(Enemy(window, glm::vec3(-7.5f, 0.0f, -2.0f),    0.0f, 100, "Enemy-01.png",  FULL_TURN));
+    enemies.push_back(Enemy(window, glm::vec3(-7.5f, 0.0f, -3.5f), 90.0f, 100, "Enemy-02.png", RIGHT_TURN));
+    // enemies.push_back(Enemy(window, glm::vec3(-7.5f, 0.0f, -4.0f),    0.0f, 100, "Enemy-01.png",  FULL_TURN));
 
     Cube part(map, 15, 14, 1.0f, 0.0f, 0.0f, 0.0f, cWalls, 5.0f, 2.0f);
 
@@ -73,7 +73,7 @@ void game(GLFWwindow *window) {
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
 
-    int k = 0;
+    int face = 0;
 
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -132,10 +132,10 @@ void game(GLFWwindow *window) {
         glViewport(50, 50, WIDTH * 2 - 100, 270);
 
         if (duration.count() - old_duration_face.count() > 0.5f) {
-            k = disti(gen);
+            face = disti(gen);
             old_duration_face = duration;
         }
-        hud.draw(player, k);
+        hud.draw(player, face);
 
         if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS && player.hit_points < 100) {
             player.hit_points += 1.0f;

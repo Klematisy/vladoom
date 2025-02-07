@@ -11,7 +11,7 @@ float Line::get_x(float y) {
     return (y - b) / k;
 }
 
-float Line::get_y(float x) {
+float Line::get_z(float x) {
     return k * x + b;
 }
 
@@ -75,6 +75,24 @@ float zR(float x, float z, float rotation) {
     glm::mat2 matrix(Vmath::cos(rotation), -Vmath::sin(rotation), Vmath::sin(rotation), Vmath::cos(rotation));
     z = matrix[1][0] * x + matrix[1][1] * z;
     return z;
+}
+
+float vec_mod(const glm::vec3 &vec) {
+    return glm::sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+}
+
+float angle_between_vectors(glm::vec3 v1, glm::vec3 v2) {
+    float ab   = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+    float moda = vec_mod(v1);
+    float modb = vec_mod(v2);
+    
+    float res = (abs(ab / (moda * modb)) > 1.0f) ? (abs(ab / (moda * modb)) / (ab / (moda * modb))) : ab / (moda * modb);
+    
+    return std::acos(res);
+}
+
+glm::vec3 take_vector(const glm::vec3 &v1, const glm::vec3 &v2) {
+    return glm::vec3(v2.x - v1.x, v2.y - v1.y, v2.z - v1.z);
 }
 
 void multiply_vec_by_scalar(glm::vec3 &vector, float scalar) {

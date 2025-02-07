@@ -35,11 +35,7 @@ static void copy_arrays(T *arr1, T *arr2, int size) {
     }
 }
 
-bool Enemy::vision(const Map &map, const glm::vec3 &player_position) {
-    return true;
-}
-
-int search_player_rec(const Map &map, 
+int Enemy::search_player_rec(const Map &map, 
                                    int *main_map, 
                                    std::vector<Point2> &solution, 
                                    std::vector<Point2> &main_array, 
@@ -55,7 +51,6 @@ int search_player_rec(const Map &map,
     if (point.x == p_p.x && point.z == p_p.z) {
         if (depth < min_depth) {
             min_depth = depth - 1;
-            // copy_arrays<Point2>(main_array, solution, min_depth);
             solution = main_array;
         }
         return 1;
@@ -120,8 +115,6 @@ int Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
     //     std::cout << "VLAAAAAD" << std::endl;
     //     return 0;
     // }
-    auto a = std::chrono::high_resolution_clock::now();
-    
     way.clear();
     
     const int max_depth = 13;
@@ -158,31 +151,92 @@ int Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
     search_player_rec(map, copy_map, solution, main_array, p_p, 0, min_depth);
     
     while (!(solution.empty())) {
-        way.push_back(solution[solution.size() - 1]);
+        way.emplace_back(solution[solution.size() - 1]);
         solution.pop_back();
     }
     
     if (way.empty())    state = DUTY;
     else                way.pop_back();
     
-    auto b = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<float> d = b - a;
-    std::cout << d.count() << std::endl;
+    return 0;
+}
+
+int Enemy::vision(Collisions &colls, const glm::vec3 &player_position) {
+    float field_of_view    = 80.0f;
+    float distance_of_view = 10.0f;
+
+    glm::vec3 enemy_go_up(
+        position.x + cosf((90 + rotation) * 3.14 / 180.0f), 
+        0.0f,
+        position.z + sinf((90 + rotation) * 3.14 / 180.0f)
+    );
+    
+    glm::vec3 player = take_vector(position, player_position);
+    glm::vec3 enemy_view = take_vector(position, enemy_go_up);
+    
+    float angle_btw_vecs = angle_between_vectors(player, enemy_view);
+    angle_btw_vecs *= (180.0f / M_PI);
+    angle_btw_vecs  = (int) angle_btw_vecs;
+    
+    if (angle_btw_vecs <= field_of_view) {
+        int x, z, x1, z1;
+        int znak = -1;
+
+        Line line1;
+        glm::vec2 v1(position.x, 
+                     position.z);
+        glm::vec2 v2(enemy_go_up.x, 
+                     enemy_go_up.z);
+        line1.calculate(v2, v1);
+        int znak_x, znak_z;
+        glm::vec3 view = position;
+        
+        znak_x = (rotation >  90)  ? -1 :  1;
+        znak_x = (rotation > 270)  ? 1  :  znak_x;
+        
+        znak_z = (rotation >   0)  ? -1 :  1;
+        znak_z = (rotation > 180)  ? 1  :  znak_z;
+        
+        if ((znak_x * player_position.x <= znak_x * line1.get_x(player_position.z) && znak_z * player_position.z >= znak_z * line1.get_z(player_position.x))) {
+            znak = 1;
+        }
+        
+        bool loop = true;
+        
+        x = fabsf(std::ceil(view.x));
+        z = fabsf(std::ceil(view.z));
+        
+        while (loop) {
+            view.x += cosf(((90 + rotation + znak * angle_btw_vecs) * 3.14 / 180.0f)) * 0.2f;
+            view.z += sinf(((90 + rotation + znak * angle_btw_vecs) * 3.14 / 180.0f)) * 0.2f;
+            
+            if (fabsf(view.x - player_position.x) <= 0.4f && fabsf(view.z - player_position.z) <= 0.4f) {
+                std::cout << "МЫ ПЕРЕХОДИМ В АТАКУ" << std::endl;
+                break;
+            }
+            if (vec_mod(take_vector(position, view)) > distance_of_view) {
+                return 1;
+                break;
+            }
+            
+            for (const Map *path_of_map : colls._piecesOfMap) {
+                if (!inObj(*path_of_map, view)) continue;
+                
+                x = fabsf(std::ceil(view.x + path_of_map->gap_x));
+                z = fabsf(std::ceil(view.z + path_of_map->gap_z));
+                
+                if (path_of_map->obj[x + z * path_of_map->width] > 0) {
+                    loop = false;
+                }
+            }
+        }
+        state = (!loop) ? state : ATTACK;
+    }
     
     return 0;
 }
 
-static float angle_between_vectors(glm::vec3 v1, glm::vec3 v2) {
-    float ab   = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
-    float moda = glm::sqrt(v1.x * v1.x + v1.y * v1.y + v1.z * v1.z);
-    float modb = glm::sqrt(v2.x * v2.x + v2.y * v2.y + v2.z * v2.z);
-    
-    float res = (abs(ab / (moda * modb)) > 1.0f) ? 1.0f * (abs(ab / (moda * modb))/(ab / (moda * modb))) : ab / (moda * modb);
-    
-    return std::acos(res);
-}
-
-void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos) {
+void Enemy::update(Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos) {
     map = check_collisions(*this, colls);
     
     float speed = 0.005f;
@@ -192,9 +246,12 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
     float x1 = cosf((90 + rotation) * 3.14 / 180.0f);
     float z1 = sinf((90 + rotation) * 3.14 / 180.0f);
     
+    if (state != ATTACK)
+        vision(colls, player_pos);
+    
     switch (state) {
         case DUTY: {
-            ///*
+            /*
             if ((int) fabsf(rotation) % turn == 0) {
                 if (!CollidesRect(x, z, position.x + x1 * speed, position.z, 0.4f, 0.4f)) {
                     position.x += x1 * speed;
@@ -216,7 +273,7 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
             break;
         }
         case SEARCH: {
-            speed = 0.007f;
+            speed = 0.01f;
             Point2 point = way.back();
             
             int x = abs(std::ceil(position.x));
@@ -276,7 +333,7 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
                 znak_z = (rotation >   0)  ? -1 :  1;
                 znak_z = (rotation > 180)  ? 1  :  znak_z;
                 
-                if (znak_x * point.x < znak_x * line.get_x(point.z) && znak_z * point.z > znak_z * line.get_y(point.x)) {
+                if (znak_x * point.x < znak_x * line.get_x(point.z) && znak_z * point.z > znak_z * line.get_z(point.x)) {
                     rotation += (angle >= 5.0f) ? 1.0f : angle;
                     angle    -= (angle >= 5.0f) ? 1.0f : angle;
                 } else {    
@@ -312,7 +369,7 @@ void Enemy::update(const Collisions &colls, const std::vector<Door*> &doors, con
     }
 }
 
-void Enemy::processing(const Collisions &colls, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors) {
+void Enemy::processing(Collisions &colls, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors) {
     if (hit_points > 0)
         update(colls, doors, player.position);
     rotation = fmodf((rotation), 360.0f);
@@ -377,7 +434,7 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
     
     rotation = (i < 0) ? rotation - 360 : rotation;
     
-    if (znak_x * p.x < znak_x * line1.get_x(p.z) && znak_z * p.z > znak_z * line1.get_y(p.x)) {
+    if (znak_x * p.x < znak_x * line1.get_x(p.z) && znak_z * p.z > znak_z * line1.get_z(p.x)) {
         tex_rotation -= (angle_btw_vecs * 180 / 3.14f) + 44;
     } else {
         tex_rotation += (angle_btw_vecs * 180 / 3.14f);
@@ -391,7 +448,7 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
         }
         Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, tex_x, 6, 8.0f, 7.0f);
     } else {
-        if (fabsf(position.x - position_check.x) < 0.0001 && fabsf(position.z - position_check.z) < 0.0001) {
+        if (fabsf(position.x - position_check.x) < 0.001 && fabsf(position.z - position_check.z) < 0.001) {
             Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, std::ceil(tex_rotation / 45), 4, 8.0f, 7.0f);
         } else {
             if (duration.count() - old_duration_enemy.count() > ((state == DUTY) ? 0.4f : 0.3f)) {
@@ -399,7 +456,6 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
                 old_duration_enemy = duration;
             }
             Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, std::ceil(tex_rotation / 45), tex_y, 8.0f, 7.0f);
-        
             position_check = position;
         }
     }

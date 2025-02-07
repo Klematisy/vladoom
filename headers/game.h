@@ -67,17 +67,25 @@ private:
     ProgramShader *ps;
     Texture *enemy_tex;
     
-    bool vision(const Map &map, const glm::vec3 &player_position);
-    // int search_player_rec(const Map &map, int *main_map, Point2 *solution, Point2 *main_array, const Point2 &p_p, int depth, int &min_depth);
+    int vision(Collisions &colls, const glm::vec3 &player_position);
+    
+    int search_player_rec(const Map &map, 
+                                int *main_map, 
+                                std::vector<Point2> &solution, 
+                                std::vector<Point2> &main_array, 
+                          const Point2 &p_p, 
+                                int depth, 
+                                int &min_depth);
+    
     void draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
-    void update(const Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos);
+    void update(Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos);
 public:
     enum states {DUTY, SEARCH, ATTACK};
     states state;
     
     Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_points, String name_of_file, uint turn);
     
-    void processing(const Collisions &colls, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors);
+    void processing(Collisions &colls, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors);
     int search_player(const Map &map, const glm::vec3 &player_position);
     void clear();
 };

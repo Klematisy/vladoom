@@ -107,7 +107,7 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
                     if (inObj(*path_of_map, enemy.position)) {
                         enemy.state = Enemy::SEARCH;
                         enemy.search_player(*path_of_map, player.position);
-                    } 
+                    }
                 }
                 break;
             }
@@ -126,8 +126,8 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
                 x = abs(std::ceil(pos_of_bullet.x + path_of_map->gap_x));
                 z = abs(std::ceil(pos_of_bullet.z + path_of_map->gap_z));
 
-                x1 = abs(std::ceil(pos_of_bullet.x));
-                z1 = abs(std::ceil(pos_of_bullet.z));
+                // x1 = abs(std::ceil(pos_of_bullet.x));
+                // z1 = abs(std::ceil(pos_of_bullet.z));
 
                 if (path_of_map->obj[x + z * path_of_map->width] > 0) {
                     player.ammo--;
