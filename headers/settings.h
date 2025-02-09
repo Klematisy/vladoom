@@ -85,8 +85,10 @@ float xR(float x, float y, float rotation);
 float zR(float x, float z, float rotation);
 
 float vec_mod(const glm::vec3 &vec);
+float vec_mod2D(const glm::vec2 &vec);
 float angle_between_vectors(glm::vec3 v1, glm::vec3 v2);
-glm::vec3 take_vector(const glm::vec3 &v1, const glm::vec3 &v2);
+float angle_between_vectors2D(glm::vec2 v1, glm::vec2 v2);
+glm::vec2 take_vector2D(const glm::vec2 &v1, const glm::vec2 &v2);
 void multiply_vec_by_scalar(glm::vec3 &vector, float scalar);
 
 bool inObj(const Map &map, const glm::vec3 &p);

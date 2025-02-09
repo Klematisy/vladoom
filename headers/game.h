@@ -57,14 +57,16 @@ private:
     uint turn;
     GLFWwindow *window;
     std::vector<Point2> way;
-    Line line;
     
-    enum POS_STATE {BEHIND, LINE};
-    POS_STATE pos_state;
+    int maneuvering = 1;
+    
+    enum ATTACK_STATES {MANEUVERING, RUN, SHOOT};
+    glm::vec3 flag_of_maneuvering = position;
     
     std::chrono::duration<float> old_duration_enemy = std::chrono::high_resolution_clock::now() - std::chrono::high_resolution_clock::now();
+    std::chrono::duration<float> old_duration_atack = std::chrono::high_resolution_clock::now() - std::chrono::high_resolution_clock::now();
     
-    ProgramShader *ps;
+    ProgramShader  *ps;
     Texture *enemy_tex;
     
     int vision(Collisions &colls, const glm::vec3 &player_position);
@@ -77,11 +79,13 @@ private:
                                 int depth, 
                                 int &min_depth);
     
+    float angle_btw_point_and_enemy(const glm::vec3 &point);
     void draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
-    void update(Collisions &colls, const std::vector<Door*> &doors, const glm::vec3 &player_pos);
+    void update(Collisions &colls, std::chrono::duration<float> duration, const std::vector<Door*> &doors, const Entity &player);
 public:
     enum states {DUTY, SEARCH, ATTACK};
     states state;
+    ATTACK_STATES a_states = RUN;
     
     Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_points, String name_of_file, uint turn);
     

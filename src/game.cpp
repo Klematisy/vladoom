@@ -49,7 +49,7 @@ void game(GLFWwindow *window) {
     
     std::vector<Enemy> enemies;
     
-    enemies.push_back(Enemy(window, glm::vec3(-7.5f, 0.0f, -3.5f), 90.0f, 100, "Enemy-02.png", RIGHT_TURN));
+    enemies.push_back(Enemy(window, glm::vec3(-7.5f, 0.0f, -3.5f), 90.0f, 100, "Enemy-01.png", RIGHT_TURN));
     // enemies.push_back(Enemy(window, glm::vec3(-7.5f, 0.0f, -4.0f),    0.0f, 100, "Enemy-01.png",  FULL_TURN));
 
     Cube part(map, 15, 14, 1.0f, 0.0f, 0.0f, 0.0f, cWalls, 5.0f, 2.0f);

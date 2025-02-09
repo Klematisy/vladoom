@@ -163,7 +163,8 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
             pos_of_bullet.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.4f;
             for (size_t i = 0; i < enemies.size(); i++) {
                 if (enemies[i].hit_points > 0 && fabsf(pos_of_bullet.x - enemies[i].position.x) < 0.2f && fabsf(pos_of_bullet.z - enemies[i].position.z) < 0.2f) {
-                    enemies[i].hit_points -= damage;
+                    if (enemies[i].state != Enemy::ATTACK) enemies[i].hit_points -= enemies[i].hit_points;
+                    else                                   enemies[i].hit_points -= damage;
                     std::cout << enemies[i].hit_points << std::endl;
                     loop = false;
                     break;
