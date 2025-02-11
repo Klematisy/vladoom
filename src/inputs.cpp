@@ -104,7 +104,7 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
             for (const Map *path_of_map : colls._piecesOfMap) {
                 if (!inObj(*path_of_map, player.position)) continue;
                 for (Enemy &enemy : enemies) {
-                    if (inObj(*path_of_map, enemy.position)) {
+                    if (inObj(*path_of_map, enemy.position) && enemy.state != Enemy::ATTACK) {
                         enemy.state = Enemy::SEARCH;
                         enemy.search_player(*path_of_map, player.position);
                     }
@@ -126,13 +126,10 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
                 x = abs(std::ceil(pos_of_bullet.x + path_of_map->gap_x));
                 z = abs(std::ceil(pos_of_bullet.z + path_of_map->gap_z));
 
-                // x1 = abs(std::ceil(pos_of_bullet.x));
-                // z1 = abs(std::ceil(pos_of_bullet.z));
-
                 if (path_of_map->obj[x + z * path_of_map->width] > 0) {
                     player.ammo--;
                     loop = false;
-                    // std::cout << x1 << " " << z1 << " " << player.ammo << std::endl;
+                    // std::cout << abs(std::ceil(pos_of_bullet.x)) << " " << abs(std::ceil(pos_of_bullet.z)) << " " << player.ammo << std::endl;
                     break;
                 }
             }

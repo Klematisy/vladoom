@@ -52,16 +52,24 @@ struct Enemy : public Entity {
     glm::vec3 position_check = glm::vec3(1.0f);
     float danage = 0;
 private:
+    struct Utills_for_maneuvering {
+        int maneuvering = 1;
+        glm::vec3 pos_for_angle;     //angle_btw_player_enemy
+        Line line_for_maneuvering;
+        float rotation_for_maneuvering;
+        bool line_calculator_turner;
+        glm::vec3 flag_of_maneuvering;
+    };
+    
+    Utills_for_maneuvering ufm;
+    
     int tex_x  = 0;
     int tex_y  = 0;
     uint turn;
     GLFWwindow *window;
     std::vector<Point2> way;
     
-    int maneuvering = 1;
-    
     enum ATTACK_STATES {MANEUVERING, RUN, SHOOT};
-    glm::vec3 flag_of_maneuvering = position;
     
     std::chrono::duration<float> old_duration_enemy = std::chrono::high_resolution_clock::now() - std::chrono::high_resolution_clock::now();
     std::chrono::duration<float> old_duration_atack = std::chrono::high_resolution_clock::now() - std::chrono::high_resolution_clock::now();

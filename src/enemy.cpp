@@ -250,6 +250,9 @@ void Enemy::update(Collisions &colls,
              const Entity &player)
 {
     map = check_collisions(*this, colls);
+    
+    float player_rotation = (player.rotation < 0) ? 360 + player.rotation : player.rotation;
+    
     int i = rotation / fabsf(rotation);
     rotation = (rotation < 0) ? 360 + rotation : rotation;
     
@@ -358,7 +361,8 @@ void Enemy::update(Collisions &colls,
                 int random_number = disti(gen);
                 // int random_number = 0;
                 switch (random_number) {
-                    case 0: a_states = MANEUVERING;    
+                    case 0: a_states = MANEUVERING;
+                    ufm.line_calculator_turner = true;
                     break;
                     case 1: a_states = RUN;
                     break;
@@ -376,35 +380,65 @@ void Enemy::update(Collisions &colls,
             
             switch (a_states) {
                 case MANEUVERING: {
-                    speed = 0.01f;
-                    float mod = vec_mod2D(take_vector2D({flag_of_maneuvering.x, flag_of_maneuvering.z}, {position.x, position.z}));
-                    float angle = angle_btw_point_and_enemy(player.position);
+                    speed = 0.012f;
+                    float mod = vec_mod2D(take_vector2D({ufm.flag_of_maneuvering.x, ufm.flag_of_maneuvering.z}, {position.x, position.z}));
+                    
+                    if (ufm.line_calculator_turner) {   
+                        ufm.pos_for_angle = player.position;
+                        
+                        ufm.line_for_maneuvering.calculate(
+                            {player.position.x, player.position.z}, 
+                            {position.x,        position.z});
+                        glm::vec2 v1 = take_vector2D({player.position.x, player.position.z}, 
+                                                     {player.position.x + cosf((90 + player_rotation) * 3.14 / 180.0f), 
+                                                      player.position.z + sinf((90 + player_rotation) * 3.14 / 180.0f)});
+                        
+                        glm::vec2 v2 = take_vector2D({player.position.x, player.position.z}, 
+                                                     {position.x,        position.z});
+                        
+                        Line line;
+                        line.calculate({player.position.x, player.position.z}, 
+                                       {player.position.x + cosf((90 + player_rotation) * 3.14 / 180.0f),
+                                        player.position.z + sinf((90 + player_rotation) * 3.14 / 180.0f)});
+                        
+                        int znak_x = znak_x_func(player_rotation);
+                        int znak_z = znak_z_func(player_rotation);
+
+                        float angle_btw_vecs = angle_between_vectors2D(v1, v2);
+                        angle_btw_vecs *= (180.0f/M_PI);
+                        angle_btw_vecs  = (int) angle_btw_vecs;
+                        
+                        if (znak_x * position.x <= znak_x * line.get_x(position.z) && znak_z * position.z >= znak_z * line.get_z(position.x)) {
+                            ufm.rotation_for_maneuvering = fmodf((player_rotation + angle_btw_vecs), 360);
+                        } else {
+                            ufm.rotation_for_maneuvering = player_rotation - angle_btw_vecs;
+                            if (ufm.rotation_for_maneuvering < 0) {
+                                ufm.rotation_for_maneuvering += 360.0f;
+                            }
+                        }
+                        
+                        ufm.line_calculator_turner = false;
+                    }
+                    
+                    float angle = angle_btw_point_and_enemy(ufm.pos_for_angle);
                     angle *= (180.0f/M_PI);
                     angle = (int) angle;
                     
-                    // std::cout << mod << " " << angle << std::endl;
-                    if (mod > 0.4f) {
-                        Line line1;
-                        line1.calculate({player.position.x, player.position.z}, 
-                                       {player.position.x + cosf((90 + player.rotation) * 3.14 / 180.0f), 
-                                        player.position.z + sinf((90 + player.rotation) * 3.14 / 180.0f)});
+                    if (mod > 0.5f) {
+                        int znak_x = znak_x_func(ufm.rotation_for_maneuvering);
+                        int znak_z = znak_z_func(ufm.rotation_for_maneuvering);
                         
-                        int znak_x = znak_x_func(player.rotation);
-                        int znak_z = znak_z_func(player.rotation);
-                        
-                        rotation += 3.0f * maneuvering;
-                        if (angle / 24 == 1 || angle / 25 == 1 || angle / 26 == 1 || angle / 27 == 1) {
-                            if (znak_x * (position.x + x1) <= znak_x * line1.get_x(position.z + z1) && znak_z * (position.z + z1) >= znak_z * line1.get_z((position.x + x1))) {
-                                // std::cout << "RIGHT" << std::endl;
-                                if (maneuvering < 0) {
-                                    flag_of_maneuvering = position;
-                                    maneuvering *= -1;
+                        rotation += 4.0f * ufm.maneuvering;
+                        if (angle / 24 == 1 || angle / 25 == 1 || angle / 26 == 1 || angle / 27 == 1 || angle / 28 == 1) {
+                            if (znak_x * (position.x + x1) <= znak_x * ufm.line_for_maneuvering.get_x(position.z + z1) && znak_z * (position.z + z1) >= znak_z * ufm.line_for_maneuvering.get_z((position.x + x1))) {
+                                if (ufm.maneuvering < 0) {
+                                    ufm.flag_of_maneuvering = position;
+                                    ufm.maneuvering = 1;
                                 }
                             } else {
-                                // std::cout << "LEFT" << std::endl;
-                                if (maneuvering > 0) {
-                                    flag_of_maneuvering = position;
-                                    maneuvering *= -1;
+                                if (ufm.maneuvering > 0) {
+                                    ufm.flag_of_maneuvering = position;
+                                    ufm.maneuvering = -1;
                                 }
                             }
                         }
@@ -461,7 +495,31 @@ void Enemy::update(Collisions &colls,
                     break;
                 }
                 case SHOOT: {
-                    
+                    std::cout << "flksdjklf" << std::endl;
+                    glm::vec3 pos_of_bullet = position;
+                    glm::vec2 position2d(position.x, position.z);
+                    bool loop = true;
+                    while (loop) {
+                        pos_of_bullet.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
+                        pos_of_bullet.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
+                        for (const Map *path_of_map : colls._piecesOfMap) {
+                            if (!inObj(*path_of_map, pos_of_bullet)) continue;
+                            
+                            x = abs(std::ceil(pos_of_bullet.x + path_of_map->gap_x));
+                            z = abs(std::ceil(pos_of_bullet.z + path_of_map->gap_z));
+                            
+                            if (path_of_map->obj[x + z * path_of_map->width] > 0) {
+                                loop = false;
+                                search_player(*path_of_map, player.position);
+                                state = SEARCH;
+                                break;
+                            }
+                        }
+                        
+                        if (vec_mod2D(take_vector2D(position2d, {pos_of_bullet.x, pos_of_bullet.z})) >= mod) {
+                            break;
+                        }
+                    }
                     break;
                 }
             }
@@ -470,6 +528,7 @@ void Enemy::update(Collisions &colls,
     }
     
     rotation = (i < 0) ? rotation - 360 : rotation;
+    
     if (fabsf(position.x - position_check.x) < 0.0000001 || fabsf(position.z - position_check.z) < 0.0000001) {
         for (Door *door : doors) {
             door->door_cheking(position, rotation);
