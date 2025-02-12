@@ -563,7 +563,7 @@ void Enemy::processing(Collisions &colls, std::chrono::duration<float> duration,
     if (hit_points > 0)
         update(colls, duration, doors, player);
     else if (death_fact) {
-        tex_x = -1;
+        tex_x = 0;
         death_fact = false;
     }
     rotation = fmodf((rotation), 360.0f);
