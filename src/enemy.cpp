@@ -8,24 +8,24 @@
 const static String shaderDir = "resource/Shaders/";
 String bindShader(std::string dir);
 
-Enemy::Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_points, String name_of_file, uint turn)
+Enemy::Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_points, int danage, String name_of_file, uint turn)
 {
     String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
     
     this->turn   = turn;
     this->window = window;
-    
-    ps = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
-    
-    state = DUTY;
-    
-    enemy_tex = new Texture((((String)"resource/images/enemies/").append(name_of_file)).c_str(), GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
-    enemy_tex->unbind();
-    enemy_tex->uniform("tex0", *ps, 0);
     this->rotation = fmodf(rotation, 360);
     this->hit_points = hit_points;
     this->position = position;
+    this->danage = danage;
+    
+    ps = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
+    enemy_tex = new Texture((((String)"resource/images/enemies/").append(name_of_file)).c_str(), GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
+    enemy_tex->unbind();
+    enemy_tex->uniform("tex0", *ps, 0);
+    
+    state = DUTY;
 }
 
 int Enemy::search_player_rec(const Map &map, 
@@ -105,6 +105,7 @@ int Enemy::search_player_rec(const Map &map,
 
 int Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
     way.clear();
+    a_states = RUN;
     
     const int max_depth = 13;
     const size_t size = map.width * map.height;
@@ -247,7 +248,7 @@ float Enemy::angle_btw_point_and_enemy(const glm::vec3 &point) {
 void Enemy::update(Collisions &colls, 
                    std::chrono::duration<float> duration, 
              const std::vector<Door*> &doors, 
-             const Entity &player)
+                   Entity &player)
 {
     map = check_collisions(*this, colls);
     
@@ -262,6 +263,14 @@ void Enemy::update(Collisions &colls,
     
     float x1 = cosf((90 + rotation) * 3.14 / 180.0f);
     float z1 = sinf((90 + rotation) * 3.14 / 180.0f);
+    
+    glm::vec2 p1(position.x, position.z);
+    glm::vec2 p2(
+        position.x + cosf((90 + rotation) * 3.14 / 180.0f), 
+        position.z + sinf((90 + rotation) * 3.14 / 180.0f)
+    );
+    Line lweiw;  //line_where_enemy_is_watching
+    lweiw.calculate(p1, p2);
     
     if (state != ATTACK) vision(colls, player.position);
     
@@ -319,18 +328,10 @@ void Enemy::update(Collisions &colls,
             angle  = (int) angle;
             
             if (angle != 0.0f) {
-                glm::vec2 p1(position.x, position.z);
-                glm::vec2 p2(
-                    position.x + cosf((90 + rotation) * 3.14 / 180.0f), 
-                    position.z + sinf((90 + rotation) * 3.14 / 180.0f)
-                );
-                Line line;
-                line.calculate(p1, p2);
-                
                 int znak_x = znak_x_func(rotation);
                 int znak_z = znak_z_func(rotation);
                 
-                if (znak_x * point.x < znak_x * line.get_x(point.z) && znak_z * point.z > znak_z * line.get_z(point.x)) {
+                if (znak_x * point.x < znak_x * lweiw.get_x(point.z) && znak_z * point.z > znak_z * lweiw.get_z(point.x)) {
                     rotation += (angle >= 5.0f) ? 1.0f : angle;
                     angle    -= (angle >= 5.0f) ? 1.0f : angle;
                 } else {    
@@ -495,13 +496,12 @@ void Enemy::update(Collisions &colls,
                     break;
                 }
                 case SHOOT: {
-                    std::cout << "flksdjklf" << std::endl;
                     glm::vec3 pos_of_bullet = position;
                     glm::vec2 position2d(position.x, position.z);
                     bool loop = true;
                     while (loop) {
-                        pos_of_bullet.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
-                        pos_of_bullet.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
+                        pos_of_bullet.x += cosf((90 + rotation) * 3.14 / 180.0f) * 0.2f;
+                        pos_of_bullet.z += sinf((90 + rotation) * 3.14 / 180.0f) * 0.2f;
                         for (const Map *path_of_map : colls._piecesOfMap) {
                             if (!inObj(*path_of_map, pos_of_bullet)) continue;
                             
@@ -509,9 +509,10 @@ void Enemy::update(Collisions &colls,
                             z = abs(std::ceil(pos_of_bullet.z + path_of_map->gap_z));
                             
                             if (path_of_map->obj[x + z * path_of_map->width] > 0) {
-                                loop = false;
                                 search_player(*path_of_map, player.position);
+                                std::cout << abs(std::ceil(pos_of_bullet.x)) << " " << abs(std::ceil(pos_of_bullet.z)) << std::endl;
                                 state = SEARCH;
+                                loop = false;
                                 break;
                             }
                         }
@@ -520,11 +521,33 @@ void Enemy::update(Collisions &colls,
                             break;
                         }
                     }
+                    
+                    if (loop == true) {
+                        float angle = angle_btw_point_and_enemy(player.position);
+                        
+                        angle *= (180.0f/M_PI);
+                        angle  = (int) angle;
+                        
+                        if (angle != 0.0f) {
+                            int znak_x = znak_x_func(rotation);
+                            int znak_z = znak_z_func(rotation);
+                            
+                            if (znak_x * player.position.x < znak_x * lweiw.get_x(player.position.z) && znak_z * player.position.z > znak_z * lweiw.get_z(player.position.x))
+                                rotation += (angle >= 30.0f) ? angle : angle / 2;
+                            else
+                                rotation -= (angle >= 30.0f) ? angle : angle / 2;
+                        }
+                        
+                        if (angle == 0.0f && shot) {
+                            shot = false;
+                            player.hit_points -= danage;
+                        }
+                    }
                     break;
                 }
             }
+            break;
         }
-        break;
     }
     
     rotation = (i < 0) ? rotation - 360 : rotation;
@@ -536,9 +559,13 @@ void Enemy::update(Collisions &colls,
     }
 }
 
-void Enemy::processing(Collisions &colls, std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors) {
+void Enemy::processing(Collisions &colls, std::chrono::duration<float> duration, Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors) {
     if (hit_points > 0)
         update(colls, duration, doors, player);
+    else if (death_fact) {
+        tex_x = -1;
+        death_fact = false;
+    }
     rotation = fmodf((rotation), 360.0f);
     draw(duration, player, view, proj);
 }
@@ -601,7 +628,7 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
         tex_rotation += (angle_btw_vecs * 180 / 3.14f);
     }
     // std::cout << tex_rotation << std::endl;
-    
+
     if (hit_points <= 0) {
         if (tex_x < 5 && duration.count() - old_duration_enemy.count() > 0.16f) {
             tex_x++;
@@ -609,7 +636,15 @@ void Enemy::draw(std::chrono::duration<float> duration, const Player &player, gl
         }
         Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, tex_x, 6, 8.0f, 7.0f);
     } else {
-        if (fabsf(position.x - position_check.x) < 0.001 && fabsf(position.z - position_check.z) < 0.001) {
+        if (a_states == SHOOT) {
+            if (duration.count() - old_duration_shoot.count() >= duration_for_shooting) {
+                tex_x = (tex_x >= 2) ? 1 : ++tex_x;
+                duration_for_shooting = (tex_x == 2) ? 0.18f : 1.0f;
+                old_duration_shoot = duration;
+                shot = (tex_x == 2) ? true : shot;
+            }
+            Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, tex_x, 5, 8.0f, 7.0f);
+        } else if (fabsf(position.x - position_check.x) < 0.001 && fabsf(position.z - position_check.z) < 0.001) {
             Vertical_plane::draw_once(-0.5f, 0.0f, 0, -0.5f, 0.0f, std::ceil(tex_rotation / 45), 4, 8.0f, 7.0f);
         } else {
             float secs = (state == DUTY) ? 0.4f : 0.3f;
