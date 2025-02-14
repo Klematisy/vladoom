@@ -20,9 +20,9 @@ void Gun::update(Player &p,
         p.typeOfGun = 1;
     if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS && num_of_animation == 0)
         p.typeOfGun = 2;
-    if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS && num_of_animation == 0)
+    if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS && num_of_animation == 0 && p.invetory[2] == 3)
         p.typeOfGun = 3;
-    if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS && num_of_animation == 0)
+    if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS && num_of_animation == 0 && p.invetory[3] == 4)
         p.typeOfGun = 4;
 }
 

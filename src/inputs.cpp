@@ -19,7 +19,7 @@ void input(std::vector<Door*> &doors, Collisions &colls, Player &player, std::ve
     x = std::ceil(player.position.x);
     z = std::ceil(player.position.z);
     
-    std::cout << abs(x) << " " << abs(z) << std::endl;
+    // std::cout << abs(x) << " " << abs(z) << std::endl;
 
     double xpos, ypos;
     glfwGetCursorPos(window, &xpos, &ypos);

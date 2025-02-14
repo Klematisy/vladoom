@@ -127,95 +127,112 @@ void game(GLFWwindow *window) {
     player.ammo  = 99;
     
     std::vector<Furniture*> static_furnitures;
-    static_furnitures.push_back(    new Furniture( -7.5f,   -7.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture( -7.5f,   -2.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture( -7.5f,  -11.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture( -11.5f, -11.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture(  -3.5f, -11.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture( -12.5f,  -7.5f, 6, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture(  -1.5f,  -1.5f, 6, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture( -11.5f,  -2.5f, 3, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    
-    static_furnitures.push_back(    new Furniture( -7.5f,    1.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture( -7.5f,    9.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture( -7.5f,    5.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    
-    static_furnitures.push_back(    new Furniture( -7.5f,  16.5f,  2, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture(-12.5f,  16.5f,  2, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture( -2.5f,  16.5f,  2, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture( -7.5f,  23.5f,  4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture( -7.5f,  27.5f,  4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture( -7.5f,  31.5f,  4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture( -7.5f,  38.5f,  2, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture(-32.5f,   5.5f,  7, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    static_furnitures.push_back(    new Furniture(-31.5f,  20.5f,  1, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
-    
+    {
+        static_furnitures.push_back(    new Furniture( -7.5f,   -7.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture( -7.5f,   -2.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture( -7.5f,  -11.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture( -11.5f, -11.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture(  -3.5f, -11.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture( -12.5f,  -7.5f, 6, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture(  -1.5f,  -1.5f, 6, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture( -11.5f,  -2.5f, 3, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        
+        static_furnitures.push_back(    new Furniture( -7.5f,    1.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture( -7.5f,    9.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture( -7.5f,    5.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        
+        static_furnitures.push_back(    new Furniture( -7.5f,  16.5f,  2, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture(-12.5f,  16.5f,  2, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture( -2.5f,  16.5f,  2, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture( -7.5f,  23.5f,  4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture( -7.5f,  27.5f,  4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture( -7.5f,  31.5f,  4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture( -7.5f,  38.5f,  2, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture(-32.5f,   5.5f,  7, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+        static_furnitures.push_back(    new Furniture(-31.5f,  20.5f,  1, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    }
+        
     std::vector<Furniture*> non_static_furnitures;
-    non_static_furnitures.push_back(new Furniture( -0.5f,  13.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
-    non_static_furnitures.push_back(new Furniture( -0.5f,  19.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
-    non_static_furnitures.push_back(new Furniture(-14.5f,  19.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
-    non_static_furnitures.push_back(new Furniture(-14.5f,  13.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
-    non_static_furnitures.push_back(new Furniture(-15.5f,  17.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
-    non_static_furnitures.push_back(new Furniture(-15.5f,  15.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
-    non_static_furnitures.push_back(new Furniture( -0.5f,  13.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
-    non_static_furnitures.push_back(new Furniture( -0.5f,  13.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
-    non_static_furnitures.push_back(new Furniture( -5.5f,  20.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
-    non_static_furnitures.push_back(new Furniture( -9.5f,  20.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
-    non_static_furnitures.push_back(new Furniture(-10.5f,  27.5f, 11, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+    {
+        non_static_furnitures.push_back(new Furniture( -0.5f,  13.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+        non_static_furnitures.push_back(new Furniture( -0.5f,  19.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+        non_static_furnitures.push_back(new Furniture(-14.5f,  19.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+        non_static_furnitures.push_back(new Furniture(-14.5f,  13.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+        non_static_furnitures.push_back(new Furniture(-15.5f,  17.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+        non_static_furnitures.push_back(new Furniture(-15.5f,  15.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+        non_static_furnitures.push_back(new Furniture( -0.5f,  13.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+        non_static_furnitures.push_back(new Furniture( -0.5f,  13.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+        non_static_furnitures.push_back(new Furniture( -5.5f,  20.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+        non_static_furnitures.push_back(new Furniture( -9.5f,  20.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+        non_static_furnitures.push_back(new Furniture(-10.5f,  27.5f, 11, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+        
+        non_static_furnitures.push_back(new Furniture( -4.5f,  40.5f,  2, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+        non_static_furnitures.push_back(new Furniture( -7.5f,  40.5f,  2, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+        non_static_furnitures.push_back(new Furniture(-10.5f,  40.5f,  2, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+        
+        non_static_furnitures.push_back(new Furniture(-12.5f,  41.5f,  9, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+        non_static_furnitures.push_back(new Furniture( -2.5f,  41.5f,  9, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+        
+        non_static_furnitures.push_back(new Furniture(-29.5f,  11.5f, 16, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+        non_static_furnitures.push_back(new Furniture(-32.5f,  11.5f, 17, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+        non_static_furnitures.push_back(new Furniture(-34.5f,  19.5f, 15, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+        non_static_furnitures.push_back(new Furniture(-34.5f,  20.5f, 15, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+        non_static_furnitures.push_back(new Furniture(-33.5f,  20.5f, 15, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+        non_static_furnitures.push_back(new Furniture(-32.5f,  20.5f, 15, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+        non_static_furnitures.push_back(new Furniture(-29.5f,  14.5f, 10, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+        non_static_furnitures.push_back(new Furniture(-32.5f,  14.5f, 10, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    }
     
-    non_static_furnitures.push_back(new Furniture( -4.5f,  40.5f,  2, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
-    non_static_furnitures.push_back(new Furniture( -7.5f,  40.5f,  2, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
-    non_static_furnitures.push_back(new Furniture(-10.5f,  40.5f,  2, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
-    
-    non_static_furnitures.push_back(new Furniture(-12.5f,  41.5f,  9, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
-    non_static_furnitures.push_back(new Furniture( -2.5f,  41.5f,  9, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
-    
-    non_static_furnitures.push_back(new Furniture(-29.5f,  11.5f, 16, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
-    non_static_furnitures.push_back(new Furniture(-32.5f,  11.5f, 17, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
-    non_static_furnitures.push_back(new Furniture(-34.5f,  19.5f, 15, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
-    non_static_furnitures.push_back(new Furniture(-34.5f,  20.5f, 15, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
-    non_static_furnitures.push_back(new Furniture(-33.5f,  20.5f, 15, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
-    non_static_furnitures.push_back(new Furniture(-32.5f,  20.5f, 15, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
-    non_static_furnitures.push_back(new Furniture(-29.5f,  14.5f, 10, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
-    non_static_furnitures.push_back(new Furniture(-32.5f,  14.5f, 10, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    std::vector<Item*> items;
+    {
+        items.push_back(new Item(-7.5, -5.5, 2, 25, player, GUN));
+    }
     
     std::vector<Enemy> enemies;
-    enemies.emplace_back(window, glm::vec3(-4.5f, 0.0f,  -7.5f), 90.0f,   0,  0, "Enemy-015.png", RIGHT_TURN);
-    enemies.emplace_back(window, glm::vec3(-9.5f, 0.0f, -10.5f), 90.0f, 100, 25, "Enemy-015.png", RIGHT_TURN);
+    {
+        enemies.emplace_back(window, glm::vec3(-4.5f, 0.0f,  -7.5f), 90.0f,   0,  0, "Enemy-015.png", RIGHT_TURN);
+        enemies.emplace_back(window, glm::vec3(-9.5f, 0.0f, -10.5f), 90.0f, 100, 25, "Enemy-015.png", RIGHT_TURN);
+    }
     
     std::vector<Cube*> parts_of_map;
-    parts_of_map.push_back(new Cube(        jail, 15, 14, 1.0f,   0.0f,   0.0f, 0.0f, cWalls, 6.0f, 19.0f));
-    parts_of_map.push_back(new Cube(        hall,  5, 12, 1.0f,   5.0f,  12.0f, 0.0f, cWalls, 6.0f, 19.0f));
-    parts_of_map.push_back(new Cube(central_hall, 17,  9, 1.0f,  -1.0f,  21.0f, 0.0f, cWalls, 6.0f, 19.0f));
-    parts_of_map.push_back(new Cube(wooden_thing, 18, 22, 1.0f,   0.0f,  43.0f, 0.0f, cWalls, 6.0f, 19.0f));
-    parts_of_map.push_back(new Cube(      kennel, 20, 19, 1.0f,  16.0f,  22.0f, 0.0f, cWalls, 6.0f, 19.0f));
-
+    {
+        parts_of_map.push_back(new Cube(        jail, 15, 14, 1.0f,   0.0f,   0.0f, 0.0f, cWalls, 6.0f, 19.0f));
+        parts_of_map.push_back(new Cube(        hall,  5, 12, 1.0f,   5.0f,  12.0f, 0.0f, cWalls, 6.0f, 19.0f));
+        parts_of_map.push_back(new Cube(central_hall, 17,  9, 1.0f,  -1.0f,  21.0f, 0.0f, cWalls, 6.0f, 19.0f));
+        parts_of_map.push_back(new Cube(wooden_thing, 18, 22, 1.0f,   0.0f,  43.0f, 0.0f, cWalls, 6.0f, 19.0f));
+        parts_of_map.push_back(new Cube(      kennel, 20, 19, 1.0f,  16.0f,  22.0f, 0.0f, cWalls, 6.0f, 19.0f));
+    }
+    
     std::vector<Door*> doors;
-    doors.emplace_back(new Door( -5.0f, -2.0f,  0.0f, cWalls, *Walls));
-    doors.emplace_back(new Door( -9.0f, -2.0f,  0.0f, cWalls, *Walls));
-    doors.emplace_back(new Door( -5.0f, -7.0f,  0.0f, cWalls, *Walls));
-    doors.emplace_back(new Door( -9.0f, -7.0f,  0.0f, cWalls, *Walls));
-    doors.emplace_back(new Door( -7.0f,  0.0f, 90.0f, cWalls, *Walls));
-    doors.emplace_back(new Door( -7.0f, 22.0f, 90.0f, cWalls, *Walls));
-    doors.emplace_back(new Door(-16.0f, 17.0f,  0.0f, cWalls, *Walls));
-    doors.emplace_back(new Door( -7.0f, 35.0f, 90.0f, cWalls, *Walls));
-    doors.emplace_back(new Door(-13.0f, 39.0f,  0.0f, cWalls, *Walls));
-    doors.emplace_back(new Door(-23.0f,  7.0f,  0.0f, cWalls, *Walls));
-    doors.emplace_back(new Door(-26.0f, 17.0f,  0.0f, cWalls, *Walls));
-    doors.emplace_back(new Door(-7.0f, 12.0f, 90.0f, cWalls, *Walls));
+    {
+        doors.emplace_back(new Door( -5.0f, -2.0f,  0.0f, cWalls, *Walls));
+        doors.emplace_back(new Door( -9.0f, -2.0f,  0.0f, cWalls, *Walls));
+        doors.emplace_back(new Door( -5.0f, -7.0f,  0.0f, cWalls, *Walls));
+        doors.emplace_back(new Door( -9.0f, -7.0f,  0.0f, cWalls, *Walls));
+        doors.emplace_back(new Door( -7.0f,  0.0f, 90.0f, cWalls, *Walls));
+        doors.emplace_back(new Door( -7.0f, 22.0f, 90.0f, cWalls, *Walls));
+        doors.emplace_back(new Door(-16.0f, 17.0f,  0.0f, cWalls, *Walls));
+        doors.emplace_back(new Door( -7.0f, 35.0f, 90.0f, cWalls, *Walls));
+        doors.emplace_back(new Door(-13.0f, 39.0f,  0.0f, cWalls, *Walls));
+        doors.emplace_back(new Door(-23.0f,  7.0f,  0.0f, cWalls, *Walls));
+        doors.emplace_back(new Door(-26.0f, 17.0f,  0.0f, cWalls, *Walls));
+        doors.emplace_back(new Door(-7.0f, 12.0f, 90.0f, cWalls, *Walls));
+    }
     
     std::vector<Horizontal_plane> floors;
-    floors.emplace_back(jail, 15, 14, 0.0f, 0.0f,   0.0f, 111, 6.0f, 19.0f);
-    floors.emplace_back(jail, 15, 14, 0.0f, 1.0f,   0.0f, 112, 6.0f, 19.0f);
-    floors.emplace_back(hall,  5, 12, 5.0f, 0.0f, -12.0f, 111, 6.0f, 19.0f);
-    floors.emplace_back(hall,  5, 12, 5.0f, 1.0f, -12.0f, 112, 6.0f, 19.0f);
+    {
+        floors.emplace_back(jail, 15, 14, 0.0f, 0.0f,   0.0f, 111, 6.0f, 19.0f);
+        floors.emplace_back(jail, 15, 14, 0.0f, 1.0f,   0.0f, 112, 6.0f, 19.0f);
+        floors.emplace_back(hall,  5, 12, 5.0f, 0.0f, -12.0f, 111, 6.0f, 19.0f);
+        floors.emplace_back(hall,  5, 12, 5.0f, 1.0f, -12.0f, 112, 6.0f, 19.0f);
     
-    floors.emplace_back(central_hall, 17,  9, -1.0f, 0.0f, -21.0f, 111, 6.0f, 19.0f);
-    floors.emplace_back(central_hall, 17,  9, -1.0f, 1.0f, -21.0f, 112, 6.0f, 19.0f);
-    floors.emplace_back(wooden_thing, 18, 22,  0.0f, 0.0f, -43.0f, 111, 6.0f, 19.0f);
-    floors.emplace_back(wooden_thing, 18, 22,  0.0f, 1.0f, -43.0f, 112, 6.0f, 19.0f);
-    floors.emplace_back(kennel, 20, 19,  16.0f, 0.0f, -22.0f, 111, 6.0f, 19.0f);
-    floors.emplace_back(kennel, 20, 19,  16.0f, 1.0f, -22.0f, 112, 6.0f, 19.0f);
+        floors.emplace_back(central_hall, 17,  9, -1.0f, 0.0f, -21.0f, 111, 6.0f, 19.0f);
+        floors.emplace_back(central_hall, 17,  9, -1.0f, 1.0f, -21.0f, 112, 6.0f, 19.0f);
+        floors.emplace_back(wooden_thing, 18, 22,  0.0f, 0.0f, -43.0f, 111, 6.0f, 19.0f);
+        floors.emplace_back(wooden_thing, 18, 22,  0.0f, 1.0f, -43.0f, 112, 6.0f, 19.0f);
+        floors.emplace_back(kennel, 20, 19,  16.0f, 0.0f, -22.0f, 111, 6.0f, 19.0f);
+        floors.emplace_back(kennel, 20, 19,  16.0f, 1.0f, -22.0f, 112, 6.0f, 19.0f);
+    }
 
     Hud hud;
 
@@ -274,6 +291,9 @@ void game(GLFWwindow *window) {
         for (Door *door : doors)
             door->processing(view, proj, window, player.position, &enemies);
         
+        for (Item *item : items)
+            item->processing(player, view, proj);
+            
         non_bind->bind(GL_TEXTURE0);
         for (Furniture *furniture : static_furnitures)
             furniture->draw(player, view, proj);
@@ -287,6 +307,13 @@ void game(GLFWwindow *window) {
         }
         
         player.gun.processing(duration, player, window);
+        if (player.hit_points > 100) {
+            player.hit_points = 100;
+        }
+        
+        if (player.ammo > 99) {
+            player.ammo = 99;
+        }
         
         glViewport(50, 50, WIDTH * 2 - 100, 270);
         player.rotation = fmodf(player.rotation, 360);
@@ -307,8 +334,6 @@ void game(GLFWwindow *window) {
         glfwPollEvents();
         glfwSwapBuffers(window);
     }
-    
-    auto dur = std::chrono::high_resolution_clock::now();
     
     for (Cube *cube_map : parts_of_map) {
         cube_map->clear();
@@ -345,10 +370,4 @@ void game(GLFWwindow *window) {
     delete[] kennel;
 
     map_shader.deleteShader();
-    
-    auto dur1 = std::chrono::high_resolution_clock::now();
-    
-    std::chrono::duration<float> dur_rr  = dur1 - dur;
-    
-    std::cout << dur_rr.count() << std::endl;
 }

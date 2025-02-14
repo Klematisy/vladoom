@@ -39,6 +39,7 @@ add_executable(vladoom
     "src/main.cpp"
     "src/settings.cpp"
     "src/furniture.cpp"
+    "src/item.cpp"
 )
 
 # find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/deps/library/)

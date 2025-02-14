@@ -24,7 +24,6 @@ Furniture::Furniture(
     float zGapfl = std::floor(zGap);
     
     if (av == TANGIBLE) {
-        std::cout << "\nlkdsjf\n\n";
         Map *m = new Map({ map, 1, 1, 
                           -xGapfl + 0.0f,
                           -zGapfl + 0.0f,

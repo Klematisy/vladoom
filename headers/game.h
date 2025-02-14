@@ -33,32 +33,42 @@ public:
 };
 
 struct Player : public Entity {
+public:
     Gun gun;
     uint typeOfGun = 1;
     int ammo = 100;
     int score = 0;
     uint lives = 4;
+    int invetory[4] = {
+        1, 2, 0, 0
+    };
 };
 
 enum TYPE_0F_ITEM {
     HEALTH,
-    AMMO,
-    SCORE,
     GUN,
+    SCORE,
     KEY
 };
 
-// class Item : Entity {
-//     float *changeble;
-//     float temp;
-//     TYPE_0F_ITEM type;
+class Item : Entity {
+    int tex_x;
+    int tex_y;
+    int tex_num;
     
-//     void draw(const Player &player, glm::mat4 &view, glm::mat4 &proj);
-//     void update();
-// public:
-//     Item(float xGap, float zGap, float *changeble, TYPE_0F_ITEM type);
-//     void processing(Player &player);
-// };
+    float changeble = 100;
+    float temp;
+    TYPE_0F_ITEM type;
+    
+    ProgramShader *ps;
+    Texture      *tex;
+    
+    void draw(const Player &player, glm::mat4 &view, glm::mat4 &proj);
+    void update(Player &player);
+public:
+    Item(float xGap, float zGap, int tex_num, float changeble,  Player &player, TYPE_0F_ITEM type);
+    void processing(Player &player, glm::mat4 &view, glm::mat4 &proj);
+};
 
 enum AVAILABILITY {
     IMAGINARY,
