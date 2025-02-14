@@ -6,6 +6,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_COMPILER /usr/bin/clang++)
+# set(CMAKE_CXX_COMPILER /usr/local/bin/x86_64-w64-mingw32-g++)
 set(CMAKE_CXX_FLAGS "-Werror=vla")
 
 find_package(OpenGL REQUIRED)
@@ -37,6 +38,7 @@ add_executable(vladoom
     "src/game.cpp"
     "src/main.cpp"
     "src/settings.cpp"
+    "src/furniture.cpp"
 )
 
 # find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/deps/library/)

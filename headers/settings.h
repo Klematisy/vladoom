@@ -13,7 +13,7 @@ typedef std::string String;
 struct Entity {
     glm::vec3 position = glm::vec3(1.0f);
     float rotation = 0.0f;
-    int hit_points = 100;
+    float hit_points = 100;
 };
 
 struct Rect {

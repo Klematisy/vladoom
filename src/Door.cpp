@@ -18,10 +18,10 @@ Door::Door(const float &xGap, const float &zGap, float rotation, Collisions &col
 
     tex.uniform("tex0", *ps_door, 0);
 
-    door_shape = new Cube(doorArr, 1, 1, 0.04f, -xGap + 0.48f, -zGap, rotation, col, 5.0f, 2.0f);
+    door_shape = new Cube(doorArr, 1, 1, 0.04f, -xGap + 0.48f, zGap, rotation, col, 6.0f, 19.0f);
 
-    plane1 = new Vertical_plane(xGap, zGap -        0.001f, rotation, xGap - 0.5f, zGap - 0.5f, 7, 5, 2);
-    plane2 = new Vertical_plane(xGap, zGap - 1.0f + 0.001f, rotation, xGap - 0.5f, zGap - 0.5f, 7, 5, 2);
+    plane1 = new Vertical_plane(xGap, zGap -        0.001f, rotation, xGap - 0.5f, zGap - 0.5f, 101, 6.0f, 19.0f);
+    plane2 = new Vertical_plane(xGap, zGap - 1.0f + 0.001f, rotation, xGap - 0.5f, zGap - 0.5f, 101, 6.0f, 19.0f);
 
     coordinate = (rotation != 90.0f) ? &pos.z : &pos.x;
     cols = col._piecesOfMap[col._piecesOfMap.size() - 1];
@@ -38,7 +38,7 @@ void Door::door_cheking(const glm::vec3 &position, const float &rotation) {
     z = abs(z);
     
     if (inObj(*cols, glm::vec3(xf, 0.0f, zf))) {
-        if (cols->obj[x + z * cols->width] == 6) {
+        if (cols->obj[x + z * cols->width] == tex_num) {
             states = DOOR_OPENS;
             start = std::chrono::high_resolution_clock::now();
         }
@@ -65,7 +65,7 @@ void Door::update(GLFWwindow *window, const glm::vec3 &player_position, std::vec
     
     if (*coordinate < 0.0f && states == DOOR_CLOSES) {
         *coordinate += 0.01f;
-        cols->obj[0] = 6;
+        cols->obj[0] = tex_num;
     } else if (*coordinate > -0.001f && cols->obj[0] == 0 && states == DOOR_CLOSES) {
         states = DOOR_IS_STANDING;
     }

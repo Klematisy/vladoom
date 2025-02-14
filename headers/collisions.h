@@ -1,6 +1,11 @@
 #pragma once
 #include <vector>
 
+enum TYPE_OF_COLLISION { 
+    UNSHOOTABLE,
+    SHOOTABLE
+};
+
 struct Map {
     int *obj;
     int width;
@@ -14,6 +19,8 @@ struct Map {
     float gap_x, gap_z;
 
     float size;
+    
+    TYPE_OF_COLLISION type = SHOOTABLE;
 };
 
 class Door;

@@ -20,6 +20,9 @@ Enemy::Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_poi
     this->position = position;
     this->danage = danage;
     
+    death_fact = (hit_points == 0) ? false : true;
+    tex_x      = (hit_points == 0) ? 5 : 0;
+    
     ps = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
     enemy_tex = new Texture((((String)"resource/images/enemies/").append(name_of_file)).c_str(), GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     enemy_tex->unbind();
@@ -299,7 +302,14 @@ void Enemy::update(Collisions &colls,
         }
         case SEARCH: {
             speed = 0.01f;
-            Point2 point = way.back();
+            Point2 point = {position.x, position.z};
+            
+            if (!way.empty()) {
+                point = way.back();
+            } else {
+                state = DUTY;
+                break;
+            }
             
             int x = abs(std::ceil(position.x));
             int z = abs(std::ceil(position.z));
@@ -503,14 +513,14 @@ void Enemy::update(Collisions &colls,
                         pos_of_bullet.x += cosf((90 + rotation) * 3.14 / 180.0f) * 0.2f;
                         pos_of_bullet.z += sinf((90 + rotation) * 3.14 / 180.0f) * 0.2f;
                         for (const Map *path_of_map : colls._piecesOfMap) {
-                            if (!inObj(*path_of_map, pos_of_bullet)) continue;
+                            if (!inObj(*path_of_map, pos_of_bullet) || path_of_map->type == UNSHOOTABLE) continue;
                             
                             x = abs(std::ceil(pos_of_bullet.x + path_of_map->gap_x));
                             z = abs(std::ceil(pos_of_bullet.z + path_of_map->gap_z));
                             
                             if (path_of_map->obj[x + z * path_of_map->width] > 0) {
                                 search_player(*path_of_map, player.position);
-                                std::cout << abs(std::ceil(pos_of_bullet.x)) << " " << abs(std::ceil(pos_of_bullet.z)) << std::endl;
+                                // std::cout << abs(std::ceil(pos_of_bullet.x)) << " " << abs(std::ceil(pos_of_bullet.z)) << std::endl;
                                 state = SEARCH;
                                 loop = false;
                                 break;

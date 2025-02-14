@@ -94,7 +94,10 @@ void Vertical_plane::draw_once(float xGap,
     vbo.unbind();
     vao.unbind();
     ebo.unbind();
-
+    
+    vao.deleteVao();
+    vbo.deleteVbo();
+    ebo.deleteEbo();
 }
 
 void Vertical_plane::deletePlane() {

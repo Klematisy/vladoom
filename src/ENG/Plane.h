@@ -22,7 +22,7 @@ class Horizontal_plane {
 public:
     Horizontal_plane(int *map, int width, int height, float xGap, float yGap, float zGap, int ind, float x_count_of_objs, float y_count_of_objs);
     void draw();
-    ~Horizontal_plane();
+    void clear();
 private:
     void createShapes(float *plane, uint *indices, uint countOfUnits, int ind, float x_count_of_objs, float y_count_of_objs);
 };

@@ -32,7 +32,7 @@ Hud::Hud() {
     img = new Image(GL_STATIC_DRAW, 0.0f, 0.0f, 2.0f, 2.0f);
 }
 
-void Hud::draw(Player &player, int k) {
+void Hud::draw(const Player &player, int k) {
     hud_texture->bind(GL_TEXTURE0);
     hud_shader->useProgram();
 
@@ -40,11 +40,13 @@ void Hud::draw(Player &player, int k) {
 
     face_texture->bind(GL_TEXTURE0);
     face_shader->useProgram();
-    float num_of_tex = (int) 6 - (player.hit_points / (100 / 6));
+    
+    int hit_points = player.hit_points;
+    float num_of_tex = (int) 6 - (hit_points / (100 / 6));
     float a = (num_of_tex * 3 >= 12) ? 0.5f : 0.0f;
     num_of_tex *= 3;
     
-    if (player.hit_points == 0.0f) {
+    if (hit_points == 0.0f) {
         num_of_tex = 22;
     }
     
@@ -64,7 +66,7 @@ void Hud::draw(Player &player, int k) {
     nums_shader->useProgram();
 
     int score_copy = player.score;
-    int health_copy = player.hit_points;
+    int health_copy = hit_points;
     int ammo_copy = player.ammo;
 
     Symbol::draw(0.1f, 0.45f, 1);

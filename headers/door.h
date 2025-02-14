@@ -18,7 +18,8 @@ class Door {
     ProgramShader *ps_plane;
     Map *cols;
     std::chrono::time_point<std::chrono::high_resolution_clock> start;
-    int *doorArr = new int[1] {6};
+    int tex_num = 99;
+    int *doorArr = new int[1] {tex_num};
     
     enum DOOR_STATES { DOOR_OPENS, DOOR_CLOSES, DOOR_IS_STANDING };
 public:

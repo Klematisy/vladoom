@@ -75,7 +75,7 @@ void Horizontal_plane::draw() {
     glDrawElements(GL_TRIANGLES, size, GL_UNSIGNED_INT, 0);
 }
 
-Horizontal_plane::~Horizontal_plane() {
+void Horizontal_plane::clear() {
     vao->deleteVao();
     vbo->deleteVbo();
     ebo->deleteEbo();

@@ -1,12 +1,12 @@
-#include <random>
 #include "libs.h"
 #include "game.h"
 #include "VPlane.h"
+#include <random>
 
 const static String shaderDir = "resource/Shaders/";
 String bindShader(std::string dir);
 
-void input(const std::vector<Door*> &doors, Collisions &collisions, Player &player, std::vector<Enemy> &enemies, GLFWwindow *window, bool &run, std::chrono::duration<float> duration, std::chrono::duration<float> &old_duration_shoot);
+void input(std::vector<Door*> &doors, Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWwindow *window, bool &run, std::chrono::duration<float> duration, std::chrono::duration<float> &old_duration_shoot);
 bool gameIsRunning = true;
 
 float color(int i) { return i / 255.0f; }
@@ -19,51 +19,203 @@ void game(GLFWwindow *window) {
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
 
     ProgramShader map_shader = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
+    
+    Texture *non_bind = new Texture("resource/images/non-blocking-objs.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
+    Texture *bind     = new Texture("resource/images/blocking-objs.png",     GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE1);
 
-    Texture *Walls = new Texture("resource/images/atlas2.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
+    Texture *Walls = new Texture("resource/images/atlas.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     Walls->unbind();
     Walls->uniform("tex0", map_shader, 0);
 
     Collisions cWalls;
 
-    int *map = new int[] {
-        0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0,
-        1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-        1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-        1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-        0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0,
-        0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0,
-        0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
-        0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0,
-        0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0,
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-        0, 2, 1, 1, 3, 1, 1, 2, 1, 1, 2, 1, 1, 3, 0
+    int *jail = new int[] {
+        0, 15, 15, 15, 15, 15, 15,  0, 15, 15, 15, 15, 15, 15, 0,
+        15, 0,  0,  0,  0, 15,  0,  0,  0, 15,  0,  0,  0,  0, 15,
+        15, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,
+        15, 0,  0,  0,  0, 15,  0,  0,  0, 15,  0,  0,  0,  0, 15,
+        15, 0,  0,  0,  0, 15,  0,  0,  0, 15,  0,  0,  0,  0, 15,
+        0, 15, 15, 15, 15, 15,  0,  0,  0, 15, 15, 15, 15,  15, 0,
+        0, 15,  0,  0,  0, 15,  0,  0,  0, 15,  0,  0,  0,  15, 0,
+        0, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  15, 0,
+        0, 15,  0,  0,  0, 15,  0,  0,  0, 15,  0,  0,  0,  15, 0,
+        0, 15, 15, 15, 15, 15,  0,  0,  0, 15, 15, 15, 15,  15, 0,
+        15, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,
+        15, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,
+        15, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,
+        0,  9, 15, 15,  9, 15, 15, 13, 15, 15,  9, 15, 15,  9, 0
+    };
+    
+    int *hall = new int[] {
+        15, 15, 0, 15, 15,
+        15, 0,  0,  0, 15,
+        15, 0,  0,  0, 15,
+        15, 0,  0,  0, 15,
+        15, 0,  0,  0, 15,
+        15, 0,  0,  0, 15,
+        15, 0,  0,  0, 15,
+        15, 0,  0,  0, 15,
+        15, 0,  0,  0, 15,
+        15, 0,  0,  0, 15,
+        15, 0,  0,  0, 15,
+        15, 0,  0,  0, 15,
     };
 
+    int *central_hall = new int[] {
+         2, 1, 1, 1, 5, 1, 0, 0, 0, 0, 0, 1, 5, 1, 1, 1,  1,
+         2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  2,
+        12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12,
+         2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0,
+         2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0,
+         2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0,
+        12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12,
+         2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  2,
+         2, 1, 7, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 7, 1, 1,  1
+    };
+    
+    int *wooden_thing = new int[] { // w: 18; h: 22;
+         0, 23, 23, 23, 19, 23, 23, 23, 23, 23, 19, 23, 23, 23,  0,  0,  0,  0,
+         0, 24,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 24,  0,  0,  0,  0,
+         0, 20,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 20, 23, 23, 23, 23,
+         0, 24,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 24,  0,  0,  0, 24,
+         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 20,
+         0, 24,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 24,  0,  0,  0, 24,
+         0, 22,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 22, 23, 23, 23, 23,
+         0, 24,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 24,  0,  0,  0,  0,
+         0, 23, 23, 23, 19, 23, 23,  0, 23, 23, 19, 23, 23, 23,  0,  0,  0,  0,
+         0,  0,  0,  0,  0, 24,  0,  0,  0, 24,  0,  0,  0,  0,  0,  0,  0,  0,
+         0,  0,  0,  0,  0, 24,  0,  0,  0, 24,  0,  0,  0,  0,  0,  0,  0,  0,
+         0,  0,  0,  0,  0, 22,  0,  0,  0, 22,  0,  0,  0,  0,  0,  0,  0,  0,
+         0,  0,  0,  0,  0, 24,  0,  0,  0, 24,  0,  0,  0,  0,  0,  0,  0,  0,
+         0,  0,  0,  0,  0, 24,  0,  0,  0, 24,  0,  0,  0,  0,  0,  0,  0,  0,
+        24, 24, 24, 24, 24, 24,  0,  0,  0, 24, 24, 24,  0,  0,  0,  0,  0,  0,
+        24,  0,  0, 20,  0,  0,  0,  0,  0,  0,  0, 24,  0,  0,  0,  0,  0,  0,
+        24,  0,  0, 24, 24, 24,  0,  0,  0, 24, 24, 24,  0,  0,  0,  0,  0,  0,
+        24,  0,  0, 24, 23, 24,  0,  0,  0, 24,  0,  0,  0,  0,  0,  0,  0,  0,
+        24,  0,  0, 24, 23, 24,  0,  0,  0, 24,  0,  0,  0,  0,  0,  0,  0,  0,
+        23, 23, 23, 23, 23, 20,  0,  0,  0, 20,  0,  0,  0,  0,  0,  0,  0,  0,
+         0,  0,  0,  0,  0, 24,  0,  0,  0, 24,  0,  0,  0,  0,  0,  0,  0,  0,
+         0,  0,  0,  0,  0, 23, 19,  0, 19, 23,  0,  0,  0,  0,  0,  0,  0,  0,
+    };
+    
+    int *kennel = new int[] { // w:20 h: 19;
+         0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+         0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  0,  0,  0,  0,  0,  0,  0, 16,
+         0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  0,  0,  0,  0,  0,  0,  0, 16,
+        15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 16,  0,  0,  0,  0,  0,  0,  0,  0, 16,
+        15,  0,  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  0,  0,  0,  0,  0,  0,  0, 16,
+         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 10,
+        15,  0,  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  0,  0,  0,  0,  0,  0,  0, 16,
+        15, 15, 15,  0,  0,  0,  0, 15, 15, 15, 16,  0,  0,  0,  0,  0,  0,  0,  0, 16,
+         0,  0,  0, 16,  0,  0, 15,  0,  0,  0, 16,  0,  0,  0,  0,  0,  0,  0,  0, 16,
+         0,  0,  0, 16,  0,  0, 15,  0,  0,  0, 16,  0,  0,  0,  0,  0,  0,  0,  0, 16,
+         0,  0,  0, 16,  0,  0, 15,  0,  0,  0,  0, 15, 15,  0, 15, 15,  0, 15, 15, 15,
+         0,  0,  0, 16,  0,  0, 15,  0,  0,  0,  0,  0,  0, 15,  0,  0, 15,  0,  0,  0,
+         0,  0,  0, 16,  0,  0, 15,  0,  0, 16,  0, 16,  0, 16,  0, 16,  0,  0,  0,  0,
+         0,  0,  0, 16,  0,  0, 15, 15, 16,  0, 16,  0, 16,  0, 16,  0, 16, 16,  0,  0,
+         0,  0,  0, 16,  0,  0,  0, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  0,
+         0,  0,  0, 16,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 10,  0,  0,
+         0,  0,  0, 16,  0,  0,  0, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  0,
+         0,  0,  0, 16, 15, 15, 15, 15, 16,  0, 16,  0, 16,  0, 16,  0, 16, 16,  0,  0,
+         0,  0,  0,  0,  0,  0,  0,  0,  0, 16,  0, 16,  0, 16,  0, 16,  0,  0,  0,  0
+    };
+    
     Player player = {glm::vec3(-3.5f, -0.5f, -7.5f), 90.0f, 100, Gun()};
+    // Player player = {glm::vec3(-8.0f, -0.5f, 38.0f), 90.0f, 100, Gun()};
+    // Player player = {glm::vec3(-24.5f, -0.5f, 16.5f), 90.0f, 100, Gun()};
     player.score = 0;
-    player.ammo = 99;
+    player.ammo  = 99;
+    
+    std::vector<Furniture*> static_furnitures;
+    static_furnitures.push_back(    new Furniture( -7.5f,   -7.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture( -7.5f,   -2.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture( -7.5f,  -11.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture( -11.5f, -11.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture(  -3.5f, -11.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture( -12.5f,  -7.5f, 6, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture(  -1.5f,  -1.5f, 6, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture( -11.5f,  -2.5f, 3, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    
+    static_furnitures.push_back(    new Furniture( -7.5f,    1.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture( -7.5f,    9.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture( -7.5f,    5.5f, 4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    
+    static_furnitures.push_back(    new Furniture( -7.5f,  16.5f,  2, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture(-12.5f,  16.5f,  2, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture( -2.5f,  16.5f,  2, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture( -7.5f,  23.5f,  4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture( -7.5f,  27.5f,  4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture( -7.5f,  31.5f,  4, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture( -7.5f,  38.5f,  2, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture(-32.5f,   5.5f,  7, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    static_furnitures.push_back(    new Furniture(-31.5f,  20.5f,  1, 4, 4, cWalls, IMAGINARY,   SHOOTABLE,   non_bind));
+    
+    std::vector<Furniture*> non_static_furnitures;
+    non_static_furnitures.push_back(new Furniture( -0.5f,  13.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+    non_static_furnitures.push_back(new Furniture( -0.5f,  19.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+    non_static_furnitures.push_back(new Furniture(-14.5f,  19.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+    non_static_furnitures.push_back(new Furniture(-14.5f,  13.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+    non_static_furnitures.push_back(new Furniture(-15.5f,  17.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+    non_static_furnitures.push_back(new Furniture(-15.5f,  15.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+    non_static_furnitures.push_back(new Furniture( -0.5f,  13.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+    non_static_furnitures.push_back(new Furniture( -0.5f,  13.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+    non_static_furnitures.push_back(new Furniture( -5.5f,  20.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+    non_static_furnitures.push_back(new Furniture( -9.5f,  20.5f,  8, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+    non_static_furnitures.push_back(new Furniture(-10.5f,  27.5f, 11, 4, 5, cWalls, TANGIBLE,    SHOOTABLE,   bind));
+    
+    non_static_furnitures.push_back(new Furniture( -4.5f,  40.5f,  2, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    non_static_furnitures.push_back(new Furniture( -7.5f,  40.5f,  2, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    non_static_furnitures.push_back(new Furniture(-10.5f,  40.5f,  2, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    
+    non_static_furnitures.push_back(new Furniture(-12.5f,  41.5f,  9, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    non_static_furnitures.push_back(new Furniture( -2.5f,  41.5f,  9, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    
+    non_static_furnitures.push_back(new Furniture(-29.5f,  11.5f, 16, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    non_static_furnitures.push_back(new Furniture(-32.5f,  11.5f, 17, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    non_static_furnitures.push_back(new Furniture(-34.5f,  19.5f, 15, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    non_static_furnitures.push_back(new Furniture(-34.5f,  20.5f, 15, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    non_static_furnitures.push_back(new Furniture(-33.5f,  20.5f, 15, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    non_static_furnitures.push_back(new Furniture(-32.5f,  20.5f, 15, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    non_static_furnitures.push_back(new Furniture(-29.5f,  14.5f, 10, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
+    non_static_furnitures.push_back(new Furniture(-32.5f,  14.5f, 10, 4, 5, cWalls, TANGIBLE,    UNSHOOTABLE, bind));
     
     std::vector<Enemy> enemies;
+    enemies.emplace_back(window, glm::vec3(-4.5f, 0.0f,  -7.5f), 90.0f,   0,  0, "Enemy-015.png", RIGHT_TURN);
+    enemies.emplace_back(window, glm::vec3(-9.5f, 0.0f, -10.5f), 90.0f, 100, 25, "Enemy-015.png", RIGHT_TURN);
     
-    enemies.push_back(Enemy(window, glm::vec3(-7.5f, 0.0f, -3.5f), 90.0f, 100, 30, "Enemy-02.png", RIGHT_TURN));
-    // enemies.push_back(Enemy(window, glm::vec3(-7.5f, 0.0f, -4.0f),  0.0f, 100, 25, "Enemy-01.png",  FULL_TURN));
-
-    Cube part(map, 15, 14, 1.0f, 0.0f, 0.0f, 0.0f, cWalls, 5.0f, 2.0f);
+    std::vector<Cube*> parts_of_map;
+    parts_of_map.push_back(new Cube(        jail, 15, 14, 1.0f,   0.0f,   0.0f, 0.0f, cWalls, 6.0f, 19.0f));
+    parts_of_map.push_back(new Cube(        hall,  5, 12, 1.0f,   5.0f,  12.0f, 0.0f, cWalls, 6.0f, 19.0f));
+    parts_of_map.push_back(new Cube(central_hall, 17,  9, 1.0f,  -1.0f,  21.0f, 0.0f, cWalls, 6.0f, 19.0f));
+    parts_of_map.push_back(new Cube(wooden_thing, 18, 22, 1.0f,   0.0f,  43.0f, 0.0f, cWalls, 6.0f, 19.0f));
+    parts_of_map.push_back(new Cube(      kennel, 20, 19, 1.0f,  16.0f,  22.0f, 0.0f, cWalls, 6.0f, 19.0f));
 
     std::vector<Door*> doors;
+    doors.emplace_back(new Door( -5.0f, -2.0f,  0.0f, cWalls, *Walls));
+    doors.emplace_back(new Door( -9.0f, -2.0f,  0.0f, cWalls, *Walls));
+    doors.emplace_back(new Door( -5.0f, -7.0f,  0.0f, cWalls, *Walls));
+    doors.emplace_back(new Door( -9.0f, -7.0f,  0.0f, cWalls, *Walls));
+    doors.emplace_back(new Door( -7.0f,  0.0f, 90.0f, cWalls, *Walls));
+    doors.emplace_back(new Door( -7.0f, 22.0f, 90.0f, cWalls, *Walls));
+    doors.emplace_back(new Door(-16.0f, 17.0f,  0.0f, cWalls, *Walls));
+    doors.emplace_back(new Door( -7.0f, 35.0f, 90.0f, cWalls, *Walls));
+    doors.emplace_back(new Door(-13.0f, 39.0f,  0.0f, cWalls, *Walls));
+    doors.emplace_back(new Door(-23.0f,  7.0f,  0.0f, cWalls, *Walls));
+    doors.emplace_back(new Door(-26.0f, 17.0f,  0.0f, cWalls, *Walls));
+    doors.emplace_back(new Door(-7.0f, 12.0f, 90.0f, cWalls, *Walls));
     
-    doors.push_back(new Door(-5.0f, -2.0f,  0.0f, cWalls, *Walls));
-    doors.push_back(new Door(-9.0f, -2.0f,  0.0f, cWalls, *Walls));
-    doors.push_back(new Door(-5.0f, -7.0f,  0.0f, cWalls, *Walls));
-    doors.push_back(new Door(-9.0f, -7.0f,  0.0f, cWalls, *Walls));
-    doors.push_back(new Door(-7.0f,  0.0f, 90.0f, cWalls, *Walls));
-
-    Horizontal_plane room1( map, 15, 14, 0.0f, 0.0f,  0.0f,  8, 5.0f, 2.0f);
-    Horizontal_plane room15(map, 15, 14, 0.0f, 1.0f,  0.0f,  9, 5.0f, 2.0f);
+    std::vector<Horizontal_plane> floors;
+    floors.emplace_back(jail, 15, 14, 0.0f, 0.0f,   0.0f, 111, 6.0f, 19.0f);
+    floors.emplace_back(jail, 15, 14, 0.0f, 1.0f,   0.0f, 112, 6.0f, 19.0f);
+    floors.emplace_back(hall,  5, 12, 5.0f, 0.0f, -12.0f, 111, 6.0f, 19.0f);
+    floors.emplace_back(hall,  5, 12, 5.0f, 1.0f, -12.0f, 112, 6.0f, 19.0f);
+    
+    floors.emplace_back(central_hall, 17,  9, -1.0f, 0.0f, -21.0f, 111, 6.0f, 19.0f);
+    floors.emplace_back(central_hall, 17,  9, -1.0f, 1.0f, -21.0f, 112, 6.0f, 19.0f);
+    floors.emplace_back(wooden_thing, 18, 22,  0.0f, 0.0f, -43.0f, 111, 6.0f, 19.0f);
+    floors.emplace_back(wooden_thing, 18, 22,  0.0f, 1.0f, -43.0f, 112, 6.0f, 19.0f);
+    floors.emplace_back(kennel, 20, 19,  16.0f, 0.0f, -22.0f, 111, 6.0f, 19.0f);
+    floors.emplace_back(kennel, 20, 19,  16.0f, 1.0f, -22.0f, 112, 6.0f, 19.0f);
 
     Hud hud;
 
@@ -113,24 +265,31 @@ void game(GLFWwindow *window) {
         int modelLoc = glGetUniformLocation(map_shader.shaderProgram, "model");
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
-        part.draw();
+        for (Cube *map : parts_of_map)
+            map->draw();
         
-        room1.draw();
-        room15.draw();
-        
+        for (Horizontal_plane &floor : floors)
+            floor.draw();
+            
         for (Door *door : doors)
             door->processing(view, proj, window, player.position, &enemies);
         
+        non_bind->bind(GL_TEXTURE0);
+        for (Furniture *furniture : static_furnitures)
+            furniture->draw(player, view, proj);
+            
+        bind->bind(GL_TEXTURE1);
+        for (Furniture *furniture : non_static_furnitures)
+            furniture->draw(player, view, proj);
+            
         for (int i = enemies.size() - 1; i >= 0; i--) {
             enemies[i].processing(cWalls, duration, player, view, proj, doors);
         }
         
         player.gun.processing(duration, player, window);
-
-        player.rotation = fmodf(player.rotation, 360);
         
         glViewport(50, 50, WIDTH * 2 - 100, 270);
-
+        player.rotation = fmodf(player.rotation, 360);
         if (duration.count() - old_duration_face.count() > 0.5f) {
             face = disti(gen);
             old_duration_face = duration;
@@ -148,7 +307,28 @@ void game(GLFWwindow *window) {
         glfwPollEvents();
         glfwSwapBuffers(window);
     }
-
+    
+    auto dur = std::chrono::high_resolution_clock::now();
+    
+    for (Cube *cube_map : parts_of_map) {
+        cube_map->clear();
+        delete cube_map;
+    }
+    
+    for (Furniture *furniture : static_furnitures) {
+        furniture->clear();
+        delete furniture;
+    }
+    
+    for (Furniture *furniture : non_static_furnitures) {
+        furniture->clear();
+        delete furniture;
+    }
+        
+    for (Horizontal_plane &floor : floors) {
+        floor.clear();
+    }
+    
     for (Enemy &enemy : enemies) {
         enemy.clear();
     }
@@ -157,6 +337,18 @@ void game(GLFWwindow *window) {
         door->clear();
         delete door;
     }
+    
+    delete[] jail;
+    delete[] hall;
+    delete[] central_hall;
+    delete[] wooden_thing;
+    delete[] kennel;
 
     map_shader.deleteShader();
+    
+    auto dur1 = std::chrono::high_resolution_clock::now();
+    
+    std::chrono::duration<float> dur_rr  = dur1 - dur;
+    
+    std::cout << dur_rr.count() << std::endl;
 }

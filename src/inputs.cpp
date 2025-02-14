@@ -8,7 +8,7 @@
 
 static float speed;
 
-void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWwindow *window, bool &run, std::chrono::duration<float> duration, std::chrono::duration<float> &old_duration_shoot) {
+void input(std::vector<Door*> &doors, Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWwindow *window, bool &run, std::chrono::duration<float> duration, std::chrono::duration<float> &old_duration_shoot) {
 
     std::vector<Map> collisions;
     float spd = 0.04f;
@@ -19,7 +19,7 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
     x = std::ceil(player.position.x);
     z = std::ceil(player.position.z);
     
-    // std::cout << abs(x) << " " << abs(z) << std::endl;
+    std::cout << abs(x) << " " << abs(z) << std::endl;
 
     double xpos, ypos;
     glfwGetCursorPos(window, &xpos, &ypos);
@@ -121,7 +121,7 @@ void input(const std::vector<Door*> &doors, Collisions &colls, Player &player, s
             pos_of_bullet.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
             pos_of_bullet.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.2f;
             for (const Map *path_of_map : colls._piecesOfMap) {
-                if (!inObj(*path_of_map, pos_of_bullet)) continue;
+                if (!inObj(*path_of_map, pos_of_bullet) || path_of_map->type == UNSHOOTABLE) continue;
 
                 x = abs(std::ceil(pos_of_bullet.x + path_of_map->gap_x));
                 z = abs(std::ceil(pos_of_bullet.z + path_of_map->gap_z));

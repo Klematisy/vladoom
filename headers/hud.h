@@ -21,6 +21,6 @@ class Hud {
     Texture *guns_texture;
 public:
     Hud(); 
-    void draw(Player &player, int k);
+    void draw(const Player &player, int k);
     ~Hud();
 };

@@ -17,7 +17,6 @@ struct Gun {
 private:
     Texture *gun_tex;
     ProgramShader *gun_ps;
-    
     std::chrono::duration<float> old_duration_gun = std::chrono::high_resolution_clock::now() - std::chrono::high_resolution_clock::now();
 
     void update(Player &p,
@@ -41,8 +40,49 @@ struct Player : public Entity {
     uint lives = 4;
 };
 
-struct Item : Entity {
+enum TYPE_0F_ITEM {
+    HEALTH,
+    AMMO,
+    SCORE,
+    GUN,
+    KEY
+};
+
+// class Item : Entity {
+//     float *changeble;
+//     float temp;
+//     TYPE_0F_ITEM type;
     
+//     void draw(const Player &player, glm::mat4 &view, glm::mat4 &proj);
+//     void update();
+// public:
+//     Item(float xGap, float zGap, float *changeble, TYPE_0F_ITEM type);
+//     void processing(Player &player);
+// };
+
+enum AVAILABILITY {
+    IMAGINARY,
+    TANGIBLE
+};
+
+struct Furniture : public Entity {
+private:
+    int num_of_tex;
+    int x_count_of_objs, y_count_of_objs;
+    int map[1] = {1};
+    
+    ProgramShader *ps;
+    Texture      *tex;
+public:
+    Furniture(
+            float xGap, float zGap, 
+            int num_of_tex, 
+            float x_count_of_objs, float y_count_of_objs,
+            Collisions &col, 
+            AVAILABILITY av, TYPE_OF_COLLISION toc,
+            Texture *tex);
+    void draw(const Player &player, glm::mat4 &view, glm::mat4 &proj);
+    void clear();
 };
 
 #define RIGHT_TURN 90
