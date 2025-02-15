@@ -17,7 +17,6 @@ void input(std::vector<S_Door*> &secret_doors,
            std::chrono::duration<float> &old_duration_shoot) 
 {
 
-    std::vector<Map> collisions;
     float spd = 0.04f;
     int x, z, x1, z1;
     float player_width = 0.1f;

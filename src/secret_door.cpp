@@ -6,7 +6,6 @@ const static String shaderDir = "resource/Shaders/";
 S_Door::S_Door(float x_gap, float z_gap, float angle_of_moving, int num_of_tex, Collisions &col) {
     position = glm::vec3(0.0f);
     tex_num = num_of_tex;
-    std::cout << tex_num << std::endl;
 
     String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
@@ -21,8 +20,16 @@ S_Door::S_Door(float x_gap, float z_gap, float angle_of_moving, int num_of_tex, 
     cols = col._piecesOfMap.back();
     
     switch ((int) angle_of_moving / 90) {
+        case 0: {
+            znak = -1;
+            coordinate = &position.z;
+            gap = &cols->gap_z;
+            min = &cols->minZ;
+            max = &cols->maxZ;
+            break;
+        }
         case 1: {
-            znak = 1;
+            znak =  1;
             coordinate = &position.x;
             gap = &cols->gap_x;
             min = &cols->minX;
@@ -45,14 +52,14 @@ S_Door::S_Door(float x_gap, float z_gap, float angle_of_moving, int num_of_tex, 
             max = &cols->maxX;
             break;
         }
-        case 0: {
-            znak = -1;
-            coordinate = &position.z;
-            gap = &cols->gap_z;
-            min = &cols->minZ;
-            max = &cols->maxZ;
-        }
     }
+    // *max = -4;
+    // *gap = 4;
+    // *min = -5;
+    // *min = -6;
+    // *gap = 5;
+    // *max = -5;
+    point = *coordinate;
 }
 
 void S_Door::door_cheking(const glm::vec3 &position, const float &rotation) {
@@ -75,15 +82,18 @@ void S_Door::door_cheking(const glm::vec3 &position, const float &rotation) {
 void S_Door::update() {
     if (*coordinate * znak > 2.0f && states == DOOR_OPENS) {
         states = DOOR_IS_STANDING;
-        *gap -= 2.0f * znak;
-        *min -= 2.0f * znak;
-        *max -= 2.0f * znak;
     }
     
     if (states == DOOR_OPENS) {
-        *coordinate += znak * 0.01f;
+        *coordinate += 0.01f * znak;
+        if (fabsf(*coordinate - point) >= 0.9999f) {
+            std::cout << *min << " " << *gap << " " << *max << std::endl;
+            point = *coordinate;
+            *min -= 1.0f * znak;
+            *max -= 1.0f * znak;
+            *gap  = -*max;
+        }
     }
-    
 }
 
 void S_Door::processing(glm::mat4 view, glm::mat4 proj) {

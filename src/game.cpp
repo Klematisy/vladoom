@@ -181,9 +181,10 @@ void game(GLFWwindow *window) {
         0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0,
     };
     
-    // Player player = {glm::vec3(-3.5f, -0.5f, -7.5f), 90.0f, 100, Gun()};
+    Player player = {glm::vec3(-3.5f, -0.5f, -7.5f), 90.0f, 100, Gun()};
     // Player player = {glm::vec3(16.5f, -0.5f, 34.5f), 180.0f, 100, Gun()};
-    Player player = {glm::vec3(12.5f, -0.5f, 2.5f), 90.0f, 100, Gun()};
+    // Player player = {glm::vec3(12.5f, -0.5f, 2.5f), 90.0f, 100, Gun()};
+
     player.score = 0;
     player.ammo  = 99;
     
@@ -332,19 +333,19 @@ void game(GLFWwindow *window) {
     
     std::vector<S_Door*> secret_doors;
     {
-        secret_doors.push_back(new S_Door( -3.0f,  28.0f, 270, 20, cWalls));
-        secret_doors.push_back(new S_Door(  17.0f, 37.0f,   0,  7, cWalls));
+        secret_doors.push_back(new S_Door(  -3.0f, 28.0f, 270, 20, cWalls));
+        secret_doors.push_back(new S_Door(  17.0f, 37.0f, 360,  7, cWalls));
         secret_doors.push_back(new S_Door(   9.0f,  1.0f, 180,  1, cWalls));
         secret_doors.push_back(new S_Door(  10.0f,  0.0f, 270,  2, cWalls));
-        secret_doors.push_back(new S_Door(  14.0f, -3.0f, 180,  2, cWalls));
+        secret_doors.push_back(new S_Door(  14.0f, -3.0f, 180,  1, cWalls));
     }
     
     std::vector<Horizontal_plane> floors;
     {
-        floors.emplace_back(jail, 15, 14, 0.0f, 0.0f,   0.0f, 111, 6.0f, 19.0f);
-        floors.emplace_back(jail, 15, 14, 0.0f, 1.0f,   0.0f, 112, 6.0f, 19.0f);
-        floors.emplace_back(hall,  5, 12, 5.0f, 0.0f, -12.0f, 111, 6.0f, 19.0f);
-        floors.emplace_back(hall,  5, 12, 5.0f, 1.0f, -12.0f, 112, 6.0f, 19.0f);
+        floors.emplace_back(jail, 15, 14,  0.0f, 0.0f,  0.0f, 111, 6.0f, 19.0f);
+        floors.emplace_back(jail, 15, 14,  0.0f, 1.0f,  0.0f, 112, 6.0f, 19.0f);
+        floors.emplace_back(hall,  5, 12, -5.0f, 0.0f, 12.0f, 111, 6.0f, 19.0f);
+        floors.emplace_back(hall,  5, 12, -5.0f, 1.0f, 12.0f, 112, 6.0f, 19.0f);
         
         floors.emplace_back(   central_hall, 17,  9,   1.0f,  0.0f,  21.0f, 111, 6.0f, 19.0f);
         floors.emplace_back(   central_hall, 17,  9,   1.0f,  1.0f,  21.0f, 112, 6.0f, 19.0f);

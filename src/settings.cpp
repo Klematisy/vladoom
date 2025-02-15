@@ -167,6 +167,13 @@ std::unique_ptr<int> check_collisions(const Entity &creature, const Collisions &
             }
         }
     }
+    
+    // for (int i = 0; i < 25; i++) {
+    //     std::cout << ((i % 5 == 0) ? "\n" : " ");
+    //     std::cout << arr[i];
+    // }
+    
+    // std::cout << std::endl;
      
     return (std::unique_ptr<int>) arr;
 }

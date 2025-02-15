@@ -16,6 +16,8 @@ class S_Door : public Entity {
     int          znak;
     int       tex_num;
     
+    float point = 0.0f;
+    
     int doorArr[1] = {0};
     
     enum DOOR_STATES { DOOR_OPENS, DOOR_IS_STANDING };
