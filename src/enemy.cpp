@@ -372,29 +372,40 @@ void Enemy::update(Collisions &colls,
                 int random_number = disti(gen);
                 // int random_number = 0;
                 switch (random_number) {
-                    case 0: a_states = MANEUVERING;
-                    ufm.line_calculator_turner = true;
-                    break;
-                    case 1: a_states = RUN;
-                    break;
-                    case 2: a_states = SHOOT;
-                    break;
+                    case 0: 
+                        a_states = MANEUVERING;
+                        ufm.line_calculator_turner = true;
+                        break;
+                    case 1: 
+                        a_states = RUN;
+                        break;
+                    case 2: 
+                        a_states = SHOOT;
+                        break;
                 }
                 old_duration_atack = duration;
             }
             
             float mod = vec_mod2D(take_vector2D({position.x, position.z}, {player.position.x, player.position.z}));
             
-            if (mod <= 1.0f) {
+            if (mod <= 0.6f) {
                 a_states = SHOOT;
             }
             
             switch (a_states) {
                 case MANEUVERING: {
-                    speed = 0.012f;
-                    float mod = vec_mod2D(take_vector2D({ufm.flag_of_maneuvering.x, ufm.flag_of_maneuvering.z}, {position.x, position.z}));
+                    speed = 0.016f;
+                    float mod = vec_mod2D(take_vector2D({ufm.flag_of_maneuvering.x, ufm.flag_of_maneuvering.z}, {ufm.movement.x, ufm.movement.z}));
                     
-                    if (ufm.line_calculator_turner) {   
+                    glm::vec2 vector1(player.position.x, player.position.z);
+                    glm::vec2 vector2(ufm.pos_for_angle.x, ufm.pos_for_angle.z);
+                    
+                    if (vec_mod2D(take_vector2D(vector1, vector2)) >= 0.8f) {
+                        ufm.line_calculator_turner = true;
+                    }
+                    
+                    if (ufm.line_calculator_turner) {
+                        ufm.movement = position;
                         ufm.pos_for_angle = player.position;
                         
                         ufm.line_for_maneuvering.calculate(
@@ -435,20 +446,22 @@ void Enemy::update(Collisions &colls,
                     angle *= (180.0f/M_PI);
                     angle = (int) angle;
                     
-                    if (mod > 0.5f) {
+                    if (mod > 0.7f) {
                         int znak_x = znak_x_func(ufm.rotation_for_maneuvering);
                         int znak_z = znak_z_func(ufm.rotation_for_maneuvering);
                         
                         rotation += 4.0f * ufm.maneuvering;
-                        if (angle / 24 == 1 || angle / 25 == 1 || angle / 26 == 1 || angle / 27 == 1 || angle / 28 == 1) {
+                        if (angle / 36 == 1 || angle / 37 == 1 || angle / 38 == 1 || angle / 39 == 1 || angle / 40 == 1) {
                             if (znak_x * (position.x + x1) <= znak_x * ufm.line_for_maneuvering.get_x(position.z + z1) && znak_z * (position.z + z1) >= znak_z * ufm.line_for_maneuvering.get_z((position.x + x1))) {
                                 if (ufm.maneuvering < 0) {
                                     ufm.flag_of_maneuvering = position;
+                                    ufm.movement = position;
                                     ufm.maneuvering = 1;
                                 }
                             } else {
                                 if (ufm.maneuvering > 0) {
                                     ufm.flag_of_maneuvering = position;
+                                    ufm.movement = position;
                                     ufm.maneuvering = -1;
                                 }
                             }
@@ -459,9 +472,11 @@ void Enemy::update(Collisions &colls,
                         z = std::ceil(position.z);
                         if (!CollidesRect(x, z, position.x + x1 * speed, position.z, 0.4f, 0.4f)) {
                             position.x += x1 * speed;
+                            ufm.movement.x += x1 * speed;
                         }
                         if (!CollidesRect(x, z, position.x, position.z + z1 * speed, 0.4f, 0.4f)) {
                             position.z += z1 * speed;
+                            ufm.movement.z += z1 * speed;
                         }
                     }
                     break;

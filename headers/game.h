@@ -109,6 +109,7 @@ private:
         float rotation_for_maneuvering;
         bool line_calculator_turner;
         glm::vec3 flag_of_maneuvering;
+        glm::vec3 movement;
     };
     
     Utills_for_maneuvering ufm;
