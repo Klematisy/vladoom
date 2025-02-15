@@ -72,6 +72,7 @@ Cube::Cube(int *map, int map_width, int map_height, float width, float xGap, flo
     this->x_count_of_objs = x_count_of_objs;
     this->y_count_of_objs = y_count_of_objs;
     
+    xGap *= -1;
     zGap *= -1;
     
     uint countOfUnits = 0;

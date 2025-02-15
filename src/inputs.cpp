@@ -8,7 +8,14 @@
 
 static float speed;
 
-void input(std::vector<Door*> &doors, Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWwindow *window, bool &run, std::chrono::duration<float> duration, std::chrono::duration<float> &old_duration_shoot) {
+void input(std::vector<S_Door*> &secret_doors, 
+           std::vector<Door*> &doors, 
+           Collisions &colls, Player &player, 
+           std::vector<Enemy> &enemies, 
+           GLFWwindow *window, bool &run, 
+           std::chrono::duration<float> duration, 
+           std::chrono::duration<float> &old_duration_shoot) 
+{
 
     std::vector<Map> collisions;
     float spd = 0.04f;
@@ -19,7 +26,7 @@ void input(std::vector<Door*> &doors, Collisions &colls, Player &player, std::ve
     x = std::ceil(player.position.x);
     z = std::ceil(player.position.z);
     
-    // std::cout << abs(x) << " " << abs(z) << std::endl;
+    // std::cout << x << " " << z << std::endl;
 
     double xpos, ypos;
     glfwGetCursorPos(window, &xpos, &ypos);
@@ -66,6 +73,9 @@ void input(std::vector<Door*> &doors, Collisions &colls, Player &player, std::ve
     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
         for (Door *door : doors) {
             door->door_cheking(player.position, player.rotation);
+        }
+        for (S_Door *sdoors : secret_doors) {
+            sdoors->door_cheking(player.position, player.rotation);
         }
     }
     
@@ -159,7 +169,7 @@ void input(std::vector<Door*> &doors, Collisions &colls, Player &player, std::ve
             pos_of_bullet.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.4f;
             pos_of_bullet.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.4f;
             for (size_t i = 0; i < enemies.size(); i++) {
-                if (enemies[i].hit_points > 0 && fabsf(pos_of_bullet.x - enemies[i].position.x) < 0.2f && fabsf(pos_of_bullet.z - enemies[i].position.z) < 0.2f) {
+                if (enemies[i].hit_points > 0 && fabsf(pos_of_bullet.x - enemies[i].position.x) < 0.3f && fabsf(pos_of_bullet.z - enemies[i].position.z) < 0.3f) {
                     if (enemies[i].state != Enemy::ATTACK) enemies[i].hit_points -= enemies[i].hit_points;
                     else                                   enemies[i].hit_points -= damage;
                     std::cout << enemies[i].hit_points << std::endl;

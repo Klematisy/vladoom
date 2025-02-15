@@ -5,11 +5,14 @@
 String bindShader(std::string dir);
 const static String shaderDir = "resource/Shaders/";
 
-Door::Door(const float &xGap, const float &zGap, float rotation, Collisions &col, Texture &tex) {
+Door::Door(const float &xGap, const float &zGap, float rotation, Collisions &col, Texture &tex, int tod) {
     String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
     ps_door  = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
     ps_plane = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
+    
+    tex_num = tod;
+    doorArr[0] = tod;
     
     states = DOOR_IS_STANDING;
     start = std::chrono::high_resolution_clock::now();
@@ -18,13 +21,13 @@ Door::Door(const float &xGap, const float &zGap, float rotation, Collisions &col
 
     tex.uniform("tex0", *ps_door, 0);
 
-    door_shape = new Cube(doorArr, 1, 1, 0.04f, -xGap + 0.48f, zGap, rotation, col, 6.0f, 19.0f);
+    door_shape = new Cube(doorArr, 1, 1, 0.04f, xGap - 0.48f, zGap, rotation, col, 6.0f, 19.0f);
 
     plane1 = new Vertical_plane(xGap, zGap -        0.001f, rotation, xGap - 0.5f, zGap - 0.5f, 101, 6.0f, 19.0f);
     plane2 = new Vertical_plane(xGap, zGap - 1.0f + 0.001f, rotation, xGap - 0.5f, zGap - 0.5f, 101, 6.0f, 19.0f);
 
     coordinate = (rotation != 90.0f) ? &pos.z : &pos.x;
-    cols = col._piecesOfMap[col._piecesOfMap.size() - 1];
+    cols = col._piecesOfMap.back();
 }
 
 void Door::door_cheking(const glm::vec3 &position, const float &rotation) {
@@ -38,14 +41,14 @@ void Door::door_cheking(const glm::vec3 &position, const float &rotation) {
     z = abs(z);
     
     if (inObj(*cols, glm::vec3(xf, 0.0f, zf))) {
-        if (cols->obj[x + z * cols->width] == tex_num) {
+        if (cols->obj[0] == tex_num) {
             states = DOOR_OPENS;
             start = std::chrono::high_resolution_clock::now();
         }
     }
 }
 
-void Door::update(GLFWwindow *window, const glm::vec3 &player_position, std::vector<Enemy> *enemies) {
+void Door::update(const glm::vec3 &player_position, std::vector<Enemy> *enemies) {
     std::chrono::duration<float> duration  = std::chrono::high_resolution_clock::now() - start;
     
     if (duration.count() >= 4.0f && states == DOOR_IS_STANDING && *coordinate <= -1.0f) {
@@ -78,8 +81,8 @@ void Door::update(GLFWwindow *window, const glm::vec3 &player_position, std::vec
     }
 }
 
-void Door::processing(const glm::mat4 &view, const glm::mat4 &proj, GLFWwindow* window, const glm::vec3 &player_position, std::vector<Enemy> *enemies) {
-    update(window, player_position, enemies);
+void Door::processing(const glm::mat4 &view, const glm::mat4 &proj, const glm::vec3 &player_position, std::vector<Enemy> *enemies) {
+    update(player_position, enemies);
     draw(view, proj);
 }
 

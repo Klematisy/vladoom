@@ -18,6 +18,7 @@
 #include "VladEngine.hpp"
 
 #include "door.h"
+#include "secret_door.h"
 #include "hud.h"
 
 #include "collisions.h"

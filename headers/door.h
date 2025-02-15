@@ -9,6 +9,9 @@ using namespace std::literals::chrono_literals;
 
 class Enemy;
 
+#define  ELEVATOR   104
+#define  STANDART   99
+
 class Door {
     glm::vec3 pos;
     Cube *door_shape;
@@ -19,17 +22,17 @@ class Door {
     Map *cols;
     std::chrono::time_point<std::chrono::high_resolution_clock> start;
     int tex_num = 99;
-    int *doorArr = new int[1] {tex_num};
+    int *doorArr = new int[1] {0};
     
     enum DOOR_STATES { DOOR_OPENS, DOOR_CLOSES, DOOR_IS_STANDING };
 public:
     DOOR_STATES states;
     float *coordinate;
-    Door(const  float &xGap, const float &zGap, float rotation, Collisions& col, Texture &tex);
+    Door(const  float &xGap, const float &zGap, float rotation, Collisions& col, Texture &tex, int tod);
     
     void clear();
-    void processing(const glm::mat4 &view, const glm::mat4 &proj, GLFWwindow* window, const glm::vec3 &player_position, std::vector<Enemy> *enemies);
-    void update(GLFWwindow *window, const glm::vec3 &player_position, std::vector<Enemy> *enemies);
+    void processing(const glm::mat4 &view, const glm::mat4 &proj, const glm::vec3 &player_position, std::vector<Enemy> *enemies);
+    void update(const glm::vec3 &player_position, std::vector<Enemy> *enemies);
     void door_cheking(const glm::vec3 &position, const float &rotation);
     void draw(const glm::mat4 &view, const glm::mat4 &proj);
 };

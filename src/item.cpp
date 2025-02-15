@@ -40,10 +40,10 @@ Item::Item(float xGap, float zGap, int tex_num, float changeble, Player &player,
 }
 
 void Item::update(Player &player) {
-    if (fabsf(player.position.x - position.x) < 0.1f && fabsf(player.position.z - position.z) < 0.1f) {
+    float collision_size = 0.35f;
+    if (fabsf(player.position.x - position.x) < collision_size && fabsf(player.position.z - position.z) < collision_size) {
         switch (type) {
             case HEALTH: {
-                std::cout << "ldskjflkdsjf\n";
                 if (player.hit_points < 100) {
                     player.hit_points += (int) changeble;
                     changeble = 0;

@@ -46,6 +46,8 @@ Horizontal_plane::Horizontal_plane(int *map, int width, int height, float xGap, 
     : map(map), width(width), height(height), xGap(xGap), yGap(yGap), zGap(zGap)
 {
     uint countOfUnits = 0;
+    this->xGap *= -1;
+    this->zGap *= -1;
 
     for (int i = 0; i < width * height; i++) {
         if (map[i] == 0) countOfUnits++;
