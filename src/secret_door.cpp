@@ -87,7 +87,6 @@ void S_Door::update() {
     if (states == DOOR_OPENS) {
         *coordinate += 0.01f * znak;
         if (fabsf(*coordinate - point) >= 0.9999f) {
-            std::cout << *min << " " << *gap << " " << *max << std::endl;
             point = *coordinate;
             *min -= 1.0f * znak;
             *max -= 1.0f * znak;

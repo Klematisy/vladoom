@@ -121,6 +121,7 @@ protected:
     int tex_x  = 0;
     int tex_y  = 0;
     uint turn;
+    int random_number = 0;
     GLFWwindow *window;
     std::vector<Point2> way;
     
@@ -152,7 +153,7 @@ protected:
 public:
     enum states {DUTY, SEARCH, ATTACK};
     states state;
-    ATTACK_STATES a_states = MANEUVERING;
+    ATTACK_STATES a_states = RUN;
     
     Enemy(glm::vec3 position, float rotation, int hit_points, int danage, String name_of_file, uint turn);
     int search_player(const Map &map, const glm::vec3 &player_position);
@@ -163,6 +164,8 @@ public:
 
 struct E_Dog : public Enemy {
     E_Dog(glm::vec3 position, float rotation, int hit_points, int danage, String name_of_file);
+    ATTACK_STATES a_states = MANEUVERING;
+    
     void update(Collisions &colls, std::chrono::duration<float> duration, const std::vector<Door*> &doors, Entity &player) override;
     void draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj) override;
     void processing(Collisions &colls, std::chrono::duration<float> duration, Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors) override;

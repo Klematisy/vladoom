@@ -369,8 +369,16 @@ void Enemy::update(Collisions &colls,
                 std::random_device rd;
                 std::mt19937 gen(rd());
                 std::uniform_int_distribution<> disti(0, 2);
-                int random_number = disti(gen);
-                // int random_number = 0;
+                if (random_number == 2) {
+                    while (random_number == 2) {
+                        random_number = disti(gen);
+                    }
+                } else if (map.get()[11] > 0 && map.get()[13] > 0 && random_number == 2) {
+                    random_number = 1;
+                } else {
+                    random_number = disti(gen);
+                }
+                
                 switch (random_number) {
                     case 0: 
                         a_states = MANEUVERING;
@@ -390,6 +398,38 @@ void Enemy::update(Collisions &colls,
 
             if (mod <= 1.5f) {
                 a_states = SHOOT;
+            }
+
+            Line lbpad;
+            lbpad.calculate(enemy2D, player2D);
+            
+            glm::vec3 pos_of_bullet = position;
+            bool loop = true;
+            while (loop) {
+                pos_of_bullet.x += cosf((90 + lbpad.rotation) * 3.14 / 180.0f) * 0.2f;
+                pos_of_bullet.z += sinf((90 + lbpad.rotation) * 3.14 / 180.0f) * 0.2f;
+                for (const Map *path_of_map : colls._piecesOfMap) {
+                    if (!inObj(*path_of_map, pos_of_bullet) || path_of_map->type == UNSHOOTABLE) continue;
+                    
+                    x = abs(std::ceil(pos_of_bullet.x + path_of_map->gap_x));
+                    z = abs(std::ceil(pos_of_bullet.z + path_of_map->gap_z));
+                    
+                    if (path_of_map->obj[x + z * path_of_map->width] > 0) {
+                        search_player(*path_of_map, player.position);
+                        state = SEARCH;
+                        a_states = RUN;
+                        loop = false;
+                        break;
+                    }
+                }
+                
+                if (fabsf(pos_of_bullet.x - player2D.x) <= 0.2f && fabsf(pos_of_bullet.z - player2D.y) <= 0.2f) {
+                    break;
+                }
+                
+                if (vec_mod2D(take_vector2D(enemy2D, {pos_of_bullet.x, pos_of_bullet.z})) >= mod) {
+                    break;
+                }
             }
             
             switch (a_states) {
@@ -431,7 +471,7 @@ void Enemy::update(Collisions &colls,
                         std::cout << "LEFT ";
                     }
 
-                    if (!fabsf(angle1 - rotation) < 4) {
+                    if (!(fabsf(angle1 - rotation) <= 4)) {
                         if (angle1 < rotation) {
                             float right = 360.0f + angle1;
                             if (right - rotation < rotation - angle1)   rotation += 4.0f;
@@ -442,9 +482,13 @@ void Enemy::update(Collisions &colls,
                             else                                        rotation -= 4.0f;
                         }
                         checker = !checker;
+                        
+                        if (rotation > 360.0f) {
+                            rotation = angle1;
+                        }
                     }
 
-                    if (fabsf(angle1 - (rotation)) <= 4) {
+                    if (fabsf(angle1 - rotation) <= 4) {
                         x = std::ceil(position.x);
                         z = std::ceil(position.z);
                         x1 = cosf((90 + rotation) * 3.14 / 180.0f);
@@ -518,37 +562,6 @@ void Enemy::update(Collisions &colls,
                     break;
                 }
                 case SHOOT: {
-                    glm::vec3 pos_of_bullet = position;
-                    glm::vec2 position2d(position.x, position.z);
-                    bool loop = true;
-                    while (loop) {
-                        pos_of_bullet.x += cosf((90 + rotation) * 3.14 / 180.0f) * 0.2f;
-                        pos_of_bullet.z += sinf((90 + rotation) * 3.14 / 180.0f) * 0.2f;
-                        for (const Map *path_of_map : colls._piecesOfMap) {
-                            if (!inObj(*path_of_map, pos_of_bullet) || path_of_map->type == UNSHOOTABLE) continue;
-                            
-                            x = abs(std::ceil(pos_of_bullet.x + path_of_map->gap_x));
-                            z = abs(std::ceil(pos_of_bullet.z + path_of_map->gap_z));
-                            
-                            if (path_of_map->obj[x + z * path_of_map->width] > 0) {
-                                search_player(*path_of_map, player.position);
-                                std::cout << "LOL\n";
-                                a_states = RUN;
-                                state = SEARCH;
-                                loop = false;
-                                break;
-                            }
-                        }
-                        
-                        if (fabsf(pos_of_bullet.x - player2D.x) <= 0.2f && fabsf(pos_of_bullet.z - player2D.y) <= 0.2f) {
-                            break;
-                        }
-                        
-                        if (vec_mod2D(take_vector2D(position2d, {pos_of_bullet.x, pos_of_bullet.z})) >= mod) {
-                            break;
-                        }
-                    }
-                    
                     if (loop == true) {
                         float angle = angle_btw_point_and_enemy(player.position);
                         

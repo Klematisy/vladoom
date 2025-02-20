@@ -203,7 +203,7 @@ void E_Dog::update(Collisions &colls, std::chrono::duration<float> duration, con
                         std::cout << "LEFT ";
                     }
 
-                    if (!fabsf(angle1 - rotation) < 4) {
+                    if (!(fabsf(angle1 - rotation) <= 4)) {
                         if (angle1 < rotation) {
                             float right = 360.0f + angle1;
                             if (right - rotation < rotation - angle1)   rotation += 4.0f;
@@ -214,6 +214,10 @@ void E_Dog::update(Collisions &colls, std::chrono::duration<float> duration, con
                             else                                        rotation -= 4.0f;
                         }
                         checker = !checker;
+                        
+                        if (rotation > 360.0f) {
+                            rotation = angle1;
+                        }
                     }
 
                     if (fabsf(angle1 - rotation) <= 4) {
