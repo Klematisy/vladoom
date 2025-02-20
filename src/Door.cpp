@@ -48,7 +48,7 @@ void Door::door_cheking(const glm::vec3 &position, const float &rotation) {
     }
 }
 
-void Door::update(const glm::vec3 &player_position, std::vector<Enemy> *enemies) {
+void Door::update(const glm::vec3 &player_position, std::vector<Enemy*> *enemies) {
     std::chrono::duration<float> duration  = std::chrono::high_resolution_clock::now() - start;
     
     if (duration.count() >= 4.0f && states == DOOR_IS_STANDING && *coordinate <= -1.0f) {
@@ -56,8 +56,8 @@ void Door::update(const glm::vec3 &player_position, std::vector<Enemy> *enemies)
         if (inObj(*cols, player_position)) {
             states = DOOR_IS_STANDING;
         } else {
-            for (Enemy &enemy : *enemies) {
-                if (inObj(*cols, enemy.position)) {
+            for (Enemy *enemy : *enemies) {
+                if (inObj(*cols, enemy->position)) {
                     states = DOOR_IS_STANDING;
                     break;
                 }
@@ -81,7 +81,7 @@ void Door::update(const glm::vec3 &player_position, std::vector<Enemy> *enemies)
     }
 }
 
-void Door::processing(const glm::mat4 &view, const glm::mat4 &proj, const glm::vec3 &player_position, std::vector<Enemy> *enemies) {
+void Door::processing(const glm::mat4 &view, const glm::mat4 &proj, const glm::vec3 &player_position, std::vector<Enemy*> *enemies) {
     update(player_position, enemies);
     draw(view, proj);
 }

@@ -11,7 +11,7 @@ static float speed;
 void input(std::vector<S_Door*> &secret_doors, 
            std::vector<Door*> &doors, 
            Collisions &colls, Player &player, 
-           std::vector<Enemy> &enemies, 
+           std::vector<Enemy*> &enemies, 
            GLFWwindow *window, bool &run, 
            std::chrono::duration<float> duration, 
            std::chrono::duration<float> &old_duration_shoot) 
@@ -112,10 +112,10 @@ void input(std::vector<S_Door*> &secret_doors,
         if (player.typeOfGun != 1 && player.ammo > 0 && (player.gun.num_of_animation == 0 || (player.gun.num_of_animation == 3 && player.typeOfGun == 4 && duration.count() - old_duration_shoot.count() > time))) {
             for (const Map *path_of_map : colls._piecesOfMap) {
                 if (!inObj(*path_of_map, player.position)) continue;
-                for (Enemy &enemy : enemies) {
-                    if (inObj(*path_of_map, enemy.position) && enemy.state != Enemy::ATTACK) {
-                        enemy.state = Enemy::SEARCH;
-                        enemy.search_player(*path_of_map, player.position);
+                for (Enemy *enemy : enemies) {
+                    if (inObj(*path_of_map, enemy->position) && enemy->state != Enemy::ATTACK) {
+                        enemy->state = Enemy::SEARCH;
+                        enemy->search_player(*path_of_map, player.position);
                     }
                 }
                 break;
@@ -144,10 +144,10 @@ void input(std::vector<S_Door*> &secret_doors,
             }
             
             for (size_t i = 0; i < enemies.size(); i++) {
-                if (enemies[i].hit_points > 0 && fabsf(pos_of_bullet.x - enemies[i].position.x) < 0.2f && fabsf(pos_of_bullet.z - enemies[i].position.z) < 0.2f) {
+                if (enemies[i]->hit_points > 0 && fabsf(pos_of_bullet.x - enemies[i]->position.x) < 0.2f && fabsf(pos_of_bullet.z - enemies[i]->position.z) < 0.2f) {
                     player.ammo--;
-                    enemies[i].hit_points -= damage;
-                    std::cout << enemies[i].hit_points << std::endl;
+                    enemies[i]->hit_points -= damage;
+                    std::cout << enemies[i]->hit_points << std::endl;
                     loop = false;
                     break;
                 }
@@ -168,10 +168,10 @@ void input(std::vector<S_Door*> &secret_doors,
             pos_of_bullet.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * 0.4f;
             pos_of_bullet.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * 0.4f;
             for (size_t i = 0; i < enemies.size(); i++) {
-                if (enemies[i].hit_points > 0 && fabsf(pos_of_bullet.x - enemies[i].position.x) < 0.3f && fabsf(pos_of_bullet.z - enemies[i].position.z) < 0.3f) {
-                    if (enemies[i].state != Enemy::ATTACK) enemies[i].hit_points -= enemies[i].hit_points;
-                    else                                   enemies[i].hit_points -= damage;
-                    std::cout << enemies[i].hit_points << std::endl;
+                if (enemies[i]->hit_points > 0 && fabsf(pos_of_bullet.x - enemies[i]->position.x) < 0.3f && fabsf(pos_of_bullet.z - enemies[i]->position.z) < 0.3f) {
+                    if (enemies[i]->state != Enemy::ATTACK) enemies[i]->hit_points -= enemies[i]->hit_points;
+                    else                                   enemies[i]->hit_points -= damage;
+                    std::cout << enemies[i]->hit_points << std::endl;
                     loop = false;
                     break;
                 }

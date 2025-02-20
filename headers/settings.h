@@ -40,6 +40,8 @@ struct Point {
 struct Line {
     float k = 1.0f;
     float b = 0.0f;
+    glm::vec2 vector;
+    float rotation;
 
     void calculate(glm::vec2 p1, glm::vec2 p2);
     float get_x(float y);

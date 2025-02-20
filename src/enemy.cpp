@@ -8,13 +8,12 @@
 const static String shaderDir = "resource/Shaders/";
 String bindShader(std::string dir);
 
-Enemy::Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_points, int danage, String name_of_file, uint turn)
+Enemy::Enemy(glm::vec3 position, float rotation, int hit_points, int danage, String name_of_file, uint turn)
 {
     String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
     
     this->turn   = turn;
-    this->window = window;
     this->rotation = fmodf(rotation, 360);
     this->hit_points = hit_points;
     this->position = position;
@@ -108,7 +107,6 @@ int Enemy::search_player_rec(const Map &map,
 
 int Enemy::search_player(const Map &map, const glm::vec3 &player_position) {
     way.clear();
-    a_states = RUN;
     
     const int max_depth = 13;
     const size_t size = map.width * map.height;
@@ -253,6 +251,7 @@ void Enemy::update(Collisions &colls,
              const std::vector<Door*> &doors, 
                    Entity &player)
 {
+    ///*
     map = check_collisions(*this, colls);
     
     float player_rotation = (player.rotation < 0) ? 360 + player.rotation : player.rotation;
@@ -275,11 +274,13 @@ void Enemy::update(Collisions &colls,
     Line lweiw;  //line_where_enemy_is_watching
     lweiw.calculate(p1, p2);
     
+    glm::vec2 player2D(player.position.x, player.position.z);
+    glm::vec2  enemy2D(position.x, position.z);
+    
     if (state != ATTACK) vision(colls, player.position);
     
     switch (state) {
         case DUTY: {
-            ///*
             if ((int) fabsf(rotation) % turn == 0) {
                 if (!CollidesRect(x, z, position.x + x1 * speed, position.z, 0.4f, 0.4f)) {
                     position.x += x1 * speed;
@@ -297,7 +298,7 @@ void Enemy::update(Collisions &colls,
             if (map.get()[element] != 6 && map.get()[element] != 0) {
                 rotation += 1.0f;
             } 
-            //*/
+
             break;
         }
         case SEARCH: {
@@ -361,11 +362,10 @@ void Enemy::update(Collisions &colls,
                 }
             }
             
-            //*/
             break;
         }
         case ATTACK: {
-            if (duration.count() - old_duration_atack.count() >= 3.0f) {
+            if (duration.count() - old_duration_atack.count() >= 4.0f) {
                 std::random_device rd;
                 std::mt19937 gen(rd());
                 std::uniform_int_distribution<> disti(0, 2);
@@ -387,98 +387,95 @@ void Enemy::update(Collisions &colls,
             }
             
             float mod = vec_mod2D(take_vector2D({position.x, position.z}, {player.position.x, player.position.z}));
-            
-            if (mod <= 0.6f) {
+
+            if (mod <= 1.5f) {
                 a_states = SHOOT;
             }
             
             switch (a_states) {
                 case MANEUVERING: {
                     speed = 0.016f;
-                    float mod = vec_mod2D(take_vector2D({ufm.flag_of_maneuvering.x, ufm.flag_of_maneuvering.z}, {ufm.movement.x, ufm.movement.z}));
-                    
-                    glm::vec2 vector1(player.position.x, player.position.z);
-                    glm::vec2 vector2(ufm.pos_for_angle.x, ufm.pos_for_angle.z);
-                    
-                    if (vec_mod2D(take_vector2D(vector1, vector2)) >= 0.8f) {
-                        ufm.line_calculator_turner = true;
-                    }
-                    
                     if (ufm.line_calculator_turner) {
-                        ufm.movement = position;
-                        ufm.pos_for_angle = player.position;
-                        
-                        ufm.line_for_maneuvering.calculate(
-                            {player.position.x, player.position.z}, 
-                            {position.x,        position.z});
-                        glm::vec2 v1 = take_vector2D({player.position.x, player.position.z}, 
-                                                     {player.position.x + cosf((90 + player_rotation) * 3.14 / 180.0f), 
-                                                      player.position.z + sinf((90 + player_rotation) * 3.14 / 180.0f)});
-                        
-                        glm::vec2 v2 = take_vector2D({player.position.x, player.position.z}, 
-                                                     {position.x,        position.z});
-                        
-                        Line line;
-                        line.calculate({player.position.x, player.position.z}, 
-                                       {player.position.x + cosf((90 + player_rotation) * 3.14 / 180.0f),
-                                        player.position.z + sinf((90 + player_rotation) * 3.14 / 180.0f)});
-                        
-                        int znak_x = znak_x_func(player_rotation);
-                        int znak_z = znak_z_func(player_rotation);
+                        // Line between enemy and player
+                        ufm.line_for_maneuvering.calculate(enemy2D, player2D);
+                        ufm.line_for_maneuvering.rotation = (int) ufm.line_for_maneuvering.rotation;
 
-                        float angle_btw_vecs = angle_between_vectors2D(v1, v2);
-                        angle_btw_vecs *= (180.0f/M_PI);
-                        angle_btw_vecs  = (int) angle_btw_vecs;
-                        
-                        if (znak_x * position.x <= znak_x * line.get_x(position.z) && znak_z * position.z >= znak_z * line.get_z(position.x)) {
-                            ufm.rotation_for_maneuvering = fmodf((player_rotation + angle_btw_vecs), 360);
-                        } else {
-                            ufm.rotation_for_maneuvering = player_rotation - angle_btw_vecs;
-                            if (ufm.rotation_for_maneuvering < 0) {
-                                ufm.rotation_for_maneuvering += 360.0f;
-                            }
-                        }
-                        
+                        ufm.movement = glm::vec2(player.position.x, player.position.z);
+
+                        std::random_device rd;
+                        std::mt19937 gen(rd());
+                        std::uniform_int_distribution<> disti(0, 1);
+                        ufm.maneuvering = (disti(gen) == 0) ? Utills_for_maneuvering::RIGHT : Utills_for_maneuvering::LEFT;
+
                         ufm.line_calculator_turner = false;
                     }
-                    
-                    float angle = angle_btw_point_and_enemy(ufm.pos_for_angle);
-                    angle *= (180.0f/M_PI);
-                    angle = (int) angle;
-                    
-                    if (mod > 0.7f) {
-                        int znak_x = znak_x_func(ufm.rotation_for_maneuvering);
-                        int znak_z = znak_z_func(ufm.rotation_for_maneuvering);
-                        
-                        rotation += 4.0f * ufm.maneuvering;
-                        if (angle / 36 == 1 || angle / 37 == 1 || angle / 38 == 1 || angle / 39 == 1 || angle / 40 == 1) {
-                            if (znak_x * (position.x + x1) <= znak_x * ufm.line_for_maneuvering.get_x(position.z + z1) && znak_z * (position.z + z1) >= znak_z * ufm.line_for_maneuvering.get_z((position.x + x1))) {
-                                if (ufm.maneuvering < 0) {
-                                    ufm.flag_of_maneuvering = position;
-                                    ufm.movement = position;
-                                    ufm.maneuvering = 1;
-                                }
-                            } else {
-                                if (ufm.maneuvering > 0) {
-                                    ufm.flag_of_maneuvering = position;
-                                    ufm.movement = position;
-                                    ufm.maneuvering = -1;
-                                }
-                            }
-                        }
-                        
+
+                    // float angle = angle_between_vectors2D(ufm.line_for_maneuvering.vector, lweiw.vector);
+                    // Замеряем угол между ведущей линией и линией обзора противника
+                    float angle_gap = 75.0f;
+                    bool checker = true;
+
+                    float angle1 = 0.0f;
+                    if (ufm.maneuvering == Utills_for_maneuvering::RIGHT) {
+                        angle1 = fmodf(ufm.line_for_maneuvering.rotation + angle_gap, 360.0f);
+
+                        std::cout << angle1 << " " << rotation << std::endl;
+                        std::cout << "RIGHT ";
                     } else {
+                        if (ufm.line_for_maneuvering.rotation - angle_gap < 0)  // я сделат тренарный оператор И ПОЛУЧИЛОСЬ НЕЧИТАЕМОЕ ДЕРЬМО!!! поэтому так (. Y .)
+                            angle1 = 360.0f + ufm.line_for_maneuvering.rotation - angle_gap;
+                        else
+                            angle1 = ufm.line_for_maneuvering.rotation - angle_gap;
+
+                        std::cout << angle1 << " " << rotation << std::endl;
+                        std::cout << "LEFT ";
+                    }
+
+                    if (!fabsf(angle1 - rotation) < 4) {
+                        if (angle1 < rotation) {
+                            float right = 360.0f + angle1;
+                            if (right - rotation < rotation - angle1)   rotation += 4.0f;
+                            else                                        rotation -= 4.0f;
+                        } else {
+                            float right = 360.0f + rotation;
+                            if (angle1 - rotation < right - angle1)     rotation += 4.0f;
+                            else                                        rotation -= 4.0f;
+                        }
+                        checker = !checker;
+                    }
+
+                    if (fabsf(angle1 - (rotation)) <= 4) {
                         x = std::ceil(position.x);
                         z = std::ceil(position.z);
+                        x1 = cosf((90 + rotation) * 3.14 / 180.0f);
+                        z1 = sinf((90 + rotation) * 3.14 / 180.0f);
                         if (!CollidesRect(x, z, position.x + x1 * speed, position.z, 0.4f, 0.4f)) {
                             position.x += x1 * speed;
-                            ufm.movement.x += x1 * speed;
                         }
                         if (!CollidesRect(x, z, position.x, position.z + z1 * speed, 0.4f, 0.4f)) {
                             position.z += z1 * speed;
-                            ufm.movement.z += z1 * speed;
                         }
+                        ufm.flag_of_run.x += x1 * speed;
+                        ufm.flag_of_run.y += z1 * speed;
                     }
+
+                    float mod = vec_mod2D(take_vector2D({0.0f, 0.0f}, {ufm.flag_of_run.x, ufm.flag_of_run.y}));
+                    if (fabsf(mod) >= 1.0f) {
+                        ufm.maneuvering = (ufm.maneuvering == Utills_for_maneuvering::RIGHT) ? Utills_for_maneuvering::LEFT : Utills_for_maneuvering::RIGHT;
+                        ufm.flag_of_run.x = 0.0f;
+                        ufm.flag_of_run.y = 0.0f;
+                        ufm.move_counter++;
+                    }
+                    
+                    if (ufm.move_counter >= 5) {
+                        a_states = RUN;
+                        ufm.move_counter = 0;
+                    }
+                    
+                    if (vec_mod2D(take_vector2D(player2D, ufm.movement)) >= 1.0f) {
+                        ufm.line_calculator_turner = true;
+                    }
+
                     break;
                 }
                 case RUN: {
@@ -535,11 +532,16 @@ void Enemy::update(Collisions &colls,
                             
                             if (path_of_map->obj[x + z * path_of_map->width] > 0) {
                                 search_player(*path_of_map, player.position);
-                                // std::cout << abs(std::ceil(pos_of_bullet.x)) << " " << abs(std::ceil(pos_of_bullet.z)) << std::endl;
+                                std::cout << "LOL\n";
+                                a_states = RUN;
                                 state = SEARCH;
                                 loop = false;
                                 break;
                             }
+                        }
+                        
+                        if (fabsf(pos_of_bullet.x - player2D.x) <= 0.2f && fabsf(pos_of_bullet.z - player2D.y) <= 0.2f) {
+                            break;
                         }
                         
                         if (vec_mod2D(take_vector2D(position2d, {pos_of_bullet.x, pos_of_bullet.z})) >= mod) {
@@ -582,6 +584,7 @@ void Enemy::update(Collisions &colls,
             door->door_cheking(position, rotation);
         }
     }
+    //*/
 }
 
 void Enemy::processing(Collisions &colls, std::chrono::duration<float> duration, Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors) {

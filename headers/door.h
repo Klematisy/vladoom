@@ -31,8 +31,8 @@ public:
     Door(const  float &xGap, const float &zGap, float rotation, Collisions& col, Texture &tex, int tod);
     
     void clear();
-    void processing(const glm::mat4 &view, const glm::mat4 &proj, const glm::vec3 &player_position, std::vector<Enemy> *enemies);
-    void update(const glm::vec3 &player_position, std::vector<Enemy> *enemies);
+    void processing(const glm::mat4 &view, const glm::mat4 &proj, const glm::vec3 &player_position, std::vector<Enemy*> *enemies);
+    void update(const glm::vec3 &player_position, std::vector<Enemy*> *enemies);
     void door_cheking(const glm::vec3 &position, const float &rotation);
     void draw(const glm::mat4 &view, const glm::mat4 &proj);
 };

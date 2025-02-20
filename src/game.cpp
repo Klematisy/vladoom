@@ -6,7 +6,7 @@
 const static String shaderDir = "resource/Shaders/";
 String bindShader(std::string dir);
 
-void input(std::vector<S_Door*> &secret_doors, std::vector<Door*> &doors, Collisions &colls, Player &player, std::vector<Enemy> &enemies, GLFWwindow *window, bool &run, std::chrono::duration<float> duration, std::chrono::duration<float> &old_duration_shoot);
+void input(std::vector<S_Door*> &secret_doors, std::vector<Door*> &doors, Collisions &colls, Player &player, std::vector<Enemy*> &enemies, GLFWwindow *window, bool &run, std::chrono::duration<float> duration, std::chrono::duration<float> &old_duration_shoot);
 bool gameIsRunning = true;
 
 float color(int i) { return i / 255.0f; }
@@ -181,7 +181,7 @@ void game(GLFWwindow *window) {
         0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0,
     };
     
-    Player player = {glm::vec3(-3.5f, -0.5f, -7.5f), 90.0f, 100, Gun()};
+    Player player = {glm::vec3(-3.5f, -0.5f, -11.5f), 90.0f, 100, Gun()};
     // Player player = {glm::vec3(16.5f, -0.5f, 34.5f), 180.0f, 100, Gun()};
     // Player player = {glm::vec3(12.5f, -0.5f, 2.5f), 90.0f, 100, Gun()};
 
@@ -284,13 +284,16 @@ void game(GLFWwindow *window) {
     
     std::vector<Item*> items;
     {
-        // items.push_back(new Item(-7.5, -5.5, 2, 500, player, SCORE));
+        items.push_back(new Item(-7.5, -5.5, 2, 500, player, SCORE));
     }
     
-    std::vector<Enemy> enemies;
+    // Enemy e = E_Dog(glm::vec3(-9.5f, 0.0f, -10.5f), 90.0f, 100, 25, "Enemy_dog.png");
+    
+    std::vector<Enemy*> enemies;
     {
-        enemies.emplace_back(window, glm::vec3(-4.5f, 0.0f,  -7.5f), 90.0f,   0,  0, "Enemy-015.png", RIGHT_TURN);
-        enemies.emplace_back(window, glm::vec3(-9.5f, 0.0f, -10.5f), 90.0f, 100, 25, "Enemy-015.png", RIGHT_TURN);
+        enemies.push_back(new Enemy(glm::vec3(-4.5f, 0.0f,  -7.5f), 90.0f,   0,  0, "Enemy-015.png", RIGHT_TURN));
+        enemies.push_back(new Enemy(glm::vec3(-9.5f, 0.0f, -11.5f), 90.0f, 100, 25, "Enemy-015.png", RIGHT_TURN));
+        // enemies.push_back(new E_Dog(glm::vec3(-9.5f, 0.0f, -11.5f), 90.0f, 100, 25, "Enemy_dog.png"));
     }
     
     std::vector<Cube*> parts_of_map;
@@ -431,9 +434,9 @@ void game(GLFWwindow *window) {
         bind->bind(GL_TEXTURE1);
         for (Furniture *furniture : non_static_furnitures)
             furniture->draw(player, view, proj);
-            
-        for (int i = enemies.size() - 1; i >= 0; i--) {
-            enemies[i].processing(cWalls, duration, player, view, proj, doors);
+        
+        for (Enemy *enemy : enemies) {
+            enemy->processing(cWalls, duration, player, view, proj, doors);
         }
         
         player.gun.processing(duration, player, window);
@@ -484,8 +487,8 @@ void game(GLFWwindow *window) {
         floor.clear();
     }
     
-    for (Enemy &enemy : enemies) {
-        enemy.clear();
+    for (Enemy *enemy : enemies) {
+        enemy->clear();
     }
     
     for (Door *door : doors) {

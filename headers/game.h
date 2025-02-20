@@ -101,15 +101,19 @@ public:
 struct Enemy : public Entity {
     glm::vec3 position_check = glm::vec3(1.0f);
     float danage = 0;
-private:
+protected:
     struct Utills_for_maneuvering {
-        int maneuvering = 1;
+        enum maneuvering_corners { RIGHT, LEFT};
+        maneuvering_corners maneuvering;
+        
         glm::vec3 pos_for_angle;     //angle_btw_player_enemy
         Line line_for_maneuvering;
         float rotation_for_maneuvering;
-        bool line_calculator_turner;
-        glm::vec3 flag_of_maneuvering;
-        glm::vec3 movement;
+        bool line_calculator_turner = true;
+        glm::vec3 flag_of_maneuvering = glm::vec3(1.5f, 0.0f, 1.5f);
+        glm::vec2 movement = glm::vec2(0.0f, 0.0f);
+        glm::vec2 flag_of_run = glm::vec2(0.0f, 0.0f);
+        int move_counter = 0;
     };
     
     Utills_for_maneuvering ufm;
@@ -122,7 +126,7 @@ private:
     
     enum ATTACK_STATES {MANEUVERING, RUN, SHOOT};
     bool death_fact = true;
-    float duration_for_shooting = 1.0f;
+    float duration_for_shooting = 0.2f;
     bool shot = false;
     
     std::chrono::duration<float> old_duration_enemy = std::chrono::high_resolution_clock::now() - std::chrono::high_resolution_clock::now();
@@ -143,16 +147,23 @@ private:
                                 int &min_depth);
     
     float angle_btw_point_and_enemy(const glm::vec3 &point);
-    void draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
-    void update(Collisions &colls, std::chrono::duration<float> duration, const std::vector<Door*> &doors, Entity &player);
+    virtual void update(Collisions &colls, std::chrono::duration<float> duration, const std::vector<Door*> &doors, Entity &player);
+    virtual void draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
 public:
     enum states {DUTY, SEARCH, ATTACK};
     states state;
-    ATTACK_STATES a_states = RUN;
+    ATTACK_STATES a_states = MANEUVERING;
     
-    Enemy(GLFWwindow *window, glm::vec3 position, float rotation, int hit_points, int danage, String name_of_file, uint turn);
-    
-    void processing(Collisions &colls, std::chrono::duration<float> duration, Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors);
+    Enemy(glm::vec3 position, float rotation, int hit_points, int danage, String name_of_file, uint turn);
     int search_player(const Map &map, const glm::vec3 &player_position);
     void clear();
+    
+    virtual void processing(Collisions &colls, std::chrono::duration<float> duration, Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors);
+};
+
+struct E_Dog : public Enemy {
+    E_Dog(glm::vec3 position, float rotation, int hit_points, int danage, String name_of_file);
+    void update(Collisions &colls, std::chrono::duration<float> duration, const std::vector<Door*> &doors, Entity &player) override;
+    void draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj) override;
+    void processing(Collisions &colls, std::chrono::duration<float> duration, Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors) override;
 };

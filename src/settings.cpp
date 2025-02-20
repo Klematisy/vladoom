@@ -5,6 +5,15 @@
 void Line::calculate(glm::vec2 p1, glm::vec2 p2) {
     k = (p1.y - p2.y) / (p1.x - p2.x);
     b = (p2.y - k * p2.x);
+    vector = take_vector2D(p1, p2);
+    
+    glm::vec2 zero_vec(0, 1);
+    
+    if (vector.x <= zero_vec.x) {
+        rotation = angle_between_vectors2D(vector, zero_vec) * 180.0f / M_PI;
+    } else {
+        rotation = 180.0f + (180.0f - angle_between_vectors2D(vector, zero_vec) * 180.0f / M_PI);
+    }
 }
 
 float Line::get_x(float y) {
@@ -100,7 +109,7 @@ float angle_between_vectors2D(glm::vec2 v1, glm::vec2 v2) {
     float moda = vec_mod2D(v1);
     float modb = vec_mod2D(v2);
     
-    float res = (fabsf(ab / (moda * modb)) > 1.0f) ? (fabsf(ab / (moda * modb)) / (ab / (moda * modb))) : ab / (moda * modb);
+    double res = ab / (moda * modb);
     
     return std::acos(res);
 }
@@ -168,12 +177,5 @@ std::unique_ptr<int> check_collisions(const Entity &creature, const Collisions &
         }
     }
     
-    // for (int i = 0; i < 25; i++) {
-    //     std::cout << ((i % 5 == 0) ? "\n" : " ");
-    //     std::cout << arr[i];
-    // }
-    
-    // std::cout << std::endl;
-     
     return (std::unique_ptr<int>) arr;
 }
