@@ -33,7 +33,6 @@ public:
 };
 
 struct Player : public Entity {
-public:
     Gun gun;
     uint typeOfGun = 1;
     int ammo = 100;
@@ -42,6 +41,7 @@ public:
     int invetory[4] = {
         1, 2, 0, 0
     };
+    bool pick_up = false;
 };
 
 enum TYPE_0F_ITEM {

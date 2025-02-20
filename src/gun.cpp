@@ -54,7 +54,7 @@ void Gun::draw(std::chrono::duration<float> duration,
               (num_of_animation + 1) / 5.0f,
               (4.0f - p.typeOfGun + 1.0f) / 4};
 
-    Image::draw_once(0.475f, 0.0f, 1.0f, 1.5f, &r);
+    Image::draw_once(0.475f, 0.0f, 1.0f, 1.5f, &r,  1.0f);
 }
 
 void Gun::processing(std::chrono::duration<float> duration, 

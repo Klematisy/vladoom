@@ -46,6 +46,7 @@ void Item::update(Player &player) {
             case HEALTH: {
                 if (player.hit_points < 100) {
                     player.hit_points += (int) changeble;
+                    player.pick_up = true;
                     changeble = 0;
                 }
                 break;
@@ -55,6 +56,7 @@ void Item::update(Player &player) {
                     case 1: {
                         if (player.ammo < 99) {
                             player.ammo += (int) changeble;
+                            player.pick_up = true;
                             changeble = 0;
                         }
                         break;
@@ -62,6 +64,7 @@ void Item::update(Player &player) {
                     case 2: {
                         if (player.invetory[2] != 3) {
                             player.invetory[2] = 3;
+                            player.pick_up = true;
                             changeble = 0;
                         }
                         break;
@@ -69,6 +72,7 @@ void Item::update(Player &player) {
                     case 3: {
                         if (player.invetory[3] != 4) {
                             player.invetory[3] = 4;
+                            player.pick_up = true;
                             changeble = 0;
                         }
                     }
@@ -76,12 +80,13 @@ void Item::update(Player &player) {
                 break;
             }
             case SCORE: {
+                player.pick_up = true;
                 player.score += changeble;
                 changeble = 0;
                 break;
             }
             case KEY: {
-                
+                player.pick_up = true;
             }
         }
     }

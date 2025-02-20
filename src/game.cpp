@@ -15,15 +15,21 @@ auto start = std::chrono::high_resolution_clock::now();
 
 void game(GLFWwindow *window) {
     /*---------------------------------------main code!---------------------------------------*/
-    String vertexShaderSrc   = bindShader(shaderDir + "map/map.vert");
+    String   vertexShaderSrc = bindShader(shaderDir + "map/map.vert");
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
-
     ProgramShader map_shader = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
     
+    vertexShaderSrc   = bindShader(shaderDir + "map1/map.vert");
+    fragmentShaderSrc = bindShader(shaderDir + "map1/map.frag");
+    ProgramShader    pick_ps = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
+    
+    Texture *pick_tex = new Texture("resource/images/pick_up.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
+    pick_tex->unbind();
+    pick_tex->uniform("tex0", pick_ps, 0);
+    
     Texture *non_bind = new Texture("resource/images/non-blocking-objs.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
-    Texture *bind     = new Texture("resource/images/blocking-objs.png",     GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE1);
-
-    Texture *Walls = new Texture("resource/images/atlas.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
+    Texture *bind     = new Texture("resource/images/blocking-objs.png",     GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
+    Texture *Walls    = new Texture("resource/images/atlas.png",             GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     Walls->unbind();
     Walls->uniform("tex0", map_shader, 0);
 
@@ -380,6 +386,8 @@ void game(GLFWwindow *window) {
 
     std::chrono::duration<float> old_duration_face  = std::chrono::high_resolution_clock::now() - start;
     std::chrono::duration<float> old_duration_shoot = std::chrono::high_resolution_clock::now() - start;
+    
+    float pick_opacity = 0.0f;
 
     while (!glfwWindowShouldClose(window) && gameIsRunning) //Main window loop
     {
@@ -431,7 +439,7 @@ void game(GLFWwindow *window) {
         for (Furniture *furniture : static_furnitures)
             furniture->draw(player, view, proj);
             
-        bind->bind(GL_TEXTURE1);
+        bind->bind(GL_TEXTURE0);
         for (Furniture *furniture : non_static_furnitures)
             furniture->draw(player, view, proj);
         
@@ -440,6 +448,20 @@ void game(GLFWwindow *window) {
         }
         
         player.gun.processing(duration, player, window);
+        
+        pick_tex->bind(GL_TEXTURE0);
+        pick_ps.useProgram();
+        Rect r = {0.0f, 0.0f, 1.0f, 1.0f};
+        Image::draw_once(0.0f, 0.0f, 2.0f, 2.0f, &r, pick_opacity);
+        
+        if (player.pick_up) {
+            player.pick_up = false;
+            pick_opacity = 0.2f;
+        }
+        if (pick_opacity != 0.0f) {
+            pick_opacity -= 0.01f;
+        }
+        
         if (player.hit_points > 100) {
             player.hit_points = 100;
         }

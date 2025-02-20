@@ -18,8 +18,8 @@ class Image {
     VAO *vao;
     EBO *ebo;
 public:
-    Image(GLenum type, float x_gap, float y_gap, float width, float height);
-    void draw(Rect *rect);
-    static void draw_once(float x_gap, float y_gap, float width, float height, Rect *r);
+    Image(GLenum type, float x_gap, float y_gap, float width, float height, float opacity);
+    void draw(Rect *rect, float opacity);
+    static void draw_once(float x_gap, float y_gap, float width, float height, Rect *r, float opacity);
     void clear();
 };

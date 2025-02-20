@@ -29,14 +29,14 @@ Hud::Hud() {
     guns_texture->unbind();
     guns_texture->uniform("tex0", *guns_shader, 0);
 
-    img = new Image(GL_STATIC_DRAW, 0.0f, 0.0f, 2.0f, 2.0f);
+    img = new Image(GL_STATIC_DRAW, 0.0f, 0.0f, 2.0f, 2.0f, 1.0f);
 }
 
 void Hud::draw(const Player &player, int k) {
     hud_texture->bind(GL_TEXTURE0);
     hud_shader->useProgram();
 
-    img->draw(nullptr);
+    img->draw(nullptr, 1.0f);
 
     face_texture->bind(GL_TEXTURE0);
     face_shader->useProgram();
@@ -60,7 +60,7 @@ void Hud::draw(const Player &player, int k) {
         1.0f - a
     };
 
-    Image::draw_once(0.83f, 0.12f, 0.19f, 1.75f, &r);
+    Image::draw_once(0.83f, 0.12f, 0.19f, 1.75f, &r, 1.0f);
 
     nums_texture->bind(GL_TEXTURE0);
     nums_shader->useProgram();
@@ -105,7 +105,7 @@ void Hud::draw(const Player &player, int k) {
                 1.0f 
     };
 
-    Image::draw_once(1.61f, 0.4f, 0.5f * 0.7f, 1.7f * 0.7f, &r2);
+    Image::draw_once(1.61f, 0.4f, 0.5f * 0.7f, 1.7f * 0.7f, &r2,  1.0f);
 }
 
 Hud::~Hud() {
