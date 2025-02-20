@@ -249,7 +249,7 @@ float Enemy::angle_btw_point_and_enemy(const glm::vec3 &point) {
 void Enemy::update(Collisions &colls, 
                    std::chrono::duration<float> duration, 
              const std::vector<Door*> &doors, 
-                   Entity &player)
+                   Player &player)
 {
     ///*
     map = check_collisions(*this, colls);
@@ -458,17 +458,11 @@ void Enemy::update(Collisions &colls,
                     float angle1 = 0.0f;
                     if (ufm.maneuvering == Utills_for_maneuvering::RIGHT) {
                         angle1 = fmodf(ufm.line_for_maneuvering.rotation + angle_gap, 360.0f);
-
-                        std::cout << angle1 << " " << rotation << std::endl;
-                        std::cout << "RIGHT ";
                     } else {
                         if (ufm.line_for_maneuvering.rotation - angle_gap < 0)  // я сделат тренарный оператор И ПОЛУЧИЛОСЬ НЕЧИТАЕМОЕ ДЕРЬМО!!! поэтому так (. Y .)
                             angle1 = 360.0f + ufm.line_for_maneuvering.rotation - angle_gap;
                         else
                             angle1 = ufm.line_for_maneuvering.rotation - angle_gap;
-
-                        std::cout << angle1 << " " << rotation << std::endl;
-                        std::cout << "LEFT ";
                     }
 
                     if (!(fabsf(angle1 - rotation) <= 4)) {
@@ -578,9 +572,19 @@ void Enemy::update(Collisions &colls,
                                 rotation -= (angle >= 30.0f) ? angle : angle / 2;
                         }
                         
+                        if (player.hit_points <= 0) {
+                            float angle1 = (rotation - 180.0f < 0.0f) ? 360 + (rotation - 180.0f) :  rotation - 180.0f;
+                            
+                            if (!(fabsf(angle1 - player.rotation) <= 4)) {
+                                player.rotation += 4.0f;
+                                std::cout << player.rotation << " " << angle1 << std::endl;
+                            }
+                        }
+                        
                         if (angle == 0.0f && shot) {
                             shot = false;
                             player.hit_points -= danage;
+                            player.take_damage = true;
                         }
                     }
                     break;

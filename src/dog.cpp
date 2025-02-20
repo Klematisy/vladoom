@@ -25,7 +25,7 @@ E_Dog::E_Dog(glm::vec3 position, float rotation, int hit_points, int danage, Str
     : Enemy(position, rotation, hit_points, danage, name_of_file, RIGHT_TURN)
 {}
 
-void E_Dog::update(Collisions &colls, std::chrono::duration<float> duration, const std::vector<Door*> &doors, Entity &player) {
+void E_Dog::update(Collisions &colls, std::chrono::duration<float> duration, const std::vector<Door*> &doors, Player &player) {
     map = check_collisions(*this, colls);
 
     float player_rotation = (player.rotation < 0) ? 360 + player.rotation : player.rotation;
@@ -146,8 +146,6 @@ void E_Dog::update(Collisions &colls, std::chrono::duration<float> duration, con
                     
                     if (path_of_map->obj[x + z * path_of_map->width] > 0) {
                         search_player(*path_of_map, player.position);
-                        std::cout << path_of_map->gap_x << " " << path_of_map->gap_z << " " << abs(std::ceil(pos_of_bullet.x)) << " " << abs(std::ceil(pos_of_bullet.z)) << std::endl;
-                        std::cout << "МЫ ЗДЕСЬ!!!\n";
                         state = SEARCH;
                         loop = false;
                         break;
@@ -190,17 +188,11 @@ void E_Dog::update(Collisions &colls, std::chrono::duration<float> duration, con
                     float angle1 = 0.0f;
                     if (ufm.maneuvering == Utills_for_maneuvering::RIGHT) {
                         angle1 = fmodf(ufm.line_for_maneuvering.rotation + angle_gap, 360.0f);
-
-                        std::cout << angle1 << " " << rotation << std::endl;
-                        std::cout << "RIGHT ";
                     } else {
                         if (ufm.line_for_maneuvering.rotation - angle_gap < 0)  // я сделат тренарный оператор И ПОЛУЧИЛОСЬ НЕЧИТАЕМОЕ ДЕРЬМО!!! поэтому так (. Y .)
                             angle1 = 360.0f + ufm.line_for_maneuvering.rotation - angle_gap;
                         else
                             angle1 = ufm.line_for_maneuvering.rotation - angle_gap;
-
-                        std::cout << angle1 << " " << rotation << std::endl;
-                        std::cout << "LEFT ";
                     }
 
                     if (!(fabsf(angle1 - rotation) <= 4)) {
@@ -269,6 +261,7 @@ void E_Dog::update(Collisions &colls, std::chrono::duration<float> duration, con
                     if (shot) {
                         if (fabsf(mod1 - mod2) <= 0.4f) {
                             player.hit_points -= danage;
+                            player.take_damage = true;
                         }
                         ufm.move_counter = 0;
                         a_states = MANEUVERING;

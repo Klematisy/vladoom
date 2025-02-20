@@ -6,15 +6,17 @@
 const static String shaderDir = "resource/Shaders/";
 String bindShader(std::string dir);
 
-void input(std::vector<S_Door*> &secret_doors, std::vector<Door*> &doors, Collisions &colls, Player &player, std::vector<Enemy*> &enemies, GLFWwindow *window, bool &run, std::chrono::duration<float> duration, std::chrono::duration<float> &old_duration_shoot);
+void input(std::vector<S_Door*> &secret_doors, std::vector<Door*> &doors, Collisions &colls, Player &player, std::vector<Enemy*> &enemies, GLFWwindow *window, bool &run, std::chrono::duration<float> duration, std::chrono::duration<float> &old_duration_shoot, bool &game_result);
 bool gameIsRunning = true;
 
 float color(int i) { return i / 255.0f; }
 
 auto start = std::chrono::high_resolution_clock::now();
 
-void game(GLFWwindow *window) {
+bool game(GLFWwindow *window, Player &player, Player player_copy) {
     /*---------------------------------------main code!---------------------------------------*/
+    bool game_result = true;
+    
     String   vertexShaderSrc = bindShader(shaderDir + "map/map.vert");
     String fragmentShaderSrc = bindShader(shaderDir + "map/map.frag");
     ProgramShader map_shader = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
@@ -22,10 +24,15 @@ void game(GLFWwindow *window) {
     vertexShaderSrc   = bindShader(shaderDir + "map1/map.vert");
     fragmentShaderSrc = bindShader(shaderDir + "map1/map.frag");
     ProgramShader    pick_ps = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
+    ProgramShader  damage_ps = ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
     
     Texture *pick_tex = new Texture("resource/images/pick_up.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     pick_tex->unbind();
     pick_tex->uniform("tex0", pick_ps, 0);
+    
+    Texture *damage_tex = new Texture("resource/images/damage.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
+    damage_tex->unbind();
+    damage_tex->uniform("tex0", damage_ps, 0);
     
     Texture *non_bind = new Texture("resource/images/non-blocking-objs.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
     Texture *bind     = new Texture("resource/images/blocking-objs.png",     GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
@@ -187,7 +194,6 @@ void game(GLFWwindow *window) {
         0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0,
     };
     
-    Player player = {glm::vec3(-3.5f, -0.5f, -11.5f), 90.0f, 100, Gun()};
     // Player player = {glm::vec3(16.5f, -0.5f, 34.5f), 180.0f, 100, Gun()};
     // Player player = {glm::vec3(12.5f, -0.5f, 2.5f), 90.0f, 100, Gun()};
 
@@ -387,18 +393,18 @@ void game(GLFWwindow *window) {
     std::chrono::duration<float> old_duration_face  = std::chrono::high_resolution_clock::now() - start;
     std::chrono::duration<float> old_duration_shoot = std::chrono::high_resolution_clock::now() - start;
     
-    float pick_opacity = 0.0f;
+    float pick_opacity   = 0.0f;
+    float damage_opacity = 0.0f;
 
     while (!glfwWindowShouldClose(window) && gameIsRunning) //Main window loop
     {
-        // break;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(color(0), color(64), color(64), 1.0f);
 
         auto end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<float> duration = end - start;
 
-        input(secret_doors, doors, cWalls, player, enemies, window, gameIsRunning, duration, old_duration_shoot);
+        input(secret_doors, doors, cWalls, player, enemies, window, gameIsRunning, duration, old_duration_shoot, game_result);
 
         glViewport(60, HEIGHT / 2 - 20, WIDTH * 2 - 120, HEIGHT + HEIGHT / 2 - 40);
 
@@ -458,25 +464,40 @@ void game(GLFWwindow *window) {
             player.pick_up = false;
             pick_opacity = 0.2f;
         }
-        if (pick_opacity != 0.0f) {
-            pick_opacity -= 0.01f;
-        }
+        if (pick_opacity != 0.0f) pick_opacity -= 0.01f;
+            
+        if (player.hit_points > 100) player.hit_points = 100;
         
-        if (player.hit_points > 100) {
-            player.hit_points = 100;
-        }
-        
-        if (player.ammo > 99) {
-            player.ammo = 99;
-        }
+        if (player.ammo > 99) player.ammo = 99;
         
         glViewport(50, 50, WIDTH * 2 - 100, 270);
+        
         player.rotation = fmodf(player.rotation, 360);
         if (duration.count() - old_duration_face.count() > 0.5f) {
             face = disti(gen);
             old_duration_face = duration;
         }
         hud.draw(player, face);
+        
+        glViewport(0, 0, WIDTH * 2, HEIGHT * 2);
+        if (player.take_damage) {
+            player.take_damage = false;
+            if (player.hit_points <=  0) {
+                player.lives--;
+                game_result = (player.lives == 0) ? false : true;
+                break;
+            }
+            if (player.hit_points <= 25)   damage_opacity = 0.75;
+            if (player.hit_points >= 25)   damage_opacity = 0.55;
+            if (player.hit_points >= 50)   damage_opacity = 0.35;
+            if (player.hit_points >= 75)   damage_opacity = 0.2;
+        }
+        
+        if (damage_opacity != 0.0f)   damage_opacity -= 0.01f;
+        
+        damage_tex->bind(GL_TEXTURE0);
+        damage_ps.useProgram();
+        Image::draw_once(0.0f, 0.0f, 2.0f, 2.0f, &r, damage_opacity);
 
         if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS && player.hit_points < 100) {
             player.hit_points += 1.0f;
@@ -525,6 +546,17 @@ void game(GLFWwindow *window) {
     delete[] kennel;
     delete[] part_of_rockmap;
     delete[] end_of_map;
-
+    delete pick_tex;
+    delete damage_tex;
+    delete non_bind;
+    delete bind;
+    delete Walls;
+    
     map_shader.deleteShader();
+    
+    int lives = player.lives;
+    player = player_copy;
+    player.lives = lives;
+    
+    return game_result;
 }

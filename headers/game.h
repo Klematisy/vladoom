@@ -42,6 +42,21 @@ struct Player : public Entity {
         1, 2, 0, 0
     };
     bool pick_up = false;
+    bool take_damage = false;
+    
+    void operator=(const Player &player) {
+        this->position = player.position;
+        this->typeOfGun = player.typeOfGun;
+        this->score = player.score;
+        this->lives = player.lives;
+        this->rotation = player.rotation;
+        this->hit_points = player.hit_points;
+        
+        this->invetory[0] = player.invetory[0];
+        this->invetory[1] = player.invetory[1];
+        this->invetory[2] = player.invetory[2];
+        this->invetory[3] = player.invetory[3];
+    }
 };
 
 enum TYPE_0F_ITEM {
@@ -148,7 +163,7 @@ protected:
                                 int &min_depth);
     
     float angle_btw_point_and_enemy(const glm::vec3 &point);
-    virtual void update(Collisions &colls, std::chrono::duration<float> duration, const std::vector<Door*> &doors, Entity &player);
+    virtual void update(Collisions &colls, std::chrono::duration<float> duration, const std::vector<Door*> &doors, Player &player);
     virtual void draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj);
 public:
     enum states {DUTY, SEARCH, ATTACK};
@@ -166,7 +181,7 @@ struct E_Dog : public Enemy {
     E_Dog(glm::vec3 position, float rotation, int hit_points, int danage, String name_of_file);
     ATTACK_STATES a_states = MANEUVERING;
     
-    void update(Collisions &colls, std::chrono::duration<float> duration, const std::vector<Door*> &doors, Entity &player) override;
+    void update(Collisions &colls, std::chrono::duration<float> duration, const std::vector<Door*> &doors, Player &player) override;
     void draw(std::chrono::duration<float> duration, const Player &player, glm::mat4 &view, glm::mat4 &proj) override;
     void processing(Collisions &colls, std::chrono::duration<float> duration, Player &player, glm::mat4 &view, glm::mat4 &proj, const std::vector<Door*> &doors) override;
 };

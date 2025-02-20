@@ -14,7 +14,8 @@ void input(std::vector<S_Door*> &secret_doors,
            std::vector<Enemy*> &enemies, 
            GLFWwindow *window, bool &run, 
            std::chrono::duration<float> duration, 
-           std::chrono::duration<float> &old_duration_shoot) 
+           std::chrono::duration<float> &old_duration_shoot,
+           bool &game_result) 
 {
 
     float spd = 0.04f;
@@ -78,8 +79,10 @@ void input(std::vector<S_Door*> &secret_doors,
         }
     }
     
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
         run = false;
+        game_result = false;
+    }
     if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
         player.rotation -= 1.5f;
     if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)

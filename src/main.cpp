@@ -1,9 +1,10 @@
 #include <cmath>
 #include "constants.h"
 #include "libs.h"
+#include "game.h"
 #include "settings.h"
 
-void game(GLFWwindow *window);
+bool game(GLFWwindow *window, Player &player, Player player_copy);
 
 int main(void)  {
     GLFWwindow *window;
@@ -34,7 +35,8 @@ int main(void)  {
     glfwPollEvents();
     glfwSetCursorPos(window, 2560 / 2, 1600 / 2);
 
-    game(window);
+    Player player = {glm::vec3(-3.5f, -0.5f, -11.5f), 90.0f, 100, Gun()};
+    while (game(window, player, {glm::vec3(-3.5f, -0.5f, -11.5f), 90.0f, 100, Gun()}) && player.lives != 0);
     
     glfwDestroyWindow(window);
     glfwTerminate();
