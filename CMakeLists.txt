@@ -44,6 +44,8 @@ add_executable(vladoom
     "src/dog.cpp"
     "src/pause.cpp"
     "src/stage1.cpp"
+    "src/main_menu.cpp"
+    "src/menu.cpp"
 )
 
 # find_library(GLFW_LIB glfw PATHS ${CMAKE_SOURCE_DIR}/deps/library/)

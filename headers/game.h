@@ -8,13 +8,15 @@
 struct Player;
 
 enum GAME_STATE {
+    MAIN_MENU,
     PLAY,
     DEATH,
     EXIT,
     PAUSE
 };
 
-class Pause {
+class Menu {
+protected:
     ProgramShader *pause_ps;
     Texture       *pause_tex;
     ProgramShader *cursor_ps;
@@ -25,10 +27,16 @@ class Pause {
     std::chrono::duration<float> old_duration = std::chrono::high_resolution_clock::now() - std::chrono::high_resolution_clock::now();
     
     void draw(float opacity);
-    void update(GLFWwindow *w, GAME_STATE &game_s, std::chrono::duration<float> duration);
+    virtual void update(GLFWwindow *w, GAME_STATE &game_s, std::chrono::duration<float> duration);
+public:
+    Menu(String picture);
+    void processing(GLFWwindow *w, GAME_STATE &game_s, std::chrono::duration<float> duration, float opacity);
+};
+
+class Pause : public Menu {
 public:
     Pause();
-    void processing(GLFWwindow *w, GAME_STATE &game_s, std::chrono::duration<float> duration, float opacity);
+    void update(GLFWwindow *w, GAME_STATE &game_s, std::chrono::duration<float> duration) override;
 };
 
 struct Gun {

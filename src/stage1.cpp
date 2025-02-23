@@ -391,12 +391,6 @@ GAME_STATE stage1(GLFWwindow *window, Player &player, Player player_copy, GAME_S
     std::chrono::duration<float> duuuu = b - a;
     std::cout << duuuu.count() << std::endl;
     
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-    
     game_s = PLAY;
     
     int face = 0;

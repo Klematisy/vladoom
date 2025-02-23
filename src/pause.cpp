@@ -4,14 +4,8 @@
 const static String shaderDir = "resource/Shaders/";
 String bindShader(std::string dir);
 
-Pause::Pause() {
-    String vertexShaderSrc   = bindShader(shaderDir + "map1/map.vert");
-    String fragmentShaderSrc = bindShader(shaderDir + "map1/map.frag");
-
-    pause_ps   = new ProgramShader(vertexShaderSrc.c_str(), fragmentShaderSrc.c_str());
-    pause_tex  = new Texture("resource/images/pause.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
-    cursor_tex = new Texture("resource/images/cursor.png", GL_RGBA, GL_UNSIGNED_BYTE, GL_TEXTURE0);
-}
+Pause::Pause() : Menu("pause.png")
+{}
 
 void Pause::update(GLFWwindow *w, GAME_STATE &game_s, std::chrono::duration<float> duration) {
     float dur = duration.count() - old_duration.count();
@@ -42,24 +36,4 @@ void Pause::update(GLFWwindow *w, GAME_STATE &game_s, std::chrono::duration<floa
         num_checker = num++;
         old_duration = duration;
     }
-}
-
-void Pause::processing(GLFWwindow *w, GAME_STATE &game_s, std::chrono::duration<float> duration, float opacity) {
-    if (opacity >= 1.0f) update(w, game_s, duration);
-    draw(opacity);
-}
-
-void Pause::draw(float opacity) {
-    pause_ps->useProgram();
-    pause_tex->bind(GL_TEXTURE0);
-    
-    Rect r = {0.0f, 0.0f, 1.0f, 1.0f};
-    
-    Image::draw_once(0.0f, 0.0f, 2.0f, 2.0f, &r, opacity);
-    
-    cursor_tex->bind(GL_TEXTURE0);
-    
-    r = {0.0f, 0.0f, 1.0f, 1.0f};
-    
-    Image::draw_once(0.469f, 1.02f - 0.09 * num, 0.108f, 0.09f, &r, opacity);
 }
