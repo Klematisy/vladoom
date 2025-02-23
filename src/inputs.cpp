@@ -2,20 +2,25 @@
 #include <vector>
 #include <memory>
 #include "libs.h"
+#include "input.h"
 #include "constants.h"
 #include "game.h"
 #include "settings.h"
 
 static float speed;
 
-void input(std::vector<S_Door*> &secret_doors, 
-           std::vector<Door*> &doors, 
-           Collisions &colls, Player &player, 
-           std::vector<Enemy*> &enemies, 
-           GLFWwindow *window, bool &run, 
-           std::chrono::duration<float> duration, 
-           std::chrono::duration<float> &old_duration_shoot,
-           bool &game_result) 
+void input_pause(GLFWwindow *window, GAME_STATE &game_s, uint &menu_counter) {
+    
+}
+
+void input_game(GAME_STATE &game_s,
+                std::vector<S_Door*> &secret_doors, 
+                std::vector<Door*> &doors, 
+                Collisions &colls, Player &player, 
+                std::vector<Enemy*> &enemies, 
+                GLFWwindow *window,
+                std::chrono::duration<float> duration, 
+                std::chrono::duration<float> &old_duration_shoot) 
 {
 
     float spd = 0.04f;
@@ -32,12 +37,12 @@ void input(std::vector<S_Door*> &secret_doors,
     glfwGetCursorPos(window, &xpos, &ypos);
     glfwSetCursorPos(window, 2560 / 2.0f, 1600 / 2.0f);
 
-    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
+    if (KeyboardInput::KEY_LSHIFT_PRESSED(window) || KeyboardInput::KEY_RSHIFT_PRESSED(window)) {
         speed = spd / 2;
     } else {
         speed = spd;
     }
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+    if (KeyboardInput::KEY_A_PRESSED(window)) {
         if (!CollidesRect(x, z, player.position.x - sinf(-(90 + player.rotation) * 3.14 / 180.0f) * speed, player.position.z, player_width, player_width)) {
             player.position.x -= sinf(-(90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
@@ -45,7 +50,7 @@ void input(std::vector<S_Door*> &secret_doors,
             player.position.z -= cosf(-(90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
     }
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)  {
+    if (KeyboardInput::KEY_D_PRESSED(window))  {
         if (!CollidesRect(x, z, player.position.x + sinf(-(90 + player.rotation) * 3.14 / 180.0f) * speed, player.position.z, player_width, player_width)) {
             player.position.x += sinf(-(90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
@@ -53,7 +58,7 @@ void input(std::vector<S_Door*> &secret_doors,
             player.position.z += cosf(-(90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
     }
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+    if (KeyboardInput::KEY_W_PRESSED(window)) {
         if (!CollidesRect(x, z, player.position.x + cosf((90 + player.rotation) * 3.14 / 180.0f) * speed, player.position.z,  player_width, player_width)) {
             player.position.x += cosf((90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
@@ -61,7 +66,7 @@ void input(std::vector<S_Door*> &secret_doors,
             player.position.z += sinf((90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
     }
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+    if (KeyboardInput::KEY_S_PRESSED(window)) {
         if (!CollidesRect(x, z, player.position.x - cosf((90 + player.rotation) * 3.14 / 180.0f) * speed, player.position.z,  player_width, player_width)) {
             player.position.x -= cosf((90 + player.rotation) * 3.14 / 180.0f) * speed;
         }
@@ -70,7 +75,15 @@ void input(std::vector<S_Door*> &secret_doors,
         }
     }
     
-    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+    if (KeyboardInput::KEY_I_PRESSED(window) && player.hit_points < 100) {
+        player.hit_points += 1.0f;
+    }
+    
+    if (KeyboardInput::KEY_K_PRESSED(window) && player.hit_points > 0) {
+        player.hit_points -= 1.0f;
+    }
+    
+    if (KeyboardInput::KEY_E_PRESSED(window)) {
         for (Door *door : doors) {
             door->door_cheking(player.position, player.rotation);
         }
@@ -79,21 +92,20 @@ void input(std::vector<S_Door*> &secret_doors,
         }
     }
     
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-        run = false;
-        game_result = false;
+    if (KeyboardInput::KEY_ESCAPE_PRESSED(window)) {
+        game_s = PAUSE;
     }
-    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+    if (KeyboardInput::KEY_LEFT_PRESSED(window))
         player.rotation -= 1.5f;
-    if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+    if (KeyboardInput::KEY_RIGHT_PRESSED(window))
         player.rotation += 1.5f;
 
     if (xpos - 1280.0f != 0) {
         player.rotation += (xpos - 1280.0f) / 4;
     }
     
-    if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS ||
-        glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    if (MouseInput::LEFT_KEY_PRESSED(window) ||
+        KeyboardInput::KEY_UP_PRESSED(window))
     {   
         glm::vec3 pos_of_bullet = player.position;
         pos_of_bullet = player.position;
@@ -181,5 +193,4 @@ void input(std::vector<S_Door*> &secret_doors,
             }
         }
     }
-    
 }

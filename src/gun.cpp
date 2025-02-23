@@ -1,4 +1,5 @@
 #include "game.h"
+#include "input.h"
 
 const static String shaderDir = "resource/Shaders/";
 
@@ -16,13 +17,13 @@ Gun::Gun()
 void Gun::update(Player &p, 
                  GLFWwindow *window) 
 {
-    if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS && num_of_animation == 0)
+    if (KeyboardInput::KEY_1_PRESSED(window) && num_of_animation == 0 && p.invetory[0] == 1)
         p.typeOfGun = 1;
-    if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS && num_of_animation == 0)
+    if (KeyboardInput::KEY_2_PRESSED(window) && num_of_animation == 0 && p.invetory[1] == 2)
         p.typeOfGun = 2;
-    if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS && num_of_animation == 0 && p.invetory[2] == 3)
+    if (KeyboardInput::KEY_3_PRESSED(window) && num_of_animation == 0 && p.invetory[2] == 3)
         p.typeOfGun = 3;
-    if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS && num_of_animation == 0 && p.invetory[3] == 4)
+    if (KeyboardInput::KEY_4_PRESSED(window) && num_of_animation == 0 && p.invetory[3] == 4)
         p.typeOfGun = 4;
 }
 

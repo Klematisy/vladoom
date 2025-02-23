@@ -1,10 +1,35 @@
 #pragma once
+
 #include <stack>
 #include "libs.h"
 #include "settings.h"
 #include <stack>
 
 struct Player;
+
+enum GAME_STATE {
+    PLAY,
+    DEATH,
+    EXIT,
+    PAUSE
+};
+
+class Pause {
+    ProgramShader *pause_ps;
+    Texture       *pause_tex;
+    ProgramShader *cursor_ps;
+    Texture       *cursor_tex;
+    uint num = 0;
+    uint num_checker = 0;
+    
+    std::chrono::duration<float> old_duration = std::chrono::high_resolution_clock::now() - std::chrono::high_resolution_clock::now();
+    
+    void draw(float opacity);
+    void update(GLFWwindow *w, GAME_STATE &game_s, std::chrono::duration<float> duration);
+public:
+    Pause();
+    void processing(GLFWwindow *w, GAME_STATE &game_s, std::chrono::duration<float> duration, float opacity);
+};
 
 struct Gun {
     int num_of_animation = 0;

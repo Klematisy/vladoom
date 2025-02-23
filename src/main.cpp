@@ -4,9 +4,11 @@
 #include "game.h"
 #include "settings.h"
 
-bool game(GLFWwindow *window, Player &player, Player player_copy);
+void game(GLFWwindow *window);
 
 int main(void)  {
+    // translation unit for creating a window
+    
     GLFWwindow *window;
     if (!glfwInit())
         return -1;
@@ -31,12 +33,7 @@ int main(void)  {
 
     glfwSwapInterval(1);
 
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    glfwPollEvents();
-    glfwSetCursorPos(window, 2560 / 2, 1600 / 2);
-
-    Player player = {glm::vec3(-3.5f, -0.5f, -11.5f), 90.0f, 100, Gun()};
-    while (game(window, player, {glm::vec3(-3.5f, -0.5f, -11.5f), 90.0f, 100, Gun()}) && player.lives != 0);
+    game(window); // Go to the game
     
     glfwDestroyWindow(window);
     glfwTerminate();
